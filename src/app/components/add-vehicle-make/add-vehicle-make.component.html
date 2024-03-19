@@ -1,0 +1,22 @@
+<h1>Vehicle Make Details</h1>
+            <h3>Add Vehicle Make</h3>
+
+<h5>Vehicle Make Details</h5>
+
+<!-- <h5>Make:</h5> <input type="text" ><br>
+
+<button (click)="Save()">Save</button>
+
+<button (click)="Clear()">Clear</button> -->
+
+<div class="Add_vehicle_Make container">
+    <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
+      <div class="form-group">
+        <label for="rating">Make:</label>
+        <input type="text"  [(ngModel)]="make"  id="Save" name="Save" min="1" max="5">
+      </div>
+      
+      <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>
+    </form>
+    <button (click)="Clear()" class="btn btn-success">Clear</button>
+  </div>

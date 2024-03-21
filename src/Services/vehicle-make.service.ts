@@ -8,16 +8,19 @@ import { IVehicleMake_ } from '../Interfaces/IVehicleMake_';
 export class VehicleMakeService {
 
   private apiUrl = '';
-
+  vehiclesList:IVehicleMake_[]=[{Name:"umesh",MakeNo:0}];
+  increment:number=1;
   constructor(private http: HttpClient) { }
 
   getVehicleMake()
   {
-
+    return this.vehiclesList
   }
   AddVehicleMake(model:IVehicleMake_)
   {
-    console.log(model.Name);
+    
+    this.vehiclesList.push({Name:model.Name,MakeNo:this.increment})
+    this.increment++;
   }
 
 

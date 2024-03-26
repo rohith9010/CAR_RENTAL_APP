@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 
+
 @Component({
   selector: 'app-Menu',
   standalone: true,

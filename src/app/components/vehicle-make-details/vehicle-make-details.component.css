@@ -1,0 +1,57 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+}
+
+.menu-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+
+/* Additional styling for better readability */
+.background-img {
+    width: 100%; /* Adjust according to your image */
+    height: auto; /* Adjust according to your image */
+}
+
+
+
+input[type="text"] {
+    width: 200px; /* Adjust width as needed */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+input[type="submit"]:hover {
+    background-color: #87CEFA; /* Light blue color when hovered */
+}
+
+.menu {
+    position: relative;
+}
+
+.home-icon {
+    position: absolute;
+    top: 10px;
+    right: 30px;
+}
+
+.add_circle {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+}

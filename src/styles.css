@@ -1,1 +1,87 @@
-/* You can add global styles to this file, and also import other style files */
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.container {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    filter: grayscale(70%) brightness(80%);
+}
+
+.menu-container {
+    position: absolute;
+    top: 20px; /* Adjust top position as needed */
+    left: 20px; /* Adjust left position as needed */
+    z-index: 1;
+}
+
+.menu {
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 10px; /* Adjust padding as needed */
+    border-radius: 8px; /* Adjust border-radius as needed */
+    color: silver;
+}
+
+.menu h1 {
+    font-size: 1.5em; /* Adjust font-size as needed */
+    margin-bottom: 8px; /* Adjust margin as needed */
+}
+
+.menu a {
+    display: block;
+    color: silver;
+    text-decoration: none;
+    margin-top: 8px; /* Adjust margin as needed */
+    font-size: 1em; /* Adjust font-size as needed */
+    transition: color 0.3s ease;
+}
+
+.menu a:hover {
+    color: white;
+}
+
+.menu a.nav-link {
+    display: block;
+    color: blue; /* Set the color to blue */
+    text-decoration: none;
+    margin-top: 8px;
+    font-size: 1em;
+    transition: color 0.3s ease;
+}
+
+.menu a.nav-link:hover {
+    color: white; /* Change the color on hover */
+}
+
+:host {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+
+ 
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+/* Additional styling for better readability */
+.background-img {
+    width: 100%; /* Adjust according to your image */
+    height: auto; /* Adjust according to your image */
+}

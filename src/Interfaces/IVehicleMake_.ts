@@ -1,4 +1,4 @@
 export interface IVehicleMake_ {
-    MakeNo : number;
-    Name : string;
+    makeNo : number;
+    name : string;
 }

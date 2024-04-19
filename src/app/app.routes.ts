@@ -6,6 +6,8 @@ import { MenuComponent } from './components/Menu/Menu.component';
 export const routes: Routes = [
     {path:'',component:MenuComponent,pathMatch:'full'},
     {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
+    {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
+
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent}
     
 ];

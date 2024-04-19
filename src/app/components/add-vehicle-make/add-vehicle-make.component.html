@@ -8,11 +8,13 @@
           <div class="Add_vehicle_Make">
               <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
                   <div class="form-group">
-                      <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
-                      <a href="" class="add_circle"><mat-icon>add_circle</mat-icon></a>
+                      <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
+                      <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a>
                       <label for="rating">Make:</label>
-                      <input type="text"  [(ngModel)]="model.Name"  id="Save" name="Save" min="1" max="5">
+                      <input type="text"  [(ngModel)]="model.name"  id="Save" name="Save" min="1" max="5">
                   </div>
+                  <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
+
                   <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>
               </form>
               <button (click)="Clear()" class="btn btn-success">Clear</button>

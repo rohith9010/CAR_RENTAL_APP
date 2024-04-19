@@ -1,6 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { VehicleMakeService } from '../../../Services/vehicle-make.service';
 import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
 import { Router } from 'express';
@@ -12,10 +12,20 @@ import { Router } from 'express';
   templateUrl: './vehicle-make-details.component.html',
   styleUrl: './vehicle-make-details.component.css'
 })
-export class VehicleMakeDetailsComponent {
+export class VehicleMakeDetailsComponent implements OnInit{
   constructor(private MakeService:VehicleMakeService){
-    this.vehiclesList=this.MakeService.getVehicleMake();
+    
   }
-  vehiclesList:IVehicleMake_[]=[];
+  vehiclesList:any;
+  ngOnInit() {
+    
+
+    this.MakeService.getVehicleMake().subscribe(res=> {
+      this.vehiclesList=res;
+      });
+  }
+
+
+  
 
 }

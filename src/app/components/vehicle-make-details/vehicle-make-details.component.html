@@ -35,9 +35,10 @@
             <input type="submit" value="Search"/> 
             <div>
                 <table class="table">
-                    @for (vehicle of vehiclesList; track vehicle.MakeNo) {
+                    @for (vehicle of vehiclesList; track vehicle.makeNo) {
                         <tr>
-                            <td>{{vehicle.Name}}</td>
+                            <td>{{vehicle.name}}</td>
+                            <td><a class="nav-link " routerLink="/Add_vehicle_Make/{{vehicle.makeNo}}">Edit</a></td>
                         </tr>
                     }
                 </table>

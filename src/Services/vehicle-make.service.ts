@@ -13,22 +13,21 @@ export class VehicleMakeService {
   constructor(private http: HttpClient) { }
   
 
-  getVehicleMake()
+  getVehicleMake():Observable<IVehicleMake_[]>
   {
-    return this.http.get(this.apiUrl);
+    return this.http.get<IVehicleMake_[]>(this.apiUrl);
   }
-  AddVehicleMake(model:IVehicleMake_){
-    const headers = { 'content-type': 'application/json'}  
-    const body=JSON.stringify(model);
-    return this.http.post(this.apiUrl , body,{'headers':headers})
+  AddVehicleMake(model:IVehicleMake_):Observable<IVehicleMake_>{
+    return this.http.post<IVehicleMake_>(this.apiUrl , model);
   }
   getById(id: number):Observable<IVehicleMake_> {
-    return this.http.get<IVehicleMake_>(`${this.apiUrl}/${id}`)
+    return this.http.get<IVehicleMake_>(`${this.apiUrl}/${id}`);
   }
   updateVehicleMake(model: IVehicleMake_):Observable<IVehicleMake_>{
-    const headers = ({ 'Content-Type': 'application/json' });
-    const body=JSON.stringify(model);
-    return this.http.put<IVehicleMake_>(`${this.apiUrl}/${model.makeNo}`,body, { 'headers': headers });
+    return this.http.put<IVehicleMake_>(`${this.apiUrl}/${model.MakeNo}`,model);
+  }
+  deleteVehicleMake(id: number): Observable<IVehicleMake_> {
+    return this.http.delete<IVehicleMake_>(`${this.apiUrl}/${id}`);
   }
 
 }

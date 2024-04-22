@@ -1,5 +1,5 @@
 <div class="container">
-  <img src="../assets/images/R.jpeg" alt="Background Image" class="background-img">
+  <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
   <div class="menu-container">
       <div class="menu">
           <h3>Vehicle Make Details</h3>
@@ -9,13 +9,14 @@
               <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
                   <div class="form-group">
                       <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
-                      <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a>
-                      <label for="rating">Make:</label>
-                      <input type="text"  [(ngModel)]="model.name"  id="Save" name="Save" min="1" max="5">
+                      <!-- <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a> -->
+                      <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
+                      <label for="Add_vehicle_Make">Make:</label>
+                      <input type="text"  [(ngModel)]="model.Name"  id="Save" name="Save" min="1" max="5">
                   </div>
                   <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
-
                   <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>
+                  
               </form>
               <button (click)="Clear()" class="btn btn-success">Clear</button>
           </div>

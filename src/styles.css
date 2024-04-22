@@ -21,7 +21,7 @@ body, html {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: grayscale(70%) brightness(80%);
+    filter: grayscale(7%) brightness(80%);
 }
 
 .menu-container {
@@ -32,10 +32,10 @@ body, html {
 }
 
 .menu {
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0); /* Transparent background */
     padding: 10px; /* Adjust padding as needed */
     border-radius: 8px; /* Adjust border-radius as needed */
-    color: silver;
+    color: rgb(247, 242, 242);
 }
 
 .menu h1 {
@@ -45,7 +45,7 @@ body, html {
 
 .menu a {
     display: block;
-    color: silver;
+    color: rgb(246, 241, 241);
     text-decoration: none;
     margin-top: 8px; /* Adjust margin as needed */
     font-size: 1em; /* Adjust font-size as needed */
@@ -58,7 +58,7 @@ body, html {
 
 .menu a.nav-link {
     display: block;
-    color: blue; /* Set the color to blue */
+    color: rgb(250, 249, 253); /* Set the color to blue */
     text-decoration: none;
     margin-top: 8px;
     font-size: 1em;
@@ -74,11 +74,7 @@ body, html {
     justify-content: center;
     align-items: center;
     height: 100vh;
-  }
-
- 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+}
 
 /* Additional styling for better readability */
 .background-img {

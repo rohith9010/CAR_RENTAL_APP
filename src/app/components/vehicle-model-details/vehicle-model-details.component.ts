@@ -39,8 +39,8 @@ search(): void {
     this.filteredList = [...this.vehiclesModelsList];
   } else 
   {
-    this.filteredList = this.vehiclesModelsList.filter(vehicle =>
-      vehicle.name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
+    this.filteredList = this.vehiclesModelsList.filter(vehiclemodel =>
+      vehiclemodel.name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
     );
   }
 }

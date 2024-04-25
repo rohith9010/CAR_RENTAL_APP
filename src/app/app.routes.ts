@@ -11,7 +11,7 @@ export const routes: Routes = [
     {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
     {path:'Add_vehicle_Model/:id',component:AddVehicleModelComponent},
 
-    {path:'Add_vehicle_Model',component:AddVehicleMakeComponent},
+    {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent}
     
 ];

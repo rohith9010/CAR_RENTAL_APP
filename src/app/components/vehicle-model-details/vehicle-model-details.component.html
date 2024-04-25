@@ -14,7 +14,7 @@
                       @for (vehicle of filteredList; track vehicle.modelno) {
                           <tr>
                               <td>{{vehicle.name}}</td>
-                              <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.modelno}}"><i class="material-icons edit-icon">edit</i></a></td>
+                              <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.modelno}}"><i class="material-icons edit-icon">edit</i></a></td>
                               <td><a href="javascript:void(0)" (click) = "delete(vehicle.modelno)"><i class="material-icons delete-icon">delete</i></a></td>   
                           </tr>
                       } 
@@ -23,7 +23,7 @@
                   @for (vehicle of vehiclesModelsList; track vehicle.modelno) {
                       <tr>
                           <td>{{vehicle.name}}</td>
-                          <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.modelno}}"><i class="material-icons edit-icon">edit</i></a></td>
+                          <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.modelno}}"><i class="material-icons edit-icon">edit</i></a></td>
                           <td><a href="javascript:void(0)" (click) = "delete(vehicle.modelno)"><i class="material-icons delete-icon">delete</i></a></td>
                       </tr>
                   }

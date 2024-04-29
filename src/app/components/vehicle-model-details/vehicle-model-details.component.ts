@@ -3,6 +3,8 @@ import {MatIconModule } from '@angular/material/icon';
 import {RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { IVehicleModel } from '../../../Interfaces/IVehicleModel';
+import { VehicleMakeService } from '../../../Services/VehicleMakeservice/vehicle-make.service';
+import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
 
 @Component({
   selector: 'app-vehicle-model-details',
@@ -15,13 +17,17 @@ export class VehicleModelDetailsComponent implements OnInit {
 
   filteredList!: IVehicleModel[];
   searchQuery!: string ;
-  vehiclesModelsList!:IVehicleModel[];
-  constructor() { }
+  vehicleList!:IVehicleMake_[];
+  constructor(private MakeService:VehicleMakeService) { }
 
   ngOnInit() {
-    // this.ModelService.getVehicleModel().subscribe(x=>{
-    //   this.vehiclesModelsList = x;
-    // });
+    this.getAll();
+  }
+  getAll(){
+    this.MakeService.getVehicleMake().subscribe(res=> {
+      this.vehicleList=res;
+
+      });
   }
 
   delete(id:number):void {
@@ -35,11 +41,11 @@ export class VehicleModelDetailsComponent implements OnInit {
 }
 search(): void {
   // if (this.searchQuery.trim() ==='') {
-  //   this.filteredList = [...this.vehiclesModelsList];
+  //   this.filteredList = [...this.vehicleList];
   // } else 
   // {
-  //   this.filteredList = this.vehiclesModelsList.filter(vehiclemodel =>
-  //     vehiclemodel.name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
+  //   this.filteredList = this.vehicleList.filter(vehiclemodel =>
+  //     vehiclemodel.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
   //   );
   // }
 }

@@ -37,6 +37,7 @@ export class AddVehicleModelComponent implements OnInit {
   getAll(){
     this.MakeService.getVehicleMake().subscribe(res=> {
       this.vehiclesList=res;
+      console.log(res);
       });
   }
 update()

@@ -9,25 +9,42 @@
          <button type="button" (click)="search()"><i class="material-icons">search</i></button>
           <div>
               <table class="table">
+                <tbody>
+                <tr>
+                    <th>Vehicle_Model</th>
+                    <th>Vehicle_Make</th>
+                </tr>
                   @if(filteredList)
                   {
-                      @for (vehicle of filteredList; track vehicle.ModelNo) {
-                          <tr>
-                              <td>{{vehicle.Name}}</td>
-                              <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.ModelNo}}"><i class="material-icons edit-icon">edit</i></a></td>
-                              <td><a href="javascript:void(0)" (click) = "delete(vehicle.ModelNo)"><i class="material-icons delete-icon">delete</i></a></td>   
-                          </tr>
-                      } 
+                      <!-- @for (vehicle of filteredList; track vehicle.MakeNo) {
+                        @for(model of vehicle.Vehiclemodels; track model.ModelNo){
+                            <tr>
+                                <td>{{model.Name}}</td>
+                                <td>{{vehicle.Name}}</td>
+                                <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.ModelNo}}"><i class="material-icons edit-icon">edit</i></a></td>
+                                <td><a href="javascript:void(0)" (click) = "delete(vehicle.ModelNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                            </tr>
+                          }
+                      }  -->
                   }
-                 @else(){
-                  @for (vehicle of vehiclesModelsList; track vehicle.ModelNo) {
-                      <tr>
-                          <td>{{vehicle.Name}}</td>
-                          <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.ModelNo}}"><i class="material-icons edit-icon">edit</i></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(vehicle.ModelNo)"><i class="material-icons delete-icon">delete</i></a></td>
-                      </tr>
-                  }
-                 }
+                 @else()
+                    {
+                        @for (vehicle of vehicleList; track vehicle.MakeNo) 
+                        {
+                            @for(model of vehicle.Vehiclemodels; track model.MakeNo)
+                            {
+                                    <tr>
+                                        <td>{{model.Name}}</td>
+                                        <td>{{vehicle.Name}}</td>
+                                        <td><a type="button"  routerLink="/Add_vehicle_Model/{{model.Name}"><i class="material-icons edit-icon">edit</i></a></td>
+                                        <td><a href="javascript:void(0)" (click) = "delete(model.ModelNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                                    </tr>
+                                
+                            }
+                        }
+                    }
+                }
+                </tbody>
               </table>
           </div>
           <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 

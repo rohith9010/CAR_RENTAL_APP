@@ -15,9 +15,8 @@
                         <select name="drop" [(ngModel)]="model.Name">
                             <option *ngFor="let Model1 of vehiclesList" >{{Model1.Name}}</option>
                         </select><br>
-                      <label for="Add_vehicle_Model">Model:</label>
-                     
-                           
+                      <label for="Add_vehicle_Model">Model:</label> 
+                      
                       <input type="text"  [(ngModel)]="model.Vehiclemodels[0].Name"  id="Save" name="Save" min="1" max="5">
                   </div>
                   <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>

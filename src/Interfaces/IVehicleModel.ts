@@ -1,5 +1,5 @@
 export interface IVehicleModel {
-    modelno : number
-    name : string
-    makeno : number
+    ModelNo : number
+    Name : string
+    MakeNo : number
 }

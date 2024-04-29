@@ -11,8 +11,14 @@
                       <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
                       <!-- <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a> -->
                       <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
-                      <label for="Add_vehicle_Model">Make:</label>
-                      <input type="text"  [(ngModel)]="model.name"  id="Save" name="Save" min="1" max="5">
+                      
+                        <select name="drop" [(ngModel)]="model.Name">
+                            <option *ngFor="let Model1 of vehiclesList" >{{Model1.Name}}</option>
+                        </select><br>
+                      <label for="Add_vehicle_Model">Model:</label>
+                     
+                           
+                      <input type="text"  [(ngModel)]="model.Vehiclemodels[0].Name"  id="Save" name="Save" min="1" max="5">
                   </div>
                   <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
                   <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>

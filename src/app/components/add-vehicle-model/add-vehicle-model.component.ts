@@ -1,10 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VehicleModelService } from '../../../Services/VehicleModelservice/Vehicle-Model.service';
 import { IVehicleModel } from '../../../Interfaces/IVehicleModel';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { VehicleMakeService } from '../../../Services/VehicleMakeservice/vehicle-make.service';
+import { IPVersion } from 'net';
+import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
 
 @Component({
   selector: 'app-add-vehicle-model',
@@ -15,31 +17,39 @@ import { CommonModule } from '@angular/common';
 })
 export class AddVehicleModelComponent implements OnInit {
 
-  model:IVehicleModel={modelno: 0, name: "",makeno: 0};
-
-  constructor(private route : ActivatedRoute,private ModelService:VehicleModelService,private router:Router) { }
+  model:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
+  vehiclesList!:IVehicleMake_[];
+  constructor(private route : ActivatedRoute,private router:Router,private MakeService:VehicleMakeService) { }
 
   ngOnInit() {
     this.getbyid();
+    this.getAll();
   }
   getbyid(){
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.ModelService.getModelById(id).subscribe(data=>{
-        this.model=data;
-        console.log(data);
-      })
-    }
+    // const id = this.route.snapshot.params['id'];
+    // if (id) {
+    //   this.ModelService.getModelById(id).subscribe(data=>{
+    //     this.model=data;
+    //     console.log(data);
+    //   })
+    // }
+  }
+  getAll(){
+    this.MakeService.getVehicleMake().subscribe(res=> {
+      this.vehiclesList=res;
+      });
   }
 update()
 {
-  this.ModelService.updateVehicleModel(this.model).subscribe(data=>{console.log(data);
-  this.router.navigate(['/vehicle_model_details'])}); 
+  // this.ModelService.updateVehicleModel(this.model).subscribe(data=>{console.log(data);
+  // this.router.navigate(['/vehicle_model_details'])}); 
 }
 Save()
 {
-  this.ModelService.AddVehicleModel(this.model).subscribe(res=>{console.log(res)  
-  this.router.navigate(['/vehicle_model_details'])});
+  console.log(this.model);
+  // this.ModelService.AddVehicleModel(this.model).subscribe(res=>{console.log(res)  
+  // this.router.navigate(['/vehicle_model_details'])});
+  
 }
 
 }

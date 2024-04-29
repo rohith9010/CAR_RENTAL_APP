@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddVehicleMakeComponent implements OnInit{
 
-  model:IVehicleMake_={MakeNo:0,Name:""};
+  model:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
 
   constructor(private route : ActivatedRoute,private MakeService:VehicleMakeService,private router:Router)
   {
@@ -38,17 +38,10 @@ update()
   this.MakeService.updateVehicleMake(this.model).subscribe(data=>{console.log(data);
   this.router.navigate(['/vehicle_make_details'])}); 
 }
-// delete(id:number):void {
-//     if (confirm('Are you sure you want to delete this item?')) {
-//       this.MakeService.deleteVehicleMake(id).subscribe(() => {
-//           console.log('Item deleted successfully');
-//           this.router.navigate(['/vehicle_make_details']);  
-//         },
-//       );
-//     }
-// }
+
 Save()
 {
+  console.log("i");
   this.MakeService.AddVehicleMake(this.model).subscribe(res=>{console.log(res)  
   this.router.navigate(['/vehicle_make_details'])});
 }

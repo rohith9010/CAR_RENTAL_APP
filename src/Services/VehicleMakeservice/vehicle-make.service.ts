@@ -2,6 +2,7 @@ import { HttpClient} from '@angular/common/http';
 import { Injectable} from '@angular/core';
 import { IVehicleMake_ } from '../../Interfaces/IVehicleMake_';
 import { Observable } from 'rxjs';
+import { json } from 'node:stream/consumers';
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +18,11 @@ export class VehicleMakeService {
   {
     return this.http.get<IVehicleMake_[]>(this.apiUrl);
   }
-  AddVehicleMake(model:IVehicleMake_):Observable<IVehicleMake_>{
-    return this.http.post<IVehicleMake_>(this.apiUrl , model);
+  AddVehicleMake(model: IVehicleMake_): Observable<IVehicleMake_> {
+    const headers = {
+      'Content-Type': 'application/json'
+    };
+    return this.http.post<IVehicleMake_>(this.apiUrl, model, { headers });
   }
   getById(id: number):Observable<IVehicleMake_> {
     return this.http.get<IVehicleMake_>(`${this.apiUrl}/${id}`);

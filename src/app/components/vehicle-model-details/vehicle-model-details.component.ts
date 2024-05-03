@@ -17,6 +17,7 @@ export class VehicleModelDetailsComponent implements OnInit {
 
   filteredList!: IVehicleModel[];
   searchQuery!: string ;
+  vechiclemodel:boolean=false;
   vehicleList!:IVehicleMake_[];
   constructor(private MakeService:VehicleMakeService) { }
 
@@ -31,13 +32,13 @@ export class VehicleModelDetailsComponent implements OnInit {
   }
 
   delete(id:number):void {
-    // if (confirm('Are you sure you want to delete this item?')){
-    //   this.ModelService.deleteVehicleModel(id).subscribe(()=>{
-    //       console.log('Item deleted successfully');
-    //       this.ngOnInit();
-    //     },
-    //   );
-    // }
+    if (confirm('Are you sure you want to delete this item?')){
+      this.MakeService.deleteVehicleMake(id,this.vechiclemodel).subscribe(()=>{
+          console.log('Item deleted successfully');
+          this.ngOnInit();
+        },
+      );
+    }
 }
 search(): void {
   // if (this.searchQuery.trim() ==='') {

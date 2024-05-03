@@ -18,6 +18,7 @@ export class VehicleMakeDetailsComponent implements OnInit{
   }
   filteredList!: IVehicleMake_[];
   searchQuery!: string ;
+  Makeer:boolean=true;
   vehiclesList!:IVehicleMake_[];
   ngOnInit() {
     
@@ -30,7 +31,7 @@ export class VehicleMakeDetailsComponent implements OnInit{
   
   delete(id:number):void {
         if (confirm('Are you sure you want to delete this item?')){
-          this.MakeService.deleteVehicleMake(id).subscribe(()=>{
+          this.MakeService.deleteVehicleMake(id,this.Makeer).subscribe(()=>{
               console.log('Item deleted successfully');
               this.ngOnInit();
             },

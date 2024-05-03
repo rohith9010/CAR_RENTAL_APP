@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { VehicleMakeService } from '../../../Services/VehicleMakeservice/vehicle-make.service';
+import { VehicleMakeService,Response } from '../../../Services/VehicleMakeservice/vehicle-make.service';
 import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatIconModule } from '@angular/material/icon';
@@ -16,6 +16,7 @@ import { CommonModule } from '@angular/common';
 export class AddVehicleMakeComponent implements OnInit{
 
   model:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
+  isMake:boolean=true;
 
   constructor(private route : ActivatedRoute,private MakeService:VehicleMakeService,private router:Router)
   {
@@ -26,16 +27,17 @@ export class AddVehicleMakeComponent implements OnInit{
   }
   getbyid(){
     const id = this.route.snapshot.params['id'];
+    console.log(id);
     if (id) {
-      this.MakeService.getById(id).subscribe(data=>{
-        this.model=data;
+      this.MakeService.getById(id,this.isMake).subscribe((data:Response)=>{
+        this.model=data as IVehicleMake_;
         console.log(data);
       })
     }
   }
 update()
 {
-  this.MakeService.updateVehicleMake(this.model).subscribe(data=>{console.log(data);
+  this.MakeService.updateVehicleMake(this.model,this.isMake).subscribe(data=>{console.log(data);
   this.router.navigate(['/vehicle_make_details'])}); 
 }
 

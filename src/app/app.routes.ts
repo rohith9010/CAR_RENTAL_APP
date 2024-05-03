@@ -9,7 +9,7 @@ export const routes: Routes = [
     {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
     {path:'vehicle_model_details',component:VehicleModelDetailsComponent},
     {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
-    {path:'Add_vehicle_Model/:id',component:AddVehicleModelComponent},
+    {path:'Add_vehicle_Model/:id/:name',component:AddVehicleModelComponent},
 
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent}

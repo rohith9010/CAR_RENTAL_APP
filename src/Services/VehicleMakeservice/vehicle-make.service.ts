@@ -16,15 +16,12 @@ export class VehicleMakeService {
   constructor(private http: HttpClient) { }
   
 
-  getVehicleMake():Observable<IVehicleMake_[]>
+  getVehicleMake(isMake: boolean):Observable<IVehicleMake_[]>
   {
-    return this.http.get<IVehicleMake_[]>(this.apiUrl);
+    return this.http.get<IVehicleMake_[]>(this.apiUrl+`?isMake=${isMake}`);
   }
-  AddVehicleMake(model: IVehicleMake_): Observable<IVehicleMake_> {
-    const headers = {
-      'Content-Type': 'application/json'
-    };
-    return this.http.post<IVehicleMake_>(this.apiUrl, model, { headers });
+  AddVehicleMake(model: IVehicleMake_,isMake: boolean): Observable<IVehicleMake_> {
+    return this.http.post<IVehicleMake_>(this.apiUrl+`?isMake=${isMake}`, model);
   }
   getById(id: number,isMake: boolean):Observable<Response> {
     return this.http.get<Response>(`${this.apiUrl}/${id}?isMake=${isMake}`);

@@ -23,8 +23,9 @@ export class VehicleMakeDetailsComponent implements OnInit{
   ngOnInit() {
     
 
-    this.MakeService.getVehicleMake().subscribe(res=> {
+    this.MakeService.getVehicleMake(this.Makeer).subscribe(res=> {
       this.vehiclesList=res;
+      console.log(res);
       });
       
   }

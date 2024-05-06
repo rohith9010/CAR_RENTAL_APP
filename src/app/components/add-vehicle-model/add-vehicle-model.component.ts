@@ -18,7 +18,7 @@ import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
 })
 export class AddVehicleModelComponent implements OnInit {
 
-  model:IVehicleMake_={MakeNo:0,Name:"",Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
+  model:IVehicleMake_={MakeNo:0,Name:"",Vehiclemodels:[]};
   getmodel:IVehicleModel={ModelNo:0,Name:"",MakeNo:0}
   vehiclesList!:IVehicleMake_[];
   isMake:boolean=false;
@@ -40,17 +40,19 @@ export class AddVehicleModelComponent implements OnInit {
   getbymakeid(){
     const id = this.route.snapshot.params['id'];
     if (id) {
-      this.isMake=true;
-      this.MakeService.getById(id,this.isMake).subscribe((data:Response)=>{
+      this.MakeService.getById(id,this.isMake=true).subscribe((data:Response)=>{
         this.model=data as IVehicleMake_;
+        console.log(this.model.Name);
         this.isMake=false;
       })
-     
     }
   }
   getAll(){
-    this.MakeService.getVehicleMake().subscribe(res=> {
+   
+    this.MakeService.getVehicleMake(this.isMake=true).subscribe(res=> {
       this.vehiclesList=res;
+      console.log(res);
+      this.isMake=false;
       });
   }
 update()
@@ -65,10 +67,15 @@ update()
 }
 Save()
 {
+  this.vehiclesList.forEach((mod:IVehicleMake_)=>{
+    if(mod.Name==this.model.Name){
+      this.model.MakeNo=mod.MakeNo;
+    }
+  })
   this.model.Vehiclemodels.push(this.getmodel);
-  this.MakeService.AddVehicleMake(this.model).subscribe(res=>{console.log(res)  
-  this.router.navigate(['/vehicle_model_details'])});
-  
+  console.log(this.model);
+  this.MakeService.AddVehicleMake(this.model,this.isMake=false).subscribe(res=>{console.log(res)  
+  this.router.navigate(['/vehicle_model_details'])}); 
 }
 
 }

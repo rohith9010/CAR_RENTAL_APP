@@ -25,9 +25,10 @@ export class VehicleModelDetailsComponent implements OnInit {
     this.getAll();
   }
   getAll(){
-    this.MakeService.getVehicleMake().subscribe(res=> {
+    this.vechiclemodel=true;
+    this.MakeService.getVehicleMake(this.vechiclemodel).subscribe(res=> {
       this.vehicleList=res;
-
+      this.vechiclemodel=false;
       });
   }
 
@@ -50,5 +51,37 @@ search(): void {
   //   );
   // }
 }
+currentPage: number = 1; // Current page
+  itemsPerPage: number = 10; // Items per page
+  totalItems: number = 0; // Total number of items
 
+// Calculate the index to start from based on current page and items per page
+getStartIndex(): number {
+  return (this.currentPage - 1) * this.itemsPerPage;
 }
+
+// Calculate the index to end at based on current page and items per page
+getEndIndex(): number {
+  return this.currentPage * this.itemsPerPage;
+}
+
+// Function to navigate to the next page
+nextPage() {
+  if (this.currentPage < this.totalPages()) {
+    this.currentPage++;
+  }
+}
+
+// Function to navigate to the previous page
+prevPage() {
+  if (this.currentPage > 1) {
+    this.currentPage--;
+  }
+}
+
+// Function to get the total number of pages
+totalPages(): number {
+  return Math.ceil(this.totalItems / this.itemsPerPage);
+}
+}
+

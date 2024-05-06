@@ -26,7 +26,11 @@ export class AddVehicleMakeComponent implements OnInit{
     this.getbyid();
   }
   getbyid(){
-    const id = this.route.snapshot.params['id'];
+    const idString = this.route.snapshot.params['id'];
+    console.log(this.route.snapshot.params);
+ 
+    console.log(idString);
+    const id = Number(idString); 
     console.log(id);
     if (id) {
       this.MakeService.getById(id,this.isMake).subscribe((data:Response)=>{
@@ -43,8 +47,7 @@ update()
 
 Save()
 {
-  console.log("i");
-  this.MakeService.AddVehicleMake(this.model).subscribe(res=>{console.log(res)  
+  this.MakeService.AddVehicleMake(this.model,this.isMake).subscribe(res=>{console.log(res)  
   this.router.navigate(['/vehicle_make_details'])});
 }
 

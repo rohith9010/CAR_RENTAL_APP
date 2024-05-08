@@ -1,0 +1,29 @@
+<div class="container">
+  <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
+  <div class="menu-container">
+      <div class="menu">
+          <h3>Vehicle Model Details</h3>
+          <hr><h3>Add Vehicle Model</h3>
+          <h5>Vehicle Model Details</h5>
+          <div class="Add_vehicle_Model">
+              <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
+                  <div class="form-group">
+                      <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
+                      <!-- <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a> -->
+                      <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
+                      
+                        <select name="drop" [(ngModel)]="model.Name">
+                            <option *ngFor="let Model1 of models" [value]="Model1.Name" >{{Model1.Name}}</option>
+                        </select><br>
+                      <label for="Add_vehicle_Model">Model:</label> 
+                      <input type="text"  [(ngModel)]="getmodel.Name"  id="Save" name="Save" min="1" max="5">
+                  </div>
+                  <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
+                  <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>
+                  
+              </form>
+              <!-- <button (click)="Clear()" class="btn btn-success">Clear</button> -->
+          </div>
+      </div>
+  </div>
+</div>

@@ -1,0 +1,54 @@
+<div class="container">
+  <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
+  <div class="menu-container">
+      <div class="menu">
+          <h1>Vehicle Model Management</h1>
+          <hr>
+          <h3>Filter</h3>
+          <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
+         <button type="button" (click)="search()"><i class="material-icons">search</i></button>
+          <div>
+              <table class="table">
+                <tbody>
+                <tr>
+                    <th>Vehicle_Model</th>
+                    <th>Vehicle_Make</th>
+                </tr>
+                  @if(filteredList)
+                  {
+                      <!-- @for (vehicle of filteredList; track vehicle.MakeNo) {
+                        @for(model of vehicle.Vehiclemodels; track model.ModelNo){
+                            <tr>
+                                <td>{{model.Name}}</td>
+                                <td>{{vehicle.Name}}</td>
+                                <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.ModelNo}}"><i class="material-icons edit-icon">edit</i></a></td>
+                                <td><a href="javascript:void(0)" (click) = "delete(vehicle.ModelNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                            </tr>
+                          }
+                      }  -->
+                  }
+                 @else()
+                    {
+                        @for (vehicle of vehicleList; track vehicle.MakeNo) {
+                                @for(model of vehicle.Vehiclemodels; track model.ModelNo){
+                                    <tr>
+                                        <td>{{model.Name}}</td>
+                                        <td>{{vehicle.Name}}</td>
+                                        <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.MakeNo}}/{{model.ModelNo}}"><i class="material-icons edit-icon">edit</i></a></td>
+                                        <td><a href="javascript:void(0)" (click) = "delete(model.ModelNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                                    </tr>
+                                }
+                            } 
+                    
+                    }
+                </tbody>
+              </table>
+          </div>
+          <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
+          <a href="/Add_vehicle_Model" class="add_circle"><mat-icon>add_circle</mat-icon></a>
+          <!-- <a href="#" class="arrow-back"><mat-icon>arrow-back</mat-icon></a>  -->
+
+      </div>
+      
+  </div>
+</div>>

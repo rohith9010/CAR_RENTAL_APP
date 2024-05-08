@@ -1,21 +1,22 @@
 <div class="container">
-  <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
+  <img src="../assets/images/a.jpg" alt="Background Image" class="background-img">
   <div class="menu-container">
       <div class="menu">
-          <h3>Vehicle Make Details</h3>
+          <h3>𝕍𝕖𝕙𝕚𝕔𝕝𝕖 𝕄𝕒𝕜𝕖 𝔻𝕖𝕥𝕒𝕚𝕝𝕤</h3>
           <hr><h3>Add Vehicle Make</h3>
-          <h5>Vehicle Make Details</h5>
           <div class="Add_vehicle_Make">
               <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
                   <div class="form-group">
                       <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
-                      <!-- <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a> -->
+                      <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a>
                       <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
-                      <label for="Add_vehicle_Make">Make:</label>
-                      <input type="text"  [(ngModel)]="model.Name"  id="Save" name="Save" min="1" max="5">
+                      <label for="Add_vehicle_Make"><h5>Make</h5></label>
+                      <!-- <input type="text"  [(ngModel)]="model.Name"  id="Save" name="Save" min="1" max="5"> -->
+                      <input type="text" [(ngModel)]="model.Name" id="Save" name="Save" min="1" max="5" class="curved-textbox">
+
                   </div>
                   <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
-                  <button type="Submit" class="btn btn-success" style="margin-top: 2%;">Save</button>
+                  <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>
               </form>
               <button (click)="Clear()" class="btn btn-success">Clear</button>
           </div>

@@ -16,8 +16,6 @@ import { CommonModule } from '@angular/common';
 export class AddVehicleMakeComponent implements OnInit{
 
   model:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
-  isMake:boolean=true;
-
   constructor(private route : ActivatedRoute,private MakeService:VehicleMakeService,private router:Router)
   {
 
@@ -33,7 +31,7 @@ export class AddVehicleMakeComponent implements OnInit{
     const id = Number(idString); 
     console.log(id);
     if (id) {
-      this.MakeService.getById(id,this.isMake).subscribe((data:Response)=>{
+      this.MakeService.getById(id).subscribe((data:Response)=>{
         this.model=data as IVehicleMake_;
         console.log(data);
       })
@@ -41,13 +39,13 @@ export class AddVehicleMakeComponent implements OnInit{
   }
 update()
 {
-  this.MakeService.updateVehicleMake(this.model,this.isMake).subscribe(data=>{console.log(data);
+  this.MakeService.updateVehicleMake(this.model).subscribe(data=>{console.log(data);
   this.router.navigate(['/vehicle_make_details'])}); 
 }
 
 Save()
 {
-  this.MakeService.AddVehicleMake(this.model,this.isMake).subscribe(res=>{console.log(res)  
+  this.MakeService.AddVehicleMake(this.model).subscribe(res=>{console.log(res)  
   this.router.navigate(['/vehicle_make_details'])});
 }
 

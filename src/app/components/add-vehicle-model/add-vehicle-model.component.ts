@@ -5,8 +5,8 @@ import { ActivatedRoute, Router } from '@angular/router';
 import {MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { VehicleMakeService ,Response } from '../../../Services/VehicleMakeservice/vehicle-make.service';
-import { IPVersion } from 'net';
 import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
+import { VehicleModelServiceService } from '../../../Services/VehicleModelservice/vehicle-model-service.service';
 
 
 @Component({
@@ -20,9 +20,9 @@ export class AddVehicleModelComponent implements OnInit {
 
   model:IVehicleMake_={MakeNo:0,Name:"",Vehiclemodels:[]};
   getmodel:IVehicleModel={ModelNo:0,Name:"",MakeNo:0}
-  vehiclesList!:IVehicleMake_[];
-  isMake:boolean=false;
-  constructor(private route : ActivatedRoute,private router:Router,private MakeService:VehicleMakeService) { }
+  vehiclesList!:IVehicleModel[];
+  models:IVehicleMake_[] = [];
+  constructor(private route : ActivatedRoute,private router:Router,private MakeService:VehicleMakeService,private ModelService:VehicleModelServiceService) { }
 
   ngOnInit() {
     this.getbyid();
@@ -30,29 +30,26 @@ export class AddVehicleModelComponent implements OnInit {
     this.getAll();
   }
   getbyid(){
-    const getmodelid = this.route.snapshot.params['name'];
+    const getmodelid = this.route.snapshot.params['Makeid'];
     if (getmodelid) {
-      this.MakeService.getById(getmodelid,this.isMake).subscribe((data:Response)=>{
-        this.getmodel=data as IVehicleModel;
+      this.MakeService.getById(getmodelid).subscribe((data:Response)=>{
+        this.model=data as IVehicleMake_;
       })
     }
   }
   getbymakeid(){
-    const id = this.route.snapshot.params['id'];
-    if (id) {
-      this.MakeService.getById(id,this.isMake=true).subscribe((data:Response)=>{
-        this.model=data as IVehicleMake_;
-        console.log(this.model.Name);
-        this.isMake=false;
+    const id = this.route.snapshot.params['Modelid'];
+    if (id){
+      this.ModelService.getmodelById(id).subscribe((data)=>{
+        this.getmodel=data;
       })
     }
   }
   getAll(){
    
-    this.MakeService.getVehicleMake(this.isMake=true).subscribe(res=> {
-      this.vehiclesList=res;
+    this.MakeService.getVehicleMake().subscribe((res:IVehicleMake_[])=> {
+      this.models=res;
       console.log(res);
-      this.isMake=false;
       });
   }
 update()
@@ -62,20 +59,12 @@ update()
       vehicleModel.Name=this.getmodel.Name;
     }
   });
-  this.MakeService.updateVehicleMake(this.model,this.isMake).subscribe(data=>{
+  this.ModelService.updateVehicleModel(this.getmodel).subscribe(data=>{
     this.router.navigate(['/vehicle_model_details'])}); 
 }
 Save()
 {
-  this.vehiclesList.forEach((mod:IVehicleMake_)=>{
-    if(mod.Name==this.model.Name){
-      this.model.MakeNo=mod.MakeNo;
-    }
-  })
-  this.model.Vehiclemodels.push(this.getmodel);
-  console.log(this.model);
-  this.MakeService.AddVehicleMake(this.model,this.isMake=false).subscribe(res=>{console.log(res)  
-  this.router.navigate(['/vehicle_model_details'])}); 
-}
-
+  this.ModelService.AddVehicleModel(this.getmodel).subscribe(res=>{console.log(res)  
+    this.router.navigate(['/vehicle_make_details'])});
+  }
 }

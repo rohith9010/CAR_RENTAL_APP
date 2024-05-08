@@ -64,7 +64,12 @@ update()
 }
 Save()
 {
+  this.models.forEach((val:IVehicleMake_)=>{
+    if(val.Name==this.model.Name){
+      this.getmodel.MakeNo=val.MakeNo
+    }
+  })
   this.ModelService.AddVehicleModel(this.getmodel).subscribe(res=>{console.log(res)  
-    this.router.navigate(['/vehicle_make_details'])});
+    this.router.navigate(['/vehicle_model_details'])});
   }
 }

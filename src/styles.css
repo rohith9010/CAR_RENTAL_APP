@@ -21,7 +21,7 @@ body, html {
     height: 100%;
     object-fit: cover;
     z-index: -1;
-    filter: grayscale(7%) brightness(80%);
+    filter: grayscale(10%) brightness(45%);
 }
 
 .menu-container {
@@ -35,7 +35,7 @@ body, html {
     background-color: rgba(0, 0, 0, 0); /* Transparent background */
     padding: 10px; /* Adjust padding as needed */
     border-radius: 8px; /* Adjust border-radius as needed */
-    color: rgb(247, 242, 242);
+    color: rgb(156, 200, 174);
 }
 
 .menu h1 {
@@ -45,7 +45,7 @@ body, html {
 
 .menu a {
     display: block;
-    color: rgb(246, 241, 241);
+    color: rgb(148, 184, 149);
     text-decoration: none;
     margin-top: 8px; /* Adjust margin as needed */
     font-size: 1em; /* Adjust font-size as needed */
@@ -53,12 +53,12 @@ body, html {
 }
 
 .menu a:hover {
-    color: white;
+    color: rgb(189, 184, 184);
 }
 
 .menu a.nav-link {
     display: block;
-    color: rgb(250, 249, 253); /* Set the color to blue */
+    color: rgb(251, 250, 250); /* Set the color to blue */
     text-decoration: none;
     margin-top: 8px;
     font-size: 1em;
@@ -66,7 +66,17 @@ body, html {
 }
 
 .menu a.nav-link:hover {
-    color: white; /* Change the color on hover */
+    color: rgb(235, 231, 231); /* Change the color on hover */
+}
+
+.menu .column {
+    float: left;
+    width: 44.90%;
+    padding: 36px;
+}
+
+.menu-title {
+    margin-left: 2px; /* Adjust as needed */
 }
 
 :host {
@@ -81,5 +91,6 @@ body, html {
     width: 100%; /* Adjust according to your image */
     height: auto; /* Adjust according to your image */
 }
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }

@@ -1,4 +1,4 @@
-import { IState } from "./istate";
+import { IState } from "./IState";
 
 export interface ICountry {
     CountryNo:number;

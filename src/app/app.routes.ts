@@ -5,6 +5,7 @@ import { AddVehicleMakeComponent } from './components/add-vehicle-make/add-vehic
 import { AddVehicleModelComponent } from './components/add-vehicle-model/add-vehicle-model.component';
 import { MenuComponent } from './components/Menu/Menu.component';
 import { StateDetailsComponent } from './components/state-details/state-details.component';
+import { AddStateComponent } from './components/add-state/add-state.component';
 export const routes: Routes = [
     {path:'',component:MenuComponent,pathMatch:'full'},
     {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
@@ -14,5 +15,7 @@ export const routes: Routes = [
 
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
-    {path:'State_Detail',component:StateDetailsComponent}
+    {path:'State_Detail',component:StateDetailsComponent},
+    {path:'Add_State/:CountryId/:StateId',component:AddStateComponent},
+    {path:'Add_State',component:AddStateComponent}
 ];

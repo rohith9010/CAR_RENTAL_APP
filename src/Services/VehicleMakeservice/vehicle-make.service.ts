@@ -7,7 +7,6 @@ export type Response = IVehicleMake_
   providedIn: 'root'
 })
 export class VehicleMakeService {
-  mode1!:IVehicleMake_;
   private apiUrl = 'https://localhost:7028/api/VehicleMake';
  
   constructor(private http: HttpClient) { }

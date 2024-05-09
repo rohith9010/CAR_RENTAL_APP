@@ -1,8 +1,8 @@
-import { ICity } from "./icity";
+import { ICity } from "./ICity";
 
 export interface IState {
     StateNo:number;
     state:string;
     CountryNo:number;
-    cities:ICity[];
+    Citys:ICity[];
 }

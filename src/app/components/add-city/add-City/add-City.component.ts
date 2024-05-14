@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { ICities } from '../../../../Interfaces/ICities';
 import { CitiesService } from '../../../../Services/CityService/Cities.service';
 import { IStates } from '../../../../Interfaces/IStates';
+import { StateserviceService } from '../../../../Services/StateService/stateservice.service';
 
 
 @Component({
@@ -21,7 +22,7 @@ export class AddCityComponent implements OnInit {
   getcities:ICities={CityNo:0,CityName:"",StateNo:0}
   CitiesList!:ICities[];
   models:IStates[] = [];
-  constructor(private route : ActivatedRoute,private router:Router,private CityService:CitiesService) { }
+  constructor(private route : ActivatedRoute,private router:Router,private CityService:CitiesService,private stateservice : StateserviceService) { }
 
   ngOnInit() {
     this.getstatebyid();
@@ -31,7 +32,7 @@ export class AddCityComponent implements OnInit {
   getstatebyid(){
     const stateid = this.route.snapshot.params['Stateid'];
     if (stateid) {
-      this.CityService.getstatesById(stateid).subscribe((data:IStates)=>{
+      this.stateservice.GetStatebyId(stateid).subscribe((data:IStates)=>{
         this.model=data;
       })
     }
@@ -46,7 +47,7 @@ export class AddCityComponent implements OnInit {
   }
   getAllstates(){
    
-    this.CityService.getStates().subscribe((res:IStates[])=> {
+    this.stateservice.GetAllStates().subscribe((res:IStates[])=> {
       this.models=res;
       console.log(res);
       });

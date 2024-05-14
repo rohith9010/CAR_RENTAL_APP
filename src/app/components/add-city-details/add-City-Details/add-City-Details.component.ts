@@ -5,6 +5,7 @@ import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { ICities } from '../../../../Interfaces/ICities';
 import { CitiesService } from '../../../../Services/CityService/Cities.service';
 import { IStates } from '../../../../Interfaces/IStates';
+import { StateserviceService } from '../../../../Services/StateService/stateservice.service';
 
 
 @Component({
@@ -19,13 +20,13 @@ export class AddCityDetailsComponent implements OnInit {
   filteredList: ICities[]=[];
   searchQuery!: string;
   stateList:IStates[]=[];
-  constructor(private cityservice : CitiesService) { }
+  constructor(private cityservice : CitiesService,private stateservice : StateserviceService) { }
 
   ngOnInit() {
     this.getAll();
   }
   getAll(){
-    this.cityservice.getStates().subscribe((res)=> {
+    this.stateservice.GetAllStates().subscribe((res)=> {
       this.stateList=res;
     });
   }

@@ -7,6 +7,7 @@ import { ICountry } from '../../../Interfaces/ICountry';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { Console } from 'console';
+import { CountryService } from '../../../Services/CountriesService/Country.service';
 
 @Component({
   selector: 'app-add-state',
@@ -20,7 +21,7 @@ export class AddStateComponent {
   GetState:IState={StateNo:0,state:"",CountryNo:0,Citys:[]}
   StateList!:IState[];
   CountryList:ICountry[] = [];
-  constructor(private route : ActivatedRoute,private router:Router,private StateService:StateserviceService) { }
+  constructor(private route : ActivatedRoute,private router:Router,private StateService:StateserviceService,private CountryService:CountryService) { }
 
   ngOnInit() {
     this.getbyid();
@@ -38,14 +39,14 @@ export class AddStateComponent {
   getbymakeid(){
     const id = this.route.snapshot.params['CountryId'];
     if (id){
-      this.StateService.GetCountrybyId(id).subscribe((data)=>{
+      this.CountryService.getCountryById(id).subscribe((data)=>{
         this.Country=data;
       })
     }
   }
   getAll(){
    
-    this.StateService.GetAllCountry().subscribe(res=> {
+    this.CountryService.getCountries().subscribe(res=> {
       this.CountryList=res;
       console.log(res);
       });

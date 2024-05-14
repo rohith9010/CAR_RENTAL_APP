@@ -10,18 +10,10 @@ import { ICountry } from '../../Interfaces/ICountry';
 export class StateserviceService {
 
   private apiUrl = 'https://localhost:7028/api/State';
-  private apiUrl1 = 'https://localhost:7028/api/Countries';
 
  
   constructor(private http: HttpClient) { }
-  
-  GetAllCountry():Observable<ICountry[]>
-  {
-    return this.http.get<ICountry[]>(this.apiUrl1);
-  }
-  GetCountrybyId(id: number):Observable<ICountry> {
-    return this.http.get<ICountry>(`${this.apiUrl1}/${id}`);
-  }
+
   GetAllStates():Observable<IState[]>
   {
     return this.http.get<IState[]>(this.apiUrl);

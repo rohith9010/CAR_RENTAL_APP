@@ -1,0 +1,137 @@
+/* A Symphony of Styles */
+
+/* Set the stage */
+body, html {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, sans-serif; /* The conductor selects the font */
+}
+
+/* The Canvas */
+.container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* The Backdrop */
+.background-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1;
+    border-radius: 10px; /* A touch of elegance */
+}
+
+/* The Welcome Note */
+.home-icon {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    left:290px;
+    z-index: 10;
+    color: #fff; /* A beacon of warmth */
+    font-size: 24px; /* Enlarged for grandeur */
+    cursor: pointer;
+}
+
+/* The Plus Sign of Creation */
+.add_circle {
+    position: absolute;
+    top: 20px;
+    right: 80px;
+    left:330px;
+    z-index: 10;
+    color: #fff; /* Radiating brilliance */
+    font-size: 24px; /* Magnified for impact */
+    cursor: pointer;
+}
+
+/* The Entry Point */
+input[type="text"] {
+    width: calc(100% - 80px); /* A pathway to expression */
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    margin-bottom: 20px;
+}
+
+/* The Summoning Ritual */
+button[type="button"] {
+    background-color: #007bff; /* A splash of magic */
+    color: #fff; /* Illuminating the path */
+    border: none;
+    border-radius: 15px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* An enchanting transformation */
+}
+
+/* The Flicker of Hope */
+button[type="button"]:hover {
+    background-color: #0056b3; /* A spark of anticipation */
+}
+
+/* The Iconic Ensemble */
+.material-icons {
+    font-size: 24px; /* Magnificently crafted */
+    vertical-align: middle;
+}
+
+/* The Archives */
+.table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.table td {
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+}
+
+/* The Eraser of History */
+.delete-icon {
+    float: right;
+    cursor: pointer;
+}
+
+.delete-icon:hover {
+    color: #ff0000; /* A warning amidst tranquility */
+}
+
+/* The Seeking Eye */
+input[type="text"] {
+    width: calc(100% - 160px); /* A lens to focus */
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 15px;
+    margin-bottom: 20px;
+    margin-right: 10px; /* A gap for clarity */
+}
+
+/* The Quest Button */
+button[type="button"] {
+    background-color: #007bff; /* A beacon in the dark */
+    color: #fff; /* Guiding the way */
+    border: none;
+    border-radius: 15px;
+    padding: 15px 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; /* A journey of transformation */
+}
+
+/* The Meeting Place */
+.search-container {
+    display: flex;
+    align-items: center;
+}
+
+.search-container button {
+    margin-left: 10px; /* A bridge of connection */
+}

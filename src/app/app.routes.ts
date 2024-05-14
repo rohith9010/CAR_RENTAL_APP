@@ -25,7 +25,7 @@ export const routes: Routes = [
 
     {path:'Add_City',component:AddCityComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
-    {path:'Add_vehicle_Make',component:AddVehicleMakeComponent}
+    {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
 
     {path:'country_details',component:CountryDetailsComponent},
     {path:'Add_country/:id',component:CountryAddComponent},

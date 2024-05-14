@@ -1,14 +1,10 @@
 import { Component } from '@angular/core';
-import { IVehicleModel } from '../../../Interfaces/IVehicleModel';
 import {MatIconModule } from '@angular/material/icon';
-import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
-import { VehicleMakeService } from '../../../Services/VehicleMakeservice/vehicle-make.service';
-import { VehicleModelServiceService } from '../../../Services/VehicleModelservice/vehicle-model-service.service';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { StateserviceService } from '../../../Services/StateService/stateservice.service';
-import { IState } from '../../../Interfaces/IState';
 import { ICountry } from '../../../Interfaces/ICountry';
+import { CountryService } from '../../../Services/CountriesService/Country.service';
 
 @Component({
   selector: 'app-state-details',
@@ -22,13 +18,13 @@ export class StateDetailsComponent {
   searchQuery!: string;
   CountryList:ICountry[]=[];
 
-  constructor(private StateService:StateserviceService) { }
+  constructor(private StateService:StateserviceService,private CountryService:CountryService) { }
 
   ngOnInit() {
     this.getAll();
   }
   getAll(){
-    this.StateService.GetAllCountry().subscribe((res)=> {
+    this.CountryService.getCountries().subscribe((res)=> {
       this.CountryList=res;
     });
   }

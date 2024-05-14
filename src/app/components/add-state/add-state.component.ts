@@ -6,7 +6,6 @@ import { IState } from '../../../Interfaces/IState';
 import { ICountry } from '../../../Interfaces/ICountry';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { Console } from 'console';
 import { CountryService } from '../../../Services/CountriesService/Country.service';
 
 @Component({
@@ -41,7 +40,7 @@ export class AddStateComponent {
     if (id){
       this.CountryService.getCountryById(id).subscribe((data)=>{
         this.Country=data;
-      })
+      });
     }
   }
   getAll(){

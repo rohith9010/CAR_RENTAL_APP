@@ -2,7 +2,6 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IState } from '../../Interfaces/IState';
 import { Observable } from 'rxjs';
-import { ICountry } from '../../Interfaces/ICountry';
 
 @Injectable({
   providedIn: 'root'

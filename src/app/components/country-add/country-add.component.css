@@ -1,92 +1,92 @@
 /* Container styles */
 .container {
-    position: relative;
-  }
-  
-  /* Background image styles */
-  .background-img {
-    width: 100%;
-    height: auto; /* Or specify a fixed height */
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1; /* Ensure the image stays behind other content */
-  }
-  
-  /* Menu container styles */
-  .menu-container {
-    position: relative; /* Ensure menu stays on top of background */
-    z-index: 1; /* Lift menu above background */
-    padding: 20px;
-  }
-  
-  /* Heading styles */
-  .menu h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .menu hr {
-    border: none;
-    border-top: 1px solid #ccc;
-    margin-bottom: 20px;
-  }
-  
-  /* Form styles */
-  form {
-    margin-bottom: 20px;
-  }
-  
-  .form-group {
-    margin-bottom: 20px;
-  }
-  
-  /* Button styles */
-  .btn {
-    padding: 15px 20px;
-    border: none;
-    border-radius: 10px;
-    cursor: pointer;
-  }
-  
-  .btn-success {
-    background-color: #28a745;
-    color: #fff;
-  }
-  
-  .btn-primary {
-    background-color: #007bff;
-    color: #fff;
-  }
-  
-  /* Home icon styles */
-  .home-icon {
-    position: absolute;
-    top: 50px;
-    right: 10px;
-    left: 1365px;
-    color: #333;
-  }
-  
-  /* Add circle icon styles */
-  .add_circle {
-    /* margin-right: 10px; */
-    position: absolute;
-    top: 50px;
-    right: 10px;
-    left: 1400px;
-    color: #333;
-  }
-  
-  /* Back icon styles */
-  .back-icon {
-    margin-right: 10px;
-    color: #333;
-  }
-  
-  .curved-textbox {
-    border-radius: 10px; /* Adjust the value as needed to control the curvature */
-    border: 1px solid #ccc; /* Add border for better visibility */
-    padding: 8px; /* Add some padding for space inside the text box */
-    width: 200px; /* Adjust width as needed */
+  position: relative;
+}
+
+/* Background image styles */
+.background-img {
+  width: 100%;
+  height: auto; /* Or specify a fixed height */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensure the image stays behind other content */
+}
+
+/* Menu container styles */
+.menu-container {
+  position: relative; /* Ensure menu stays on top of background */
+  z-index: 1; /* Lift menu above background */
+  padding: 20px;
+}
+
+/* Heading styles */
+.menu h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
+}
+
+.menu hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+/* Form styles */
+form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+.btn {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Home icon styles */
+.home-icon {
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  left: 1365px;
+  color: #333;
+}
+
+/* Add circle icon styles */
+.add_circle {
+  /* margin-right: 10px; */
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  left: 1400px;
+  color: #333;
+}
+
+/* Back icon styles */
+.back-icon {
+  margin-right: 10px;
+  color: #333;
+}
+
+.curved-textbox {
+  border-radius: 10px; /* Adjust the value as needed to control the curvature */
+  border: 1px solid #ccc; /* Add border for better visibility */
+  padding: 8px; /* Add some padding for space inside the text box */
+  width: 200px; /* Adjust width as needed */
 }

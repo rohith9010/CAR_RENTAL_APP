@@ -1,61 +1,92 @@
-body, html {
-    height: 100%;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
+/* Container styles */
 .container {
-    position: relative;
-    max-width: 100vw; /* Set maximum width to 100% of the viewport width */
-    margin: 0 auto; /* Center the container horizontally */
+  position: relative;
 }
 
-.menu-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    padding: 40px; /* Increase padding for bigger size */
-    border-radius: 10px;
-    width: 90vw; /* Set width to 90% of the viewport width */
-    height: auto; /* Adjust height as needed */
-    max-width: 800px; /* Limit maximum width to 800 pixels */
-    max-height: 90vh; /* Limit maximum height to 90% of the viewport height */
-}
-
+/* Background image styles */
 .background-img {
-    width: 100%; /* Adjust according to your image */
-    height: auto; /* Adjust according to your image */
+  width: 100%;
+  height: auto; /* Or specify a fixed height */
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1; /* Ensure the image stays behind other content */
 }
 
-input[type="text"] {
-    width: 200px; /* Adjust width as needed */
-    padding: 8px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin-bottom: 60px;
+/* Menu container styles */
+.menu-container {
+  position: relative; /* Ensure menu stays on top of background */
+  z-index: 1; /* Lift menu above background */
+  padding: 20px;
 }
 
-input[type="submit"]:hover {
-    background-color: #87CEFA; /* Light blue color when hovered */
+/* Heading styles */
+.menu h3 {
+  font-size: 24px;
+  margin-bottom: 10px;
 }
 
-.menu {
-    position: relative;
-    max-width: 10000px; /* Adjust max-width as needed */
-    margin: 0 auto; /* Center the container horizontally */
+.menu hr {
+  border: none;
+  border-top: 1px solid #ccc;
+  margin-bottom: 20px;
 }
 
+/* Form styles */
+form {
+  margin-bottom: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Button styles */
+.btn {
+  padding: 15px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.btn-success {
+  background-color: #28a745;
+  color: #fff;
+}
+
+.btn-primary {
+  background-color: #007bff;
+  color: #fff;
+}
+
+/* Home icon styles */
 .home-icon {
-    position: absolute;
-    top: 10px;
-    right: 35px;
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  left: 1365px;
+  color: #333;
 }
 
-/* .add_circle {
-    position: absolute;
-    top: 10px;
-    right: 5px;
-} */
+/* Add circle icon styles */
+.add_circle {
+  /* margin-right: 10px; */
+  position: absolute;
+  top: 50px;
+  right: 10px;
+  left: 1400px;
+  color: #333;
+}
+
+/* Back icon styles */
+.back-icon {
+  margin-right: 10px;
+  color: #333;
+}
+
+.curved-textbox {
+  border-radius: 10px; /* Adjust the value as needed to control the curvature */
+  border: 1px solid #ccc; /* Add border for better visibility */
+  padding: 8px; /* Add some padding for space inside the text box */
+  width: 200px; /* Adjust width as needed */
+}

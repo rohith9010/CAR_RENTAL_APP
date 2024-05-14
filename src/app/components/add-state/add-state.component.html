@@ -2,10 +2,9 @@
     <img src="../assets/images/B.jpg" alt="Background Image" class="background-img">
     <div class="menu-container">
         <div class="menu">
-            <h3>Vehicle Model Details</h3>
-            <hr><h3>Add Vehicle Model</h3>
-            <h5>Vehicle Model Details</h5>
-            <div class="Add_vehicle_Model">
+            <h3>State Details</h3>
+            <hr><h3>Add State</h3>
+            <div class="Add_State">
                 <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
                     <div class="form-group">
                         <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
@@ -15,7 +14,7 @@
                           <select name="drop" [(ngModel)]="Country.Country">
                               <option *ngFor="let Model1 of CountryList" [value]="Model1.Country" >{{Model1.Country}}</option>
                           </select><br>
-                        <label for="Add_vehicle_Model">State:</label> 
+                        <label for="Add_State">State:</label> 
                         <input type="text"  [(ngModel)]="GetState.state"  id="Save" name="Save" min="1" max="5">
                     </div>
                     <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>

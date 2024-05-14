@@ -39,13 +39,13 @@ export class VehicleMakeDetailsComponent implements OnInit{
         }
     }
     search(): void {
-      if (this.searchQuery.trim() ==='') {
-        this.filteredList = [...this.vehiclesList];
-      } else 
-      {
-        this.filteredList = this.vehiclesList.filter(vehicle =>
-          vehicle.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
-        );
-      }
+      // if (this.searchQuery.trim() ==='') {
+      //   this.filteredList = [...this.vehiclesList];
+      // } else 
+      // {
+      //   this.filteredList = this.vehiclesList.filter(vehicle =>
+      //     vehicle.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
+      //   );
+      // }
     }
   }

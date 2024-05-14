@@ -1,0 +1,40 @@
+<div class="container">
+  <img src="../assets/images/B.jpg" alt="Background Image" class="background-img">
+  <div class="menu-container">
+      <div class="menu">
+          <h1>Country Management</h1>
+          <hr>
+          <h3>Filter</h3>
+          <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
+         <button type="button" (click)="search()"><i class="material-icons">search</i></button>
+          <div>
+              <table class="table">
+                  @if(filteredList)
+                  {
+                      @for (country of filteredList; track country.CountryNo) {
+                          <tr>
+                              <td>{{country.Country}}</td>
+                              <td><a type="button"  routerLink="/Add_vehicle_Make/{{country.CountryNo}}"><i class="material-icons edit-icon">edit</i></a></td>
+                              <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                          </tr>
+                      } 
+                  }
+                 @else(){
+                  @for (country of countriesList; track country.CountryNo) {
+                      <tr>
+                          <td>{{country.Country}}</td>
+                          <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><i class="material-icons edit-icon">edit</i></a></td>
+                          <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><i class="material-icons delete-icon">delete</i></a></td>
+                      </tr>
+                  }
+                 }
+              </table>
+          </div>
+          <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
+          <a href="/Add_country" class="add_circle"><mat-icon>add_circle</mat-icon></a>
+          <!-- <a href="#" class="arrow-back"><mat-icon>arrow-back</mat-icon></a>  -->
+
+      </div>
+      
+  </div>
+</div>>

@@ -1,3 +1,5 @@
+import { CountryAddComponent } from './components/country-add/country-add.component';
+import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { VehicleMakeDetailsComponent } from './components/vehicle-make-details/vehicle-make-details.component';
 import { VehicleModelDetailsComponent } from './components/vehicle-model-details/vehicle-model-details.component';
@@ -6,6 +8,10 @@ import { AddVehicleModelComponent } from './components/add-vehicle-model/add-veh
 import { MenuComponent } from './components/Menu/Menu.component';
 import { AddCityDetailsComponent } from './components/add-city-details/add-City-Details/add-City-Details.component';
 import { AddCityComponent } from './components/add-city/add-City/add-City.component';
+import { StateDetailsComponent } from './components/state-details/state-details.component';
+import { AddStateComponent } from './components/add-state/add-state.component';
+import { CountryDetailsComponent } from './components/CountryDetails/Country-Details/Country-Details.component';
+
 export const routes: Routes = [
     {path:'',component:MenuComponent,pathMatch:'full'},
     {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
@@ -20,5 +26,14 @@ export const routes: Routes = [
     {path:'Add_City',component:AddCityComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent}
+
+    {path:'country_details',component:CountryDetailsComponent},
+    {path:'Add_country/:id',component:CountryAddComponent},
     
+    {path:'Add_country',component:CountryAddComponent},
+    {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
+    {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
+    {path:'State_Detail',component:StateDetailsComponent},
+    {path:'Add_State/:CountryId/:StateId',component:AddStateComponent},
+    {path:'Add_State',component:AddStateComponent}
 ];

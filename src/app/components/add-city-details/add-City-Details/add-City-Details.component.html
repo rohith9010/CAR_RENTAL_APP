@@ -1,3 +1,54 @@
-<p>
-  add-City-Details works!
-</p>
+<div class="container">
+  <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
+  <div class="menu-container">
+      <div class="menu">
+          <h1>City Management</h1>
+          <hr>
+          <h3>Filter</h3>
+          <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
+         <button type="button" (click)="search()"><i class="material-icons">search</i></button>
+          <div>
+              <table class="table">
+                <tbody>
+                <tr>
+                    <th>City</th>
+                    <th>State</th>
+                </tr>
+                  @if(false)
+                  {
+                      <!-- @for (state of stateList; track state.StateNo) {
+                        @for(model of state.citys; track model.CityNo){
+                            <tr>
+                                <td>{{model.CityName}}</td>
+                                <td>{{state.State}}</td>
+                                <td><a type="button"  routerLink="/Add_City/{{model.CityNo}}"><i class="material-icons edit-icon">edit</i></a></td>
+                                <td><a href="javascript:void(0)" (click) = "delete(model.CityNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                            </tr>
+                          }
+                      }  -->
+                  }
+                 @else()
+                    {
+                        @for (state of stateList; track state.StateNo) {
+                                @for(city of state.Citys; track city.CityNo){
+                                    <tr>
+                                        <td>{{city.CityName}}</td>
+                                        <td>{{state.state}}</td>
+                                        <td><a type="button"  routerLink="/Add_City/{{state.StateNo}}/{{city.CityNo}}"><i class="material-icons edit-icon">edit</i></a></td>
+                                        <td><a href="javascript:void(0)" (click) = "delete(city.CityNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                                    </tr>
+                                }
+                            } 
+                    
+                    }
+                </tbody>
+              </table>
+          </div>
+          <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
+          <a href="/Add_City" class="add_circle"><mat-icon>add_circle</mat-icon></a>
+          <!-- <a href="#" class="arrow-back"><mat-icon>arrow-back</mat-icon></a>  -->
+
+      </div>
+      
+  </div>
+</div>>

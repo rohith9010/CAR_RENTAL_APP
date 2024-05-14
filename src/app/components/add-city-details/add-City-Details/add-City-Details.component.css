@@ -1,0 +1,82 @@
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    position: relative;
+    max-width: 100%; /* Adjust max-width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.menu-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 40px; /* Increase padding for bigger size */
+    border-radius: 10px;
+    width: 100%; /* Adjust width as needed */
+    height: 100%; /* Adjust height as needed */
+    max-width: 100%; /* Limit maximum width to 100% of the viewport width */
+    max-height: 100%; /* Limit maximum height to 100% of the viewport height */
+}
+
+.background-img {
+    width: 100%; /* Adjust according to your image */
+    height: auto; /* Adjust according to your image */
+}
+
+input[type="text"] {
+    width: 200px; /* Adjust width as needed */
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 60px;
+    margin-right: 10px;
+}
+
+input[type="submit"]:hover,
+button[type="button"] {
+    background-color: #87CEFA;
+    margin-bottom: 10px;
+    margin-left: 10px;
+}
+
+.menu {
+    position: relative;
+    max-width: 100%; /* Adjust max-width as needed */
+    margin: 0 auto; /* Center the container horizontally */
+}
+
+.home-icon {
+    position: absolute;
+    top: 10px;
+    right: 35px;
+}
+
+.add_circle {
+    position: absolute;
+    top: 10px;
+    right: 5px;
+}
+
+.search-container button:hover {
+    background-color: #e0e0e0;
+}
+
+.search-container button i {
+    font-size: 35px;
+    margin-left: 1300px; /* Adjust left margin as needed */
+}
+
+.edit-icon {
+    margin-left: 600px; /* Adjust left margin as needed */
+}
+
+.delete-icon {
+    margin-left: 50px; /* Adjust left margin as needed */
+}

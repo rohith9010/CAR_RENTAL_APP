@@ -17,14 +17,14 @@ export class StateserviceService {
   {
     return this.http.get<IState[]>(this.apiUrl);
   }
-  AddState(model: IState): Observable<IState> {
-    return this.http.post<IState>(this.apiUrl, model);
+  AddState(state: IState): Observable<IState> {
+    return this.http.post<IState>(this.apiUrl, state);
   }
   GetStatebyId(id: number):Observable<IState> {
     return this.http.get<IState>(`${this.apiUrl}/${id}`);
   }
-  UpdateState(model: IState ):Observable<IState>{
-    return this.http.put<IState>(`${this.apiUrl}/${model.StateNo}`,model);
+  UpdateState(state: IState ):Observable<IState>{
+    return this.http.put<IState>(`${this.apiUrl}/${state.StateNo}`,state);
   }
   DeleteState(id: number): Observable<IState> {
     return this.http.delete<IState>(`${this.apiUrl}/${id}`);

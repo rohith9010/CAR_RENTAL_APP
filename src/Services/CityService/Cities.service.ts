@@ -6,7 +6,7 @@ import { ICity } from '../../Interfaces/ICity';
   providedIn: 'root'
 })
 export class CitiesService {
-  mode1!:ICity;
+
   private apiUrl = 'https://localhost:7028/api/City';
 
   constructor(private http: HttpClient) { }
@@ -16,14 +16,14 @@ export class CitiesService {
   {
     return this.http.get<ICity[]>(this.apiUrl);
   }
-  AddCities(model: ICity): Observable<ICity> {
-    return this.http.post<ICity>(this.apiUrl, model);
+  AddCities(city: ICity): Observable<ICity> {
+    return this.http.post<ICity>(this.apiUrl, city);
   }
   getCitiesById(id: number):Observable<ICity> {
     return this.http.get<ICity>(`${this.apiUrl}/${id}`);
   }
-  updateCities(model: ICity ):Observable<ICity>{
-    return this.http.put<ICity>(`${this.apiUrl}/${model.CityNo}`,model);
+  updateCities(city: ICity ):Observable<ICity>{
+    return this.http.put<ICity>(`${this.apiUrl}/${city.CityNo}`,city);
   }
   deleteCities(id: number): Observable<ICity> {
     return this.http.delete<ICity>(`${this.apiUrl}/${id}`);

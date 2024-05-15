@@ -18,10 +18,10 @@ import { VehicleModelServiceService } from '../../../Services/VehicleModelservic
 })
 export class AddVehicleModelComponent implements OnInit {
 
-  model:IVehicleMake_={MakeNo:0,Name:"",Vehiclemodels:[]};
-  getmodel:IVehicleModel={ModelNo:0,Name:"",MakeNo:0}
-  vehiclesList!:IVehicleModel[];
-  models:IVehicleMake_[] = [];
+  vehiclemake:IVehicleMake_={MakeNo:0,Name:"",Vehiclemodels:[]};
+  vehiclemodel:IVehicleModel={ModelNo:0,Name:"",MakeNo:0}
+  vehiclesModelList!:IVehicleModel[];
+  vehicleMakeList:IVehicleMake_[] = [];
   constructor(private route : ActivatedRoute,private router:Router,private MakeService:VehicleMakeService,private ModelService:VehicleModelServiceService) { }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class AddVehicleModelComponent implements OnInit {
     const getmodelid = this.route.snapshot.params['Makeid'];
     if (getmodelid) {
       this.MakeService.getById(getmodelid).subscribe((data:Response)=>{
-        this.model=data as IVehicleMake_;
+        this.vehiclemake=data as IVehicleMake_;
       })
     }
   }
@@ -41,35 +41,35 @@ export class AddVehicleModelComponent implements OnInit {
     const id = this.route.snapshot.params['Modelid'];
     if (id){
       this.ModelService.getmodelById(id).subscribe((data)=>{
-        this.getmodel=data;
+        this.vehiclemodel=data;
       })
     }
   }
   getAll(){
    
     this.MakeService.getVehicleMake().subscribe((res:IVehicleMake_[])=> {
-      this.models=res;
+      this.vehicleMakeList=res;
       console.log(res);
       });
   }
 update()
 {
-  this.model.Vehiclemodels.forEach((vehicleModel: IVehicleModel) => {
-    if(vehicleModel.ModelNo==this.getmodel.ModelNo){
-      vehicleModel.Name=this.getmodel.Name;
+  this.vehiclemake.Vehiclemodels.forEach((vehicleModel: IVehicleModel) => {
+    if(vehicleModel.ModelNo==this.vehiclemodel.ModelNo){
+      vehicleModel.Name=this.vehiclemodel.Name;
     }
   });
-  this.ModelService.updateVehicleModel(this.getmodel).subscribe(data=>{
+  this.ModelService.updateVehicleModel(this.vehiclemodel).subscribe(data=>{
     this.router.navigate(['/vehicle_model_details'])}); 
 }
 Save()
 {
-  this.models.forEach((val:IVehicleMake_)=>{
-    if(val.Name==this.model.Name){
-      this.getmodel.MakeNo=val.MakeNo
+  this.vehicleMakeList.forEach((val:IVehicleMake_)=>{
+    if(val.Name==this.vehiclemake.Name){
+      this.vehiclemodel.MakeNo=val.MakeNo
     }
   })
-  this.ModelService.AddVehicleModel(this.getmodel).subscribe(res=>{console.log(res)  
+  this.ModelService.AddVehicleModel(this.vehiclemodel).subscribe(res=>{console.log(res)  
     this.router.navigate(['/vehicle_model_details'])});
   }
 }

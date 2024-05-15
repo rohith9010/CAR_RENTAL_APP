@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CountryAddComponent implements OnInit {
   
-  model:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
+  country:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
 
   constructor(private route : ActivatedRoute,private CountryService:CountryService,private router:Router)
   {
@@ -27,23 +27,22 @@ export class CountryAddComponent implements OnInit {
   getbyid(){
     const idString = this.route.snapshot.params['id'];
     const id = Number(idString); 
-    console.log(id);
+    
     if (id) {
       this.CountryService.getCountryById(id).subscribe((data)=>{
-        this.model=data;
-        console.log(this.model       );
+        this.country=data;
           })
     }
   }
 update()
 {
-  this.CountryService.updateCountry(this.model).subscribe(data=>{console.log(data);
+  this.CountryService.updateCountry(this.country).subscribe(data=>{console.log(data);
   this.router.navigate(['/country_details'])}); 
 }
 
 Save()
 {
-  this.CountryService.addCountry(this.model).subscribe(res=>{console.log(res)  
+  this.CountryService.addCountry(this.country).subscribe(res=>{console.log(res)  
   this.router.navigate(['/country_details'])});
 }
 

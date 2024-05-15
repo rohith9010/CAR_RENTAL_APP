@@ -9,9 +9,9 @@
          <button type="button" (click)="search()"><i class="material-icons">search</i></button>
           <div>
               <table class="table">
-                  @if(filteredList)
+                  @if(filteredcountriesList)
                   {
-                      @for (country of filteredList; track country.CountryNo) {
+                      @for (country of filteredcountriesList; track country.CountryNo) {
                           <tr>
                               <td>{{country.Country}}</td>
                               <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><i class="material-icons edit-icon">edit</i></a></td>

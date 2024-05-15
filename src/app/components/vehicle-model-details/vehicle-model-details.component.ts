@@ -16,7 +16,7 @@ import { VehicleModelServiceService } from '../../../Services/VehicleModelservic
 })
 export class VehicleModelDetailsComponent implements OnInit {
 
-  filteredList: IVehicleModel[]=[];
+  filteredModelList: IVehicleModel[]=[];
   searchQuery!: string;
   vehicleList:IVehicleMake_[]=[];
   constructor(private MakeService:VehicleMakeService,private modelservice : VehicleModelServiceService) { }
@@ -34,17 +34,17 @@ export class VehicleModelDetailsComponent implements OnInit {
     if (confirm('Are you sure you want to delete this item?')){
       this.modelservice.deleteVehicleModel(id).subscribe(()=>{
           console.log('Item deleted successfully');
-          this.ngOnInit();
+          this.getAll();
         },
       );
     }
 }
 // search(): void {
 //   if (this.searchQuery.trim() ==='') {
-//     this.filteredList = [...this.vehicleList];
+//     this.filteredModelList = [...this.vehicleList];
 //   } else 
 //   {
-//     this.filteredList = this.vehicleList.filter(vehiclemodel =>
+//     this.filteredModelList = this.vehicleList.filter(vehiclemodel =>
 //       vehiclemodel.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
 //     );
 //   }
@@ -52,9 +52,9 @@ export class VehicleModelDetailsComponent implements OnInit {
 
 search(): void {
   // if (this.searchQuery.trim() === '') {
-  //   this.filteredList = [...this.vehicleList];
+  //   this.filteredModelList = [...this.vehicleList];
   // } else {
-  //   this.filteredList = this.vehicleList.filter(vehicle => {
+  //   this.filteredModelList = this.vehicleList.filter(vehicle => {
   //     const modelName = vehicle.Vehiclemodels.find(model => model.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase()));
   //     const makeName = vehicle.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase());
   //     return modelName || makeName;

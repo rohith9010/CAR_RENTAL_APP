@@ -17,7 +17,7 @@ import { CountryService } from '../../../Services/CountriesService/Country.servi
 })
 export class AddStateComponent {
   Country:ICountry={CountryNo:0,Country:"",States:[]};
-  GetState:IState={StateNo:0,state:"",CountryNo:0,Citys:[]}
+  State:IState={StateNo:0,state:"",CountryNo:0,Citys:[]}
   StateList!:IState[];
   CountryList:ICountry[] = [];
   constructor(private route : ActivatedRoute,private router:Router,private StateService:StateserviceService,private CountryService:CountryService) { }
@@ -31,7 +31,7 @@ export class AddStateComponent {
     const getStateid = this.route.snapshot.params['StateId'];
     if (getStateid) {
       this.StateService.GetStatebyId(getStateid).subscribe(data=>{
-        this.GetState=data ;
+        this.State=data ;
       })
     }
   }
@@ -47,28 +47,26 @@ export class AddStateComponent {
    
     this.CountryService.getCountries().subscribe(res=> {
       this.CountryList=res;
-      console.log(res);
       });
   }
 update()
 {
   this.Country.States.forEach((State: IState) => {
-    if(State.StateNo==this.GetState.StateNo){
-      State.state=this.GetState.state;
+    if(State.StateNo==this.State.StateNo){
+      State.state=this.State.state;
     }
   });
-  this.StateService.UpdateState(this.GetState).subscribe(data=>{
+  this.StateService.UpdateState(this.State).subscribe(data=>{
     this.router.navigate(['/State_Detail'])}); 
 }
 Save()
 {
   this.CountryList.forEach((val:ICountry)=>{
     if(val.Country==this.Country.Country){
-      this.GetState.CountryNo=val.CountryNo;
+      this.State.CountryNo=val.CountryNo;
     }
   })
-  console.log(this.GetState);
-  this.StateService.AddState(this.GetState).subscribe(res=>{console.log(res)  
+  this.StateService.AddState(this.State).subscribe(res=>{console.log(res)  
     this.router.navigate(['/State_Detail'])});
   }
 }

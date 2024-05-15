@@ -11,11 +11,11 @@
                         <!-- <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a> -->
                         <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
                         
-                          <select name="drop" [(ngModel)]="Country.Country">
-                              <option *ngFor="let Model1 of CountryList" [value]="Model1.Country" >{{Model1.Country}}</option>
+                          <select name="drop" [(ngModel)]="State.CountryNo">
+                              <option *ngFor="let country of CountryList" [value]="country.CountryNo" >{{country.Country}}</option>
                           </select><br>
                         <label for="Add_State">State:</label> 
-                        <input type="text"  [(ngModel)]="GetState.state"  id="Save" name="Save" min="1" max="5">
+                        <input type="text"  [(ngModel)]="State.state"  id="Save" name="Save" min="1" max="5">
                     </div>
                     <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
                     <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>

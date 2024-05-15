@@ -16,14 +16,14 @@ export class VehicleMakeService {
   {
     return this.http.get<IVehicleMake_[]>(this.apiUrl);
   }
-  AddVehicleMake(model: IVehicleMake_): Observable<IVehicleMake_> {
-    return this.http.post<IVehicleMake_>(this.apiUrl, model);
+  AddVehicleMake(vehiclemake: IVehicleMake_): Observable<IVehicleMake_> {
+    return this.http.post<IVehicleMake_>(this.apiUrl, vehiclemake);
   }
   getById(id: number):Observable<Response> {
     return this.http.get<Response>(`${this.apiUrl}/${id}`);
   }
-  updateVehicleMake(model: IVehicleMake_ ):Observable<IVehicleMake_>{
-    return this.http.put<IVehicleMake_>(`${this.apiUrl}/${model.MakeNo}`,model);
+  updateVehicleMake(vehiclemake: IVehicleMake_ ):Observable<IVehicleMake_>{
+    return this.http.put<IVehicleMake_>(`${this.apiUrl}/${vehiclemake.MakeNo}`,vehiclemake);
   }
   deleteVehicleMake(id: number): Observable<IVehicleMake_> {
     return this.http.delete<IVehicleMake_>(`${this.apiUrl}/${id}`);

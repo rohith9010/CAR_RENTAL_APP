@@ -9,9 +9,9 @@
            <button type="button" (click)="search()"><i class="material-icons">search</i></button>
             <div>
                 <table class="table">
-                    @if(filteredList)
+                    @if(filteredMakeList)
                     {
-                        @for (vehicle of filteredList; track vehicle.MakeNo) {
+                        @for (vehicle of filteredMakeList; track vehicle.MakeNo) {
                             <tr>
                                 <td>{{vehicle.Name}}</td>
                                 <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><i class="material-icons edit-icon">edit</i></a></td>

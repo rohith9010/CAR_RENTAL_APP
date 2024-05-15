@@ -16,7 +16,7 @@ export class CountryDetailsComponent implements OnInit {
 
   constructor(private countryservice:CountryService) { }
 
-  filteredList!: ICountry[];
+  filteredcountriesList!: ICountry[];
   searchQuery!: string ;
   countriesList!:ICountry[];
   ngOnInit() {
@@ -24,8 +24,7 @@ export class CountryDetailsComponent implements OnInit {
 
     this.countryservice.getCountries().subscribe(res=> {
       this.countriesList=res;
-      console.log(res);
-      });
+    });
       
   }
   
@@ -38,12 +37,12 @@ export class CountryDetailsComponent implements OnInit {
           );
         }
     }
-    search(): void {
+  search(): void {
       if (this.searchQuery.trim() ==='') {
-        this.filteredList = [...this.countriesList];
+        this.filteredcountriesList = [...this.countriesList];
       } else 
       {
-        this.filteredList = this.countriesList.filter(country =>
+        this.filteredcountriesList = this.countriesList.filter(country =>
           country.Country.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
         );
       }

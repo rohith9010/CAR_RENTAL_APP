@@ -16,7 +16,7 @@ export class VehicleMakeDetailsComponent implements OnInit{
   constructor(private MakeService:VehicleMakeService){
     
   }
-  filteredList!: IVehicleMake_[];
+  filteredMakeList!: IVehicleMake_[];
   searchQuery!: string ;
   vehiclesList!:IVehicleMake_[];
   ngOnInit() {
@@ -40,10 +40,10 @@ export class VehicleMakeDetailsComponent implements OnInit{
     }
     search(): void {
       if (this.searchQuery.trim() ==='') {
-        this.filteredList = [...this.vehiclesList];
+        this.filteredMakeList = [...this.vehiclesList];
       } else 
       {
-        this.filteredList = this.vehiclesList.filter(vehicle =>
+        this.filteredMakeList = this.vehiclesList.filter(vehicle =>
           vehicle.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
         );
       }

@@ -18,10 +18,10 @@ import { StateserviceService } from '../../../../Services/StateService/stateserv
 })
 export class AddCityComponent implements OnInit {
 
-  model:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
-  getcities:ICity={CityNo:0,CityName:"",StateNo:0}
+  state:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
+  city:ICity={CityNo:0,CityName:"",StateNo:0}
   CitiesList!:ICity[];
-  models:IState[] = [];
+  statesList:IState[] = [];
   constructor(private route : ActivatedRoute,private router:Router,private CityService:CitiesService,private stateservice : StateserviceService) { }
 
   ngOnInit() {
@@ -33,7 +33,7 @@ export class AddCityComponent implements OnInit {
     const stateid = this.route.snapshot.params['Stateid'];
     if (stateid) {
       this.stateservice.GetStatebyId(stateid).subscribe((data:IState)=>{
-        this.model=data;
+        this.state=data;
       })
     }
   }
@@ -41,35 +41,34 @@ export class AddCityComponent implements OnInit {
     const cityid = this.route.snapshot.params['Cityid'];
     if (cityid){
       this.CityService.getCitiesById(cityid).subscribe((data)=>{
-        this.getcities=data;
+        this.city=data;
       })
     }
   }
   getAllstates(){
    
     this.stateservice.GetAllStates().subscribe((res:IState[])=> {
-      this.models=res;
-      console.log(res);
+      this.statesList=res;
       });
   }
 update()
 {
-  this.model.Citys.forEach((City: ICity) => {
-    if(City.CityNo==this.getcities.CityNo){
-      City.CityName=this.getcities.CityName;
+  this.state.Citys.forEach((City: ICity) => {
+    if(City.CityNo==this.city.CityNo){
+      City.CityName=this.city.CityName;
     }
   });
-  this.CityService.updateCities(this.getcities).subscribe(data=>{
+  this.CityService.updateCities(this.city).subscribe(data=>{
     this.router.navigate(['/city_details'])});
 }
 Save()
 {
-  this.models.forEach((val:IState)=>{
-    if(val.state==this.model.state){
-      this.getcities.StateNo=val.StateNo
+  this.statesList.forEach((val:IState)=>{
+    if(val.state==this.state.state){
+      this.city.StateNo=val.StateNo
     }
   })
-  this.CityService.AddCities(this.getcities).subscribe(res=>{console.log(res)  
+  this.CityService.AddCities(this.city).subscribe(res=>{console.log(res)  
     this.router.navigate(['/city_details'])});
   }
 

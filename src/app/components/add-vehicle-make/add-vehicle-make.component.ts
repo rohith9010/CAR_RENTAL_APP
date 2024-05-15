@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class AddVehicleMakeComponent implements OnInit{
 
-  model:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
+  vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
   constructor(private route : ActivatedRoute,private MakeService:VehicleMakeService,private router:Router)
   {
 
@@ -32,20 +32,20 @@ export class AddVehicleMakeComponent implements OnInit{
     console.log(id);
     if (id) {
       this.MakeService.getById(id).subscribe((data:Response)=>{
-        this.model=data as IVehicleMake_;
+        this.vehiclemake=data as IVehicleMake_;
         console.log(data);
       })
     }
   }
 update()
 {
-  this.MakeService.updateVehicleMake(this.model).subscribe(data=>{console.log(data);
+  this.MakeService.updateVehicleMake(this.vehiclemake).subscribe(data=>{console.log(data);
   this.router.navigate(['/vehicle_make_details'])}); 
 }
 
 Save()
 {
-  this.MakeService.AddVehicleMake(this.model).subscribe(res=>{console.log(res)  
+  this.MakeService.AddVehicleMake(this.vehiclemake).subscribe(res=>{console.log(res)  
   this.router.navigate(['/vehicle_make_details'])});
 }
 

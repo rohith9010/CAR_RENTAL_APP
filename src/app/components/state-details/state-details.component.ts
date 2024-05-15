@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, model } from '@angular/core';
 import {MatIconModule } from '@angular/material/icon';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { StateserviceService } from '../../../Services/StateService/stateservice.service';
 import { ICountry } from '../../../Interfaces/ICountry';
 import { CountryService } from '../../../Services/CountriesService/Country.service';
+import { IState } from '../../../Interfaces/IState';
 
 @Component({
   selector: 'app-state-details',
@@ -14,9 +15,10 @@ import { CountryService } from '../../../Services/CountriesService/Country.servi
   styleUrl: './state-details.component.css'
 })
 export class StateDetailsComponent {
-
+  filteredStateList! : IState[];
   searchQuery!: string;
   CountryList:ICountry[]=[];
+  stateList: IState[]=[];
 
   constructor(private StateService:StateserviceService,private CountryService:CountryService) { }
 
@@ -38,26 +40,17 @@ export class StateDetailsComponent {
       );
     }
 }
-// search(): void {
-//   if (this.searchQuery.trim() ==='') {
-//     this.filteredList = [...this.vehicleList];
-//   } else 
-//   {
-//     this.filteredList = this.vehicleList.filter(vehiclemodel =>
-//       vehiclemodel.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
-//     );
-//   }
-// }
-
 search(): void {
-  // if (this.searchQuery.trim() === '') {
-  //   this.filteredList = [...this.vehicleList];
-  // } else {
-  //   this.filteredList = this.vehicleList.filter(vehicle => {
-  //     const modelName = vehicle.Vehiclemodels.find(model => model.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase()));
-  //     const makeName = vehicle.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase());
-  //     return modelName || makeName;
-  //   });
-  // }
+  this.CountryList.forEach((model:ICountry)=>{
+    if (this.searchQuery.trim() ==='') {
+      this.filteredStateList = [...model.States];
+    } else 
+    {
+      this.filteredStateList = model.States.filter(statemodel =>
+        statemodel.state.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
+      );
+    }
+  })
+  
 }
 }

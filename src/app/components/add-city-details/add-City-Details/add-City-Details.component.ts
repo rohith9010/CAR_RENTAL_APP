@@ -17,7 +17,7 @@ import { StateserviceService } from '../../../../Services/StateService/stateserv
 })
 export class AddCityDetailsComponent implements OnInit {
 
-  filteredList: ICity[]=[];
+  filteredCityList: ICity[]=[];
   searchQuery!: string;
   stateList:IState[]=[];
   constructor(private cityservice : CitiesService,private stateservice : StateserviceService) { }
@@ -42,10 +42,10 @@ export class AddCityDetailsComponent implements OnInit {
 }
  search(): void {
 //   if (this.searchQuery.trim() ==='') {
-//     this.filteredList = [...this.vehicleList];
+//     this.filteredCityList = [...this.vehicleList];
 //   } else 
 //   {
-//     this.filteredList = this.vehicleList.filter(vehiclemodel =>
+//     this.filteredCityList = this.vehicleList.filter(vehiclemodel =>
 //       vehiclemodel.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
 //     );
 //   }

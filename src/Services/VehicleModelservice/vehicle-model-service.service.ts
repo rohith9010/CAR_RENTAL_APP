@@ -8,7 +8,6 @@ import { Observable } from 'rxjs';
 })
 export class VehicleModelServiceService {
 
-mode1!:IVehicleModel;
   private apiUrl = 'https://localhost:7028/api/VechileModel';
  
   constructor(private http: HttpClient) { }
@@ -18,14 +17,14 @@ mode1!:IVehicleModel;
   {
     return this.http.get<IVehicleModel[]>(this.apiUrl);
   }
-  AddVehicleModel(model: IVehicleModel): Observable<IVehicleModel> {
-    return this.http.post<IVehicleModel>(this.apiUrl, model);
+  AddVehicleModel(vehiclemodel: IVehicleModel): Observable<IVehicleModel> {
+    return this.http.post<IVehicleModel>(this.apiUrl, vehiclemodel);
   }
   getmodelById(id: number):Observable<IVehicleModel> {
     return this.http.get<IVehicleModel>(`${this.apiUrl}/${id}`);
   }
-  updateVehicleModel(model: IVehicleModel ):Observable<IVehicleModel>{
-    return this.http.put<IVehicleModel>(`${this.apiUrl}/${model.ModelNo}`,model);
+  updateVehicleModel(vehiclemodel: IVehicleModel ):Observable<IVehicleModel>{
+    return this.http.put<IVehicleModel>(`${this.apiUrl}/${vehiclemodel.ModelNo}`,vehiclemodel);
   }
   deleteVehicleModel(id: number): Observable<IVehicleModel> {
     return this.http.delete<IVehicleModel>(`${this.apiUrl}/${id}`);

@@ -12,11 +12,11 @@
                       <!-- <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a> -->
                       <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
                       
-                        <select name="drop" [(ngModel)]="model.Name">
-                            <option *ngFor="let Model1 of models" [value]="Model1.Name" >{{Model1.Name}}</option>
+                        <select name="drop" [(ngModel)]="vehiclemodel.MakeNo">
+                            <option *ngFor="let make of vehicleMakeList" [value]="make.MakeNo" >{{make.Name}}</option>
                         </select><br>
                       <label for="Add_vehicle_Model">Model:</label> 
-                      <input type="text"  [(ngModel)]="getmodel.Name"  id="Save" name="Save" min="1" max="5">
+                      <input type="text"  [(ngModel)]="vehiclemodel.Name"  id="Save" name="Save" min="1" max="5">
                   </div>
                   <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
                   <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>

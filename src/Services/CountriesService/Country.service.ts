@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { ICountries } from '../../Interfaces/ICountries';
+import { ICountry } from '../../Interfaces/ICountry';
 
 @Injectable({
   providedIn: 'root'
@@ -11,23 +11,23 @@ export class CountryService {
 
   constructor(private http: HttpClient) { }
 
-  getCountries(): Observable<ICountries[]> {
-    return this.http.get<ICountries[]>(this.apiUrl);
+  getCountries(): Observable<ICountry[]> {
+    return this.http.get<ICountry[]>(this.apiUrl);
   }
 
-  getCountryById(id: number): Observable<ICountries> {
-    return this.http.get<ICountries>(`${this.apiUrl}/${id}`);
+  getCountryById(id: number): Observable<ICountry> {
+    return this.http.get<ICountry>(`${this.apiUrl}/${id}`);
   }
 
-  addCountry(country: ICountries): Observable<ICountries> {
-    return this.http.post<ICountries>(this.apiUrl, country);
+  addCountry(country: ICountry): Observable<ICountry> {
+    return this.http.post<ICountry>(this.apiUrl, country);
   }
 
-  updateCountry(country: ICountries): Observable<ICountries> {
-    return this.http.put<ICountries>(`${this.apiUrl}/${country.CountryNo}`, country);
+  updateCountry(country: ICountry): Observable<ICountry> {
+    return this.http.put<ICountry>(`${this.apiUrl}/${country.CountryNo}`, country);
   }
 
-  deleteCountry(id: number): Observable<ICountries> {
-    return this.http.delete<ICountries>(`${this.apiUrl}/${id}`);
+  deleteCountry(id: number): Observable<ICountry> {
+    return this.http.delete<ICountry>(`${this.apiUrl}/${id}`);
   }
 }

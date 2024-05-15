@@ -1,4 +1,4 @@
-import { ICountries } from './../../../Interfaces/ICountries';
+import { ICountry } from '../../../Interfaces/ICountry';
 import { Component, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CountryService } from '../../../Services/CountriesService/Country.service';
@@ -15,7 +15,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CountryAddComponent implements OnInit {
   
-  model:ICountries={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
+  model:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
 
   constructor(private route : ActivatedRoute,private CountryService:CountryService,private router:Router)
   {

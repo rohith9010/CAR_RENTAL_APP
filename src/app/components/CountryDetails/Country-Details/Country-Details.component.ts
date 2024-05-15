@@ -3,7 +3,7 @@ import {MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { CountryService } from '../../../../Services/CountriesService/Country.service';
-import { ICountries } from '../../../../Interfaces/ICountries';
+import { ICountry } from '../../../../Interfaces/ICountry';
 
 @Component({
   selector: 'app-Country-Details',
@@ -16,9 +16,9 @@ export class CountryDetailsComponent implements OnInit {
 
   constructor(private countryservice:CountryService) { }
 
-  filteredList!: ICountries[];
+  filteredList!: ICountry[];
   searchQuery!: string ;
-  countriesList!:ICountries[];
+  countriesList!:ICountry[];
   ngOnInit() {
     
 

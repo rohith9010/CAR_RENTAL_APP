@@ -3,9 +3,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
-import { ICities } from '../../../../Interfaces/ICities';
+import { ICity } from '../../../../Interfaces/ICity';
 import { CitiesService } from '../../../../Services/CityService/Cities.service';
-import { IStates } from '../../../../Interfaces/IStates';
+import { IState } from '../../../../Interfaces/IState';
 import { StateserviceService } from '../../../../Services/StateService/stateservice.service';
 
 
@@ -18,10 +18,10 @@ import { StateserviceService } from '../../../../Services/StateService/stateserv
 })
 export class AddCityComponent implements OnInit {
 
-  model:IStates={StateNo:0,state:"",Citys:[],CountryNo:0};
-  getcities:ICities={CityNo:0,CityName:"",StateNo:0}
-  CitiesList!:ICities[];
-  models:IStates[] = [];
+  model:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
+  getcities:ICity={CityNo:0,CityName:"",StateNo:0}
+  CitiesList!:ICity[];
+  models:IState[] = [];
   constructor(private route : ActivatedRoute,private router:Router,private CityService:CitiesService,private stateservice : StateserviceService) { }
 
   ngOnInit() {
@@ -32,7 +32,7 @@ export class AddCityComponent implements OnInit {
   getstatebyid(){
     const stateid = this.route.snapshot.params['Stateid'];
     if (stateid) {
-      this.stateservice.GetStatebyId(stateid).subscribe((data:IStates)=>{
+      this.stateservice.GetStatebyId(stateid).subscribe((data:IState)=>{
         this.model=data;
       })
     }
@@ -47,14 +47,14 @@ export class AddCityComponent implements OnInit {
   }
   getAllstates(){
    
-    this.stateservice.GetAllStates().subscribe((res:IStates[])=> {
+    this.stateservice.GetAllStates().subscribe((res:IState[])=> {
       this.models=res;
       console.log(res);
       });
   }
 update()
 {
-  this.model.Citys.forEach((City: ICities) => {
+  this.model.Citys.forEach((City: ICity) => {
     if(City.CityNo==this.getcities.CityNo){
       City.CityName=this.getcities.CityName;
     }
@@ -64,7 +64,7 @@ update()
 }
 Save()
 {
-  this.models.forEach((val:IStates)=>{
+  this.models.forEach((val:IState)=>{
     if(val.state==this.model.state){
       this.getcities.StateNo=val.StateNo
     }

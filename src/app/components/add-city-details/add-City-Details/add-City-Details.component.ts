@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import {MatIconModule } from '@angular/material/icon';
 import {RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { ICities } from '../../../../Interfaces/ICities';
+import { ICity } from '../../../../Interfaces/ICity';
 import { CitiesService } from '../../../../Services/CityService/Cities.service';
-import { IStates } from '../../../../Interfaces/IStates';
+import { IState } from '../../../../Interfaces/IState';
 import { StateserviceService } from '../../../../Services/StateService/stateservice.service';
 
 
@@ -17,9 +17,9 @@ import { StateserviceService } from '../../../../Services/StateService/stateserv
 })
 export class AddCityDetailsComponent implements OnInit {
 
-  filteredList: ICities[]=[];
+  filteredList: ICity[]=[];
   searchQuery!: string;
-  stateList:IStates[]=[];
+  stateList:IState[]=[];
   constructor(private cityservice : CitiesService,private stateservice : StateserviceService) { }
 
   ngOnInit() {

@@ -5,11 +5,13 @@ import { CountryService } from '../../../Services/CountriesService/Country.servi
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 @Component({
   selector: 'app-country-add',
   standalone: true,
-  imports: [FormsModule, ReactiveFormsModule, MatIconModule, CommonModule],
+  imports: [FormsModule, ReactiveFormsModule, MatIconModule, CommonModule,InputTextModule,FloatLabelModule],
   templateUrl: './country-add.component.html',
   styleUrls: ['./country-add.component.css']
 })

@@ -7,11 +7,13 @@ import { ICountry } from '../../../Interfaces/ICountry';
 import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 import { CountryService } from '../../../Services/CountriesService/Country.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 @Component({
   selector: 'app-add-state',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,MatIconModule,CommonModule],
+  imports: [FormsModule,ReactiveFormsModule,MatIconModule,CommonModule,InputTextModule,FloatLabelModule],
   templateUrl: './add-state.component.html',
   styleUrl: './add-state.component.css'
 })

@@ -6,7 +6,7 @@
           <hr>
           <h3>Filter</h3>
           <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
-         <button type="button" (click)="search()"><i class="material-icons">search</i></button>
+         <button type="button" (click)="search()"><span class="pi pi-search"></span></button>
           <div>
               <table class="table">
                 <tbody>
@@ -21,8 +21,8 @@
                             <tr>
                                 <td>{{model.Name}}</td>
                                 <td>{{vehicle.Name}}</td>
-                                <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.ModelNo}}"><i class="material-icons edit-icon">edit</i></a></td>
-                                <td><a href="javascript:void(0)" (click) = "delete(vehicle.ModelNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                                <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.ModelNo}}"><span class="pi pi-user-edit"></span></a></td>
+                                <td><a href="javascript:void(0)" (click) = "delete(vehicle.ModelNo)"><span class="pi pi-trash"></span></a></td>   
                             </tr>
                           }
                       }  -->
@@ -34,8 +34,8 @@
                                     <tr>
                                         <td>{{model.Name}}</td>
                                         <td>{{vehicle.Name}}</td>
-                                        <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.MakeNo}}/{{model.ModelNo}}"><i class="material-icons edit-icon">edit</i></a></td>
-                                        <td><a href="javascript:void(0)" (click) = "delete(model.ModelNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                                        <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.MakeNo}}/{{model.ModelNo}}"><span class="pi pi-user-edit"></span></a></td>
+                                        <td><a href="javascript:void(0)" (click) = "delete(model.ModelNo)"><span class="pi pi-trash"></span></a></td>   
                                     </tr>
                                 }
                             } 

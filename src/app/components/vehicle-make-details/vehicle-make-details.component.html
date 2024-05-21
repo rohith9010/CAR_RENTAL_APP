@@ -6,7 +6,7 @@
             <hr>
             <h3>Filter</h3>
             <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
-           <button type="button" (click)="search()"><i class="material-icons">search</i></button>
+           <button type="button" (click)="search()"><span class="pi pi-search"></span></button>
             <div>
                 <table class="table">
                     @if(filteredMakeList)
@@ -14,8 +14,8 @@
                         @for (vehicle of filteredMakeList; track vehicle.MakeNo) {
                             <tr>
                                 <td>{{vehicle.Name}}</td>
-                                <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><i class="material-icons edit-icon">edit</i></a></td>
-                                <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><i class="material-icons delete-icon">delete</i></a></td>   
+                                <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><span class="pi pi-user-edit"></span></a></td>
+                                <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><span class="pi pi-trash"></span></a></td>   
                             </tr>
                         } 
                     }
@@ -23,8 +23,8 @@
                     @for (vehicle of vehiclesList; track vehicle.MakeNo) {
                         <tr>
                             <td>{{vehicle.Name}}</td>
-                            <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><i class="material-icons edit-icon">edit</i></a></td>
-                            <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><i class="material-icons delete-icon">delete</i></a></td>
+                            <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><span class="pi pi-user-edit"></span></a></td>
+                            <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><span class="pi pi-trash"></span></a></td>
                         </tr>
                     }
                    }

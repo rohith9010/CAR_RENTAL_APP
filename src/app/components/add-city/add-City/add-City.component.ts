@@ -7,12 +7,14 @@ import { ICity } from '../../../../Interfaces/ICity';
 import { CitiesService } from '../../../../Services/CityService/Cities.service';
 import { IState } from '../../../../Interfaces/IState';
 import { StateserviceService } from '../../../../Services/StateService/stateservice.service';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 
 @Component({
   selector: 'app-add-City',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,MatIconModule,CommonModule],
+  imports: [FormsModule,ReactiveFormsModule,MatIconModule,CommonModule,InputTextModule,FloatLabelModule],
   templateUrl: './add-City.component.html',
   styleUrls: ['./add-City.component.css']
 })

@@ -15,8 +15,13 @@
                         <select name="drop" [(ngModel)]="city.StateNo">
                             <option *ngFor="let state of statesList" [value]="state.StateNo" >{{state.state}}</option>
                         </select><br>
-                      <label for="Add_City">City:</label> 
-                      <input type="text"  [(ngModel)]="city.CityName"  id="Save" name="Save" min="1" max="5">
+
+                      <div class="card flex justify-content-center">
+                        <p-floatLabel>
+                            <input pInputText id="Save" name="Save" min="1" max="5" [(ngModel)]="city.CityName" />
+                            <label for="City Name">City Name</label>
+                        </p-floatLabel>
+                    </div>
                   </div>
                   <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
                   <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>

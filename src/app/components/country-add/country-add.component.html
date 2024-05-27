@@ -1,28 +1,45 @@
-<div class="container">
-    <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
-    <div class="menu-container">
-        <div class="menu">
-            <h3>Country Details</h3>
-            <hr><h3>Add Country</h3>
-            <div class="Add_country">
-                <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
-                    <div class="form-group">
-                        <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
-                        <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a>
-                        <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
-                        <div class="card flex justify-content-center">
-                            <p-floatLabel>
-                                <input pInputText id="Save" name="Save" min="1" max="5" [(ngModel)]="country.Country" />
-                                <label for="Country Name">Country Name</label>
-                            </p-floatLabel>
-                          </div>
-  
-                    </div>
-                    <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
-                    <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>
-                </form>
-                <button (click)="Clear()" class="btn btn-success">Clear</button>
-            </div>
+<!-- <header>
+    <div class="header-content">
+        <h1>Add Country</h1>
+        <div class="header-buttons">
+            <a href="#"><button pButton class="header-button" icon="pi pi-home" label="Home">Home</button></a>
+            <a href="country_details"><button pButton class="header-button" icon="pi pi-info" label="Country Details">Country Details</button></a>
         </div>
     </div>
-  </div>
+</header>
+<div class="container">
+  <form class="form-content">
+    <form (ngSubmit)="Save()" >
+    <div class="input-group">
+      <input type="text" [(ngModel)]="country.Country" name="input" placeholder="Enter text">
+      <button type="button" class="clear-button" (click)="clearInput()">&times;</button>
+    </div>
+    <div class="form-buttons">
+      <button type="button" class="form-button" (click)="Save()">Save</button>
+      <button type="button" class="form-button" (click)="update()">Update</button>
+    </div>
+  </form>
+  </form>
+</div>
+   -->
+   <header>
+    <div class="header-content">
+        <h1>Add Country</h1>
+        <div class="header-buttons">
+            <a href="#"><button pButton class="header-button" icon="pi pi-home" label="Home">Home</button></a>
+            <a href="/country_details"><button pButton class="header-button" icon="pi pi-info" label="Country Details">Country Details</button></a>
+        </div>
+    </div>
+</header>
+<div class="container">
+    <form class="form-content" (ngSubmit)="Save()">
+        <div class="input-group">
+            <input type="text" [(ngModel)]="country.Country" name="countryName" placeholder="Enter text">
+            <button type="button" class="clear-button" (click)="clearInput()">&times;</button>
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="form-button">Save</button>
+            <button type="button" class="form-button" (click)="update()">Update</button>
+        </div>
+    </form>
+</div>

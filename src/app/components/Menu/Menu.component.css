@@ -1,0 +1,146 @@
+.card {
+    margin: 1rem;
+    padding: 1rem;
+    border-radius: 1rem;
+    background: #f4f4f4;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+/* Toolbar specific styles */
+p-toolbar {
+    border-radius: 3rem !important;
+    background-image: linear-gradient(to right, var(--bluegray-500), var(--bluegray-800)) !important;
+}
+
+p-toolbar .p-toolbar-group-left img {
+    height: 2.5rem;
+}
+
+p-toolbar .p-toolbar-group-center .p-link {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    transition: background 0.2s;
+}
+
+p-toolbar .p-toolbar-group-center .p-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+p-toolbar .p-toolbar-group-right {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+p-toolbar .p-toolbar-group-right .p-avatar {
+    width: 2.5rem;
+    height: 2.5rem;
+}
+
+p-toolbar .p-toolbar-group-right .font-bold {
+    color: #eceff1;
+}
+
+/* ScrollPanel styles */
+.p-scrollpanel {
+    width: 100%;
+    height: 1000px;
+}
+
+.p-scrollpanel .p-scrollpanel-wrapper {
+    overflow: auto;
+}
+
+.p-scrollpanel.custombar1 .p-scrollpanel-content,
+.p-scrollpanel.custombar2 .p-scrollpanel-content {
+    padding: 1rem;
+}
+
+/* Custom scrollbars */
+.p-scrollpanel.custombar1 .p-scrollpanel-wrapper::-webkit-scrollbar,
+.p-scrollpanel.custombar2 .p-scrollpanel-wrapper::-webkit-scrollbar {
+    width: 10px;
+}
+
+.p-scrollpanel.custombar1 .p-scrollpanel-wrapper::-webkit-scrollbar-thumb,
+.p-scrollpanel.custombar2 .p-scrollpanel-wrapper::-webkit-scrollbar-thumb {
+    background: #b0bec5;
+    border-radius: 5px;
+}
+
+.p-scrollpanel.custombar1 .p-scrollpanel-wrapper::-webkit-scrollbar-track,
+.p-scrollpanel.custombar2 .p-scrollpanel-wrapper::-webkit-scrollbar-track {
+    background: #eceff1;
+    border-radius: 5px;
+}
+
+/* Flexbox for layout */
+.flex {
+    display: flex;
+}
+
+.flex-column {
+    flex-direction: column;
+}
+
+.md\:flex-row {
+    flex-direction: row;
+}
+
+.flex-auto {
+    flex: 1;
+}
+
+/* Responsive gap */
+.gap-2 {
+    gap: 0.5rem;
+}
+
+.gap-3 {
+    gap: 0.75rem;
+}
+
+.gap-5 {
+    gap: 1.25rem;
+}
+
+/* Alignment helpers */
+.align-items-center {
+    align-items: center;
+}
+
+.justify-content-center {
+    justify-content: center;
+}
+
+/* Text styles */
+.font-bold {
+    font-weight: bold;
+}
+
+.text-white {
+    color: #ffffff;
+}
+
+.text-bluegray-50 {
+    color: #eceff1;
+}
+
+/* Transition effects */
+.transition-all {
+    transition: all 0.2s;
+}
+
+.transition-duration-200 {
+    transition-duration: 0.2s;
+}
+
+/* Icon size */
+.text-2xl {
+    font-size: 1.5rem;
+}

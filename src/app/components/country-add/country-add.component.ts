@@ -16,6 +16,7 @@ import { FloatLabelModule } from 'primeng/floatlabel';
   styleUrls: ['./country-add.component.css']
 })
 export class CountryAddComponent implements OnInit {
+  inputValue: string = '';
   
   country:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
 
@@ -48,8 +49,7 @@ Save()
   this.router.navigate(['/country_details'])});
 }
 
-  Clear()
-  {
-    
-  }
+clearInput() {
+  this.inputValue = '';
+}
 }

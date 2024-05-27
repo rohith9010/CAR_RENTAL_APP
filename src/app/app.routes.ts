@@ -1,5 +1,4 @@
 import { CountryAddComponent } from './components/country-add/country-add.component';
-import { Component } from '@angular/core';
 import { Routes } from '@angular/router';
 import { VehicleMakeDetailsComponent } from './components/vehicle-make-details/vehicle-make-details.component';
 import { VehicleModelDetailsComponent } from './components/vehicle-model-details/vehicle-model-details.component';
@@ -11,12 +10,17 @@ import { AddCityComponent } from './components/add-city/add-City/add-City.compon
 import { StateDetailsComponent } from './components/state-details/state-details.component';
 import { AddStateComponent } from './components/add-state/add-state.component';
 import { CountryDetailsComponent } from './components/CountryDetails/Country-Details/Country-Details.component';
-
+import { OwnerDetailsComponent } from './components/Owner/Owner-Details/Owner-Details.component';
+import { AddOwnerComponent } from './components/add-owner/Add-Owner/Add-Owner.component';
 export const routes: Routes = [
     {path:'',component:MenuComponent,pathMatch:'full'},
     {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
     {path:'vehicle_model_details',component:VehicleModelDetailsComponent},
     {path:'city_details',component:AddCityDetailsComponent},
+    {path:'Add_owner',component:AddOwnerComponent},
+    {path:'Menu',component:MenuComponent},
+
+
 
     {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
     {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent},
@@ -29,6 +33,7 @@ export const routes: Routes = [
 
     {path:'country_details',component:CountryDetailsComponent},
     {path:'Add_country/:id',component:CountryAddComponent},
+    {path:'Owner_details',component:OwnerDetailsComponent},
     
     {path:'Add_country',component:CountryAddComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},

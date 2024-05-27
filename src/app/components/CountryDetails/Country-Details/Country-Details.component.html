@@ -1,40 +1,56 @@
+<div class="header">
+    <h1>Country Management</h1>
+    <div class="header-left">
+        <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
+        <a href="/Add_country" class="icon-button"><i class="pi pi-plus-circle"></i></a>
+    </div>
+</div>
 <div class="container">
-  <img src="../assets/images/B.jpg" alt="Background Image" class="background-img">
-  <div class="menu-container">
-      <div class="menu">
-          <h1>Country Management</h1>
-          <hr>
-          <h3>Filter</h3>
-          <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
-         <button type="button" (click)="search()"><span class="pi pi-search"></span></button>
-          <div>
-              <table class="table">
-                  @if(filteredcountriesList)
-                  {
-                      @for (country of filteredcountriesList; track country.CountryNo) {
-                          <tr>
-                              <td>{{country.Country}}</td>
-                              <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><span class="pi pi-user-edit"></span></a></td>
-                              <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><span class="pi pi-trash"></span></a></td>   
-                          </tr>
-                      } 
-                  }
-                 @else(){
-                  @for (country of countriesList; track country.CountryNo) {
-                      <tr>
-                          <td>{{country.Country}}</td>
-                          <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><span class="pi pi-user-edit"></span></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><span class="pi pi-trash"></span></a></td>
-                      </tr>
-                  }
-                 }
-              </table>
-          </div>
-          <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
-          <a href="/Add_country" class="add_circle"><mat-icon>add_circle</mat-icon></a>
-          <!-- <a href="#" class="arrow-back"><mat-icon>arrow-back</mat-icon></a>  -->
+    <div class="content">
+        <div class="search-container">
+            <h3>Filter</h3>
+            <!-- <div class="search-box">
+                <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search...">
+                <button class="btn-search" (click)="search()"><i class="pi pi-search"></i></button>
+            </div> -->
+            <div class="search-box">
+                <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search..." (keyup)="search()">
+                <button class="btn-clear" *ngIf="showClearIcon" (click)="clearSearch()">
+                  <i class="pi pi-times"></i> </button>
+              </div>
+        </div>
+        <div class="table-container">
+            <table class="table">
+                @if(filteredcountriesList)
+                {
+                    @for (country of filteredcountriesList; track country.CountryNo) {
+                        <tr>
+                            <td>{{country.Country}}</td>
+                            <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><i class="pi pi-user-edit"></i></a></td>
+                            <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><i class="pi pi-trash"></i></a></td>   
+                        </tr>
+                    } 
+                }
+                @else
+                {
+                    @for (country of countriesList; track country.CountryNo) {
+                        <tr>
+                            <td>{{country.Country}}</td>
+                            <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><i class="pi pi-user-edit"></i></a></td>
+                            <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><i class="pi pi-trash"></i></a></td>
+                        </tr>
+                    }
+                }
+            </table>
+        </div>
+        <div class="pagination">
+            <button (click)="onPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+            <button *ngFor="let page of getPages()" (click)="onPageChange(page)" [class.active]="page === currentPage">
+                {{ page }}
+            </button>
+            <button (click)="onNextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
+        </div>
+    </div>
+</div>
 
-      </div>
-      
-  </div>
-</div>>
+

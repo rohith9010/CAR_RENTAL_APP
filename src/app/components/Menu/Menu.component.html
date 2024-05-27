@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <img src="../assets/images/c.jpg" alt="Background Image" class="background-img">
     <div class="menu-container">
         <div class="menu">
@@ -14,18 +14,18 @@
             </div>
             <div class="column">
                 <hr><span class="pi pi-map-marker"></span>   𝕃𝕠𝕔𝕒𝕥𝕚𝕠𝕟 𝕄𝕒𝕟𝕒𝕘𝕖𝕞𝕖𝕟𝕥<hr>
-                <a class="nav-link" href="/country_details">1. Country Details (Add)</a>
-                <a class="nav-link" href="/State_Detail">2. State Details (Add)</a>
-                <a class="nav-link" href="/city_details">3. City Details (Add)</a>
+                <a class="nav-link" href="/country_details">1. Country Details</a>
+                <a class="nav-link" href="/State_Detail">2. State Details</a>
+                <a class="nav-link" href="/city_details">3. City Details</a>
             </div>
             <div class="column">
                 <hr><span class="pi pi-users"></span>   𝕌𝕤𝕖𝕣 𝕄𝕒𝕟𝕒𝕘𝕖𝕞𝕖𝕟𝕥 <hr>
-                <a class="nav-link" href="/employee_details">1. Employee Details (Add)</a>
+                <a class="nav-link" href="/employee_details">1. Employee Details</a>
                 <a class="nav-link" href="/customer_details">2. Customer Details</a>
             </div>
             <div class="column">
                 <hr><span class="pi pi-id-card icon"></span> 𝔻𝕣𝕚𝕧𝕖𝕣 𝕄𝕒𝕟𝕒𝕘𝕖𝕞𝕖𝕟𝕥<hr>
-                <a class="nav-link" href="/driver_details">1. Driver Details (Add)</a>
+                <a class="nav-link" href="/driver_details">1. Driver Details</a>
                 <a class="#" href="/driver_details">.</a>
 
             </div>
@@ -39,8 +39,109 @@
             
             <div class="column">
                 <hr><span class="pi pi-user icon"></span> 𝕆𝕨𝕟𝕖𝕣 𝕄𝕒𝕟𝕒𝕘𝕖𝕞𝕖𝕟𝕥<hr>
-                <a class="nav-link" href="/owner_details">1. Owner Details (Add)</a>
+                <a class="nav-link" href="/owner_details">1. Owner Details</a>
             </div>
+        </div>
+    </div>
+</div> -->
+<!-- <div class="card">
+    <p-toolbar 
+        styleClass="bg-gray-900 shadow-2" 
+        [style]="{ 'border-radius': '3rem', 'background-image': 'linear-gradient(to right, var(--bluegray-500), var(--bluegray-800))' }">
+        <ng-template pTemplate="start">
+            <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" />
+        </ng-template>
+        <ng-template pTemplate="center">
+            <div class="flex flex-wrap align-items-center gap-3">
+                <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+                    <i class="pi pi-home text-2xl"></i>
+                </button>
+                <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+                    <i class="pi pi-user text-2xl"></i>
+                </button>
+                <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200">
+                    <i class="pi pi-search text-2xl"></i>
+                </button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <div class="flex align-items-center gap-2">
+                <p-avatar 
+                    image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+                    shape="circle" />
+                <span class="font-bold text-bluegray-50">
+                    Amy Elsner
+                </span>
+            </div>
+        </ng-template>
+    </p-toolbar>
+    </div>
+    
+<div class="card">
+    <div class="flex flex-column md:flex-row gap-5">
+        <div class="flex-auto">
+            <p-scrollPanel [style]="{ width: '100%', height: '1000px' }" styleClass="custombar1">
+                <div class="card">
+                    <p-megaMenu [model]="items" orientation="vertical" />
+                </div>   
+            </p-scrollPanel>
+        </div>
+        <div class="flex-auto">
+            <p-scrollPanel [style]="{ width: '100%', height: '1000px' }" styleClass="custombar2">
+                
+            </p-scrollPanel>
+        </div>
+    </div>
+</div> -->
+<div class="card">
+    <p-toolbar 
+        styleClass="bg-gray-900 shadow-2" 
+        [style]="{ 'border-radius': '3rem', 'background-image': 'linear-gradient(to right, var(--bluegray-500), var(--bluegray-800))' }">
+        <ng-template pTemplate="start">
+            <img src="https://primefaces.org/cdn/primeng/images/primeng.svg" />
+        </ng-template>
+        <ng-template pTemplate="center">
+            <div class="flex flex-wrap align-items-center gap-3">
+                <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200" title="Home">
+                    <i class="pi pi-home text-2xl"></i>
+                </button>
+                <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200" title="User Profile">
+                    <i class="pi pi-user text-2xl"></i>
+                </button>
+                <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200" title="Settings">
+                    <i class="pi pi-cog text-2xl"></i>
+                </button>
+            </div>
+        </ng-template>
+        <ng-template pTemplate="end">
+            <div class="flex align-items-center gap-2">
+                <p-avatar 
+                    image="https://primefaces.org/cdn/primeng/images/demo/avatar/amyelsner.png" 
+                    shape="circle" />
+                <span class="font-bold text-bluegray-50">
+                    Amy Elsner
+                </span>
+                <button class="p-link inline-flex justify-content-center align-items-center text-white h-3rem w-3rem border-circle hover:bg-white-alpha-10 transition-all transition-duration-200" title="Logout">
+                    <i class="pi pi-sign-out text-2xl"></i>
+                </button>
+            </div>
+        </ng-template>
+    </p-toolbar>
+</div>
+
+<div class="card">
+    <div class="flex flex-column md:flex-row gap-5">
+        <div class="flex-auto">
+            <p-scrollPanel [style]="{ width: '100%', height: '1000px' }" styleClass="custombar1">
+                <div class="card">
+                    <p-megaMenu [model]="items" orientation="vertical" />
+                </div>   
+            </p-scrollPanel>
+        </div>
+        <div class="flex-auto">
+            <p-scrollPanel [style]="{ width: '100%', height: '1000px' }" styleClass="custombar2">
+                <!-- Content based on menu selection will be displayed here -->
+            </p-scrollPanel>
         </div>
     </div>
 </div>

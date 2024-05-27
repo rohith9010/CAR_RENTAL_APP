@@ -5,15 +5,19 @@ import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
 import { ActivatedRoute, Router } from '@angular/router';
 import {MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
+import { InputTextModule } from 'primeng/inputtext';
+import { FloatLabelModule } from 'primeng/floatlabel';
 
 @Component({
   selector: 'app-add-vehicle-make',
   standalone: true,
-  imports: [FormsModule,ReactiveFormsModule,MatIconModule,CommonModule],
+  imports: [FormsModule,ReactiveFormsModule,MatIconModule,CommonModule,InputTextModule,FloatLabelModule],
   templateUrl: './add-vehicle-make.component.html',
   styleUrl: './add-vehicle-make.component.css'
 })
 export class AddVehicleMakeComponent implements OnInit{
+
+  inputValue: string = '';
 
   vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
   constructor(private route : ActivatedRoute,private MakeService:VehicleMakeService,private router:Router)
@@ -25,15 +29,11 @@ export class AddVehicleMakeComponent implements OnInit{
   }
   getbyid(){
     const idString = this.route.snapshot.params['id'];
-    console.log(this.route.snapshot.params);
- 
-    console.log(idString);
     const id = Number(idString); 
-    console.log(id);
+
     if (id) {
       this.MakeService.getById(id).subscribe((data:Response)=>{
         this.vehiclemake=data as IVehicleMake_;
-        console.log(data);
       })
     }
   }
@@ -52,6 +52,9 @@ Save()
   Clear()
   {
     
+  }
+  clearInput() {
+    this.inputValue = '';
   }
 }
 

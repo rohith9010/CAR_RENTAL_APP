@@ -9,10 +9,6 @@
     <div class="content">
         <div class="search-container">
             <h3>Filter</h3>
-            <!-- <div class="search-box">
-                <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search...">
-                <button class="btn-search" (click)="search()"><i class="pi pi-search"></i></button>
-            </div> -->
             <div class="search-box">
                 <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search..." (keyup)="search()">
                 <button class="btn-clear" *ngIf="showClearIcon" (click)="clearSearch()">

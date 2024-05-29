@@ -34,6 +34,7 @@ export const routes: Routes = [
     {path:'country_details',component:CountryDetailsComponent},
     {path:'Add_country/:id',component:CountryAddComponent},
     {path:'Owner_details',component:OwnerDetailsComponent},
+    {path:'Add_owner/:Id',component:AddOwnerComponent},
     
     {path:'Add_country',component:CountryAddComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},

@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { IState } from '../../Interfaces/IState';
 import { Observable } from 'rxjs';
+import { stat } from 'fs';
 
 @Injectable({
   providedIn: 'root'
@@ -29,5 +30,6 @@ export class StateserviceService {
   DeleteState(id: number): Observable<IState> {
     return this.http.delete<IState>(`${this.apiUrl}/${id}`);
   }
+
 
 }

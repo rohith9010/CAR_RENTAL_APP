@@ -1,45 +1,3 @@
-<!-- <div class="container">
-        <header class="header">
-            <div class="header-left">
-                <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
-                <a href="/Add_owner" class="icon-button"><i class="pi pi-plus-circle"></i></a>
-            </div>
-            <h1>Owner Management</h1>
-        </header>
-        <div class="content">
-            <div class="search-container">
-                <h3>Filter</h3>
-                <div class="search-box">
-                    <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search...">
-                    <button class="btn-search" (click)="search()"><i class="pi pi-search"></i></button>
-                </div>
-            </div>
-            <div class="table-container">
-                <table class="table">
-                    @if(filteredcountriesList)
-                    {
-                        @for (country of filteredcountriesList; track country.CountryNo) {
-                            <tr>
-                                <td>{{country.Country}}</td>
-                                <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><i class="pi pi-pencil"></i></a></td>
-                                <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><i class="pi pi-trash"></i></a></td>   
-                            </tr>
-                        } 
-                    }
-                    @else
-                    {
-                        @for (country of countriesList; track country.CountryNo) {
-                            <tr>
-                                <td>{{country.Country}}</td>
-                                <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><i class="pi pi-pencil"></i></a></td>
-                                <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><i class="pi pi-trash"></i></a></td>
-                            </tr>
-                        }
-                    }
-                </table>
-            </div>
-        </div>
-</div> -->
 <div class="header">
   <h1>Owner Management</h1>
   <div class="header-left">
@@ -58,26 +16,49 @@
       </div>
       <div class="table-container">
           <table class="table">
-              @if(filteredcountriesList)
+            <tbody>
+                <tr>
+                    <th>Owner Name</th>
+                    <th>Phone Number</th>
+                    <th>Bank</th>
+                    <th>Account Number</th>
+                    <th>PAN</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+              @if(filteredownerList)
               {
-                  @for (country of filteredcountriesList; track country.CountryNo) {
+                  @for (owner of filteredownerList; track owner.OwnerNo) {
                       <tr>
-                          <td>{{country.Country}}</td>
-                          <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><i class="pi pi-trash"></i></a></td>   
+                          <td>{{owner.Name}}</td>
+                          <td>{{owner.PhoneNumber}}</td>
+                          <td>{{owner.BankName}}</td>
+                          <td>{{owner.BankAccount}}</td>
+                          <td>{{owner.PAN}}</td>
+                          <td><a type="button"  routerLink="/Add_owner/{{owner.OwnerNo}}"><i class="pi pi-pencil"></i></a></td>
+                          <td><a href="javascript:void(0)" (click) = "delete(owner.OwnerNo)"><i class="pi pi-trash"></i></a></td>   
                       </tr>
                   } 
               }
               @else
-              {
-                  @for (country of countriesList; track country.CountryNo) {
+              {     
+                    
+
+                  @for (owner of ownerList; track owner.OwnerNo) {
                       <tr>
-                          <td>{{country.Country}}</td>
-                          <td><a type="button"  routerLink="/Add_country/{{country.CountryNo}}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(country.CountryNo)"><i class="pi pi-trash"></i></a></td>
+                          <td>{{owner.Name}}</td>
+                          <td>{{owner.PhoneNumber}}</td>
+                          <td>{{owner.BankName}}</td>
+                          <td>{{owner.BankAccount}}</td>
+                          <td>{{owner.PAN}}</td>
+                        
+
+                          <td><a type="button"  routerLink="/Add_owner/{{owner.OwnerNo}}"><i class="pi pi-pencil"></i></a></td>
+                          <td><a href="javascript:void(0)" (click) = "delete(owner.OwnerNo)"><i class="pi pi-trash"></i></a></td>
                       </tr>
                   }
               }
+            </tbody>
           </table>
       </div>
   </div>

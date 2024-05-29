@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { ICountry } from '../../../../Interfaces/ICountry';
 import {MatIconModule } from '@angular/material/icon';
-import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { CountryService } from '../../../../Services/CountriesService/Country.service';
+import { OwnerServiceService } from '../../../owner-service.service';
+import { IOwner } from '../../../../Interfaces/IOwner';
+
 @Component({
   selector: 'app-Owner-Details',
   standalone: true,
@@ -15,23 +16,23 @@ import { CountryService } from '../../../../Services/CountriesService/Country.se
 })
 export class OwnerDetailsComponent implements OnInit {
 
-  constructor(private countryservice:CountryService) { }
+  constructor(private ownerservice:OwnerServiceService,private route : ActivatedRoute) { }
 
-  filteredcountriesList!: ICountry[];
+  filteredownerList!: IOwner[];
   searchQuery!: string ;
-  countriesList!:ICountry[];
+  ownerList!:IOwner[];
   ngOnInit() {
     
 
-    this.countryservice.getCountries().subscribe((res: ICountry[])=> {
-      this.countriesList=res;
+    this.ownerservice.GetOwner().subscribe((res: IOwner[])=> {
+      this.ownerList=res;
     });
       
   }
   
   delete(id:number):void {
         if (confirm('Are you sure you want to delete this item?')){
-          this.countryservice.deleteCountry(id).subscribe(()=>{
+          this.ownerservice.DeleteOwner(id).subscribe(()=>{
               console.log('Item deleted successfully');
               this.ngOnInit();
             },
@@ -40,12 +41,15 @@ export class OwnerDetailsComponent implements OnInit {
     }
   search(): void {
       if (this.searchQuery.trim() ==='') {
-        this.filteredcountriesList = [...this.countriesList];
+        this.filteredownerList = [...this.ownerList];
       } else 
       {
-        this.filteredcountriesList = this.countriesList.filter(country =>
-          country.Country.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
+        this.filteredownerList = this.ownerList.filter(owner =>
+          owner.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
         );
       }
     }
+   
+  
+
 }

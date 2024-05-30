@@ -55,7 +55,7 @@ export class MenuComponent implements OnInit {
                         [
                           {
                             label: 'Users',
-                            items: [{ label: 'Employee Details',routerLink:'' }, { label: 'Customer Details',routerLink:'' }]
+                            items: [{ label: 'Employee Details',routerLink:'/Employee_Details' }, { label: 'Customer Details',routerLink:'' }]
                           }
                         ]
                      ]

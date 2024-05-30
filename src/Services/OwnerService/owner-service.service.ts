@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { IOwner } from '../Interfaces/IOwner';
+import { IOwner } from '../../Interfaces/IOwner';
 import { Observable } from 'rxjs';
 
 @Injectable({

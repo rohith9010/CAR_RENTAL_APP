@@ -1,0 +1,309 @@
+<!-- <header class="header">
+  <div class="header-content">
+    <div class="header-title">
+      <h1>Add Owner</h1>
+    </div>
+    <div class="header-buttons">
+      <a href="#"><button pButton class="header-button" icon="pi pi-home" label="Home"></button></a>
+      <a href="/Employee_Details"><button pButton class="header-button" icon="pi pi-info" label="Owner Details"></button></a>
+ </div>
+  </div>
+</header>
+<div class="p-fluid p-formgrid p-grid employee-form-container">
+  <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+    <div class="p-field p-col-12 p-md-6">
+      <label for="employeeName">Employee Name</label>
+      <input id="employeeName" type="text" pInputText formControlName="employeeName" placeholder="Enter employee name">
+      <div *ngIf="employeeForm.get('employeeName')?.invalid && (employeeForm.get('employeeName')?.dirty || employeeForm.get('employeeName')?.touched)" class="p-error">Employee name is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="employeeType">Employee Type</label>
+      <p-dropdown [options]="employeeTypes" formControlName="employeeType" placeholder="Select employee type"></p-dropdown>
+      <div *ngIf="employeeForm.get('employeeType')?.invalid && (employeeForm.get('employeeType')?.dirty || employeeForm.get('employeeType')?.touched)" class="p-error">Employee type is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="email">Email</label>
+      <input id="email" type="text" pInputText formControlName="email" placeholder="Enter email">
+      <div *ngIf="employeeForm.get('email')?.invalid && (employeeForm.get('email')?.dirty || employeeForm.get('email')?.touched)" class="p-error">A valid email is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="address">Address</label>
+      <input id="address" type="text" pInputText formControlName="address" placeholder="Enter address">
+      <div *ngIf="employeeForm.get('address')?.invalid && (employeeForm.get('address')?.dirty || employeeForm.get('address')?.touched)" class="p-error">Address is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="country">Country</label>
+      <p-dropdown [options]="countries" formControlName="country" placeholder="Select country"></p-dropdown>
+      <div *ngIf="employeeForm.get('country')?.invalid && (employeeForm.get('country')?.dirty || employeeForm.get('country')?.touched)" class="p-error">Country is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="state">State</label>
+      <p-dropdown [options]="states" formControlName="state" placeholder="Select state"></p-dropdown>
+      <div *ngIf="employeeForm.get('state')?.invalid && (employeeForm.get('state')?.dirty || employeeForm.get('state')?.touched)" class="p-error">State is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-4">
+      <label for="city">City</label>
+      <p-dropdown [options]="cities" formControlName="city" placeholder="Select city"></p-dropdown>
+      <div *ngIf="employeeForm.get('city')?.invalid && (employeeForm.get('city')?.dirty || employeeForm.get('city')?.touched)" class="p-error">City is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="phoneNumber">Phone Number</label>
+      <input id="phoneNumber" type="text" pInputText formControlName="phoneNumber" placeholder="Enter phone number">
+      <div *ngIf="employeeForm.get('phoneNumber')?.invalid && (employeeForm.get('phoneNumber')?.dirty || employeeForm.get('phoneNumber')?.touched)" class="p-error">A valid phone number is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="mobileNumber">Mobile Number</label>
+      <input id="mobileNumber" type="text" pInputText formControlName="mobileNumber" placeholder="Enter mobile number">
+      <div *ngIf="employeeForm.get('mobileNumber')?.invalid && (employeeForm.get('mobileNumber')?.dirty || employeeForm.get('mobileNumber')?.touched)" class="p-error">A valid mobile number is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="username">Username</label>
+      <input id="username" type="text" pInputText formControlName="username" placeholder="Enter username">
+      <div *ngIf="employeeForm.get('username')?.invalid && (employeeForm.get('username')?.dirty || employeeForm.get('username')?.touched)" class="p-error">Username is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="password">Password</label>
+      <input id="password" type="password" pInputText formControlName="password" placeholder="Enter password">
+      <div *ngIf="employeeForm.get('password')?.invalid && (employeeForm.get('password')?.dirty || employeeForm.get('password')?.touched)" class="p-error">Password is required (min 6 characters).</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="bankName">Bank Name</label>
+      <input id="bankName" type="text" pInputText formControlName="bankName" placeholder="Enter bank name">
+      <div *ngIf="employeeForm.get('bankName')?.invalid && (employeeForm.get('bankName')?.dirty || employeeForm.get('bankName')?.touched)" class="p-error">Bank name is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="accountNumber">Account Number</label>
+      <input id="accountNumber" type="text" pInputText formControlName="accountNumber" placeholder="Enter account number">
+      <div *ngIf="employeeForm.get('accountNumber')?.invalid && (employeeForm.get('accountNumber')?.dirty || employeeForm.get('accountNumber')?.touched)" class="p-error">Account number is required.</div>
+    </div>
+
+    <div class="p-field p-col-12 p-md-6">
+      <label for="pan">PAN</label>
+      <input id="pan" type="text" pInputText formControlName="pan" placeholder="Enter PAN">
+      <div *ngIf="employeeForm.get('pan')?.invalid && (employeeForm.get('pan')?.dirty || employeeForm.get('pan')?.touched)" class="p-error">PAN is required.</div>
+    </div>
+
+    <fieldset>
+      <legend>Permissions</legend>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="cities" binary="true" label="Cities"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="states" binary="true" label="States"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="countries" binary="true" label="Countries"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="vehicles" binary="true" label="Vehicles"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="make" binary="true" label="Make"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="models" binary="true" label="Models"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="employees" binary="true" label="Employees"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="customers" binary="true" label="Customers"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="owners" binary="true" label="Owners"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="drivers" binary="true" label="Drivers"></p-checkbox>
+      </div>
+      <div class="p-field-checkbox">
+        <p-checkbox formControlName="reservations" binary="true" label="Reservations/Rentals"></p-checkbox>
+      </div>
+    </fieldset>
+
+    <div class="form-actions p-col-12">
+      <button type="submit" pButton label="Save" icon="pi pi-check" class="p-mr-2"></button>
+      <button type="button" pButton label="Clear" icon="pi pi-times" (click)="onClear()"></button>
+      <button pButton type="button" label="Update" icon="pi pi-refresh"></button>
+
+    </div>
+  </form>
+</div> -->
+<header class="header">
+  <div class="header-content">
+    <div class="header-title">
+      <h1>Add Employee</h1>
+    </div>
+    <div class="header-buttons">
+      <button class="p-button p-button-icon-only" icon="pi pi-home"></button>
+      <button class="p-button p-button-icon-only" icon="pi pi-info"></button>
+    </div>
+  </div>
+</header>
+
+<div class="main-container">
+  <div class="content-container">
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+      <fieldset class="p-fieldset"> <!-- Updated class -->
+        <legend>Employee Details</legend>
+        <div class="p-grid">
+            <div class="p-field p-col-12 p-md-6">
+                <label for="employeeName">Employee Name</label>
+                <input id="employeeName" type="text" pInputText formControlName="employeeName" placeholder="Enter employee name">
+                <div *ngIf="employeeForm.get('employeeName')?.invalid && (employeeForm.get('employeeName')?.dirty || employeeForm.get('employeeName')?.touched)" class="p-error">Employee name is required.</div>
+            </div>
+    
+            <div class="p-field p-col-12 p-md-6">
+                <label for="employeeType">Employee Type</label>
+                <p-dropdown [options]="employeeTypes" formControlName="employeeType" placeholder="Select employee type"></p-dropdown>
+                <div *ngIf="employeeForm.get('employeeType')?.invalid && (employeeForm.get('employeeType')?.dirty || employeeForm.get('employeeType')?.touched)" class="p-error">Employee type is required.</div>
+            </div>
+    
+            <div class="p-field p-col-12 p-md-6">
+                <label for="email">Email</label>
+                <input id="email" type="text" pInputText formControlName="email" placeholder="Enter email">
+                <div *ngIf="employeeForm.get('email')?.invalid && (employeeForm.get('email')?.dirty || employeeForm.get('email')?.touched)" class="p-error">A valid email is required.</div>
+            </div>
+    
+            <!-- Add more textboxes here -->
+        </div>
+    </fieldset>
+
+      <!-- Address Details -->
+      <fieldset class="p-fieldset"> <!-- Updated class -->
+        <legend>Address Details</legend>
+        <div class="p-grid">
+          <div class="p-field p-col-12">
+            <label for="address">Address</label>
+            <input id="address" type="text" pInputText formControlName="address" placeholder="Enter address">
+            <div *ngIf="employeeForm.get('address')?.invalid && (employeeForm.get('address')?.dirty || employeeForm.get('address')?.touched)" class="p-error">Address is required.</div>
+          </div>
+
+          <div class="p-field p-col-12 p-md-4">
+            <label for="country">Country</label>
+            <p-dropdown [options]="countries" formControlName="country" placeholder="Select country"></p-dropdown>
+            <div *ngIf="employeeForm.get('country')?.invalid && (employeeForm.get('country')?.dirty || employeeForm.get('country')?.touched)" class="p-error">Country is required.</div>
+          </div>
+
+          <div class="p-field p-col-12 p-md-4">
+            <label for="state">State</label>
+            <p-dropdown [options]="states" formControlName="state" placeholder="Select state"></p-dropdown>
+            <div *ngIf="employeeForm.get('state')?.invalid && (employeeForm.get('state')?.dirty || employeeForm.get('state')?.touched)" class="p-error">State is required.</div>
+          </div>
+
+          <div class="p-field p-col-12 p-md-4">
+            <label for="city">City</label>
+            <p-dropdown [options]="cities" formControlName="city" placeholder="Select city"></p-dropdown>
+            <div *ngIf="employeeForm.get('city')?.invalid && (employeeForm.get('city')?.dirty || employeeForm.get('city')?.touched)" class="p-error">City is required.</div>
+          </div>
+
+          <div class="p-field p-col-12 p-md-4">
+            <label for="pincode">Pincode</label>
+            <input id="pincode" type="text" pInputText formControlName="pincode" placeholder="Enter pincode">
+            <div *ngIf="employeeForm.get('pincode')?.invalid && (employeeForm.get('pincode')?.dirty || employeeForm.get('pincode')?.touched)" class="p-error">Pincode is required.</div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Contact Details -->
+      <fieldset class="p-fieldset"> <!-- Updated class -->
+        <legend>Contact Details</legend>
+        <div class="p-grid">
+          <div class="p-field p-col-12 p-md-6">
+            <label for="phoneNumber">Phone Number</label>
+            <input id="phoneNumber" type="text" pInputText formControlName="phoneNumber" placeholder="Enter phone number">
+            <div *ngIf="employeeForm.get('phoneNumber')?.invalid && (employeeForm.get('phoneNumber')?.dirty || employeeForm.get('phoneNumber')?.touched)" class="p-error">A valid phone number is required.</div>
+          </div>
+
+          <div class="p-field p-col-12 p-md-6">
+            <label for="mobileNumber">Mobile Number</label>
+            <input id="mobileNumber" type="text" pInputText formControlName="mobileNumber" placeholder="Enter mobile number">
+            <div *ngIf="employeeForm.get('mobileNumber')?.invalid && (employeeForm.get('mobileNumber')?.dirty || employeeForm.get('mobileNumber')?.touched)" class="p-error">A valid mobile number is required.</div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Bank Details -->
+      <fieldset class="p-fieldset"> <!-- Updated class -->
+        <legend>Bank Details</legend>
+        <div class="p-grid">
+          <div class="p-field p-col-12 p-md-6">
+            <label for="bankName">Bank Name</label>
+            <input id="bankName" type="text" pInputText formControlName="bankName" placeholder="Enter bank name">
+            <div *ngIf="employeeForm.get('bankName')?.invalid && (employeeForm.get('bankName')?.dirty || employeeForm.get('bankName')?.touched)" class="p-error">Bank name is required.</div>
+          </div>
+
+          <div class="p-field p-col-12 p-md-6">
+            <label for="accountNumber">Account Number</label>
+            <input id="accountNumber" type="text" pInputText formControlName="accountNumber" placeholder="Enter account number">
+            <div *ngIf="employeeForm.get('accountNumber')?.invalid && (employeeForm.get('accountNumber')?.dirty || employeeForm.get('accountNumber')?.touched)" class="p-error">Account number is required.</div>
+          </div>
+
+          <div class="p-field p-col-12 p-md-6">
+            <label for="pan">PAN</label>
+            <input id="pan" type="text" pInputText formControlName="pan" placeholder="Enter PAN">
+            <div *ngIf="employeeForm.get('pan')?.invalid && (employeeForm.get('pan')?.dirty || employeeForm.get('pan')?.touched)" class="p-error">PAN is required.</div>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Privileges -->
+      <fieldset class="p-fieldset"> <!-- Updated class -->
+        <legend>Privileges</legend>
+        <div class="p-grid">
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="cities" binary="true" label="Cities"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="states" binary="true" label="States"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="countries" binary="true" label="Countries"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="vehicles" binary="true" label="Vehicles"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="make" binary="true" label="Make"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="models" binary="true" label="Models"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="employees" binary="true" label="Employees"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="customers" binary="true" label="Customers"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="owners" binary="true" label="Owners"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="drivers" binary="true" label="Drivers"></p-checkbox>
+          </div>
+          <div class="p-field-checkbox">
+            <p-checkbox formControlName="reservations" binary="true" label="Reservations/Rentals"></p-checkbox>
+          </div>
+        </div>
+      </fieldset>
+
+      <!-- Form Actions -->
+      <div class="form-actions p-col-12">
+        <button type="submit" pButton label="Save" icon="pi pi-check" class="p-mr-2"></button>
+        <button type="button" pButton label="Clear" icon="pi pi-times" (click)="onClear()"></button>
+        <button pButton type="button" label="Update" icon="pi pi-refresh"></button>
+      </div>
+    </form>
+  </div>
+</div>

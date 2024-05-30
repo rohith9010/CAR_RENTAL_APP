@@ -1,0 +1,105 @@
+/* Set height of parent containers to 100% */
+html, body, .main-container, .content-container {
+    height: 100%;
+    margin: 0;
+}
+
+/* Set form height to 100% */
+form {
+    height: 100%;
+}
+
+/* Scrollbar for form container */
+.main-container {
+    overflow-y: auto;
+}
+
+.p-checkbox {
+    margin-bottom: 10px; /* Adjust margin as needed */
+}
+
+/* Styling for buttons */
+button.p-button {
+    margin-right: 10px; /* Adjust margin as needed */
+    margin-bottom: 10px; /* Adjust margin as needed */
+    font-size: 16px; /* Font size */
+    padding: 10px 20px; /* Adjust padding as needed */
+    border-radius: 5px; /* Border radius */
+}
+
+/* Styling for legends */
+legend {
+    font-weight: bold; /* Make legends bold */
+}
+
+/* Styling for headers */
+.header {
+    background-color: #f0f0f0;
+    padding: 10px 20px; /* Adjusted padding */
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-buttons {
+    display: flex;
+}
+
+.header-title h1 {
+    margin: 0; /* Remove margin for h1 */
+}
+
+.header-buttons button {
+    margin-left: 10px; /* Adjust margin */
+}
+
+/* Styling for content container */
+.content-container {
+    padding: 20px; /* Adjust padding as needed */
+}
+
+/* Styling for form actions */
+.form-actions {
+    margin-top: 20px;
+    text-align: right; /* Align buttons to the right */
+}
+
+.form-actions button {
+    margin-left: 10px; /* Adjust margin as needed */
+}
+
+/* Styling for textboxes */
+input[type="text"],
+input[type="password"],
+input[type="email"],
+.p-dropdown {
+    width: calc(50% - 5px); /* Adjust width to fit side by side */
+    padding: 10px;
+    margin-bottom: 20px; /* Increased margin for better spacing */
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    display: inline-block; /* Ensure inline-block to fit side by side */
+}
+
+/* Styling for dropdown arrow */
+.p-dropdown {
+    background-image: url("data:image/svg+xml,%3Csvg width='14' height='14' viewBox='0 0 14 14' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath fill-rule='evenodd' clip-rule='evenodd' d='M1.82422 3.53064L6.82422 8.53064L11.8242 3.53064L13.2386 4.94499L6.82422 11.3594L0.409882 4.94499L1.82422 3.53064Z' fill='%23666666'/%3E%3C/svg%3E%0A");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+}
+
+/* Styling for error messages */
+.p-error {
+    color: red;
+    font-size: 14px;
+}
+
+/* Adjust spacing for checkboxes */
+.p-field-checkbox {
+    margin-bottom: 20px; /* Increased margin for better spacing */
+}

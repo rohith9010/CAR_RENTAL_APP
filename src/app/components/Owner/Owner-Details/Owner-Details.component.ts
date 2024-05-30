@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {MatIconModule } from '@angular/material/icon';
 import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
-import { OwnerServiceService } from '../../../owner-service.service';
+import { OwnerServiceService } from '../../../../Services/OwnerService/owner-service.service';
 import { IOwner } from '../../../../Interfaces/IOwner';
 
 @Component({

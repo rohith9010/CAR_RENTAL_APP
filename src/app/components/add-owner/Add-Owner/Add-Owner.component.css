@@ -20,7 +20,7 @@ body {
 .header {
   width: calc(100% + 40px); /* Full width plus padding */
   margin-left: -20px; /* Negative margin to offset the padding */
-  background-color: #808080;
+  background-color: #007bff;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   padding: 20px 20px; /* Increased padding for more height */
   box-sizing: border-box;
@@ -46,6 +46,8 @@ body {
 
 .header-button {
   padding: 5px 10px;
+  border-color: #514e4e;
+  color: #eaf4ea;
 }
 
 /* Form styling */

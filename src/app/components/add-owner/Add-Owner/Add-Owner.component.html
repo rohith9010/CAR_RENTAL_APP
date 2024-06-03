@@ -73,7 +73,7 @@
               <div class="col-6">
                 <div class="form-group">
                   <label for="pincode">Pincode</label>
-                  <input pInputText id="pincode" [(ngModel)]="owner.Pincode"formControlName="pincode" placeholder="Enter pincode">
+                  <input pInputText id="pincode" [(ngModel)]="owner.Pincode" formControlName="pincode" placeholder="Enter pincode">
                   <div *ngIf="ownerForm.get('pincode')?.invalid && (ownerForm.get('pincode')?.dirty || ownerForm.get('pincode')?.touched)" class="warning">Pincode is required.</div>
                 </div>
               </div>

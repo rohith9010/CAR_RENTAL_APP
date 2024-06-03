@@ -14,6 +14,8 @@ import { OwnerDetailsComponent } from './components/Owner/Owner-Details/Owner-De
 import { AddOwnerComponent } from './components/add-owner/Add-Owner/Add-Owner.component';
 import { AddEmployeeComponent } from './components/add-employee/Add-Employee/Add-Employee.component';
 import { EmployeeDetailsComponent } from './components/EmployeeDetails/Employee-Details/Employee-Details.component';
+import { CustomerDetailsComponent } from './components/CustomerDetails/Customer-Details/Customer-Details.component';
+import { AddCustomerComponent } from './components/add-customer/Add-Customer/Add-Customer.component';
 export const routes: Routes = [
     {path:'',component:MenuComponent,pathMatch:'full'},
     
@@ -23,6 +25,8 @@ export const routes: Routes = [
     {path:'country_details',component:CountryDetailsComponent},
     {path:'Owner_details',component:OwnerDetailsComponent},
     {path:'Employee_Details',component:EmployeeDetailsComponent},
+    {path:'Customer_Details',component:CustomerDetailsComponent},
+
 
     {path:'Menu',component:MenuComponent},
 
@@ -43,5 +47,7 @@ export const routes: Routes = [
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
     {path:'State_Detail',component:StateDetailsComponent},
-    {path:'Add_State',component:AddStateComponent}
+    {path:'Add_State',component:AddStateComponent},
+    {path:'Add_Customer',component:AddCustomerComponent}
+
 ];

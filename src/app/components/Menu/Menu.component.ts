@@ -67,7 +67,7 @@ export class MenuComponent implements OnInit {
                       [
                         {
                           label: 'Driver',
-                          items: [{ label: 'Driver Details',routerLink:'' }]
+                          items: [{ label: 'Driver Details',routerLink:'/Driver_Details' }]
                         }
                       ]
                    ]

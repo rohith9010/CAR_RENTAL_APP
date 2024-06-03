@@ -16,6 +16,8 @@ import { AddEmployeeComponent } from './components/add-employee/Add-Employee/Add
 import { EmployeeDetailsComponent } from './components/EmployeeDetails/Employee-Details/Employee-Details.component';
 import { CustomerDetailsComponent } from './components/CustomerDetails/Customer-Details/Customer-Details.component';
 import { AddCustomerComponent } from './components/add-customer/Add-Customer/Add-Customer.component';
+import { DriverDetailsComponent } from './components/DriverDetails/Driver-Details/Driver-Details.component';
+import { AddDriverComponent } from './components/add-driver/Add-Driver/Add-Driver.component';
 export const routes: Routes = [
     {path:'',component:MenuComponent,pathMatch:'full'},
     
@@ -26,6 +28,8 @@ export const routes: Routes = [
     {path:'Owner_details',component:OwnerDetailsComponent},
     {path:'Employee_Details',component:EmployeeDetailsComponent},
     {path:'Customer_Details',component:CustomerDetailsComponent},
+    {path:'Driver_Details',component:DriverDetailsComponent},
+
 
 
     {path:'Menu',component:MenuComponent},
@@ -48,6 +52,8 @@ export const routes: Routes = [
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
     {path:'State_Detail',component:StateDetailsComponent},
     {path:'Add_State',component:AddStateComponent},
-    {path:'Add_Customer',component:AddCustomerComponent}
+    {path:'Add_Customer',component:AddCustomerComponent},
+    {path:'Add_Driver',component:AddDriverComponent}
+
 
 ];

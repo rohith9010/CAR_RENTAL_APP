@@ -54,14 +54,14 @@ export class AddEmployeeComponent implements OnInit {
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')],Validators.maxLength(10)],
       mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
       username: ['', Validators.required],
-      password: ['', [Validators.required, Validators.minLength(6)]],
-      bankName: ['', Validators.required],
-      accountNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      pan: ['', [Validators.required, Validators.pattern('/[A-Z]{5}\d{4}[A-Z]{1}/i')]],
-      privilages: this.fb.group({
+      password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
+      bankName: ['', [Validators.required,Validators.pattern('^[a-zA-Z\\s\\-\\\']{3,50}$')]],
+      accountNumber: ['', [Validators.required, Validators.pattern('^[0-9]{9,18}$')]],
+      pan: ['', [Validators.required, Validators.pattern('^[A-Z]{5}[0-9]{4}[A-Z]{1}$')]],
+
         cities: ['',false],
         states: ['',false],
         countries: ['',false],
@@ -74,7 +74,6 @@ export class AddEmployeeComponent implements OnInit {
         drivers: [false],
         reservations: [false],
         selectall:[false]
-      })
     });
   }
 
@@ -85,35 +84,6 @@ export class AddEmployeeComponent implements OnInit {
   }
 
   onClear(): void {
-    this.employeeForm.reset({
-      employeeName: '',
-      employeeType: '',
-      email: '',
-      address: '',
-      country: '',
-      state: '',
-      city: '',
-      phoneNumber: '',
-      mobileNumber: '',
-      username: '',
-      password: '',
-      bankName: '',
-      accountNumber: '',
-      pan: '',
-      privilages: {
-        cities: false,
-        states: false,
-        countries: false,
-        vehicles: false,
-        make: false,
-        models: false,
-        employees: false,
-        customers: false,
-        owners: false,
-        drivers: false,
-        reservations: false,
-        selectall: false
-      }
-    });
+    this.employeeForm.reset();
   }
 }

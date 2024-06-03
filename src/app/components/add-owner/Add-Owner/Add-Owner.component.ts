@@ -106,9 +106,9 @@ export class AddOwnerComponent implements OnInit {
     pincode: ['', Validators.required],
     phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
     mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-    bank: ['', Validators.required],
-    accountNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-    pan: ['', Validators.required],
+    bank: ['', [Validators.required,Validators.pattern('^[a-zA-Z\\s\\-\\\']{3,50}$')]],
+    accountNumber: ['', [Validators.required, Validators.pattern('^[0-9]{9,18}$')]],
+    pan: ['', [Validators.required,Validators.pattern('^[A-Z]{5}[0-9]{4}[A-Z]{1}$')]],
   });
  }
   onClear(): void {

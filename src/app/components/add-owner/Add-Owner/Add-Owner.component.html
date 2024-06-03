@@ -105,21 +105,30 @@
                 <div class="form-group">
                   <label for="bank">Bank</label>
                   <input pInputText id="bank"  [(ngModel)]="owner.BankName"formControlName="bank" placeholder="Please enter the bank name">
-                  <div *ngIf="ownerForm.get('bank')?.invalid && (ownerForm.get('bank')?.dirty || ownerForm.get('bank')?.touched)" class="warning">Don't leave the bank name empty.</div>
+                  <div *ngIf="ownerForm.get('bank')?.touched && ownerForm.get('bank')?.invalid" class="warning">
+                    <div *ngIf="ownerForm.get('bank')?.errors?.['required']">Please enter a bank name</div>
+                    <div *ngIf="ownerForm.get('bank')?.errors?.['pattern']">Bank name must be between 3 and 50 characters long and can only include letters, spaces, hyphens, and apostrophes</div>
+                  </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="accountNumber">Account Number</label>
-                  <input pInputText id="accountNumber"  [(ngModel)]="owner.BankAccount" formControlName="accountNumber" placeholder="Please enter digits only">
-                  <div *ngIf="ownerForm.get('accountNumber')?.invalid && (ownerForm.get('accountNumber')?.dirty || ownerForm.get('accountNumber')?.touched)" class="warning">Account Number should not be empty.</div>
+                  <input pInputText id="accountNumber"  [(ngModel)]="owner.BankAccount" formControlName="accountNumber" placeholder="Account Number">
+                  <div *ngIf="ownerForm.get('accountNumber')?.touched && ownerForm.get('accountNumber')?.invalid" class="warning">
+                    <div *ngIf="ownerForm.get('accountNumber')?.errors?.['required']">Please enter a bank account number</div>
+                    <div *ngIf="ownerForm.get('accountNumber')?.errors?.['pattern']">Bank account number must be 9 to 18 digits long</div>
+                  </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="pan">PAN</label>
-                  <input pInputText id="pan" [(ngModel)]="owner.PAN" formControlName="pan" placeholder="Enter the PAN">
-                  <div *ngIf="ownerForm.get('pan')?.invalid && (ownerForm.get('pan')?.dirty || ownerForm.get('pan')?.touched)" class="warning">PAN Number should not be empty.</div>
+                  <input pInputText id="pan" [(ngModel)]="owner.PAN" formControlName="pan" placeholder="PAN">
+                  <div *ngIf="ownerForm.get('pan')?.invalid && (ownerForm.get('pan')?.touched)" class="warning">
+                    <div *ngIf="ownerForm.get('pan')?.errors?.['required']">Please enter a PAN number</div>
+                    <div *ngIf="ownerForm.get('pan')?.errors?.['pattern']">PAN number must be in the format AAAAA9999A</div>
+                  </div>
                 </div>
               </div>
             </div>

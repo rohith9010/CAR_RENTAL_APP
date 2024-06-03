@@ -31,7 +31,7 @@ export class MenuComponent implements OnInit {
                   [
                       {
                           label: 'Vehicle Make & Model',
-                          items: [{ label: 'Vehicle Make Details',routerLink:'/vehicle_make_details' }, { label: 'Vehicle Model Details',routerLink:'/vehicle_model_details' }, { label: 'Vehicle Details',routerLink:'' }]
+                          items: [{ label: 'Vehicle Make Details',routerLink:'/vehicle_make_details' }, { label: 'Vehicle Model Details',routerLink:'/vehicle_model_details' }, { label: 'Vehicle Details',routerLink:'/Vehicle_Details' }]
                       }
                   ]
               ]
@@ -91,7 +91,7 @@ export class MenuComponent implements OnInit {
                   [
                     {
                       label: 'Owner',
-                      items: [{ label: 'Owner Details',routerLink:'Owner_details'},{ label: 'Add Owner',routerLink:'Add_owner' }]
+                      items: [{ label: 'Owner Details',routerLink:'Owner_details'}]
                     }
                   ]
                ]

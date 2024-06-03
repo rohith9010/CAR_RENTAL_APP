@@ -60,6 +60,4 @@ export class AddDriverComponent implements OnInit {
   onClear(): void {
     this.driverForm.reset();
   }
-
-
 }

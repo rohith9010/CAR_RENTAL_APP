@@ -1,0 +1,146 @@
+<header class="header">
+  <h1>Add Customer</h1>
+
+  <nav class="nav-buttons">
+    <a href="#"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
+    <a href="/Customer_Details"><button class="nav-buttons" type="button"><i class="fas fa-info-circle"></i> Customer Details</button></a>
+  </nav>
+</header>
+
+<main class="main">
+  <div class="form-container">
+    <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+      <fieldset class="fieldset">
+        <legend>Customer Information</legend>
+        <div class="horizontal-fields">
+
+          <div class="form-group">
+            <label for="customerName">Customer Name:</label>
+            <input type="text" id="customerName" formControlName="customerName" placeholder="enter the name of the Customer">
+            <div *ngIf="customerForm.get('customerName')?.invalid && (customerForm.get('customerName')?.dirty || customerForm.get('employeeName')?.touched)" class="warning">Employee name is required.</div>
+          </div>
+
+          <div class="form-group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" formControlName="email" placeholder="Enter Email">
+          <div *ngIf="customerForm.get('email')?.touched && customerForm.get('email')?.invalid" class="warning">
+            <div *ngIf="customerForm.get('email')?.errors?.['required']">Please enter an email address</div>
+            <div *ngIf="customerForm.get('email')?.errors?.['email']">Please enter a valid email address</div>
+          </div>
+          </div> 
+
+        </div>
+
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend>Address Details</legend>
+        <div class="form-group">
+
+          <label for="address">Address:</label>
+          <textarea id="address" formControlName="address" placeholder="Enter Address"></textarea>
+          <div *ngIf="customerForm.get('address')?.invalid && (customerForm.get('address')?.dirty || customerForm.get('address')?.touched)" class="warning">Address is required.</div>
+
+        </div>
+      <div class="horizontal-fields">
+
+        <div class="form-group">
+          <label for="country">Country:</label>
+          <select name="country" id="country" formControlName="country" placeholder="Select Country">
+            <option value="" selected disabled>Select Country</option>
+            <option value="USA">USA</option>
+            <option value="Canada">Canada</option>
+            <option value="India">India</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="state">State:</label>
+          <select name="state" id="state" formControlName="state" placeholder="Select State">
+            <option value="" selected disabled>Select State</option>
+            <option value="">Telangana</option>
+            <option value="">Texas</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="city">City:</label>
+          <select name="city" id="city" formControlName="city" placeholder="Select City">
+            <option value="" selected disabled>Select City</option>
+            <option value="">Hyd</option>
+            <option value="">Sec</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+          <label for="pincode">Pincode</label>
+          <input pInputText id="pincode" formControlName="pincode" placeholder="Enter pincode">
+          <div *ngIf="customerForm.get('pincode')?.invalid && (customerForm.get('pincode')?.dirty || customerForm.get('pincode')?.touched)" class="warning">Pincode is required.</div>
+        </div>
+      </div>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend>Contact Information</legend>
+        <div class="horizontal-fields">
+
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" formControlName="phoneNumber" placeholder="Phone Number">
+                <div *ngIf="customerForm.get('phoneNumber')?.touched && customerForm.get('phoneNumber')?.invalid" class="warning">
+                  <div *ngIf="customerForm.get('phoneNumber')?.errors?.['required']">Please enter a phone number</div>
+                  <div *ngIf="customerForm.get('phoneNumber')?.errors?.['pattern']">Please enter digits only</div>
+                  <div *ngIf="customerForm.get('phoneNumber')?.errors?.['maxLength']">Entered phone number is not 10 digits</div>
+              </div>
+          </div>
+
+          <div class="form-group">
+            <label for="mobileNumber">Mobile Number:</label>
+            <input type="tel" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number">
+              <div *ngIf="customerForm.get('mobileNumber')?.touched && customerForm.get('mobileNumber')?.invalid" class="warning">
+                <div *ngIf="customerForm.get('mobileNumber')?.errors?.['required']">Please enter a Mobile number</div>
+                <div *ngIf="customerForm.get('mobileNumber')?.errors?.['pattern']">Please enter a valid Mobile number</div>
+              </div>
+          </div>
+
+        </div>
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend>Login Credentials</legend>
+      <div class="horizontal-fields">
+
+        <div class="form-group">
+          <label for="username">User name:</label>
+          <input type="text" id="username" formControlName="username" placeholder="User Name">
+          <div *ngIf="customerForm.get('username')?.invalid && (customerForm.get('username')?.dirty || customerForm.get('username')?.touched)" class="warning">UserName is Required</div> 
+        </div>
+
+        <div class="form-group">
+          <label for="password">Password:</label>
+          <input type="password" id="password" formControlName="password" placeholder="Password" required minlength="6">
+          <div *ngIf="customerForm.get('password')?.touched && customerForm.get('password')?.invalid" class="warning">
+            <div *ngIf="customerForm.get('password')?.errors?.['required']">Please enter a password</div>
+            <div *ngIf="customerForm.get('password')?.errors?.['pattern']">Password must be at least 8 characters long and include uppercase and lowercase letters, a digit, and a special character</div>
+          </div>
+        </div>
+      </div>
+      </fieldset>
+
+      <div class="form-actions">
+
+        <button type="submit" class="button-1">
+          <i class="fas fa-check"></i> Submit
+        </button>
+
+        <button type="button" class="button-red" (click)="onClear()">
+          <i class="fas fa-times"></i> Clear
+        </button>
+
+        <button type="button" class="button-blue">
+          <i class="fas fa-edit"></i> Update
+        </button>
+
+      </div>
+    </form>
+  </div>

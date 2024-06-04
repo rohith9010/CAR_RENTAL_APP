@@ -6,10 +6,8 @@
       </div>
       <div class="header-buttons">
         <a href="#"><button pButton class="header-button" icon="pi pi-home" label="Home"></button></a>
-        <a href="Owner_details"><button pButton class="header-button" icon="pi pi-info" label="Owner Details"></button></a>
-        <!-- <button pButton class="header-button" icon="pi pi-user" label="Profile"></button> -->
-
-      </div>
+        <a href="/Owner_details"><button pButton class="header-button" icon="pi pi-info" label="Owner Details"></button></a>
+   </div>
     </div>
   </header>
   <div class="add-owner-form">
@@ -22,7 +20,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="ownerName">Owner Name</label>
-                  <input pInputText id="ownerName" formControlName="ownerName" placeholder="Please enter the name of the owner">
+                  <input pInputText id="ownerName" [(ngModel)]="owner.Name" formControlName="ownerName" placeholder="Please enter the name of the owner">
                   <div *ngIf="ownerForm.get('ownerName')?.invalid && (ownerForm.get('ownerName')?.dirty || ownerForm.get('ownerName')?.touched)" class="warning">Owner name is required.</div>
                 </div>
               </div>
@@ -33,39 +31,50 @@
             <div class="grid">
               <div class="col-12">
                 <div class="form-group">
-                  <label for="addressLine1">Address Line</label>
-                  <input pInputText id="addressLine1" formControlName="addressLine1" placeholder="Address Line">
+                  <label for="addressLine1">Address Line 1</label>
+                  <input pInputText id="addressLine1" [(ngModel)]="owner.Address1"formControlName="addressLine1" placeholder="Address Line 1">
                   <div *ngIf="ownerForm.get('addressLine1')?.invalid && (ownerForm.get('addressLine1')?.dirty || ownerForm.get('addressLine1')?.touched)" class="warning">Address is required.</div>
-
+                </div>
+              </div>
+              <div class="col-1">
+                <div class="form-group">
+                  <label for="addressLine2">Address Line 2</label>
+                  <input pInputText id="addressLine2" [(ngModel)]="owner.Address2"formControlName="addressLine2" placeholder="Address Line 2">
+                  <div *ngIf="ownerForm.get('addressLine2')?.invalid && (ownerForm.get('addressLine2')?.dirty || ownerForm.get('addressLine2')?.touched)" class="warning">Address is required.</div>
                 </div>
               </div>
               <div class="col-4">
-                <div class="form-group">
+                <div class="form-group">  
                   <label for="country">Country</label>
-                  <p-dropdown [options]="countries" formControlName="country" placeholder="Please Select"></p-dropdown>
-                  <div *ngIf="ownerForm.get('country')?.invalid && (ownerForm.get('country')?.dirty || ownerForm.get('country')?.touched)" class="warning">Please Select Country Properly.</div>
-
-                </div>
+                  <select formControlName="country" [(ngModel)]="country.CountryNo">
+                    <option value="" selected disabled>Select Country</option>
+                    <option *ngFor="let country of CountryList" [value]="country.CountryNo">{{ country.Country }}</option>
+                  </select>
+                </div>  
               </div>
               <div class="col-4">
                 <div class="form-group">
                   <label for="state">State</label>
-                  <p-dropdown [options]="states" formControlName="state" placeholder="Please Select"></p-dropdown>
-                  <div *ngIf="ownerForm.get('state')?.invalid && (ownerForm.get('state')?.dirty || ownerForm.get('state')?.touched)" class="warning">Please Select State Properly.</div>
+                  <select formControlName="state" [(ngModel)]="state.StateNo">
+                    <option value="" selected disabled>Select State</option>
+                    <option *ngFor="let state of StatesList" [value]="state.StateNo">{{ state.state }}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-4">
                 <div class="form-group">
                   <label for="city">City</label>
-                  <p-dropdown [options]="cities" formControlName="city" placeholder="Please Select"></p-dropdown>
-                  <div *ngIf="ownerForm.get('city')?.invalid && (ownerForm.get('city')?.dirty || ownerForm.get('city')?.touched)" class="warning">Please Select City Properly.</div>
+                  <select formControlName="city" [(ngModel)]="city.CityNo">
+                    <option value="" selected disabled>Select City</option>
+                    <option *ngFor="let city of CitiesList" [value]="city.CityNo">{{ city.CityName }}</option>
+                  </select>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="pincode">Pincode</label>
-                  <input pInputText id="pincode" formControlName="pincode" placeholder="Enter pincode">
-                  <div *ngIf="ownerForm.get('pincode')?.invalid && (ownerForm.get('pincode')?.dirty || ownerForm.get('pincode')?.touched)" class="warning">Pincode is Empty.</div>
+                  <input pInputText id="pincode" [(ngModel)]="owner.Pincode" formControlName="pincode" placeholder="Enter pincode">
+                  <div *ngIf="ownerForm.get('pincode')?.invalid && (ownerForm.get('pincode')?.dirty || ownerForm.get('pincode')?.touched)" class="warning">Pincode is required.</div>
                 </div>
               </div>
             </div>
@@ -75,15 +84,15 @@
             <div class="grid">
               <div class="col-6">
                 <div class="form-group">
-                  <label for="PhoneNumber">Phone Number</label>
-                  <input pInputText id="phoneNumber" formControlName="phoneNumber" placeholder="Please enter the Phone Number">
+                  <label for="phoneNumber">Phone Number</label>
+                  <input pInputText id="phoneNumber" [(ngModel)]="owner.PhoneNumber" formControlName="phoneNumber" placeholder="Please enter the Phone Number">
                   <div *ngIf="ownerForm.get('phoneNumber')?.invalid && (ownerForm.get('phoneNumber')?.dirty || ownerForm.get('phoneNumber')?.touched)" class="warning">Please enter digits only.</div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
-                  <label for="mobileNumber">Phone Number</label>
-                  <input pInputText id="mobileNumber" formControlName="mobileNumber" placeholder="Please enter the Mobile Number">
+                  <label for="mobileNumber">Mobile Number</label>
+                  <input pInputText id="mobileNumber" [(ngModel)]="owner.MobileNumber" formControlName="mobileNumber" placeholder="Please enter the Mobile Number">
                   <div *ngIf="ownerForm.get('mobileNumber')?.invalid && (ownerForm.get('mobileNumber')?.dirty || ownerForm.get('mobileNumber')?.touched)" class="warning">Please enter digits only.</div>
                 </div>
               </div>
@@ -95,30 +104,39 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="bank">Bank</label>
-                  <input pInputText id="bank" formControlName="bank" placeholder="Please enter the bank name">
-                  <div *ngIf="ownerForm.get('bank')?.invalid && (ownerForm.get('bank')?.dirty || ownerForm.get('bank')?.touched)" class="warning">Don't Leave Bank Name Empty.</div>
+                  <input pInputText id="bank"  [(ngModel)]="owner.BankName"formControlName="bank" placeholder="Please enter the bank name">
+                  <div *ngIf="ownerForm.get('bank')?.touched && ownerForm.get('bank')?.invalid" class="warning">
+                    <div *ngIf="ownerForm.get('bank')?.errors?.['required']">Please enter a bank name</div>
+                    <div *ngIf="ownerForm.get('bank')?.errors?.['pattern']">Bank name must be between 3 and 50 characters long and can only include letters, spaces, hyphens, and apostrophes</div>
+                  </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="accountNumber">Account Number</label>
-                  <input pInputText id="accountNumber" formControlName="accountNumber" placeholder="Please enter digits only">
-                  <div *ngIf="ownerForm.get('accountNumber')?.invalid && (ownerForm.get('accountNumber')?.dirty || ownerForm.get('accountNumber')?.touched)" class="warning">Account Number should not Be Empty.</div>
+                  <input pInputText id="accountNumber"  [(ngModel)]="owner.BankAccount" formControlName="accountNumber" placeholder="Account Number">
+                  <div *ngIf="ownerForm.get('accountNumber')?.touched && ownerForm.get('accountNumber')?.invalid" class="warning">
+                    <div *ngIf="ownerForm.get('accountNumber')?.errors?.['required']">Please enter a bank account number</div>
+                    <div *ngIf="ownerForm.get('accountNumber')?.errors?.['pattern']">Bank account number must be 9 to 18 digits long</div>
+                  </div>
                 </div>
               </div>
               <div class="col-6">
                 <div class="form-group">
                   <label for="pan">PAN</label>
-                  <input pInputText id="pan" formControlName="pan" placeholder="Enter the PAN">
-                  <div *ngIf="ownerForm.get('pan')?.invalid && (ownerForm.get('pan')?.dirty || ownerForm.get('pan')?.touched)" class="warning">PAN Number should not be Empty.</div>
+                  <input pInputText id="pan" [(ngModel)]="owner.PAN" formControlName="pan" placeholder="PAN">
+                  <div *ngIf="ownerForm.get('pan')?.invalid && (ownerForm.get('pan')?.touched)" class="warning">
+                    <div *ngIf="ownerForm.get('pan')?.errors?.['required']">Please enter a PAN number</div>
+                    <div *ngIf="ownerForm.get('pan')?.errors?.['pattern']">PAN number must be in the format AAAAA9999A</div>
+                  </div>
                 </div>
               </div>
             </div>
           </fieldset>
           <div class="form-actions">
-            <button pButton type="submit" label="Save" icon="pi pi-check" class="p-mr-2"></button>
+            <button pButton type="submit" label="Save" icon="pi pi-check"    class="p-mr-2"></button>
             <button pButton type="button" label="Clear" icon="pi pi-times" (click)="onClear()"></button>
-            <button pButton type="button" label="Update" icon="pi pi-refresh"></button>
+            <button pButton type="button" label="Update" icon="pi pi-refresh" (click)="Update()"></button>
           </div>
         </form>
       </p-card>

@@ -1,40 +1,50 @@
- <div class="container">
-    <img src="../assets/images/B.jpg" alt="Background Image" class="background-img">
-    <div class="menu-container">
-        <div class="menu">
-            <h1>𝕍𝕖𝕙𝕚𝕔𝕝𝕖 𝕄𝕒𝕟𝕒𝕘𝕖𝕞𝕖𝕟𝕥</h1>
-            <hr>
+<div class="header">
+    <h1>Vehicle Management</h1>
+    <div class="header-left">
+        <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
+        <a href="/Add_vehicle_Make" class="icon-button"><i class="pi pi-plus-circle"></i></a>
+    </div>
+</div>
+<div class="container">
+    <div class="content">
+        <div class="search-container">
             <h3>Filter</h3>
-            <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
-           <button type="button" (click)="search()"><span class="pi pi-search"></span></button>
-            <div>
-                <table class="table">
-                    @if(filteredMakeList)
-                    {
-                        @for (vehicle of filteredMakeList; track vehicle.MakeNo) {
-                            <tr>
-                                <td>{{vehicle.Name}}</td>
-                                <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><span class="pi pi-user-edit"></span></a></td>
-                                <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><span class="pi pi-trash"></span></a></td>   
-                            </tr>
-                        } 
-                    }
-                   @else(){
+            <div class="search-box">
+                <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search..." (keyup)="search()">
+                <button class="btn-clear" *ngIf="showClearIcon" (click)="clearSearch()">
+                  <i class="pi pi-times"></i> </button>
+              </div>
+        </div>
+        <div class="table-container">
+            <table class="table">
+                @if(filteredMakeList)
+                {
+                    @for (vehicle of filteredMakeList; track vehicle.MakeNo) {
+                        <tr>
+                            <td>{{vehicle.Name}}</td>
+                            <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><i class="pi pi-user-edit"></i></a></td>
+                            <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><i class="pi pi-trash"></i></a></td>   
+                        </tr>
+                    } 
+                }
+                @else
+                {
                     @for (vehicle of vehiclesList; track vehicle.MakeNo) {
                         <tr>
                             <td>{{vehicle.Name}}</td>
-                            <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><span class="pi pi-user-edit"></span></a></td>
-                            <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><span class="pi pi-trash"></span></a></td>
+                            <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><i class="pi pi-user-edit"></i></a></td>
+                            <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><i class="pi pi-trash"></i></a></td>
                         </tr>
                     }
-                   }
-                </table>
-            </div>
-            <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
-            <a href="/Add_vehicle_Make" class="add_circle"><mat-icon>add_circle</mat-icon></a>
-            <!-- <a href="#" class="arrow-back"><mat-icon>arrow-back</mat-icon></a>  -->
-
+                }
+            </table>
         </div>
-        
+        <div class="pagination">
+            <button (click)="onPreviousPage()" [disabled]="currentPage === 1">Previous</button>
+            <button *ngFor="let page of getPages()" (click)="onPageChange(page)" [class.active]="page === currentPage">
+                {{ page }}
+            </button>
+            <button (click)="onNextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
+        </div>
     </div>
-</div>>
+</div>

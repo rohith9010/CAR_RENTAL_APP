@@ -12,33 +12,52 @@ import { AddStateComponent } from './components/add-state/add-state.component';
 import { CountryDetailsComponent } from './components/CountryDetails/Country-Details/Country-Details.component';
 import { OwnerDetailsComponent } from './components/Owner/Owner-Details/Owner-Details.component';
 import { AddOwnerComponent } from './components/add-owner/Add-Owner/Add-Owner.component';
+import { AddEmployeeComponent } from './components/add-employee/Add-Employee/Add-Employee.component';
+import { EmployeeDetailsComponent } from './components/EmployeeDetails/Employee-Details/Employee-Details.component';
+import { CustomerDetailsComponent } from './components/CustomerDetails/Customer-Details/Customer-Details.component';
+import { AddCustomerComponent } from './components/add-customer/Add-Customer/Add-Customer.component';
+import { DriverDetailsComponent } from './components/DriverDetails/Driver-Details/Driver-Details.component';
+import { AddDriverComponent } from './components/add-driver/Add-Driver/Add-Driver.component';
+import { VehicleDetailsComponent } from './components/VehicleDetails/Vehicle-Details/Vehicle-Details.component';
+import { AddVehicleComponent } from './components/add-vehicle/Add-Vehicle/Add-Vehicle.component';
 export const routes: Routes = [
     {path:'',component:MenuComponent,pathMatch:'full'},
+    
     {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
     {path:'vehicle_model_details',component:VehicleModelDetailsComponent},
     {path:'city_details',component:AddCityDetailsComponent},
-    {path:'Add_owner',component:AddOwnerComponent},
+    {path:'country_details',component:CountryDetailsComponent},
+    {path:'Owner_details',component:OwnerDetailsComponent},
+    {path:'Employee_Details',component:EmployeeDetailsComponent},
+    {path:'Customer_Details',component:CustomerDetailsComponent},
+    {path:'Driver_Details',component:DriverDetailsComponent},
+    {path:'Vehicle_Details',component:VehicleDetailsComponent},
+
+
+
     {path:'Menu',component:MenuComponent},
 
 
-
     {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
-    {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent},
-    
     {path:'Add_City/:Stateid/:Cityid',component:AddCityComponent},
+    {path:'Add_State/:CountryId/:StateId',component:AddStateComponent},
+    {path:'Add_country/:id',component:CountryAddComponent},
+    {path:'Add_owner/:Id',component:AddOwnerComponent},
+    {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent},
 
+    {path:'Add_owner',component:AddOwnerComponent},
     {path:'Add_City',component:AddCityComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
-
-    {path:'country_details',component:CountryDetailsComponent},
-    {path:'Add_country/:id',component:CountryAddComponent},
-    {path:'Owner_details',component:OwnerDetailsComponent},
-    
+    {path:'Add_employee',component:AddEmployeeComponent},
     {path:'Add_country',component:CountryAddComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
     {path:'State_Detail',component:StateDetailsComponent},
-    {path:'Add_State/:CountryId/:StateId',component:AddStateComponent},
-    {path:'Add_State',component:AddStateComponent}
+    {path:'Add_State',component:AddStateComponent},
+    {path:'Add_Customer',component:AddCustomerComponent},
+    {path:'Add_Driver',component:AddDriverComponent},
+    {path:'Add_Vehicle',component:AddVehicleComponent}
+
+
 ];

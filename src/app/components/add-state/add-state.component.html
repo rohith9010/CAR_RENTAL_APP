@@ -1,32 +1,24 @@
-<div class="container">
-    <img src="../assets/images/B.jpg" alt="Background Image" class="background-img">
-    <div class="menu-container">
-        <div class="menu">
-            <h3>State Details</h3>
-            <hr><h3>Add State</h3>
-            <div class="Add_State">
-                <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
-                    <div class="form-group">
-                        <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
-                        <!-- <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a> -->
-                        <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
-                        
-                          <select name="drop" [(ngModel)]="State.CountryNo">
-                              <option *ngFor="let country of CountryList" [value]="country.CountryNo" >{{country.Country}}</option>
-                          </select><br>
-                          <div class="card flex justify-content-center">
-                            <p-floatLabel>
-                                <input pInputText id="Save" name="Save" min="1" max="5" [(ngModel)]="State.state" />
-                                <label for="State Name">State Name</label>
-                            </p-floatLabel>
-                          </div>
-                    </div>
-                    <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
-                    <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>
-                    
-                </form>
-                <!-- <button (click)="Clear()" class="btn btn-success">Clear</button> -->
-            </div>
+ <header>
+    <div class="header-content">
+        <h1>Add State</h1>
+        <div class="header-buttons">
+            <a href="#"><button pButton class="header-button" icon="pi pi-home" label="Home">Home</button></a>
+            <a href="/State_Detail"><button pButton class="header-button" icon="pi pi-info" label="State Details">State Details</button></a>
         </div>
     </div>
-  </div>
+</header>
+<div class="container">
+    <form class="form-content" (ngSubmit)="Save()">
+        <div class="input-group">
+            <select name="drop" [(ngModel)]="State.CountryNo">
+                <option *ngFor="let country of CountryList" [value]="country.CountryNo" >{{country.Country}}</option>
+            </select><br>
+            <input type="text" [(ngModel)]="State.state" name="statename" placeholder="Enter text">
+            <button type="button" class="clear-button" (click)="clearInput()">&times;</button>
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="form-button">Save</button>
+            <button type="button" class="form-button" (click)="update()">Update</button>
+        </div>
+    </form>
+</div>

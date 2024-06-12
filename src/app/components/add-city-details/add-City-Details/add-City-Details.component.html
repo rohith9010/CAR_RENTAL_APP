@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
   <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
   <div class="menu-container">
       <div class="menu">
@@ -16,16 +16,6 @@
                 </tr>
                   @if(false)
                   {
-                      <!-- @for (state of stateList; track state.StateNo) {
-                        @for(model of state.citys; track model.CityNo){
-                            <tr>
-                                <td>{{model.CityName}}</td>
-                                <td>{{state.State}}</td>
-                                <td><a type="button"  routerLink="/Add_City/{{model.CityNo}}"><span class="pi pi-user-edit"></span></a></td>
-                                <td><a href="javascript:void(0)" (click) = "delete(model.CityNo)"><span class="pi pi-trash"></span></a></td>   
-                            </tr>
-                          }
-                      }  -->
                   }
                  @else()
                     {
@@ -46,9 +36,52 @@
           </div>
           <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
           <a href="/Add_City" class="add_circle"><mat-icon>add_circle</mat-icon></a>
-          <!-- <a href="#" class="arrow-back"><mat-icon>arrow-back</mat-icon></a>  -->
-
       </div>
       
   </div>
-</div>>
+</div>> -->
+
+<div class="header">
+    <h1>City Management</h1>
+    <div class="header-left">
+        <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
+        <a href="/Add_City" class="icon-button"><i class="pi pi-plus-circle"></i></a>
+    </div>
+</div>
+<main>
+    <section class="filter">
+        <h2>Filter</h2>
+        <div class="search-box">
+            <input type="text" class="input-search" name="filterInput" placeholder="Search Vehicle Models..." [(ngModel)]="searchQuery" (keyup)="search()">
+            <button type="button" class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+    </section>
+    <section class="vehicle-list">
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Cities</th>
+                    <th>States</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let city of getDisplayedModels(); let i = index">
+                    <td>{{ city.CityName }}</td>
+                    <td>{{ getMakeName(city.StateNo) }}</td>
+                    <td><a href="/Add_City/{{ city.StateNo }}/{{ city.CityNo }}"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="javascript:void(0)" (click)="delete(city.CityNo)"><i class="fas fa-trash"></i></a></td>
+                  </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <button *ngFor="let page of totalPages()" (click)="onPageChange(page)" [class.active]="page === currentPage">{{ page }}</button>
+    </div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Location Management System</p>
+</footer>

@@ -24,6 +24,8 @@ export class AddCityComponent implements OnInit {
   city:ICity={CityNo:0,CityName:"",StateNo:0}
   CitiesList!:ICity[];
   statesList:IState[] = [];
+  inputValue: string = '';
+
   constructor(private route : ActivatedRoute,private router:Router,private CityService:CitiesService,private stateservice : StateserviceService) { }
 
   ngOnInit() {
@@ -74,4 +76,7 @@ Save()
     this.router.navigate(['/city_details'])});
   }
 
+  clearInput() {
+    this.inputValue = '';
+  }
 }

@@ -1,6 +1,9 @@
 @import "primeng/resources/themes/lara-light-blue/theme.css";
 @import "primeng/resources/primeng.css";
 @import "primeicons/primeicons.css";
+@import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
+@import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600");
+
 
 body, html {
     margin: 0;

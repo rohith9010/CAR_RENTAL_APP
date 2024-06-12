@@ -1,34 +1,24 @@
+<header>
+    <div class="header-content">
+        <h1>Add City</h1>
+        <div class="header-buttons">
+            <a href="#"><button pButton class="header-button" icon="pi pi-home" label="Home">Home</button></a>
+            <a href="/city_details"><button pButton class="header-button" icon="pi pi-info" label="State Details">State Details</button></a>
+        </div>
+    </div>
+</header>
 <div class="container">
-  <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
-  <div class="menu-container">
-      <div class="menu">
-          <h3>City Details</h3>
-          <hr><h3>Add City</h3>
-          <h5>City Details</h5>
-          <div class="Add_City">
-              <form (ngSubmit)="Save()" class="mb-3" style="margin-top: 2%;">
-                  <div class="form-group">
-                      <a href="#" class="home-icon"> <mat-icon>home</mat-icon></a> 
-                      <!-- <a href="" class="add_circle"> <mat-icon>add_circle</mat-icon></a> -->
-                      <!-- <a href="#" class="back-icon"><mat-icon>arrow-back</mat-icon></a> -->
-                      
-                        <select name="drop" [(ngModel)]="city.StateNo">
-                            <option *ngFor="let state of statesList" [value]="state.StateNo" >{{state.state}}</option>
-                        </select><br>
-
-                      <div class="card flex justify-content-center">
-                        <p-floatLabel>
-                            <input pInputText id="Save" name="Save" min="1" max="5" [(ngModel)]="city.CityName" />
-                            <label for="City Name">City Name</label>
-                        </p-floatLabel>
-                    </div>
-                  </div>
-                  <button (click)="update()" class="btn btn-success" style="margin-top: 2%;">update</button>
-                  <button type="submit" class="btn btn-primary" style="margin-top: 2%;">Save</button>
-                  
-              </form>
-              <!-- <button (click)="Clear()" class="btn btn-success">Clear</button> -->
-          </div>
-      </div>
-  </div>
+    <form class="form-content" (ngSubmit)="Save()">
+        <div class="input-group">
+            <select name="drop" [(ngModel)]="city.StateNo">
+                <option *ngFor="let state of statesList" [value]="state.StateNo" >{{state.state}}</option>
+            </select><br>
+            <input type="text" [(ngModel)]="city.CityName" name="cityname" placeholder="Enter text">
+            <button type="button" class="clear-button" (click)="clearInput()">&times;</button>
+        </div>
+        <div class="form-buttons">
+            <button type="submit" class="form-button">Save</button>
+            <button type="button" class="form-button" (click)="update()">Update</button>
+        </div>
+    </form>
 </div>

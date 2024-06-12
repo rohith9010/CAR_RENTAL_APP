@@ -32,6 +32,7 @@ export const routes: Routes = [
     {path:'Customer_Details',component:CustomerDetailsComponent},
     {path:'Driver_Details',component:DriverDetailsComponent},
     {path:'Vehicle_Details',component:VehicleDetailsComponent},
+    {path:'State_Detail',component:StateDetailsComponent},
 
 
 
@@ -53,7 +54,6 @@ export const routes: Routes = [
     {path:'Add_country',component:CountryAddComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
-    {path:'State_Detail',component:StateDetailsComponent},
     {path:'Add_State',component:AddStateComponent},
     {path:'Add_Customer',component:AddCustomerComponent},
     {path:'Add_Driver',component:AddDriverComponent},

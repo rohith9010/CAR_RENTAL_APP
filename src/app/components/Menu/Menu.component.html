@@ -1,49 +1,67 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Scrollable Sections</title>
-</head>
-<body>
-    <header>
-        <div class="logo">
-            <img src="assets\images\logo.png" alt="INNOV Logo"> <!-- Replace with the correct path to your logo -->
-        </div>
-        <nav>
-            <ul>
-                <li><a href="#section1">Home</a></li>
-                <li><a href="#section2">About</a></li>
-                <li><a href="#nextpage">Next Page</a></li>
-            </ul>
-        </nav>
-    </header>
-    <div class="scroll-container">
-        <section class="background-section" id="section1">
-            <div class="section-content">
-                <h1>The Future of Car Rental Is Here</h1>
-                <hr class="gold-line">
-                <p>--"! 𝙲𝚑𝚘𝚘𝚜𝚎 𝚢𝚘𝚞𝚛 𝚛𝚒𝚍𝚎 𝚊𝚗𝚍 𝚑𝚒𝚝 𝚝𝚑𝚎 𝚛𝚘𝚊𝚍 !"--</p>
-            </div>
-        </section>
-        <section class="background-section" id="section2">
-            <div class="card">
-                <div class="flex flex-column md:flex-row gap-5">
-                    <div class="flex-auto">
-                        <p-scrollPanel [style]="{ width: '100%', height: '1000px' }" styleClass="custombar1">
-                            <div class="card">
-                                <p-megaMenu [model]="items" orientation="vertical" />
-                            </div>   
-                        </p-scrollPanel>
-                    </div>
-                    <div class="flex-auto">
-                        <p-scrollPanel [style]="{ width: '100%', height: '1000px' }" styleClass="custombar1">
-                            <!-- Content based on menu selection will be displayed here -->
-                        </p-scrollPanel>
-                    </div>
-                </div>
-            </div>
-        </section>                         
-    </div>
-</body>
-</html>
+<mat-toolbar color="primary" class="header-container">
+  <button mat-icon-button (click)="toggleSideNav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="header-title">INNOV RENTAL</span>
+  <span class="spacer"></span>
+  <div class="header-icons">
+    <button mat-icon-button class="header-icon-button" (click)="settingsClicked()">
+      <mat-icon class="header-icon">settings</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" (click)="notificationsClicked()">
+      <mat-icon class="header-icon">notifications</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" (click)="helpClicked()">
+      <mat-icon class="header-icon">help</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" (click)="profileClicked()">
+      <mat-icon class="header-icon">person</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [opened]="sideNavOpened" (openedChange)="sideNavOpened = $event">
+    <mat-nav-list>
+      <mat-expansion-panel class="sidenav-item" *ngFor="let menuItem of menuItems">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>{{ menuItem.icon }}</mat-icon>
+            {{ menuItem.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list class="sidenav-sub-list">
+          <a mat-list-item class="sidenav-sub-item" *ngFor="let subItem of menuItem.subItems" [routerLink]="subItem.routerLink">{{ subItem.name }}</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #notificationDialog>
+  <h1 mat-dialog-title>Notification</h1>
+  <div mat-dialog-content>
+    <p>Nothing new right now</p>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</ng-template>
+
+<ng-template #helpDialog>
+  <h1 mat-dialog-title>Help</h1>
+  <div mat-dialog-content>
+    <ul>
+      <li><a [routerLink]="'/feedback'">About Innov Rental</a></li>
+      <li><a [routerLink]="'/community'">Whats New</a></li>
+      <li><a [routerLink]="'/legal'">Help Center</a></li>
+      <li><a [routerLink]="'/privacy'">Report an issue</a></li>
+    </ul>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</ng-template>

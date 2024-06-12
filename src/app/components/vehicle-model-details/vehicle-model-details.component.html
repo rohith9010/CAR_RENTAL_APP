@@ -1,54 +1,44 @@
-<div class="container">
-  <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
-  <div class="menu-container">
-      <div class="menu">
-          <h1>Vehicle Model Management</h1>
-          <hr>
-          <h3>Filter</h3>
-          <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
-         <button type="button" (click)="search()"><span class="pi pi-search"></span></button>
-          <div>
-              <table class="table">
-                <tbody>
+<div class="header">
+    <h1>Vehicle Model Management</h1>
+    <div class="header-left">
+        <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
+        <a href="/Add_vehicle_Model" class="icon-button"><i class="pi pi-plus-circle"></i></a>
+    </div>
+</div>
+<main>
+    <section class="filter">
+        <h2>Filter</h2>
+        <div class="search-box">
+            <input type="text" class="input-search" name="filterInput" placeholder="Search Vehicle Models..." [(ngModel)]="searchQuery" (keyup)="search()">
+            <button type="button" class="search-button"><i class="fas fa-search"></i></button>
+        </div>
+    </section>
+    <section class="vehicle-list">
+        <div class="table-container">
+        <table>
+            <thead>
                 <tr>
-                    <th>Vehicle_Model</th>
-                    <th>Vehicle_Make</th>
+                    <th>Vehicle Model</th>
+                    <th>Vehicle Make</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
-                  @if(false)
-                  {
-                      <!-- @for (vehicle of filteredModelList; track vehicle.MakeNo) {
-                        @for(model of vehicle.Vehiclemodels; track model.ModelNo){
-                            <tr>
-                                <td>{{model.Name}}</td>
-                                <td>{{vehicle.Name}}</td>
-                                <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.ModelNo}}"><span class="pi pi-user-edit"></span></a></td>
-                                <td><a href="javascript:void(0)" (click) = "delete(vehicle.ModelNo)"><span class="pi pi-trash"></span></a></td>   
-                            </tr>
-                          }
-                      }  -->
-                  }
-                 @else()
-                    {
-                        @for (vehicle of vehicleList; track vehicle.MakeNo) {
-                                @for(model of vehicle.Vehiclemodels; track model.ModelNo){
-                                    <tr>
-                                        <td>{{model.Name}}</td>
-                                        <td>{{vehicle.Name}}</td>
-                                        <td><a type="button"  routerLink="/Add_vehicle_Model/{{vehicle.MakeNo}}/{{model.ModelNo}}"><span class="pi pi-user-edit"></span></a></td>
-                                        <td><a href="javascript:void(0)" (click) = "delete(model.ModelNo)"><span class="pi pi-trash"></span></a></td>   
-                                    </tr>
-                                }
-                            } 
-                    
-                    }
-                </tbody>
-              </table>
-          </div>
-          <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
-          <a href="/Add_vehicle_Model" class="add_circle"><mat-icon>add_circle</mat-icon></a>
-          <!-- <a href="#" class="arrow-back"><mat-icon>arrow-back</mat-icon></a>  -->
-
-      </div>
-      
-  </div>
-</div>>
+            </thead>
+            <tbody>
+                <tr *ngFor="let vehicle of getDisplayedModels(); let i = index">
+                    <td>{{ vehicle.Name }}</td>
+                    <td>{{ getMakeName(vehicle.MakeNo) }}</td>
+                    <td><a href="/Add_vehicle_Model/{{ vehicle.MakeNo }}/{{ vehicle.ModelNo }}"><i class="fas fa-edit"></i></a></td>
+                    <td><a href="javascript:void(0)" (click)="delete(vehicle.ModelNo)"><i class="fas fa-trash"></i></a></td>
+                  </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="pagination">
+        <button *ngFor="let page of totalPages()" (click)="onPageChange(page)" [class.active]="page === currentPage">{{ page }}</button>
+    </div>
+    </section>
+</main>
+<footer>
+    <p>&copy; 2024 Vehicle Management System</p>
+</footer>

@@ -22,6 +22,8 @@ export class AddStateComponent {
   State:IState={StateNo:0,state:"",CountryNo:0,Citys:[]}
   StateList!:IState[];
   CountryList:ICountry[] = [];
+  inputValue: string = '';
+
   constructor(private route : ActivatedRoute,private router:Router,private StateService:StateserviceService,private CountryService:CountryService) { }
 
   ngOnInit() {
@@ -70,5 +72,8 @@ Save()
   })
   this.StateService.AddState(this.State).subscribe(res=>{console.log(res)  
     this.router.navigate(['/State_Detail'])});
+  }
+  clearInput() {
+    this.inputValue = '';
   }
 }

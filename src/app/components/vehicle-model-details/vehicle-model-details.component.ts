@@ -6,11 +6,11 @@ import { IVehicleModel } from '../../../Interfaces/IVehicleModel';
 import { VehicleMakeService } from '../../../Services/VehicleMakeservice/vehicle-make.service';
 import { IVehicleMake_ } from '../../../Interfaces/IVehicleMake_';
 import { VehicleModelServiceService } from '../../../Services/VehicleModelservice/vehicle-model-service.service';
-
+import { CommonModule } from '@angular/common';
 @Component({
   selector: 'app-vehicle-model-details',
   standalone: true,
-  imports: [RouterOutlet,RouterLink,RouterLinkActive, MatIconModule,FormsModule,ReactiveFormsModule],
+  imports: [RouterOutlet,CommonModule,RouterLink,RouterLinkActive, MatIconModule,FormsModule,ReactiveFormsModule],
   templateUrl: './vehicle-model-details.component.html',
   styleUrls: ['./vehicle-model-details.component.css']
 })
@@ -19,6 +19,9 @@ export class VehicleModelDetailsComponent implements OnInit {
   filteredModelList: IVehicleModel[]=[];
   searchQuery!: string;
   vehicleList:IVehicleMake_[]=[];
+  currentPage: number = 1;
+  itemsPerPage: number = 10;
+
   constructor(private MakeService:VehicleMakeService,private modelservice : VehicleModelServiceService) { }
 
   ngOnInit() {
@@ -27,6 +30,7 @@ export class VehicleModelDetailsComponent implements OnInit {
   getAll(){
     this.MakeService.getVehicleMake().subscribe((res)=> {
       this.vehicleList=res;
+      this.search();
     });
   }
 
@@ -38,28 +42,45 @@ export class VehicleModelDetailsComponent implements OnInit {
         },
       );
     }
-}
-// search(): void {
-//   if (this.searchQuery.trim() ==='') {
-//     this.filteredModelList = [...this.vehicleList];
-//   } else 
-//   {
-//     this.filteredModelList = this.vehicleList.filter(vehiclemodel =>
-//       vehiclemodel.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
-//     );
-//   }
-// }
+  }
 
-search(): void {
-  // if (this.searchQuery.trim() === '') {
-  //   this.filteredModelList = [...this.vehicleList];
-  // } else {
-  //   this.filteredModelList = this.vehicleList.filter(vehicle => {
-  //     const modelName = vehicle.Vehiclemodels.find(model => model.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase()));
-  //     const makeName = vehicle.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase());
-  //     return modelName || makeName;
-  //   });
-  // }
-}
+  search(): void {
+    if (!this.searchQuery) {
+      this.filteredModelList = this.vehicleList.flatMap(vehicle => vehicle.Vehiclemodels);
+      return;
+    }
+    else{
+      const lowerSearchQuery = this.searchQuery.toLowerCase();
+      this.filteredModelList = this.vehicleList.flatMap(vehicle =>
+      vehicle.Vehiclemodels.filter(model => model.Name.toLowerCase().includes(lowerSearchQuery))
+      );
+    }
+    this.currentPage = 1;
+  }
+
+  getMakeName(makeNo: number): string {
+    const vehicle = this.vehicleList.find((v) => v.MakeNo === makeNo);
+    return vehicle?.Name || '';
+  }
+
+  onPageChange(page: number): void {
+    this.currentPage = page;
+  }
+
+  getDisplayedModels(): IVehicleModel[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return this.filteredModelList.slice(startIndex, endIndex);
+  }
+
+  getTotalPages(): number {
+    return Math.ceil(this.filteredModelList.length / this.itemsPerPage);
+  }
+
+  totalPages(): number[] {
+    const totalItems = this.filteredModelList.length;
+    const totalPages = Math.ceil(totalItems / this.itemsPerPage);
+    return Array(totalPages).fill(0).map((x, i) => i + 1);
+  }
 }
 

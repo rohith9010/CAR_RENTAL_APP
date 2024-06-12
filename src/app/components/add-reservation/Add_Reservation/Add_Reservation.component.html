@@ -1,0 +1,147 @@
+<header class="header">
+  <h1>Add Reservation</h1>
+
+  <nav class="nav-buttons">
+    <a href="#"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
+    <a href="/Reservation_Details"><button class="nav-buttons" type="button"><i class="fas fa-info-circle"></i> Reservation Details</button></a>
+  </nav>
+</header>
+
+<main class="main">
+  <div class="form-container">
+    <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+      <fieldset class="fieldset">
+        <legend>Rental Details</legend>
+        <div class="horizontal-fields">
+
+          <div class="form-group">
+            <label for="CustomerName">Customer Name:</label>
+            <input type="text" id="CustomerName" formControlName="CustomerName" placeholder="enter the name of the Customer">
+            <div *ngIf="reservationForm.get('CustomerName')?.invalid && (reservationForm.get('CustomerName')?.dirty || reservationForm.get('CustomerName')?.touched)" class="warning">Customer Name is required.</div>
+          </div>
+
+          <div class="form-group">
+          <label for="Vehicle_No">Vehicle No:</label>
+          <input type="text" id="Vehicle_No" formControlName="Vehicle_No" placeholder="Enter Vehicle No">
+          <div *ngIf="reservationForm.get('Vehicle_No')?.invalid && (reservationForm.get('Vehicle_No')?.dirty || reservationForm.get('Vehicle_No')?.touched)" class="warning">Vehicle No is required.</div>
+          </div>
+          
+          <div class="form-group">
+            <label for="Status">Status:</label>
+            <input type="text" id="Status" formControlName="Status" placeholder="Enter Status">
+            <div *ngIf="reservationForm.get('Status')?.invalid && (reservationForm.get('Status')?.dirty || reservationForm.get('Status')?.touched)" class="warning">Status is required.</div>
+          </div>
+
+        </div>
+        <div class="horizontal-fields">
+          <div class="form-group">
+            <label for="Driver">Driver:</label>
+            <select name="Driver" id="Driver" formControlName="Driver" placeholder="Select Driver">
+              <option value="" selected disabled>Select Driver</option>
+              <option value="Rahul">Rahul</option>
+              <option value="Manish">Manish</option>
+              <option value="Rohith">Rohith</option>
+              <option value="Pranay">Pranay</option>
+              <option value="satish">satish</option>
+              <option value="Umesh">Umesh</option>
+              <option value="Mahi">Mahi</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label for="Employee">Employee:</label>
+            <select name="Employee" id="Employee" formControlName="Employee" placeholder="Select Employee">
+              <option value="" selected disabled>Select Employee</option>
+              <option value="Rahul">Rahul</option>
+              <option value="Manish">Manish</option>
+              <option value="Rohith">Rohith</option>
+              <option value="Pranay">Pranay</option>
+              <option value="satish">satish</option>
+              <option value="Umesh">Umesh</option>
+              <option value="Mahi">Mahi</option>
+            </select>
+          </div>
+        </div>
+
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend>Reservation Details</legend>
+      <div class="horizontal-fields">
+        <div class="form-group">
+          <label for="Reservation_Date">Reservation Date:</label>
+          <input type="text" id="Reservation_Date" formControlName="Reservation_Date" placeholder="Enter Reservation Date">
+          <div *ngIf="reservationForm.get('Reservation_Date')?.invalid && (reservationForm.get('Reservation_Date')?.dirty || reservationForm.get('Reservation_Date')?.touched)" class="warning">Reservation Date is required.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="Rate">Rate:</label>
+          <input type="text" id="Rate" formControlName="Reservation_Date" placeholder="Enter Rate">
+          <div *ngIf="reservationForm.get('Rate')?.invalid && (reservationForm.get('Rate')?.dirty || reservationForm.get('Rate')?.touched)" class="warning">Rate is required.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="Amount">Amount</label>
+          <input pInputText id="Amount" formControlName="Amount" placeholder="Enter Amount">
+          <div *ngIf="reservationForm.get('Amount')?.invalid && (reservationForm.get('Amount')?.dirty || reservationForm.get('Amount')?.touched)" class="warning">Amount is required.</div>
+        </div>
+      </div>
+
+      <div class="horizontal-fields">
+        <div class="form-group">
+          <label for="No_of_days">No_of_days</label>
+          <input pInputText id="No_of_days" formControlName="No_of_days" placeholder="Enter No of days">
+          <div *ngIf="reservationForm.get('No_of_days')?.invalid && (reservationForm.get('No_of_days')?.dirty || reservationForm.get('No_of_days')?.touched)" class="warning">No of days is required.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="Start_date">Start date</label>
+          <input pInputText id="Start_date" formControlName="Start_date" placeholder="Enter Start date">
+          <div *ngIf="reservationForm.get('Start_date')?.invalid && (reservationForm.get('Start_date')?.dirty || reservationForm.get('Start_date')?.touched)" class="warning">Start date is required.</div>
+        </div>
+
+        <div class="form-group">
+          <label for="End_date">End date</label>
+          <input pInputText id="End_date" formControlName="End_date" placeholder="Enter End date">
+          <div *ngIf="reservationForm.get('End_date')?.invalid && (reservationForm.get('End_date')?.dirty || reservationForm.get('End_date')?.touched)" class="warning">End date is required.</div>
+        </div>
+      </div>
+
+      </fieldset>
+
+      <fieldset class="fieldset">
+        <legend>Location</legend>
+        <div class="horizontal-fields">
+
+          <div class="form-group">
+            <label for="Source">Source</label>
+            <input pInputText id="Source" formControlName="Source" placeholder="Enter Source">
+            <div *ngIf="reservationForm.get('Source')?.invalid && (reservationForm.get('Source')?.dirty || reservationForm.get('Source')?.touched)" class="warning">Source is required.</div>
+          </div>
+  
+          <div class="form-group">
+            <label for="Destination">Destination</label>
+            <input pInputText id="Destination" formControlName="Destination" placeholder="Enter Destination">
+            <div *ngIf="reservationForm.get('Destination')?.invalid && (reservationForm.get('Destination')?.dirty || reservationForm.get('Destination')?.touched)" class="warning">Destination is required.</div>
+          </div>
+
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+
+        <button type="submit" class="button-1">
+          <i class="fas fa-check"></i> Submit
+        </button>
+
+        <button type="button" class="button-red" (click)="onClear()">
+          <i class="fas fa-times"></i> Clear
+        </button>
+
+        <button type="button" class="button-blue">
+          <i class="fas fa-edit"></i> Update
+        </button>
+
+      </div>
+    </form>
+  </div>

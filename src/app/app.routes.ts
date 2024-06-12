@@ -20,6 +20,8 @@ import { DriverDetailsComponent } from './components/DriverDetails/Driver-Detail
 import { AddDriverComponent } from './components/add-driver/Add-Driver/Add-Driver.component';
 import { VehicleDetailsComponent } from './components/VehicleDetails/Vehicle-Details/Vehicle-Details.component';
 import { AddVehicleComponent } from './components/add-vehicle/Add-Vehicle/Add-Vehicle.component';
+import { Add_ReservationComponent } from './components/add-reservation/Add_Reservation/Add_Reservation.component';
+import { Reservation_DetailsComponent } from './components/ReservationDetails/Reservation_Details/Reservation_Details.component';
 export const routes: Routes = [
     {path:'',component:MenuComponent,pathMatch:'full'},
     
@@ -33,6 +35,7 @@ export const routes: Routes = [
     {path:'Driver_Details',component:DriverDetailsComponent},
     {path:'Vehicle_Details',component:VehicleDetailsComponent},
     {path:'State_Detail',component:StateDetailsComponent},
+    {path:'Reservation_Details',component:Reservation_DetailsComponent},
 
 
 
@@ -57,7 +60,9 @@ export const routes: Routes = [
     {path:'Add_State',component:AddStateComponent},
     {path:'Add_Customer',component:AddCustomerComponent},
     {path:'Add_Driver',component:AddDriverComponent},
-    {path:'Add_Vehicle',component:AddVehicleComponent}
+    {path:'Add_Vehicle',component:AddVehicleComponent},
+    {path:'Add_Reservation',component:Add_ReservationComponent}
+
 
 
 ];

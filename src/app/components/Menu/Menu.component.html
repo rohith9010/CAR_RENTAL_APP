@@ -1,4 +1,4 @@
-<mat-toolbar color="primary" class="header-container">
+<!-- <mat-toolbar color="primary" class="header-container">
   <button mat-icon-button (click)="toggleSideNav()">
     <mat-icon>menu</mat-icon>
   </button>
@@ -60,6 +60,202 @@
       <li><a [routerLink]="'/legal'">Help Center</a></li>
       <li><a [routerLink]="'/privacy'">Report an issue</a></li>
     </ul>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</ng-template> -->
+
+
+<!-- <mat-toolbar color="primary" class="header-container">
+  <button mat-icon-button (click)="toggleSideNav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="header-title">INNOV RENTAL</span>
+  <span class="spacer"></span>
+  <div class="header-icons">
+    <button mat-icon-button class="header-icon-button" [matMenuTriggerFor]="settingsMenu">
+      <mat-icon class="header-icon">settings</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" (click)="notificationsClicked()">
+      <mat-icon class="header-icon">notifications</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" (click)="helpClicked()">
+      <mat-icon class="header-icon">help</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" (click)="profileClicked()">
+      <mat-icon class="header-icon">person</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #settingsMenu="matMenu">
+  <div class="settings-menu-heading">Your app settings</div>
+  <button mat-menu-item (click)="automaticRepliesClicked()" style="color: blue; padding: 8px 16px; ">Automatic replies</button>
+  <button mat-menu-item (click)="displaySettingsClicked()" style="color: blue; padding: 8px 16px;">Display settings</button>
+  <button mat-menu-item (click)="offlineSettingsClicked()" style="color: blue; padding: 8px 16px;">Offline settings</button>
+  <button mat-menu-item (click)="manageAddInsClicked()" style="color: blue; padding: 8px 16px;">Manage add-ins</button>
+</mat-menu>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [opened]="sideNavOpened" (openedChange)="sideNavOpened = $event">
+    <mat-nav-list>
+      <mat-expansion-panel class="sidenav-item" *ngFor="let menuItem of menuItems">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>{{ menuItem.icon }}</mat-icon>
+            {{ menuItem.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list class="sidenav-sub-list">
+          <a mat-list-item class="sidenav-sub-item" *ngFor="let subItem of menuItem.subItems" [routerLink]="subItem.routerLink">{{ subItem.name }}</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #notificationDialog>
+  <h1 mat-dialog-title>Notification</h1>
+  <div mat-dialog-content>
+    <p>Nothing new right now</p>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</ng-template>
+
+<ng-template #helpDialog>
+  <h1 mat-dialog-title>Help</h1>
+  <div mat-dialog-content>
+    <ul>
+      <li><a [routerLink]="'/feedback'">About Innov Rental</a></li>
+      <li><a [routerLink]="'/community'">Whats New</a></li>
+      <li><a [routerLink]="'/legal'">Help Center</a></li>
+      <li><a [routerLink]="'/privacy'">Report an issue</a></li>
+    </ul>
+  </div>
+  <div mat-dialog-actions class="dialog-actions">
+    <button mat-button mat-dialog-close>Close</button>
+  </div>
+</ng-template> -->
+
+
+
+<mat-toolbar color="primary" class="header-container">
+  <button mat-icon-button (click)="toggleSideNav()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span class="header-title">INNOV RENTAL</span>
+  <span class="spacer"></span>
+  <div class="header-icons">
+    <button mat-icon-button class="header-icon-button" [matMenuTriggerFor]="settingsMenu">
+      <mat-icon class="header-icon">settings</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" [matMenuTriggerFor]="notificationsMenu">
+      <mat-icon class="header-icon">notifications</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" [matMenuTriggerFor]="helpMenu">
+      <mat-icon class="header-icon">help</mat-icon>
+    </button>
+    <button mat-icon-button class="header-icon-button" [matMenuTriggerFor]="profileMenu">
+      <mat-icon class="header-icon">person</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>
+
+<mat-menu #settingsMenu="matMenu">
+  <mat-list>
+    <h3 mat-subheader class="settings-menu-heading">Your App Settings</h3>
+    <mat-list-item class="settings-menu-item" (click)="openAutomaticReplies()">Automatic Replies</mat-list-item>
+    <mat-list-item class="settings-menu-item" (click)="openDisplaySettings()">Display Settings</mat-list-item>
+    <mat-list-item class="settings-menu-item" (click)="openOfflineSettings()">Offline Settings</mat-list-item>
+    <mat-list-item class="settings-menu-item" (click)="openManageAddIns()">Manage Add-ins</mat-list-item>
+  </mat-list>
+</mat-menu>
+
+<mat-menu #notificationsMenu="matMenu">
+  <mat-list>
+    <h3 mat-subheader class="notifications-menu-heading">Notifications</h3>
+    <mat-list-item class="notifications-menu-item" (click)="markAllAsRead()">
+      <mat-icon>done_all</mat-icon> Mark all as read
+    </mat-list-item>
+    <mat-list-item class="notifications-menu-item" (click)="viewAllNotifications()">
+      <mat-icon>notifications</mat-icon> View all notifications
+    </mat-list-item>
+    <mat-list-item class="notifications-menu-item" (click)="notificationSettings()">
+      <mat-icon>settings</mat-icon> Notification settings
+    </mat-list-item>
+  </mat-list>
+</mat-menu>
+
+<mat-menu #helpMenu="matMenu">
+  <mat-list>
+    <h3 mat-subheader class="help-menu-heading">Help</h3>
+    <mat-list-item class="help-menu-item" [routerLink]="'/feedback'">
+      <mat-icon>feedback</mat-icon> About Innov Rental
+    </mat-list-item>
+    <mat-list-item class="help-menu-item" [routerLink]="'/community'">
+      <mat-icon>new_releases</mat-icon> What's New
+    </mat-list-item>
+    <mat-list-item class="help-menu-item" [routerLink]="'/legal'">
+      <mat-icon>help_outline</mat-icon> Help Center
+    </mat-list-item>
+    <mat-list-item class="help-menu-item" [routerLink]="'/privacy'">
+      <mat-icon>report_problem</mat-icon> Report an Issue
+    </mat-list-item>
+  </mat-list>
+</mat-menu>
+
+<mat-menu #profileMenu="matMenu">
+  <mat-list>
+    <h3 mat-subheader class="profile-menu-heading">My Account</h3>
+    <mat-list-item class="profile-info">
+      <div>
+        <div class="profile-name">Rohith Kumar Goud</div>
+      </div>
+    </mat-list-item>
+    <mat-divider></mat-divider>
+    <mat-list-item class="profile-menu-item" (click)="openMyProfile()">
+      <mat-icon>person</mat-icon> My Profile
+    </mat-list-item>
+    <mat-list-item class="profile-menu-item" (click)="openMyAccount()">
+      <mat-icon>account_circle</mat-icon> My Account
+    </mat-list-item>
+    <mat-list-item class="profile-menu-item" (click)="signOut()">
+      <mat-icon>exit_to_app</mat-icon> Sign Out
+    </mat-list-item>
+  </mat-list>
+</mat-menu>
+
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #sidenav mode="side" [opened]="sideNavOpened" (openedChange)="sideNavOpened = $event">
+    <mat-nav-list>
+      <mat-expansion-panel class="sidenav-item" *ngFor="let menuItem of menuItems">
+        <mat-expansion-panel-header>
+          <mat-panel-title>
+            <mat-icon>{{ menuItem.icon }}</mat-icon>
+            {{ menuItem.name }}
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-nav-list class="sidenav-sub-list">
+          <a mat-list-item class="sidenav-sub-item" *ngFor="let subItem of menuItem.subItems" [routerLink]="subItem.routerLink">{{ subItem.name }}</a>
+        </mat-nav-list>
+      </mat-expansion-panel>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<ng-template #notificationDialog>
+  <h1 mat-dialog-title>Notification</h1>
+  <div mat-dialog-content>
+    <p>Nothing new right now</p>
   </div>
   <div mat-dialog-actions class="dialog-actions">
     <button mat-button mat-dialog-close>Close</button>

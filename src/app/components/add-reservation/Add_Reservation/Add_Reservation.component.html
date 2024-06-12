@@ -16,20 +16,20 @@
 
           <div class="form-group">
             <label for="CustomerName">Customer Name:</label>
-            <input type="text" id="CustomerName" formControlName="CustomerName" placeholder="enter the name of the Customer">
-            <div *ngIf="reservationForm.get('CustomerName')?.invalid && (reservationForm.get('CustomerName')?.dirty || reservationForm.get('CustomerName')?.touched)" class="warning">Customer Name is required.</div>
+            <input type="text" id="CustomerName" formControlName="CustomerName">
+            <div *ngIf="reservationForm.get('CustomerName')?.invalid && (reservationForm.get('CustomerName')?.dirty || reservationForm.get('CustomerName')?.touched)" class="warning"></div>
           </div>
 
           <div class="form-group">
           <label for="Vehicle_No">Vehicle No:</label>
-          <input type="text" id="Vehicle_No" formControlName="Vehicle_No" placeholder="Enter Vehicle No">
-          <div *ngIf="reservationForm.get('Vehicle_No')?.invalid && (reservationForm.get('Vehicle_No')?.dirty || reservationForm.get('Vehicle_No')?.touched)" class="warning">Vehicle No is required.</div>
+          <input type="text" id="Vehicle_No" formControlName="Vehicle_No">
+          <div *ngIf="reservationForm.get('Vehicle_No')?.invalid && (reservationForm.get('Vehicle_No')?.dirty || reservationForm.get('Vehicle_No')?.touched)" class="warning"></div>
           </div>
           
           <div class="form-group">
             <label for="Status">Status:</label>
-            <input type="text" id="Status" formControlName="Status" placeholder="Enter Status">
-            <div *ngIf="reservationForm.get('Status')?.invalid && (reservationForm.get('Status')?.dirty || reservationForm.get('Status')?.touched)" class="warning">Status is required.</div>
+            <input type="text" id="Status" formControlName="Status">
+            <div *ngIf="reservationForm.get('Status')?.invalid && (reservationForm.get('Status')?.dirty || reservationForm.get('Status')?.touched)" class="warning"></div>
           </div>
 
         </div>
@@ -70,40 +70,40 @@
       <div class="horizontal-fields">
         <div class="form-group">
           <label for="Reservation_Date">Reservation Date:</label>
-          <input type="text" id="Reservation_Date" formControlName="Reservation_Date" placeholder="Enter Reservation Date">
-          <div *ngIf="reservationForm.get('Reservation_Date')?.invalid && (reservationForm.get('Reservation_Date')?.dirty || reservationForm.get('Reservation_Date')?.touched)" class="warning">Reservation Date is required.</div>
+          <input type="text" id="Reservation_Date" formControlName="Reservation_Date">
+          <div *ngIf="reservationForm.get('Reservation_Date')?.invalid && (reservationForm.get('Reservation_Date')?.dirty || reservationForm.get('Reservation_Date')?.touched)" class="warning"></div>
         </div>
 
         <div class="form-group">
           <label for="Rate">Rate:</label>
-          <input type="text" id="Rate" formControlName="Reservation_Date" placeholder="Enter Rate">
-          <div *ngIf="reservationForm.get('Rate')?.invalid && (reservationForm.get('Rate')?.dirty || reservationForm.get('Rate')?.touched)" class="warning">Rate is required.</div>
+          <input type="text" id="Rate" formControlName="Reservation_Date">
+          <div *ngIf="reservationForm.get('Rate')?.invalid && (reservationForm.get('Rate')?.dirty || reservationForm.get('Rate')?.touched)" class="warning"></div>
         </div>
 
         <div class="form-group">
           <label for="Amount">Amount</label>
-          <input pInputText id="Amount" formControlName="Amount" placeholder="Enter Amount">
-          <div *ngIf="reservationForm.get('Amount')?.invalid && (reservationForm.get('Amount')?.dirty || reservationForm.get('Amount')?.touched)" class="warning">Amount is required.</div>
+          <input pInputText id="Amount" formControlName="Amount">
+          <div *ngIf="reservationForm.get('Amount')?.invalid && (reservationForm.get('Amount')?.dirty || reservationForm.get('Amount')?.touched)" class="warning"></div>
         </div>
       </div>
 
       <div class="horizontal-fields">
         <div class="form-group">
           <label for="No_of_days">No_of_days</label>
-          <input pInputText id="No_of_days" formControlName="No_of_days" placeholder="Enter No of days">
-          <div *ngIf="reservationForm.get('No_of_days')?.invalid && (reservationForm.get('No_of_days')?.dirty || reservationForm.get('No_of_days')?.touched)" class="warning">No of days is required.</div>
+          <input pInputText id="No_of_days" formControlName="No_of_days">
+          <div *ngIf="reservationForm.get('No_of_days')?.invalid && (reservationForm.get('No_of_days')?.dirty || reservationForm.get('No_of_days')?.touched)" class="warning"></div>
         </div>
 
         <div class="form-group">
           <label for="Start_date">Start date</label>
-          <input pInputText id="Start_date" formControlName="Start_date" placeholder="Enter Start date">
-          <div *ngIf="reservationForm.get('Start_date')?.invalid && (reservationForm.get('Start_date')?.dirty || reservationForm.get('Start_date')?.touched)" class="warning">Start date is required.</div>
+          <input pInputText id="Start_date" formControlName="Start_date">
+          <div *ngIf="reservationForm.get('Start_date')?.invalid && (reservationForm.get('Start_date')?.dirty || reservationForm.get('Start_date')?.touched)" class="warning"></div>
         </div>
 
         <div class="form-group">
           <label for="End_date">End date</label>
-          <input pInputText id="End_date" formControlName="End_date" placeholder="Enter End date">
-          <div *ngIf="reservationForm.get('End_date')?.invalid && (reservationForm.get('End_date')?.dirty || reservationForm.get('End_date')?.touched)" class="warning">End date is required.</div>
+          <input pInputText id="End_date" formControlName="End_date">
+          <div *ngIf="reservationForm.get('End_date')?.invalid && (reservationForm.get('End_date')?.dirty || reservationForm.get('End_date')?.touched)" class="warning"></div>
         </div>
       </div>
 
@@ -115,14 +115,14 @@
 
           <div class="form-group">
             <label for="Source">Source</label>
-            <input pInputText id="Source" formControlName="Source" placeholder="Enter Source">
-            <div *ngIf="reservationForm.get('Source')?.invalid && (reservationForm.get('Source')?.dirty || reservationForm.get('Source')?.touched)" class="warning">Source is required.</div>
+            <input pInputText id="Source" formControlName="Source">
+            <div *ngIf="reservationForm.get('Source')?.invalid && (reservationForm.get('Source')?.dirty || reservationForm.get('Source')?.touched)" class="warning"></div>
           </div>
   
           <div class="form-group">
             <label for="Destination">Destination</label>
-            <input pInputText id="Destination" formControlName="Destination" placeholder="Enter Destination">
-            <div *ngIf="reservationForm.get('Destination')?.invalid && (reservationForm.get('Destination')?.dirty || reservationForm.get('Destination')?.touched)" class="warning">Destination is required.</div>
+            <input pInputText id="Destination" formControlName="Destination">
+            <div *ngIf="reservationForm.get('Destination')?.invalid && (reservationForm.get('Destination')?.dirty || reservationForm.get('Destination')?.touched)" class="warning"></div>
           </div>
 
         </div>

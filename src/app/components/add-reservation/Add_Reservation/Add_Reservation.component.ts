@@ -33,19 +33,19 @@ export class Add_ReservationComponent implements OnInit {
   }
   validations(){
     this.reservationForm = this.fb.group({
-      CustomerName:['', Validators.required],
-      Vehicle_No: ['', Validators.required],
-      Status: ['', Validators.required],
+      CustomerName:[{ value: '', disabled: true }, Validators.required],
+      Vehicle_No: [{ value: '', disabled: true }, Validators.required],
+      Status: [{ value: '', disabled: true }, Validators.required],
       Driver: ['', Validators.required],
       Employee: ['', Validators.required],
-      Reservation_Date: ['', Validators.required],
-      Rate: ['', Validators.required],
-      Amount: ['', Validators.required],
-      No_of_days: ['', Validators.required,],
-      Start_date: ['', Validators.required],
-      End_date: ['', Validators.required],
-      Source: ['', Validators.required],
-      Destination: ['', Validators.required],
+      Reservation_Date: [{ value: '', disabled: true }, Validators.required],
+      Rate: [{ value: '', disabled: true }, Validators.required],
+      Amount: [{ value: '', disabled: true }, Validators.required],
+      No_of_days: [{ value: '', disabled: true }, Validators.required,],
+      Start_date: [{ value: '', disabled: true }, Validators.required],
+      End_date: [{ value: '', disabled: true }, Validators.required],
+      Source: [{ value: '', disabled: true }, Validators.required],
+      Destination: [{ value: '', disabled: true }, Validators.required],
 
     });
   }

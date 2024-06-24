@@ -13,11 +13,11 @@
 
       <fieldset class="fieldset">
         <div class="form-group">
-          <label for="Image">Image:</label>
-          <input type="file" id="Image" formControlName="Image" placeholder="Select the Image/file to upload">
-          <div *ngIf="vehicleForm.get('Image')?.touched && vehicleForm.get('Image')?.invalid" class="warning">
-            <div *ngIf="vehicleForm.get('Image')?.errors?.['required']">Please select an Image</div>
-            <div *ngIf="vehicleForm.get('Image')?.errors?.['pattern']">Please select a Valid Image/File</div>
+          <label for="Pic">Image:</label>
+          <input type="file" id="Pic" (change)="onFileChange($event)" formControlName="Pic" placeholder="Select the Image/file to upload">
+          <div *ngIf="vehicleForm.get('Pic')?.touched && vehicleForm.get('Pic')?.invalid" class="warning">
+            <div *ngIf="vehicleForm.get('Pic')?.errors?.['required']">Please select an Image</div>
+            <div *ngIf="vehicleForm.get('Pic')?.errors?.['pattern']">Please select a Valid Image/File</div>
           </div>
         </div>
       </fieldset>
@@ -27,31 +27,25 @@
 
           <div class="form-group">
             <label for="Type">Type:</label>
-            <select name="Type" id="Type" formControlName="Type" placeholder="Select Type">
+            <select name="Type" formControlName="Type" >
               <option value="" selected disabled>Select Type</option>
-              <option value="Top premium">Top premium</option>
-              <option value="Medium(Mid-size)">Medium(Mid-size)</option>
-              <option value="Luxury and Executive">Luxury and Executive</option>
+              <option *ngFor="let type of vehicleTypesList" [value]="type.TypeNo">{{ type.Type }}</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="Make">Make:</label>
-            <select name="Type" id="Make" formControlName="Make" placeholder="Select Make">
+            <select name="Make" id="Make" formControlName="Make" >
               <option value="" selected disabled>Select Make</option>
-              <option value="BMW">BMW</option>
-              <option value="TOYOTA">TOYOTA</option>
-              <option value="TATA">TATA</option>
+              <option *ngFor="let make of vehicleMakesList" [value]="make.MakeNo">{{ make.Name }}</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="Model">Model:</label>
-            <select name="Model" id="Model" formControlName="Model" placeholder="Select Model">
+            <select name="Model" id="Model" formControlName="Model" >
               <option value="" selected disabled>Select Model</option>
-              <option value="Nexon">Nexon</option>
-              <option value="GLS">GLS</option>
-              <option value="INNOVA CRYSTA">INNOVA CRYSTA</option>
+              <option *ngFor="let model of vehicleModelsList" [value]="model.ModelNo">{{ model.Name }}</option>
             </select>
           </div>
 
@@ -63,21 +57,16 @@
         <div class="horizontal-fields">
 
           <div class="form-group">
-            <label for="Owner">Driver Name:</label>
-            <select name="Owner" id="Owner" formControlName="Owner" placeholder="Select Owner">
+            <label for="Owner">Owner Name:</label>
+            <select name="Owner" id="Owner" formControlName="Owner" >
               <option value="" selected disabled>Select Owner</option>
-              <option value="">Rohith</option>
-              <option value="">Umesh</option>
-              <option value="">Mahi</option>
-              <option value="">Rahul</option>
-              <option value="">Manish</option>
-              <option value="">Pranay</option>
+              <option *ngFor="let owner of ownersList" [value]="owner.OwnerNo">{{ owner.Name }}</option>
             </select>
           </div>
 
           <div class="form-group">
           <label for="Registration_Number">Registration Number:</label>
-          <input type="text" id="Registration_Number" formControlName="Registration_Number" placeholder="Enter Registration Number">
+          <input type="text" id="Registration_Number" formControlName="Registration_Number"  placeholder="Enter Registration Number">
           <div *ngIf="vehicleForm.get('Registration_Number')?.touched && vehicleForm.get('Registration_Number')?.invalid" class="warning">
             <div *ngIf="vehicleForm.get('Registration_Number')?.errors?.['required']">Please enter an Registration Number</div>
             <div *ngIf="vehicleForm.get('Registration_Number')?.errors?.['pattern']">Please enter a valid Registration Number</div>
@@ -90,20 +79,17 @@
 
           <div class="form-group">
             <label for="country">Country:</label>
-            <select name="country" id="country" formControlName="country" placeholder="Select Country">
+            <select name="country" id="country" formControlName="country" >
               <option value="" selected disabled>Select Country</option>
-              <option value="">USA</option>
-              <option value="">Canada</option>
-              <option value="">India</option>
+              <option *ngFor="let country of countriesList" [value]="country.CountryNo">{{ country.Country }}</option>
             </select>
           </div>
   
           <div class="form-group">
-            <label for="state">State:</label>
-            <select name="state" id="state" formControlName="state" placeholder="Select State">
+            <label for="state">Registration State:</label>
+            <select name="state" id="state" formControlName="state"  placeholder="Select State">
               <option value="" selected disabled>Select State</option>
-              <option value="">Telangana</option>
-              <option value="">Texas</option>
+              <option *ngFor="let state of statesList" [value]="state.StateNo">{{ state.state }}</option>
               </select>
           </div>
         </div>
@@ -115,19 +101,19 @@
 
         <div class="form-group">
           <label for="Chasis_Number">Chasis Number:</label>
-          <input pInputText id="Chasis_Number" formControlName="Chasis_Number" placeholder="Enter Chasis Number">
+          <input pInputText id="Chasis_Number" formControlName="Chasis_Number"  placeholder="Enter Chasis Number">
           <div *ngIf="vehicleForm.get('Chasis_Number')?.invalid && (vehicleForm.get('Chasis_Number')?.dirty || vehicleForm.get('Chasis_Number')?.touched)" class="warning">Chasis Number is required.</div>
         </div>
 
         <div class="form-group">
           <label for="Year">Year:</label>
-          <input pInputText id="Year" formControlName="Year" placeholder="Enter Year">
+          <input pInputText id="Year" formControlName="Year"  placeholder="Enter Year">
           <div *ngIf="vehicleForm.get('Year')?.invalid && (vehicleForm.get('Year')?.dirty || vehicleForm.get('Year')?.touched)" class="warning">Year is required.</div>
         </div>
 
         <div class="form-group">
           <label for="Color">Color:</label>
-          <input pInputText id="Color" formControlName="Color" placeholder="Enter Color">
+          <input pInputText id="Color" formControlName="Color"  placeholder="Enter Color">
           <div *ngIf="vehicleForm.get('Color')?.invalid && (vehicleForm.get('Color')?.dirty || vehicleForm.get('Color')?.touched)" class="warning">Color is required.</div>
         </div>
 
@@ -137,26 +123,24 @@
 
         <div class="form-group">
           <label for="Fuel">Fuel:</label>
-          <select name="Fuel" id="Fuel" formControlName="Fuel" placeholder="Select Fuel">
+          <select name="Fuel" id="Fuel" formControlName="Fuel" >
             <option value="" selected disabled>Select Fuel</option>
-            <option value="">Petrol</option>
-            <option value="">Diesel</option>
+            <option *ngFor="let fuel of fuelTypesList" [value]="fuel.FuelNo">{{ fuel.Fuel }}</option>
             </select>
         </div>
 
         <div class="form-group">
           <label for="Capacity">Capacity</label>
-          <select name="Capacity" id="Capacity" formControlName="Capacity" placeholder="Select Capacity">
+          <select name="Capacity" id="Capacity" formControlName="Capacity" >
             <option value="" selected disabled>Select Capacity</option>
-            <option value="">5 Seater</option>
-            <option value="">7 Seater</option>
+            <option *ngFor="let capacity of capacitiesList" [value]="capacity.CapacityNo">{{ capacity.Capacity }}</option>
             </select>
           </div>
 
           <div class="form-group">
-            <label for="Milage">Milage:</label>
-            <input pInputText id="Milage" formControlName="Milage" placeholder="Enter Milage">
-            <div *ngIf="vehicleForm.get('Milage')?.invalid && (vehicleForm.get('Milage')?.dirty || vehicleForm.get('Milage')?.touched)" class="warning">Milage is required.</div>
+            <label for="Mileage">Mileage:</label>
+            <input pInputText id="Mileage" formControlName="Mileage"  placeholder="Enter Mileage">
+            <div *ngIf="vehicleForm.get('Mileage')?.invalid && (vehicleForm.get('Mileage')?.dirty || vehicleForm.get('Mileage')?.touched)" class="warning">Mileage is required.</div>
           </div>
       </div>
       </fieldset>
@@ -167,13 +151,13 @@
 
           <div class="form-group">
             <label for="Daily_Rate">Daily Rate:</label>
-            <input pInputText id="Daily_Rate" formControlName="Daily_Rate" placeholder="Enter Daily Rate">
+            <input pInputText id="Daily_Rate" formControlName="Daily_Rate"  placeholder="Enter Daily Rate">
             <div *ngIf="vehicleForm.get('Daily_Rate')?.invalid && (vehicleForm.get('Daily_Rate')?.dirty || vehicleForm.get('Daily_Rate')?.touched)" class="warning">Daily Rate is required.</div>
           </div>
 
           <div class="form-group">
             <label for="Hourly_Rate">Hourly Rate:</label>
-            <input pInputText id="Hourly_Rate" formControlName="Hourly_Rate" placeholder="Enter Hourly Rate">
+            <input pInputText id="Hourly_Rate" formControlName="Hourly_Rate"  placeholder="Enter Hourly Rate">
             <div *ngIf="vehicleForm.get('Hourly_Rate')?.invalid && (vehicleForm.get('Hourly_Rate')?.dirty || vehicleForm.get('Hourly_Rate')?.touched)" class="warning">Hourly Rate is required.</div>
           </div>
 
@@ -183,13 +167,13 @@
 
           <div class="form-group">
             <label for="Additional_Daily_Rate">Additional Daily Rate:</label>
-            <input pInputText id="Additional_Daily_Rate" formControlName="Additional_Daily_Rate" placeholder="Enter Additional Daily Rate">
+            <input pInputText id="Additional_Daily_Rate" formControlName="Additional_Daily_Rate"  placeholder="Enter Additional Daily Rate">
             <div *ngIf="vehicleForm.get('Additional_Daily_Rate')?.invalid && (vehicleForm.get('Additional_Daily_Rate')?.dirty || vehicleForm.get('Additional_Daily_Rate')?.touched)" class="warning">Additional Daily Rate is required.</div>
           </div>
 
           <div class="form-group">
             <label for="Additional_Hourly_Rate">Additional Hourly Rate:</label>
-            <input pInputText id="Additional_Hourly_Rate" formControlName="Additional_Hourly_Rate" placeholder="Enter Additional Hourly Rate">
+            <input pInputText id="Additional_Hourly_Rate" formControlName="Additional_Hourly_Rate"  placeholder="Enter Additional Hourly Rate">
             <div *ngIf="vehicleForm.get('Additional_Hourly_Rate')?.invalid && (vehicleForm.get('Additional_Hourly_Rate')?.dirty || vehicleForm.get('Additional_Hourly_Rate')?.touched)" class="warning">Additional Hourly Rate is required.</div>
           </div>
 

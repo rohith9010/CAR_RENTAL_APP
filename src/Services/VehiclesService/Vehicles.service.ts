@@ -17,14 +17,16 @@ constructor(private http : HttpClient) { }
   {
     return this.http.get<IVehicles[]>(this.apiUrl);
   }
-  AddVehicles(vehicle: IVehicles): Observable<IVehicles> {
+  AddVehicles(vehicle: FormData): Observable<IVehicles> {
     return this.http.post<IVehicles>(this.apiUrl, vehicle);
   }
   GetVehiclesById(id: number):Observable<IVehicles> {
     return this.http.get<IVehicles>(`${this.apiUrl}/${id}`);
   }
-  UpdateVehicles(vehicle: IVehicles ):Observable<IVehicles>{
-    return this.http.put<IVehicles>(`${this.apiUrl}/${vehicle.VehicleNo}`,vehicle);
+  UpdateVehicles(vehicle: FormData ):Observable<IVehicles>{
+
+    const vehicleNo = vehicle.get('VehicleNo');
+    return this.http.put<IVehicles>(`${this.apiUrl}/${vehicleNo}`,vehicle);
   }
   DeleteVehicles(id: number): Observable<IVehicles> {
     return this.http.delete<IVehicles>(`${this.apiUrl}/${id}`);

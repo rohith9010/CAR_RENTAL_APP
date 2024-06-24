@@ -9,9 +9,9 @@ export interface IVehicles {
     FuelNo:number;
     CapacityNo:number;
     Mileage:number;
-    Pic:File;
+    Pic:Uint8Array;
     RegistrationNo:string;
-    RegistrationState:string;
+    RegistrationState:number;
     ChassisNo:string;
     DailyRate:number;
     HourlyRate:number;

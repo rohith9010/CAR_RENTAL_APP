@@ -46,7 +46,8 @@ import { IState } from '../../../../Interfaces/IState';
 export class AddVehicleComponent implements OnInit {
 
   vehicleForm!: FormGroup;
-
+  vehiclesList: IVehicles[] = [];
+  filteredVehiclesList: IVehicles[] = [];
   
 
   vehicle:IVehicles={
@@ -72,6 +73,23 @@ export class AddVehicleComponent implements OnInit {
 
   vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
   country:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
+  state:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
+  owner:IOwner={
+    OwnerNo: 0,
+    Name: '',
+    Address1: '',
+    Address2: '',
+    CityNo: 0,
+    StateNo: 0,
+    Pincode: '',
+    CountryNo: 0,
+    PhoneNumber: '',
+    MobileNumber: '',
+    BankName: '',
+    BankAccount: '',
+    PAN: '',
+    DeleteStatus: ''
+  };
 
   vehicleTypesList: IVehicleTypes[] = [];
   vehicleMakesList: IVehicleMake_[] = [];
@@ -82,29 +100,80 @@ export class AddVehicleComponent implements OnInit {
   fuelTypesList: IVehicleFuel[] = [];
   capacitiesList: IVehicleCapacity[] = [];
 
-  vehicleTypes!: any[];
-  vehicleMakes!: any[];
-  vehicleModels!: any[];
-  owners!: any[];
-  countries!: any[];
-  states!: any[];
-  fuelTypes!: any[];
-  capacities!: any[];
+  // vehicleTypes!: any[];
+  // vehicleMakes!: any[];
+  // vehicleModels!: any[];
+  // owners!: any[];
+  // countries!: any[];
+  // states!: any[];
+  // fuelTypes!: any[];
+  // capacities!: any[];
 
 
-  constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private vehicleservice:VehiclesService,private vehiclefueltypeservice:VehicleFuelService,private vehiclecapacityservice:VehicleCapacityService,private vehicletypesservice:VehicleTypeService,private vehiclemakeservice:VehicleMakeService,private vehiclemodelservice:VehicleModelServiceService,private countryservice:CountryService,private stateservice:StateserviceService,private cityservice:CitiesService,private ownersservice:OwnerServiceService) { }
+  constructor(private fb: FormBuilder,
+    private route:ActivatedRoute,
+    private router:Router,
+    private vehicleservice:VehiclesService,
+    private vehiclefueltypeservice:VehicleFuelService,
+    private vehiclecapacityservice:VehicleCapacityService,
+    private vehicletypesservice:VehicleTypeService,
+    private vehiclemakeservice:VehicleMakeService,
+    private vehiclemodelservice:VehicleModelServiceService,
+    private countryservice:CountryService,
+    private stateservice:StateserviceService,
+    private cityservice:CitiesService,
+    private ownersservice:OwnerServiceService) { }
 
   ngOnInit(): void {
     this.validations();
     this.fetchDropdownData();
+    this.fetchVehicleData();
+    
+  }
 
-    this.vehicleForm.get('Type')?.valueChanges.subscribe(value => {
-      console.log('Type changed:', value);
-    });
-
-    this.vehicleForm.patchValue({
-      Type: 'someValue'
-    });
+  fetchVehicleData() {
+    const VehicleId = this.route.snapshot.params['Id'];
+    console.log(VehicleId);
+    if(VehicleId){
+      this.vehicleservice.GetVehiclesById(VehicleId).subscribe(res =>{
+        this.vehicle=res;
+        console.log(res);
+        //this.fetchDropdownData();
+        //this.getcountrybyId();
+        this.getstatebyId();
+        //this.getmakebyid();
+        this.getownerbyid();
+        //this.populateForm();
+      });
+    }
+  }
+  // getcountrybyId()
+  // {
+  //   this.countryservice.getCountryById(this.country.CountryNo).subscribe(val=>{
+  //     this.country=val;
+  //     console.log(this.country);
+  //   })
+  // }
+  getstatebyId()
+  {
+    this.stateservice.GetStatebyId(this.vehicle.RegistrationState).subscribe(val=>{
+      this.state=val;
+      console.log(this.state);
+    })
+  }
+  // getmakebyid()
+  // {
+  //   this.vehiclemakeservice.getById(this.vehiclemake.MakeNo).subscribe(val=>{
+  //     this.vehiclemake=val;
+  //     console.log(this.vehiclemake);
+  //   })
+  // }
+  getownerbyid()
+  {
+    this.ownersservice.OwnerById(this.vehicle.OwnerNo).subscribe(val=>{
+      this.owner=val;
+      console.log(this.owner);
+    })
   }
   validations(){
     this.vehicleForm = this.fb.group({
@@ -197,9 +266,9 @@ export class AddVehicleComponent implements OnInit {
     this.vehicleForm.reset();
   }
 
-  Update() : void {
-
+  Update(): void {
     if (this.vehicleForm.valid) {
+      console.log("hi");
       const formData = new FormData();
       formData.append('TypeNo', this.vehicleForm.value.Type);
       formData.append('ModelNo', this.vehicleForm.value.Model);
@@ -223,8 +292,30 @@ export class AddVehicleComponent implements OnInit {
         this.router.navigate(['/Vehicle_Details']);
       });
     }
-
   }
+
+  // populateForm(): void {
+  //   this.vehicleForm.patchValue({
+  //     Pic: this.vehicle.Pic,
+  //     Type: this.vehicle.TypeNo,
+  //     Make: this.vehiclemake.MakeNo,
+  //     Model: this.vehicle.ModelNo,
+  //     Owner: this.vehicle.OwnerNo,
+  //     Registration_Number: this.vehicle.RegistrationNo,
+  //     country: this.country.CountryNo,
+  //     state: this.vehicle.RegistrationState,
+  //     Chasis_Number: this.vehicle.ChassisNo,
+  //     Year: this.vehicle.Year,
+  //     Color: this.vehicle.Color,
+  //     Fuel: this.vehicle.FuelNo,
+  //     Capacity: this.vehicle.CapacityNo,
+  //     Mileage: this.vehicle.Mileage,
+  //     Daily_Rate: this.vehicle.DailyRate,
+  //     Hourly_Rate: this.vehicle.HourlyRate,
+  //     Additional_Daily_Rate: this.vehicle.AdditionalDailyRate,
+  //     Additional_Hourly_Rate: this.vehicle.AddtionalHourlyRate
+  //   });
+  // }
 
   onFileChange(event: any): void {
     const file = event.target.files[0];

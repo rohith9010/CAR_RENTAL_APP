@@ -68,7 +68,13 @@ export class AddOwnerComponent implements OnInit {
  owners! :any[];
 
 
-  constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private countryservice:CountryService,private stateservice :StateserviceService,private cityservice: CitiesService, private ownerservice : OwnerServiceService  ){ } 
+  constructor(private fb: FormBuilder,
+    private route:ActivatedRoute,
+    private router:Router,
+    private countryservice:CountryService,
+    private stateservice :StateserviceService,
+    private cityservice: CitiesService,
+    private ownerservice : OwnerServiceService  ){ } 
 
 
   ngOnInit(): void {

@@ -20,6 +20,11 @@
             <div *ngIf="vehicleForm.get('Pic')?.errors?.['pattern']">Please select a Valid Image/File</div>
           </div>
         </div>
+
+        <div *ngIf="imagePreview" class="form-group">
+          <label>Image Preview:</label>
+          <img [src]="imagePreview" alt="Vehicle Image" style="width: 200px; height: auto;">
+        </div>
       </fieldset>
 
       <fieldset class="fieldset">

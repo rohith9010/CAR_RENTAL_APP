@@ -48,6 +48,7 @@ export class AddVehicleComponent implements OnInit {
   vehicleForm!: FormGroup;
   vehiclesList: IVehicles[] = [];
   filteredVehiclesList: IVehicles[] = [];
+  imagePreview: string | ArrayBuffer | null = null;
   
 
   vehicle:IVehicles={
@@ -71,7 +72,10 @@ export class AddVehicleComponent implements OnInit {
     DeleteStatus: '',
   };
 
-  vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
+  vehiclemake:IVehicleMake_={
+    MakeNo:0,
+    Name:''
+    ,Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
   country:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
   state:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
   owner:IOwner={
@@ -139,21 +143,33 @@ export class AddVehicleComponent implements OnInit {
         this.vehicle=res;
         console.log(res);
         //this.fetchDropdownData();
-        //this.getcountrybyId();
+        this.getcountrybyId();
         this.getstatebyId();
-        //this.getmakebyid();
+        this.getmakebyid();
         this.getownerbyid();
-        //this.populateForm();
+        this.populateForm();
+        this.setImagePreview();
+
       });
     }
   }
-  // getcountrybyId()
-  // {
-  //   this.countryservice.getCountryById(this.country.CountryNo).subscribe(val=>{
-  //     this.country=val;
-  //     console.log(this.country);
-  //   })
-  // }
+  setImagePreview() {
+    if (this.vehicle.Pic && this.vehicle.Pic.byteLength > 0) {
+      const base64String = btoa(String.fromCharCode(...this.vehicle.Pic));
+      this.imagePreview = `data:image/jpeg;base64,${base64String}`;
+    }
+  }
+  
+  getcountrybyId()
+  {
+    this.countryservice.getCountryById(this.vehicle.RegistrationState).subscribe(val=>{
+      this.country=val;
+      console.log(this.country);
+      this.vehicleForm.patchValue({
+        country: this.country.CountryNo
+      });
+    });
+  }
   getstatebyId()
   {
     this.stateservice.GetStatebyId(this.vehicle.RegistrationState).subscribe(val=>{
@@ -161,13 +177,16 @@ export class AddVehicleComponent implements OnInit {
       console.log(this.state);
     })
   }
-  // getmakebyid()
-  // {
-  //   this.vehiclemakeservice.getById(this.vehiclemake.MakeNo).subscribe(val=>{
-  //     this.vehiclemake=val;
-  //     console.log(this.vehiclemake);
-  //   })
-  // }
+  getmakebyid()
+  {
+    this.vehiclemakeservice.getById(this.vehicle.ModelNo).subscribe(val=>{
+      this.vehiclemake=val;
+      console.log(this.vehiclemake);
+      this.vehicleForm.patchValue({
+        vehiclemake: this.vehiclemake.MakeNo
+      });
+    })
+  }
   getownerbyid()
   {
     this.ownersservice.OwnerById(this.vehicle.OwnerNo).subscribe(val=>{
@@ -294,32 +313,45 @@ export class AddVehicleComponent implements OnInit {
     }
   }
 
-  // populateForm(): void {
-  //   this.vehicleForm.patchValue({
-  //     Pic: this.vehicle.Pic,
-  //     Type: this.vehicle.TypeNo,
-  //     Make: this.vehiclemake.MakeNo,
-  //     Model: this.vehicle.ModelNo,
-  //     Owner: this.vehicle.OwnerNo,
-  //     Registration_Number: this.vehicle.RegistrationNo,
-  //     country: this.country.CountryNo,
-  //     state: this.vehicle.RegistrationState,
-  //     Chasis_Number: this.vehicle.ChassisNo,
-  //     Year: this.vehicle.Year,
-  //     Color: this.vehicle.Color,
-  //     Fuel: this.vehicle.FuelNo,
-  //     Capacity: this.vehicle.CapacityNo,
-  //     Mileage: this.vehicle.Mileage,
-  //     Daily_Rate: this.vehicle.DailyRate,
-  //     Hourly_Rate: this.vehicle.HourlyRate,
-  //     Additional_Daily_Rate: this.vehicle.AdditionalDailyRate,
-  //     Additional_Hourly_Rate: this.vehicle.AddtionalHourlyRate
-  //   });
-  // }
+  populateForm(): void {
+    this.vehicleForm.patchValue({
+      Pic: this.vehicle.Pic,
+      Type: this.vehicle.TypeNo,
+      Make: this.vehiclemake.MakeNo,
+      Model: this.vehicle.ModelNo,
+      Owner: this.vehicle.OwnerNo,
+      Registration_Number: this.vehicle.RegistrationNo,
+      country: this.country.CountryNo,
+      state: this.vehicle.RegistrationState,
+      Chasis_Number: this.vehicle.ChassisNo,
+      Year: this.vehicle.Year,
+      Color: this.vehicle.Color,
+      Fuel: this.vehicle.FuelNo,
+      Capacity: this.vehicle.CapacityNo,
+      Mileage: this.vehicle.Mileage,
+      Daily_Rate: this.vehicle.DailyRate,
+      Hourly_Rate: this.vehicle.HourlyRate,
+      Additional_Daily_Rate: this.vehicle.AdditionalDailyRate,
+      Additional_Hourly_Rate: this.vehicle.AddtionalHourlyRate
+    });
+  }
 
-  onFileChange(event: any): void {
+  // onFileChange(event: any): void {
+  //   const file = event.target.files[0];
+  //   if (file) {
+  //     this.vehicleForm.patchValue({
+  //       Pic: file
+  //     });
+  //   }
+  // }
+  onFileChange(event: any) {
     const file = event.target.files[0];
     if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result;
+      };
+      reader.readAsDataURL(file);
       this.vehicleForm.patchValue({
         Pic: file
       });

@@ -14,13 +14,12 @@
       <fieldset class="fieldset">
         <div class="form-group">
           <label for="Pic">Image:</label>
-          <input type="file" id="Pic" (change)="onFileChange($event)" [(ngModel)]="vehicle.Pic" formControlName="Pic" placeholder="Select the Image/file to upload">
+          <input type="file" id="Pic" (change)="onFileChange($event)" #fileInput [(ngModel)]="vehicle.Pic" formControlName="Pic">
           <div *ngIf="vehicleForm.get('Pic')?.touched && vehicleForm.get('Pic')?.invalid" class="warning">
             <div *ngIf="vehicleForm.get('Pic')?.errors?.['required']">Please select an Image</div>
             <div *ngIf="vehicleForm.get('Pic')?.errors?.['pattern']">Please select a Valid Image/File</div>
           </div>
         </div>
-
         <div *ngIf="imagePreview" class="form-group">
           <label>Image Preview:</label>
           <img [src]="imagePreview" alt="Vehicle Image" style="width: 200px; height: auto;">

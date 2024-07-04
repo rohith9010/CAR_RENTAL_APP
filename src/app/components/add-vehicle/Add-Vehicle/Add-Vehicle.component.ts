@@ -46,11 +46,18 @@ import { IState } from '../../../../Interfaces/IState';
 export class AddVehicleComponent implements OnInit {
 
   vehicleForm!: FormGroup;
-  vehiclesList: IVehicles[] = [];
   filteredVehiclesList: IVehicles[] = [];
   imagePreview: string | ArrayBuffer | null = null;
-  
 
+  vehicleTypesList: IVehicleTypes[] = [];
+  vehicleMakesList: IVehicleMake_[] = [];
+  vehicleModelsList: IVehicleModel[] = [];
+  ownersList: IOwner[] = [];
+  countriesList: ICountry[] = [];
+  statesList: IState[] = [];
+  fuelTypesList: IVehicleFuel[] = [];
+  capacitiesList: IVehicleCapacity[] = [];
+  
   vehicle:IVehicles={
     VehicleNo: 0,
     OwnerNo: 0,
@@ -72,10 +79,7 @@ export class AddVehicleComponent implements OnInit {
     DeleteStatus: '',
   };
 
-  vehiclemake:IVehicleMake_={
-    MakeNo:0,
-    Name:''
-    ,Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
+  vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
   country:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
   state:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
   owner:IOwner={
@@ -95,25 +99,6 @@ export class AddVehicleComponent implements OnInit {
     DeleteStatus: ''
   };
 
-  vehicleTypesList: IVehicleTypes[] = [];
-  vehicleMakesList: IVehicleMake_[] = [];
-  vehicleModelsList: IVehicleModel[] = [];
-  ownersList: IOwner[] = [];
-  countriesList: ICountry[] = [];
-  statesList: IState[] = [];
-  fuelTypesList: IVehicleFuel[] = [];
-  capacitiesList: IVehicleCapacity[] = [];
-
-  // vehicleTypes!: any[];
-  // vehicleMakes!: any[];
-  // vehicleModels!: any[];
-  // owners!: any[];
-  // countries!: any[];
-  // states!: any[];
-  // fuelTypes!: any[];
-  // capacities!: any[];
-
-
   constructor(private fb: FormBuilder,
     private route:ActivatedRoute,
     private router:Router,
@@ -125,7 +110,6 @@ export class AddVehicleComponent implements OnInit {
     private vehiclemodelservice:VehicleModelServiceService,
     private countryservice:CountryService,
     private stateservice:StateserviceService,
-    private cityservice:CitiesService,
     private ownersservice:OwnerServiceService) { }
 
   ngOnInit(): void {
@@ -133,66 +117,6 @@ export class AddVehicleComponent implements OnInit {
     this.fetchDropdownData();
     this.fetchVehicleData();
     
-  }
-
-  fetchVehicleData() {
-    const VehicleId = this.route.snapshot.params['Id'];
-    console.log(VehicleId);
-    if(VehicleId){
-      this.vehicleservice.GetVehiclesById(VehicleId).subscribe(res =>{
-        this.vehicle=res;
-        console.log(res);
-        //this.fetchDropdownData();
-        this.getcountrybyId();
-        this.getstatebyId();
-        this.getmakebyid();
-        this.getownerbyid();
-        this.populateForm();
-        this.setImagePreview();
-
-      });
-    }
-  }
-  setImagePreview() {
-    if (this.vehicle.Pic && this.vehicle.Pic.byteLength > 0) {
-      const base64String = btoa(String.fromCharCode(...this.vehicle.Pic));
-      this.imagePreview = `data:image/jpeg;base64,${base64String}`;
-    }
-  }
-  
-  getcountrybyId()
-  {
-    this.countryservice.getCountryById(this.vehicle.RegistrationState).subscribe(val=>{
-      this.country=val;
-      console.log(this.country);
-      this.vehicleForm.patchValue({
-        country: this.country.CountryNo
-      });
-    });
-  }
-  getstatebyId()
-  {
-    this.stateservice.GetStatebyId(this.vehicle.RegistrationState).subscribe(val=>{
-      this.state=val;
-      console.log(this.state);
-    })
-  }
-  getmakebyid()
-  {
-    this.vehiclemakeservice.getById(this.vehicle.ModelNo).subscribe(val=>{
-      this.vehiclemake=val;
-      console.log(this.vehiclemake);
-      this.vehicleForm.patchValue({
-        vehiclemake: this.vehiclemake.MakeNo
-      });
-    })
-  }
-  getownerbyid()
-  {
-    this.ownersservice.OwnerById(this.vehicle.OwnerNo).subscribe(val=>{
-      this.owner=val;
-      console.log(this.owner);
-    })
   }
   validations(){
     this.vehicleForm = this.fb.group({
@@ -218,7 +142,7 @@ export class AddVehicleComponent implements OnInit {
       
       });
   }
-
+  
   fetchDropdownData() {
 
     this.vehicletypesservice.GetVehicleTypes().subscribe(data =>{
@@ -253,10 +177,82 @@ export class AddVehicleComponent implements OnInit {
         this.capacitiesList = data
       });
   }
+  fetchVehicleData() {
+    const VehicleId = this.route.snapshot.params['Id'];
+    if(VehicleId){
+      this.vehicleservice.GetVehiclesById(VehicleId).subscribe(res =>{
+        this.vehicle=res;
+
+        this.getcountrybyId();
+        this.getstatebyId();
+        this.getmakebyid();
+        this.getownerbyid();
+        this.setImagePreview();
+
+      });
+    }
+  }
+  getcountrybyId()
+  {
+    this.countryservice.getCountryById(this.vehicle.RegistrationState).subscribe(val=>{
+      this.country=val;
+      console.log(this.country);
+      this.vehicleForm.patchValue({
+        country: this.country.CountryNo
+      });
+    });
+  }
+  getstatebyId()
+  {
+    this.stateservice.GetStatebyId(this.vehicle.RegistrationState).subscribe(val=>{
+      this.state=val;
+      console.log(this.state);
+    })
+  }
+  getmakebyid()
+  {
+    this.vehiclemakeservice.getById(this.vehicle.ModelNo).subscribe(val=>{
+      this.vehiclemake=val;
+      console.log(this.vehiclemake);
+      this.vehicleForm.patchValue({
+        vehiclemake: this.vehiclemake.MakeNo
+      });
+    })
+  }
+  getownerbyid()
+  {
+    this.ownersservice.OwnerById(this.vehicle.OwnerNo).subscribe(val=>{
+      this.owner=val;
+      console.log(this.owner);
+    })
+  }
+
+  onFileChange(event: any) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = () => {
+        this.imagePreview = reader.result as string;
+      };
+      reader.readAsDataURL(file);
+      this.vehicleForm.patchValue({
+        Pic: file
+      });
+      this.vehicleForm.get('Pic')?.updateValueAndValidity();
+    }
+  }
+  setImagePreview() {
+    if (this.vehicle.Pic && this.vehicle.Pic.byteLength > 0) {
+      const base64String = btoa(String.fromCharCode(...this.vehicle.Pic));
+      this.imagePreview = `data:image/jpeg;base64,${base64String}`;
+    }
+  }
 
   onSubmit(): void {
     if (this.vehicleForm.valid) {
+
       const formData = new FormData();
+
       formData.append('TypeNo', this.vehicleForm.value.Type);
       formData.append('ModelNo', this.vehicleForm.value.Model);
       formData.append('OwnerNo', this.vehicleForm.value.Owner);
@@ -281,14 +277,12 @@ export class AddVehicleComponent implements OnInit {
     }
   }
 
-  onClear(): void {
-    this.vehicleForm.reset();
-  }
-
   Update(): void {
     if (this.vehicleForm.valid) {
-      console.log("hi");
+
       const formData = new FormData();
+
+      formData.append('VehicleNo', this.vehicle.VehicleNo.toString());
       formData.append('TypeNo', this.vehicleForm.value.Type);
       formData.append('ModelNo', this.vehicleForm.value.Model);
       formData.append('OwnerNo', this.vehicleForm.value.Owner);
@@ -313,48 +307,7 @@ export class AddVehicleComponent implements OnInit {
     }
   }
 
-  populateForm(): void {
-    this.vehicleForm.patchValue({
-      Pic: this.vehicle.Pic,
-      Type: this.vehicle.TypeNo,
-      Make: this.vehiclemake.MakeNo,
-      Model: this.vehicle.ModelNo,
-      Owner: this.vehicle.OwnerNo,
-      Registration_Number: this.vehicle.RegistrationNo,
-      country: this.country.CountryNo,
-      state: this.vehicle.RegistrationState,
-      Chasis_Number: this.vehicle.ChassisNo,
-      Year: this.vehicle.Year,
-      Color: this.vehicle.Color,
-      Fuel: this.vehicle.FuelNo,
-      Capacity: this.vehicle.CapacityNo,
-      Mileage: this.vehicle.Mileage,
-      Daily_Rate: this.vehicle.DailyRate,
-      Hourly_Rate: this.vehicle.HourlyRate,
-      Additional_Daily_Rate: this.vehicle.AdditionalDailyRate,
-      Additional_Hourly_Rate: this.vehicle.AddtionalHourlyRate
-    });
-  }
-
-  // onFileChange(event: any): void {
-  //   const file = event.target.files[0];
-  //   if (file) {
-  //     this.vehicleForm.patchValue({
-  //       Pic: file
-  //     });
-  //   }
-  // }
-  onFileChange(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result;
-      };
-      reader.readAsDataURL(file);
-      this.vehicleForm.patchValue({
-        Pic: file
-      });
-    }
+  onClear(): void {
+    this.vehicleForm.reset();
   }
 }

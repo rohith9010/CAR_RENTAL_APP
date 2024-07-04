@@ -1,0 +1,35 @@
+.header-container {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-title {
+    flex: 1;
+  }
+  
+  .header-icons {
+    display: flex;
+    align-items: center;
+  }
+  
+  .header-icon-button {
+    margin-left: 10px;
+  }
+  
+  .sidenav-container {
+    height: 100%;
+  }
+  
+  .charts-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+    padding: 20px;
+  }
+  
+  .chart-card {
+    width: 400px;
+    height: 350px;
+  }
+  

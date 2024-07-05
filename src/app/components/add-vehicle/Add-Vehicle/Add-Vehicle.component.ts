@@ -21,7 +21,6 @@ import { VehicleMakeService } from '../../../../Services/VehicleMakeservice/vehi
 import { VehicleModelServiceService } from '../../../../Services/VehicleModelservice/vehicle-model-service.service';
 import { CountryService } from '../../../../Services/CountriesService/Country.service';
 import { StateserviceService } from '../../../../Services/StateService/stateservice.service';
-import { CitiesService } from '../../../../Services/CityService/Cities.service';
 import { OwnerServiceService } from '../../../../Services/OwnerService/owner-service.service';
 import { IVehicleModel } from '../../../../Interfaces/IVehicleModel';
 import { ICountry } from '../../../../Interfaces/ICountry';

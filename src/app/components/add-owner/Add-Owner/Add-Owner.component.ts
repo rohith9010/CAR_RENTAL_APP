@@ -16,6 +16,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { IOwner } from '../../../../Interfaces/IOwner';
 import { OwnerServiceService } from '../../../../Services/OwnerService/owner-service.service';
 
+
 @Component({
   selector: 'app-Add-Owner',
   standalone: true,

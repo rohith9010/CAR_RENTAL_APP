@@ -48,6 +48,8 @@ export const routes: Routes = [
     {path:'Add_country/:id',component:CountryAddComponent},
     {path:'Add_owner/:Id',component:AddOwnerComponent},
     {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent},
+    {path:'Add_Customer/:Id',component:AddCustomerComponent},
+
 
     {path:'Add_owner',component:AddOwnerComponent},
     {path:'Add_City',component:AddCityComponent},

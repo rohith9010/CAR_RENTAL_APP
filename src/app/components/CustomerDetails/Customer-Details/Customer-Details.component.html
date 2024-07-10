@@ -1,5 +1,5 @@
 <div class="header">
-  <h1>User Management</h1>
+  <h1>Customer Management</h1>
   <div class="header-left">
       <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
       <a href="/Add_Customer" class="icon-button"><i class="pi pi-plus-circle"></i></a>
@@ -10,8 +10,8 @@
       <div class="search-container">
           <h3>Filter</h3>
           <div class="search-box">
-              <input type="text" class="input-search" name="filterInput"  placeholder="Type to Search...">
-              <button class="btn-search"><i class="pi pi-search"></i></button>
+              <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search...">
+            <button class="btn-search" (click)="search()"><i class="pi pi-search"></i></button>
           </div>
       </div>
       <div class="table-container">
@@ -22,19 +22,23 @@
                     <th>Phone Number</th>
                     <th>Email</th>
                     <th>Username</th>
-                    <th>Reg. Date</th>
+                    <th>RegDate</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
                 </tr>
-              <!-- @if(filteredownerList)
+               @if(filteredcustomerList)
               {
-                  @for (owner of filteredownerList; track owner.OwnerNo) {
+                  @for (customer of filteredcustomerList; track customer.CustomerNo) {
                       <tr>
-                          <td>{{owner.Name}}</td>
-                          <td>{{owner.PhoneNumber}}</td>
-                          <td>{{owner.BankName}}</td>
-                          <td>{{owner.BankAccount}}</td>
-                          <td>{{owner.PAN}}</td>
-                          <td><a type="button"  routerLink="/Add_owner/{{owner.OwnerNo}}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(owner.OwnerNo)"><i class="pi pi-trash"></i></a></td>   
+                          <td>{{customer.Name}}</td>
+                          <td>{{customer.PhoneNumber}}</td>
+                          <td>{{customer.EmailAddress}}</td>
+                          <td>{{customer.UserName}}</td>
+                          <td>{{customer.RegistrationDate}}</td>
+                     
+                        
+                         <td><a type="button"  routerLink="/Add_customer/{{customer.CustomerNo}}"><i class="pi pi-pencil"></i></a></td>
+                          <td><a href="javascript:void(0)" (click) = "delete(customer.CustomerNo)"><i class="pi pi-trash"></i></a></td>   
                       </tr>
                   } 
               }
@@ -42,20 +46,20 @@
               {     
                     
 
-                  @for (owner of ownerList; track owner.OwnerNo) {
+                  @for (customer of customerList; track customer.CustomerNo) {
                       <tr>
-                          <td>{{owner.Name}}</td>
-                          <td>{{owner.PhoneNumber}}</td>
-                          <td>{{owner.BankName}}</td>
-                          <td>{{owner.BankAccount}}</td>
-                          <td>{{owner.PAN}}</td>
+                          <td>{{customer.Name}}</td>
+                          <td>{{customer.PhoneNumber}}</td>
+                          <td>{{customer.EmailAddress}}</td>
+                          <td>{{customer.UserName}}</td>
+                          <td>{{customer.RegistrationDate}}</td>
                         
-
-                          <td><a type="button"  routerLink="/Add_owner/{{owner.OwnerNo}}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(owner.OwnerNo)"><i class="pi pi-trash"></i></a></td>
+                         
+                          <td><a type="button"  routerLink="/Add_customer/{{customer.CustomerNo}}"><i class="pi pi-pencil"></i></a></td>
+                          <td><a href="javascript:void(0)" (click) = "delete(customer.CustomerNo)"><i class="pi pi-trash"></i></a></td>
                       </tr>
                   }
-              } -->
+              } 
             </tbody>
           </table>
       </div>

@@ -53,7 +53,6 @@ export class VehicleDetailsComponent implements OnInit {
     this.loadVehicleFuel();
     this.loadVehicleCapacity();
     this.loadStates();
-    this.loadModels();
   }
   loadVehicles():void {
 
@@ -138,11 +137,6 @@ loadVehicleCapacity(): void {
 loadStates(): void {
   this.stateservice.GetAllStates().subscribe(res => {
     this.stateList = res;
-  });
-}
-loadModels(): void{
-  this.modelservice.getVehicleModel().subscribe(res => {
-    this.filteredModelList = res;
   });
 }
 

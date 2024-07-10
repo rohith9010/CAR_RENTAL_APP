@@ -21,6 +21,7 @@ import { VehicleMakeService } from '../../../../Services/VehicleMakeservice/vehi
 import { VehicleModelServiceService } from '../../../../Services/VehicleModelservice/vehicle-model-service.service';
 import { CountryService } from '../../../../Services/CountriesService/Country.service';
 import { StateserviceService } from '../../../../Services/StateService/stateservice.service';
+import { CitiesService } from '../../../../Services/CityService/Cities.service';
 import { OwnerServiceService } from '../../../../Services/OwnerService/owner-service.service';
 import { IVehicleModel } from '../../../../Interfaces/IVehicleModel';
 import { ICountry } from '../../../../Interfaces/ICountry';
@@ -45,18 +46,9 @@ import { IState } from '../../../../Interfaces/IState';
 export class AddVehicleComponent implements OnInit {
 
   vehicleForm!: FormGroup;
-  filteredVehiclesList: IVehicles[] = [];
-  imagePreview: string | ArrayBuffer | null = null;
 
-  vehicleTypesList: IVehicleTypes[] = [];
-  vehicleMakesList: IVehicleMake_[] = [];
-  vehicleModelsList: IVehicleModel[] = [];
-  ownersList: IOwner[] = [];
-  countriesList: ICountry[] = [];
-  statesList: IState[] = [];
-  fuelTypesList: IVehicleFuel[] = [];
-  capacitiesList: IVehicleCapacity[] = [];
   
+
   vehicle:IVehicles={
     VehicleNo: 0,
     OwnerNo: 0,
@@ -78,22 +70,9 @@ export class AddVehicleComponent implements OnInit {
     DeleteStatus: '',
   };
 
-  vehiclemake:IVehicleMake_={
-    MakeNo:0,
-    Name:'',
-    Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]
-  };
-
-  country:ICountry={CountryNo:0,
-    Country:'',
-    States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]
-  };
-
-  state:IState={StateNo:0,
-    state:"",Citys:[],
-    CountryNo:0
-  };
-  
+  vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
+  country:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
+  state:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
   owner:IOwner={
     OwnerNo: 0,
     Name: '',
@@ -111,24 +90,19 @@ export class AddVehicleComponent implements OnInit {
     DeleteStatus: ''
   };
 
-  constructor(private fb: FormBuilder,
-    private route:ActivatedRoute,
-    private router:Router,
-    private vehicleservice:VehiclesService,
-    private vehiclefueltypeservice:VehicleFuelService,
-    private vehiclecapacityservice:VehicleCapacityService,
-    private vehicletypesservice:VehicleTypeService,
-    private vehiclemakeservice:VehicleMakeService,
-    private vehiclemodelservice:VehicleModelServiceService,
-    private countryservice:CountryService,
-    private stateservice:StateserviceService,
-    private ownersservice:OwnerServiceService) { }
+  constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private vehicleservice:VehiclesService,private vehiclefueltypeservice:VehicleFuelService,private vehiclecapacityservice:VehicleCapacityService,private vehicletypesservice:VehicleTypeService,private vehiclemakeservice:VehicleMakeService,private vehiclemodelservice:VehicleModelServiceService,private countryservice:CountryService,private stateservice:StateserviceService,private cityservice:CitiesService,private ownersservice:OwnerServiceService) { }
 
   ngOnInit(): void {
     this.validations();
     this.fetchDropdownData();
-    this.fetchVehicleData();
-    
+
+    this.vehicleForm.get('Type')?.valueChanges.subscribe(value => {
+      console.log('Type changed:', value);
+    });
+
+    this.vehicleForm.patchValue({
+      Type: 'someValue'
+    });
   }
   validations(){
     this.vehicleForm = this.fb.group({
@@ -154,7 +128,7 @@ export class AddVehicleComponent implements OnInit {
       
       });
   }
-  
+
   fetchDropdownData() {
 
     this.vehicletypesservice.GetVehicleTypes().subscribe(data =>{
@@ -189,82 +163,10 @@ export class AddVehicleComponent implements OnInit {
         this.capacitiesList = data
       });
   }
-  fetchVehicleData() {
-    const VehicleId = this.route.snapshot.params['Id'];
-    if(VehicleId){
-      this.vehicleservice.GetVehiclesById(VehicleId).subscribe(res =>{
-        this.vehicle=res;
-
-        this.getcountrybyId();
-        this.getstatebyId();
-        this.getmakebyid();
-        this.getownerbyid();
-        this.setImagePreview();
-
-      });
-    }
-  }
-  getcountrybyId()
-  {
-    this.countryservice.getCountryById(this.vehicle.RegistrationState).subscribe(val=>{
-      this.country=val;
-      console.log(this.country);
-      this.vehicleForm.patchValue({
-        country: this.country.CountryNo
-      });
-    });
-  }
-  getstatebyId()
-  {
-    this.stateservice.GetStatebyId(this.vehicle.RegistrationState).subscribe(val=>{
-      this.state=val;
-      console.log(this.state);
-    })
-  }
-  getmakebyid()
-  {
-    this.vehiclemakeservice.getById(this.vehicle.ModelNo).subscribe(val=>{
-      this.vehiclemake=val;
-      console.log(this.vehiclemake);
-      this.vehicleForm.patchValue({
-        vehiclemake: this.vehiclemake.MakeNo
-      });
-    })
-  }
-  getownerbyid()
-  {
-    this.ownersservice.OwnerById(this.vehicle.OwnerNo).subscribe(val=>{
-      this.owner=val;
-      console.log(this.owner);
-    })
-  }
-
-  onFileChange(event: any) {
-    const file = event.target.files[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = () => {
-        this.imagePreview = reader.result as string;
-      };
-      reader.readAsDataURL(file);
-      this.vehicleForm.patchValue({
-        Pic: file
-      });
-      this.vehicleForm.get('Pic')?.updateValueAndValidity();
-    }
-  }
-  setImagePreview() {
-    if (this.vehicle.Pic && this.vehicle.Pic.byteLength > 0) {
-      const base64String = btoa(String.fromCharCode(...this.vehicle.Pic));
-      this.imagePreview = `data:image/jpeg;base64,${base64String}`;
-    }
-  }
 
   onSubmit(): void {
     if (this.vehicleForm.valid) {
-
       const formData = new FormData();
-
       formData.append('TypeNo', this.vehicleForm.value.Type);
       formData.append('ModelNo', this.vehicleForm.value.Model);
       formData.append('OwnerNo', this.vehicleForm.value.Owner);
@@ -289,12 +191,14 @@ export class AddVehicleComponent implements OnInit {
     }
   }
 
-  Update(): void {
+  onClear(): void {
+    this.vehicleForm.reset();
+  }
+
+  Update() : void {
+
     if (this.vehicleForm.valid) {
-
       const formData = new FormData();
-
-      formData.append('VehicleNo', this.vehicle.VehicleNo.toString());
       formData.append('TypeNo', this.vehicleForm.value.Type);
       formData.append('ModelNo', this.vehicleForm.value.Model);
       formData.append('OwnerNo', this.vehicleForm.value.Owner);
@@ -317,9 +221,15 @@ export class AddVehicleComponent implements OnInit {
         this.router.navigate(['/Vehicle_Details']);
       });
     }
+
   }
 
-  onClear(): void {
-    this.vehicleForm.reset();
+  onFileChange(event: any): void {
+    const file = event.target.files[0];
+    if (file) {
+      this.vehicleForm.patchValue({
+        Pic: file
+      });
+    }
   }
 }

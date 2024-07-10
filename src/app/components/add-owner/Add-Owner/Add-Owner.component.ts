@@ -16,6 +16,7 @@ import { ActivatedRoute,Router } from '@angular/router';
 import { IOwner } from '../../../../Interfaces/IOwner';
 import { OwnerServiceService } from '../../../../Services/OwnerService/owner-service.service';
 
+
 @Component({
   selector: 'app-Add-Owner',
   standalone: true,
@@ -68,13 +69,7 @@ export class AddOwnerComponent implements OnInit {
  owners! :any[];
 
 
-  constructor(private fb: FormBuilder,
-    private route:ActivatedRoute,
-    private router:Router,
-    private countryservice:CountryService,
-    private stateservice :StateserviceService,
-    private cityservice: CitiesService,
-    private ownerservice : OwnerServiceService  ){ } 
+  constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private countryservice:CountryService,private stateservice :StateserviceService,private cityservice: CitiesService, private ownerservice : OwnerServiceService  ){ } 
 
 
   ngOnInit(): void {

@@ -1,35 +1,197 @@
-.header-container {
+   /* .header-container {
     display: flex;
-    align-items: center;
+    justify-content: space-between;
   }
-  
+
   .header-title {
-    flex: 1;
+    font-size: 20px;
+    font-weight: bold;
   }
-  
+
   .header-icons {
     display: flex;
     align-items: center;
   }
-  
+
   .header-icon-button {
-    margin-left: 10px;
+    margin-left: 8px;
   }
-  
+
+  .header-icon-button:last-child {
+    margin-right: 16px;
+  }
+
   .sidenav-container {
     height: 100%;
   }
-  
-  .charts-container {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
-    padding: 20px;
+
+  .sidenav-item {
+    padding: 12px 24px;
+    font-size: 16px;
   }
-  
-  .chart-card {
-    width: 400px;
-    height: 350px;
+
+  .sidenav-sub-item {
+    padding-left: 48px;
   }
-  
+
+
+.mat-dialog-container {
+  padding: 24px;
+}
+
+.dialog-content {
+  text-align: center;
+  padding: 24px;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-dialog-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+mat-dialog-content ul li {
+  margin: 8px 0;
+}
+
+mat-dialog-content ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+mat-dialog-content ul li a:hover {
+  text-decoration: underline;
+}
+
+
+.settings-menu-heading {
+  font-weight: bold;
+  padding: 8px 16px;
+  color: black;
+}
+
+.settings-menu-item {
+  padding: 8px 16px;
+  color: blue;
+  cursor: pointer;
+}
+ */
+
+ .header-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.header-title {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.header-icons {
+  display: flex;
+  align-items: center;
+}
+
+.header-icon-button {
+  margin-left: 8px;
+}
+
+.header-icon-button:last-child {
+  margin-right: 16px;
+}
+
+.sidenav-container {
+  height: 100%;
+}
+
+.sidenav-item {
+  padding: 12px 24px;
+  font-size: 16px;
+}
+
+.sidenav-sub-item {
+  padding-left: 48px;
+}
+
+.mat-dialog-container {
+  padding: 24px;
+}
+
+.dialog-content {
+  text-align: center;
+  padding: 24px; /* Add some padding if necessary */
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+mat-dialog-content ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+mat-dialog-content ul li {
+  margin: 8px 0;
+}
+
+mat-dialog-content ul li a {
+  text-decoration: none;
+  color: inherit;
+}
+
+mat-dialog-content ul li a:hover {
+  text-decoration: underline;
+}
+
+.settings-menu-heading,
+.help-menu-heading,
+.notifications-menu-heading,
+.profile-menu-heading {
+  font-weight: bold;
+  padding: 8px 16px;
+  color: black; /* Heading color */
+}
+
+.settings-menu-item,
+.help-menu-item,
+.notifications-menu-item,
+.profile-menu-item {
+  padding: 8px 16px;
+  color: blue; /* Options color */
+  cursor: pointer;
+}
+
+.settings-menu-item:hover,
+.help-menu-item:hover,
+.notifications-menu-item:hover,
+.profile-menu-item:hover {
+  text-decoration: underline; /* Optional hover effect */
+}
+
+.settings-menu-item mat-icon,
+.help-menu-item mat-icon,
+.notifications-menu-item mat-icon,
+.profile-menu-item mat-icon {
+  margin-right: 8px;
+}
+
+.profile-info {
+  display: flex;
+  flex-direction: column;
+  padding: 8px 16px;
+}
+
+.profile-name {
+  font-weight: bold;
+}
+
+.profile-email {
+  color: gray;
+}
+

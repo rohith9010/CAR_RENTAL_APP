@@ -23,7 +23,10 @@
           <div class="form-group">
           <label for="licenceNumber">Licence Number:</label>
           <input type="text" id="licenceNumber" formControlName="licenceNumber" placeholder="Enter Licence Number">
-          <div *ngIf="driverForm.get('licenceNumber')?.invalid && (driverForm.get('licenceNumber')?.dirty || driverForm.get('licenceNumber')?.touched)" class="warning">Licence Number is Required</div>
+          <div *ngIf="driverForm.get('licenceNumber')?.touched && driverForm.get('licenceNumber')?.invalid" class="warning">
+            <div *ngIf="driverForm.get('licenceNumber')?.errors?.['required']">Please enter an email address</div>
+            <div *ngIf="driverForm.get('licenceNumber')?.errors?.['email']">Please enter a valid email address</div>
+          </div>
           </div> 
 
         </div>

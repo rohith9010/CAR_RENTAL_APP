@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -72,23 +72,25 @@ export class AddVehicleComponent implements OnInit {
 
   vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
   country:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
-  state:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
-  owner:IOwner={
-    OwnerNo: 0,
-    Name: '',
-    Address1: '',
-    Address2: '',
-    CityNo: 0,
-    StateNo: 0,
-    Pincode: '',
-    CountryNo: 0,
-    PhoneNumber: '',
-    MobileNumber: '',
-    BankName: '',
-    BankAccount: '',
-    PAN: '',
-    DeleteStatus: ''
-  };
+
+  vehicleTypesList: IVehicleTypes[] = [];
+  vehicleMakesList: IVehicleMake_[] = [];
+  vehicleModelsList: IVehicleModel[] = [];
+  ownersList: IOwner[] = [];
+  countriesList: ICountry[] = [];
+  statesList: IState[] = [];
+  fuelTypesList: IVehicleFuel[] = [];
+  capacitiesList: IVehicleCapacity[] = [];
+
+  vehicleTypes!: any[];
+  vehicleMakes!: any[];
+  vehicleModels!: any[];
+  owners!: any[];
+  countries!: any[];
+  states!: any[];
+  fuelTypes!: any[];
+  capacities!: any[];
+
 
   constructor(private fb: FormBuilder,private route:ActivatedRoute,private router:Router,private vehicleservice:VehiclesService,private vehiclefueltypeservice:VehicleFuelService,private vehiclecapacityservice:VehicleCapacityService,private vehicletypesservice:VehicleTypeService,private vehiclemakeservice:VehicleMakeService,private vehiclemodelservice:VehicleModelServiceService,private countryservice:CountryService,private stateservice:StateserviceService,private cityservice:CitiesService,private ownersservice:OwnerServiceService) { }
 

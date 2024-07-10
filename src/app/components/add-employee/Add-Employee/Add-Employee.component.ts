@@ -14,6 +14,17 @@ import { ICountry } from '../../../../Interfaces/ICountry';
 import { IState } from '../../../../Interfaces/IState';
 import { ActivatedRoute,Router } from '@angular/router';
 import { OwnerServiceService } from '../../../../Services/OwnerService/owner-service.service';
+import { IVehicles } from '../../../../Interfaces/IVehicles';
+import { IVehicleTypes } from '../../../../Interfaces/IVehicleTypes';
+import { IVehicleMake_ } from '../../../../Interfaces/IVehicleMake_';
+import { IVehicleModel } from '../../../../Interfaces/IVehicleModel';
+import { IOwner } from '../../../../Interfaces/IOwner';
+import { IVehicleFuel } from '../../../../Interfaces/IVehicleFuel';
+import { IVehicleCapacity } from '../../../../Interfaces/IVehicleCapacity';
+import { EmployeeTypeService } from '../../../../Services/EmployeeTypeService/employee-type.service';
+import { VehiclesService } from '../../../../Services/VehiclesService/Vehicles.service';
+import { VehicleMakeService } from '../../../../Services/VehicleMakeservice/vehicle-make.service';
+import { VehicleModelServiceService } from '../../../../Services/VehicleModelservice/vehicle-model-service.service';
 
 @Component({
   selector: 'app-Add-Employee',
@@ -34,13 +45,92 @@ import { OwnerServiceService } from '../../../../Services/OwnerService/owner-ser
 export class AddEmployeeComponent implements OnInit {
 
   employeeForm!: FormGroup;
+  filteredvehiclelist: IVehicles[]=[];
+  Vehicletypelist:IVehicleTypes[]=[];
+  vehiclemakelist:IVehicleMake_[]=[];
+  vehiclemodellist:IVehicleModel[]=[];
+  ownerslist:IOwner[]=[];
+  statelist:IState[]=[];
+  vehicleFuellist:IVehicleFuel[]=[];
+  capacitylist:IVehicleCapacity[]=[];
 
-  employeeTypes = ['Admin', 'User'];
-  countries = ['USA', 'Canada', 'India'];
-  states = ['California', 'Texas', 'New York'];
-  cities = ['Los Angeles', 'Dallas', 'New York City'];
+  vehicle:IVehicles={
+    VehicleNo:0,
+    OwnerNo:0,
+    ModelNo:0,
+    TypeNo:0,
+    Year:0,
+    Color:'',
+    FuelNo:0,
+    CapacityNo:0,
+    Mileage:0,
+    Pic: new Uint8Array,
+    RegistrationNo:'',
+    RegistrationState:0,
+    ChassisNo:'',
+    DailyRate:0,
+    HourlyRate:0,
+    AdditionalDailyRate:0,
+    AddtionalHourlyRate:0,
+    DeleteStatus:'',
+    
+  };
 
-  constructor(private fb: FormBuilder) { }
+  vehiclemake:IVehicleMake_={
+    MakeNo:0,
+    Name:'',
+    Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]
+  };
+
+  country:ICountry={CountryNo:0,
+    Country:'',
+    States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]
+  };
+
+  state:IState={StateNo:0,
+    state:"",Citys:[],
+    CountryNo:0
+  };
+  owner:IOwner={
+    OwnerNo: 0,
+    Name: '',
+    Address1: '',
+    Address2: '',
+    CityNo: 0,
+    StateNo: 0,
+    Pincode: '',
+    CountryNo: 0,
+    PhoneNumber: '',
+    MobileNumber: '',
+    BankName: '',
+    BankAccount: '',
+    PAN: '',
+    DeleteStatus: ''
+  };
+
+
+
+
+ 
+
+
+
+
+  constructor(private fb: FormBuilder,
+     private Route:ActivatedRoute,
+     private Router:Router,
+     private Employeetypeservice:EmployeeTypeService,
+     private Cititesservice:CitiesService,
+     private stateservice:StateserviceService,
+     private countryservice:CountryService,
+     private vehicleservice:VehiclesService,
+     private vehiclemakesservice:VehicleMakeService,
+     private vehiclemodelservice:VehicleModelServiceService,
+     
+
+     
+     
+  ) { }
 
   ngOnInit(): void {
     this.validations();

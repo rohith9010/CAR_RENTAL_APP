@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core'
 import { FormBuilder, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputTextModule } from 'primeng/inputtext';
 import { ButtonModule } from 'primeng/button';
@@ -78,9 +78,22 @@ export class AddVehicleComponent implements OnInit {
     DeleteStatus: '',
   };
 
-  vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
-  country:ICountry={CountryNo:0,Country:'',States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]};
-  state:IState={StateNo:0,state:"",Citys:[],CountryNo:0};
+  vehiclemake:IVehicleMake_={
+    MakeNo:0,
+    Name:'',
+    Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]
+  };
+
+  country:ICountry={CountryNo:0,
+    Country:'',
+    States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]
+  };
+
+  state:IState={StateNo:0,
+    state:"",Citys:[],
+    CountryNo:0
+  };
+  
   owner:IOwner={
     OwnerNo: 0,
     Name: '',

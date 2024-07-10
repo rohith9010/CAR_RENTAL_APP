@@ -40,7 +40,12 @@ export class VehicleDetailsComponent implements OnInit {
   showClearIcon: boolean = false;
 
 
-  constructor(private modelservice : VehicleModelServiceService,private vehicleTypeservice : VehicleTypeService,private stateservice : StateserviceService,private vehiclefuelservice : VehicleFuelService,private vehiclecapacityservice : VehicleCapacityService,private vehiclesservice : VehiclesService) { }
+  constructor(private modelservice : VehicleModelServiceService,
+              private vehicleTypeservice : VehicleTypeService,
+              private stateservice : StateserviceService,
+              private vehiclefuelservice : VehicleFuelService,
+              private vehiclecapacityservice : VehicleCapacityService,
+              private vehiclesservice : VehiclesService) { }
 
   ngOnInit() {
     this.loadVehicles();

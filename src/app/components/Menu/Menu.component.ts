@@ -23,11 +23,14 @@ import { Chart } from 'chart.js';
 })
 export class MenuComponent implements OnInit {
 
+  sideNavOpened: boolean = false;
+  charts: { data: any, options: any }[] = [];
+
   constructor(private dialog: MatDialog){}
   ngOnInit() {
     this.initializeCharts()
   }
-  sideNavOpened: boolean = false;
+ 
 
   menuItems = [
     {
@@ -141,36 +144,7 @@ export class MenuComponent implements OnInit {
   signOut() {
     console.log('Sign Out clicked');
   }
-  charts: { data: any, options: any }[] = [];
-  // data: any;
-  // options: any;
-
-  // chart(){
-  // const documentStyle = getComputedStyle(document.documentElement);
-  //       const textColor = documentStyle.getPropertyValue('--text-color');
-
-  //       this.data = {
-  //           labels: ['A', 'B', 'C'],
-  //           datasets: [
-  //               {
-  //                   data: [540, 325, 702],
-  //                   backgroundColor: [documentStyle.getPropertyValue('--blue-500'), documentStyle.getPropertyValue('--yellow-500'), documentStyle.getPropertyValue('--green-500')],
-  //                   hoverBackgroundColor: [documentStyle.getPropertyValue('--blue-400'), documentStyle.getPropertyValue('--yellow-400'), documentStyle.getPropertyValue('--green-400')]
-  //               }
-  //           ]
-  //       };
-
-  //       this.options = {
-  //           plugins: {
-  //               legend: {
-  //                   labels: {
-  //                       usePointStyle: true,
-  //                       color: textColor
-  //                   }
-  //               }
-  //           }
-  //       };
-  //     }
+ 
   initializeCharts() {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');

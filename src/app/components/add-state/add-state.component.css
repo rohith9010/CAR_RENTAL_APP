@@ -1,5 +1,5 @@
 header {
-  background-color: #333;
+  background-color: #4CAF50;
   color: white;
   padding: 15px 20px;
   display: flex;
@@ -37,7 +37,7 @@ h1 {
   font-size: 16px;
   cursor: pointer;
   border-radius: 5px;
-  text-decoration: none; /* Remove underline for anchor tags */
+  text-decoration: none;
 }
 
 .header-button i {
@@ -47,15 +47,17 @@ h1 {
 .header-button:hover {
   background-color: #0056b3;
 }
+
 .header-button:focus {
-  outline: none; /* Remove the default focus outline */
+  outline: none;
 }
+
 .container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 80vh;
-  width: 100%; /* Match the width of the header */
+  width: 100%;
 }
 
 .form-content {
@@ -66,22 +68,38 @@ h1 {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 90%; /* Adjust the width of the form */
-  max-width: 600px; /* Limit the maximum width of the form */
+  width: 90%;
+  max-width: 600px;
 }
-
 
 .input-group {
   position: relative;
   width: 100%;
 }
 
-input[type="text"] {
-  width: calc(100% - 30px);
+input[type="text"],
+select {
+  width: 100%;
   padding: 10px;
   font-size: 16px;
   border: 1px solid #ccc;
   border-radius: 4px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+select {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  background: white;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="%23999" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+}
+
+input[type="text"] {
+  margin-bottom: 10px;
 }
 
 .clear-button {
@@ -117,6 +135,19 @@ input[type="text"] {
 }
 
 .form-button:hover {
-  background-color: #555;
+  background-color: #0056b3;
+}
+.dropdown-container {
+  position: relative;
 }
 
+.placeholder {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 10px;
+  color: #999;
+  font-style: normal;
+  font-weight: bold;
+  pointer-events: none;
+}

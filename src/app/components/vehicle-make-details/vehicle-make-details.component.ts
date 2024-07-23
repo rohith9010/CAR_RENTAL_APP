@@ -1,4 +1,4 @@
-import { Component, OnInit, model } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import {MatIconModule } from '@angular/material/icon';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { VehicleMakeService } from '../../../Services/VehicleMakeservice/vehicle-make.service';
@@ -22,7 +22,7 @@ export class VehicleMakeDetailsComponent implements OnInit{
   searchQuery!: string ;
   vehiclesList!:IVehicleMake_[];
   currentPage: number = 1;
-  pageSize: number = 8;
+  itemsPerPage: number = 8;
   showClearIcon: boolean = false;
 
   ngOnInit() {
@@ -33,39 +33,9 @@ export class VehicleMakeDetailsComponent implements OnInit{
 
     this.MakeService.getVehicleMake().subscribe(res=> {
       this.vehiclesList=res;
+      console.log(res);
+      this.search();
     });
-  }
-  applyPagination(): void {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    this.filteredMakeList = this.vehiclesList.slice(startIndex, startIndex + this.pageSize);
-  }
-
-  onPageChange(pageNumber: number): void {
-    this.currentPage = pageNumber;
-    this.applyPagination();
-  }
-
-  onPreviousPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.applyPagination();
-    }
-  }
-
-  onNextPage(): void {
-    if (this.currentPage < this.getTotalPages()) {
-      this.currentPage++;
-      this.applyPagination();
-    }
-  }
-
-  getPages(): number[] {
-    const totalPages = this.getTotalPages();
-    return Array(totalPages).fill(0).map((x, i) => i + 1);
-  }
-
-  getTotalPages(): number {
-    return Math.ceil(this.vehiclesList.length / this.pageSize);
   }
   
   delete(id:number):void {
@@ -77,16 +47,33 @@ export class VehicleMakeDetailsComponent implements OnInit{
           );
         }
     }
+
     search(): void {
-      const query = this.searchQuery.trim().toLowerCase();
-        this.filteredMakeList = this.vehiclesList.filter(make => 
+      const query = this.searchQuery?.trim().toLowerCase() || '';
+  
+      if (query === '') {
+        this.filteredMakeList = [...this.vehiclesList];
+      } else {
+        this.filteredMakeList = this.vehiclesList.filter(make =>
           make.Name.toLowerCase().includes(query)
         );
-        this.currentPage = 1;
-        this.showClearIcon = this.searchQuery.length > 0;
+      }
+  
+      this.currentPage = 1;
     }
-    clearSearch(): void {
-      this.searchQuery = '';
-      this.search();
+  
+    getDisplayedMakes(): IVehicleMake_[] {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = startIndex + this.itemsPerPage;
+      return (this.filteredMakeList || []).slice(startIndex, endIndex);
+    }
+  
+    onPageChange(page: number): void {
+      this.currentPage = page;
+    }
+    totalPages(): number[] {
+      const totalItems = this.filteredMakeList?.length ?? 0;
+      const totalPages = Math.ceil(totalItems / this.itemsPerPage);
+      return Array(totalPages).fill(0).map((x, i) => i + 1);
     }
   }

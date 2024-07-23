@@ -7,7 +7,7 @@
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
-    color: #333;
+    color: #4CAF50;
     line-height: 1.6;
 }
 
@@ -18,7 +18,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #4CAF50;
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -79,7 +79,7 @@ main {
 
 .search-button {
     padding: 10px 20px;
-    background-color: #337ab7;
+    background-color: #4CAF50;
     border: none;
     color: #fff;
     border-radius: 5px;
@@ -102,13 +102,14 @@ main {
 }
 
 .vehicle-list th {
-    background-color: #f2f2f2;
+    background-color: #4CAF50;
     font-size: 18px;
+    color: #fff;
 }
 
 .vehicle-list td a {
     text-decoration: none;
-    color: #333;
+    color: #4CAF50;
 }
 
 .vehicle-list td a i {
@@ -116,7 +117,7 @@ main {
 }
 
 footer {
-    background-color: #333;
+    background-color: #4CAF50;
     color: #fff;
     padding: 20px 0;
     text-align: center;
@@ -135,7 +136,7 @@ footer p {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background-color: #333;
+    background-color: #4CAF50;
     color: #fff;
     padding: 20px 0;
 }
@@ -165,7 +166,7 @@ footer p {
 .pagination button {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
-    color: #333;
+    color: #4CAF50;
     padding: 5px 10px;
     margin-right: 5px;
     cursor: pointer;

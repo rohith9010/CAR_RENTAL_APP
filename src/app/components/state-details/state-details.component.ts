@@ -24,7 +24,9 @@ export class StateDetailsComponent {
     currentPage: number = 1;
     itemsPerPage: number = 10;
 
-    constructor(private StateService:StateserviceService,private CountryService:CountryService) { }
+    constructor(
+      private StateService:StateserviceService,
+      private CountryService:CountryService){}
 
     ngOnInit() {
       this.getAll();

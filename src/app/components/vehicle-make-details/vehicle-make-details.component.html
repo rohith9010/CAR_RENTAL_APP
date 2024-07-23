@@ -1,50 +1,43 @@
 <div class="header">
-    <h1>Vehicle Management</h1>
+    <h1>Vehicle Make Management</h1>
     <div class="header-left">
-        <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
-        <a href="/Add_vehicle_Make" class="icon-button"><i class="pi pi-plus-circle"></i></a>
+      <a routerLink="/" class="icon-button"><i class="pi pi-home"></i></a>
+      <a routerLink="/Add_vehicle_Make" class="icon-button"><i class="pi pi-plus-circle"></i></a>
     </div>
 </div>
-<div class="container">
-    <div class="content">
-        <div class="search-container">
-            <h3>Filter</h3>
-            <div class="search-box">
-                <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search..." (keyup)="search()">
-                <button class="btn-clear" *ngIf="showClearIcon" (click)="clearSearch()">
-                  <i class="pi pi-times"></i> </button>
-              </div>
-        </div>
-        <div class="table-container">
-            <table class="table">
-                @if(filteredMakeList)
-                {
-                    @for (vehicle of filteredMakeList; track vehicle.MakeNo) {
-                        <tr>
-                            <td>{{vehicle.Name}}</td>
-                            <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><i class="pi pi-user-edit"></i></a></td>
-                            <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><i class="pi pi-trash"></i></a></td>   
-                        </tr>
-                    } 
-                }
-                @else
-                {
-                    @for (vehicle of vehiclesList; track vehicle.MakeNo) {
-                        <tr>
-                            <td>{{vehicle.Name}}</td>
-                            <td><a type="button"  routerLink="/Add_vehicle_Make/{{vehicle.MakeNo}}"><i class="pi pi-user-edit"></i></a></td>
-                            <td><a href="javascript:void(0)" (click) = "delete(vehicle.MakeNo)"><i class="pi pi-trash"></i></a></td>
-                        </tr>
-                    }
-                }
-            </table>
-        </div>
-        <div class="pagination">
-            <button (click)="onPreviousPage()" [disabled]="currentPage === 1">Previous</button>
-            <button *ngFor="let page of getPages()" (click)="onPageChange(page)" [class.active]="page === currentPage">
-                {{ page }}
-            </button>
-            <button (click)="onNextPage()" [disabled]="currentPage === getTotalPages()">Next</button>
-        </div>
-    </div>
-</div>
+  <main>
+    <section class="filter">
+      <h2>Filter</h2>
+      <div class="search-box">
+        <input type="text" class="input-search" name="filterInput" placeholder="Search Vehicle Makes..." [(ngModel)]="searchQuery" (keyup)="search()">
+        <button type="button" class="search-button"><i class="fas fa-search"></i></button>
+      </div>
+    </section>
+    <section class="vehicle-list">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Vehicle Make</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vehicle of getDisplayedMakes()">
+              <td>{{ vehicle.Name }}</td>
+              <td><a routerLink="/Add_vehicle_Make/{{ vehicle.MakeNo }}"><i class="fas fa-edit"></i></a></td>
+              <td><a href="javascript:void(0)" (click)="delete(vehicle.MakeNo)"><i class="fas fa-trash"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <button *ngFor="let page of totalPages()" (click)="onPageChange(page)" [class.active]="page === currentPage">{{ page }}</button>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <p>&copy; 2024 Vehicle Management System</p>
+  </footer>
+  

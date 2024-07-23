@@ -24,9 +24,12 @@ export class AddCityComponent implements OnInit {
   city:ICity={CityNo:0,CityName:"",StateNo:0}
   CitiesList!:ICity[];
   statesList:IState[] = [];
-  inputValue: string = '';
 
-  constructor(private route : ActivatedRoute,private router:Router,private CityService:CitiesService,private stateservice : StateserviceService) { }
+  constructor(
+    private route : ActivatedRoute,
+    private router:Router,
+    private CityService:CitiesService,
+    private stateservice : StateserviceService){}
 
   ngOnInit() {
     this.getstatebyid();
@@ -55,28 +58,24 @@ export class AddCityComponent implements OnInit {
       this.statesList=res;
       });
   }
-update()
-{
-  this.state.Citys.forEach((City: ICity) => {
-    if(City.CityNo==this.city.CityNo){
-      City.CityName=this.city.CityName;
-    }
-  });
-  this.CityService.updateCities(this.city).subscribe(data=>{
-    this.router.navigate(['/city_details'])});
-}
-Save()
-{
-  this.statesList.forEach((val:IState)=>{
-    if(val.state==this.state.state){
-      this.city.StateNo=val.StateNo
-    }
-  })
-  this.CityService.AddCities(this.city).subscribe(res=>{console.log(res)  
-    this.router.navigate(['/city_details'])});
+  update()
+  {
+    this.state.Citys.forEach((City: ICity) => {
+      if(City.CityNo==this.city.CityNo){
+        City.CityName=this.city.CityName;
+      }
+    });
+    this.CityService.updateCities(this.city).subscribe(data=>{
+      this.router.navigate(['/city_details'])});
   }
-
-  clearInput() {
-    this.inputValue = '';
+  Save()
+  {
+    this.statesList.forEach((val:IState)=>{
+      if(val.state==this.state.state){
+        this.city.StateNo=val.StateNo
+      }
+    })
+    this.CityService.AddCities(this.city).subscribe(res=>{console.log(res)  
+      this.router.navigate(['/city_details'])});
   }
 }

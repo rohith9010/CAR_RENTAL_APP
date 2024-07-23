@@ -1,130 +1,55 @@
-<!-- <div class="header">
-  <h1>Vehicle Management</h1>
-  <div class="header-left">
-      <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
-      <a href="/Add_Vehicle" class="icon-button"><i class="pi pi-plus-circle"></i></a>
-  </div>
-</div>
-<div class="container">
-  <div class="content">
-      <div class="search-container">
-          <h3>Filter</h3>
-          <div class="search-box">
-              <input type="text" class="input-search" name="filterInput"  placeholder="Type to Search...">
-              <button class="btn-search"><i class="pi pi-search"></i></button>
-          </div>
-      </div>
-      <div class="table-container">
-          <table class="table">
-            <tbody>
-                <tr>
-                    <th>Reg.No</th>
-                    <th>Reg.State</th>
-                    <th>Type</th>
-                    <th>Model</th>
-                    <th>Fuel</th>
-                    <th>Capacity</th>
-                    <th>Rate</th>
-                </tr>
-              @if(filteredVehiclesList)
-              {
-                  @for (vehicle of filteredVehiclesList; track vehicle.VehicleNo) {
-                      <tr>
-                          <td>{{vehicle.RegistrationNo}}</td>
-                          <td>{{vehicle.RegistrationState}}</td>
-                          <td>{{vehicle.TypeNo}}</td>
-                          <td>{{vehicle.ModelNo}}</td>
-                          <td>{{vehicle.FuelNo}}</td>
-                          <td>{{vehicle.CapacityNo}}</td>
-                          <td>{{vehicle.DailyRate}}</td>
-                          <td><a type="button"  routerLink="/Add_Vehicle/{{vehicle.VehicleNo}}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(vehicle.VehicleNo)"><i class="pi pi-trash"></i></a></td>   
-                      </tr>
-                  } 
-              }
-              @else
-              {     
-                  @for (vehicle of vehiclesList; track vehicle.VehicleNo) {
-                      <tr>
-                        <td>{{vehicle.RegistrationNo}}</td>
-                        <td>{{vehicle.RegistrationState}}</td>
-                        <td>{{vehicle.TypeNo}}</td>
-                        <td>{{vehicle.ModelNo}}</td>
-                        <td>{{vehicle.FuelNo}}</td>
-                        <td>{{vehicle.CapacityNo}}</td>
-                        <td>{{vehicle.DailyRate}}</td>
-                        <td><a type="button"  routerLink="/Add_Vehicle/{{vehicle.VehicleNo}}"><i class="pi pi-pencil"></i></a></td>
-                        <td><a href="javascript:void(0)" (click) = "delete(vehicle.VehicleNo)"><i class="pi pi-trash"></i></a></td>
-                      </tr>
-                  }
-              }
-            </tbody>
-          </table>
-      </div>
-  </div>
-</div> -->
-
 <div class="header">
     <h1>Vehicle Management</h1>
     <div class="header-left">
-        <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
-        <a href="/Add_Vehicle" class="icon-button"><i class="pi pi-plus-circle"></i></a>
+      <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
+      <a href="/Add_Vehicle" class="icon-button"><i class="pi pi-plus-circle"></i></a>
     </div>
   </div>
-  <div class="container">
-    <div class="content">
-        <div class="search-container">
-            <h3>Filter</h3>
-            <div class="search-box">
-                <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search...">
-                <button class="btn-search" (click)="search()"><i class="pi pi-search"></i></button>
-            </div>
-        </div>
-        <div class="table-container">
-            <table class="table">
-              <thead>
-                  <tr>
-                      <th>Reg.No</th>
-                      <th>Reg.State</th>
-                      <th>Type</th>
-                      <th>Model</th>
-                      <th>Fuel</th>
-                      <th>Capacity</th>
-                      <th>Rate</th>
-                      <th>Edit</th>
-                      <th>Delete</th>
-                  </tr>
-              </thead>
-              <tbody>
-                  <ng-container *ngIf="filteredVehiclesList; else elseBlock">
-                      <tr *ngFor="let vehicle of filteredVehiclesList; let i = index; trackBy: trackByFn">
-                          <td>{{ vehicle.RegistrationNo }}</td>
-                          <td>{{ getStateName(vehicle.RegistrationState) }}</td>
-                          <td>{{ getTypeName(vehicle.TypeNo) }}</td>
-                          <td>{{ getModelName(vehicle.ModelNo) }}</td>
-                          <td>{{ getFuelName(vehicle.FuelNo) }}</td>
-                          <td>{{ getCapacityName(vehicle.CapacityNo) }}</td>
-                          <td>{{ vehicle.DailyRate }}</td>
-                          <td><a type="button" routerLink="/Add_Vehicle/{{ vehicle.VehicleNo }}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click)="delete(vehicle.VehicleNo)"><i class="pi pi-trash"></i></a></td>
-                      </tr>
-                  </ng-container>
-                  <ng-template #elseBlock>
-                      <tr *ngFor="let vehicle of vehiclesList; let i = index; trackBy: trackByFn">
-                          <td>{{ vehicle.RegistrationNo }}</td>
-                          <td>{{ getStateName(vehicle.RegistrationState) }}</td>
-                          <td>{{ getTypeName(vehicle.TypeNo) }}</td>
-                          <td>{{ getModelName(vehicle.ModelNo) }}</td>
-                          <td>{{ getFuelName(vehicle.FuelNo) }}</td>
-                          <td>{{ getCapacityName(vehicle.CapacityNo) }}</td>
-                          <td>{{ vehicle.DailyRate }}</td>
-                          <td><a type="button" routerLink="/Add_Vehicle/{{ vehicle.VehicleNo }}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click)="delete(vehicle.VehicleNo)"><i class="pi pi-trash"></i></a></td>
-                      </tr>
-                  </ng-template>
-              </tbody>
-            </table>
-        </div>
-    </div>
-  </div>
+  <main>
+    <section class="filter">
+      <h3>Filter</h3>
+      <div class="search-box">
+        <input type="text" class="input-search" name="filterInput" placeholder="Search Vehicles..." [(ngModel)]="searchQuery" (keyup)="search()">
+        <button type="button" class="search-button"><i class="fas fa-search"></i></button>
+      </div>
+    </section>
+    <section class="vehicle-list">
+      <div class="table-container">
+        <table>
+          <thead>
+            <tr>
+              <th>Reg.No</th>
+              <th>Reg.State</th>
+              <th>Type</th>
+              <th>Model</th>
+              <th>Fuel</th>
+              <th>Capacity</th>
+              <th>Rate</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let vehicle of getDisplayedVehicles(); let i = index; trackBy: trackByFn">
+              <td>{{ vehicle.RegistrationNo }}</td>
+              <td>{{ getStateName(vehicle.RegistrationState) }}</td>
+              <td>{{ getTypeName(vehicle.TypeNo) }}</td>
+              <td>{{ getModelName(vehicle.ModelNo) }}</td>
+              <td>{{ getFuelName(vehicle.FuelNo) }}</td>
+              <td>{{ getCapacityName(vehicle.CapacityNo) }}</td>
+              <td>{{ vehicle.DailyRate }}</td>
+              <td><a type="button" routerLink="/Add_Vehicle/{{ vehicle.VehicleNo }}"><i class="fas fa-edit"></i></a></td>
+              <td><a href="javascript:void(0)" (click)="delete(vehicle.VehicleNo)"><i class="fas fa-trash"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="pagination">
+        <button *ngFor="let page of totalPages()" (click)="onPageChange(page)" [class.active]="page === currentPage">{{ page }}</button>
+      </div>
+    </section>
+  </main>
+<footer>
+  <p>&copy; 2024 Vehicle Management System</p>
+</footer>
   

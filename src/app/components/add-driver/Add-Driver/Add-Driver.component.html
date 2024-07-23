@@ -16,13 +16,13 @@
 
           <div class="form-group">
             <label for="driverName">Driver Name:</label>
-            <input type="text" id="driverName" formControlName="driverName" placeholder="Enter the name of the Driver">
+            <input type="text" id="driverName" [(ngModel)]="driver.DriverName" formControlName="driverName" placeholder="Enter the name of the Driver">
             <div *ngIf="driverForm.get('driverName')?.invalid && (driverForm.get('driverName')?.dirty || driverForm.get('driverName')?.touched)" class="warning">Driver name is required.</div>
           </div>
 
           <div class="form-group">
           <label for="licenceNumber">Licence Number:</label>
-          <input type="text" id="licenceNumber" formControlName="licenceNumber" placeholder="Enter Licence Number">
+          <input type="text" id="licenceNumber" [(ngModel)]="driver.LicenceNo" formControlName="licenceNumber" placeholder="Enter Licence Number">
           <div *ngIf="driverForm.get('licenceNumber')?.touched && driverForm.get('licenceNumber')?.invalid" class="warning">
             <div *ngIf="driverForm.get('licenceNumber')?.errors?.['required']">Please enter an email address</div>
             <div *ngIf="driverForm.get('licenceNumber')?.errors?.['email']">Please enter a valid email address</div>
@@ -38,47 +38,52 @@
         <div class="form-group">
 
           <label for="address">Address:</label>
-          <textarea id="address" formControlName="address" placeholder="Enter Address"></textarea>
+          <textarea id="address" [(ngModel)]="driver.AddressLine1" formControlName="address" placeholder="Enter Address"></textarea>
           <div *ngIf="driverForm.get('address')?.invalid && (driverForm.get('address')?.dirty || driverForm.get('address')?.touched)" class="warning">Address is required.</div>
 
         </div>
-      <div class="horizontal-fields">
 
-        <div class="form-group">
-          <label for="country">Country:</label>
-          <select name="country" id="country" formControlName="country" placeholder="Select Country">
-            <option value="" selected disabled>Select Country</option>
-            <option value="USA">USA</option>
-            <option value="Canada">Canada</option>
-            <option value="India">India</option>
-          </select>
+        <div class="col-1">
+          <div class="form-group">
+            <label for="address2">Address Line 2</label>
+            <input pInputText id="address2" [(ngModel)]="driver.AddressLine2"formControlName="address2" placeholder="address2">
+            <div *ngIf="driverForm.get('address2')?.invalid && (driverForm.get('address2')?.dirty || driverForm.get('address2')?.touched)" class="warning">Address is required.</div>
+          </div>
         </div>
 
-        <div class="form-group">
-          <label for="state">State:</label>
-          <select name="state" id="state" formControlName="state" placeholder="Select State">
-            <option value="" selected disabled>Select State</option>
-            <option value="">Telangana</option>
-            <option value="">Texas</option>
+        <div class="col-4">
+          <div class="form-group">  
+            <label for="country">Country</label>
+            <select formControlName="country" [(ngModel)]="country.CountryNo">
+              <option value="" selected disabled>Select Country</option>
+              <option *ngFor="let country of CountryList" [value]="country.CountryNo">{{ country.Country }}</option>
             </select>
+          </div>  
         </div>
-
-        <div class="form-group">
-          <label for="city">City:</label>
-          <select name="city" id="city" formControlName="city" placeholder="Select City">
-            <option value="" selected disabled>Select City</option>
-            <option value="">Hyd</option>
-            <option value="">Sec</option>
+        <div class="col-4">
+          <div class="form-group">
+            <label for="state">State</label>
+            <select formControlName="state" [(ngModel)]="state.StateNo">
+              <option value="" selected disabled>Select State</option>
+              <option *ngFor="let state of StatesList" [value]="state.StateNo">{{ state.state }}</option>
             </select>
+          </div>
         </div>
-
+        <div class="col-4">
+          <div class="form-group">
+            <label for="city">City</label>
+            <select formControlName="city" [(ngModel)]="city.CityNo">
+              <option value="" selected disabled>Select City</option>
+              <option *ngFor="let city of CitiesList" [value]="city.CityNo">{{ city.CityName }}</option>
+            </select>
+          </div>
+        </div>
         <div class="form-group">
           <label for="pincode">Pincode</label>
-          <input pInputText id="pincode" formControlName="pincode" placeholder="Enter pincode">
+          <input pInputText id="pincode" [(ngModel)]="driver.PinCode" formControlName="pincode" placeholder="Enter pincode">
           <div *ngIf="driverForm.get('pincode')?.invalid && (driverForm.get('pincode')?.dirty || driverForm.get('pincode')?.touched)" class="warning">Pincode is required.</div>
         </div>
-      </div>
-      </fieldset>
+      
 
       <fieldset class="fieldset">
         <legend>Contact Information</legend>
@@ -86,7 +91,7 @@
 
           <div class="form-group">
             <label for="phoneNumber">Phone Number:</label>
-            <input type="tel" id="phoneNumber" formControlName="phoneNumber" placeholder="Phone Number">
+            <input type="tel" id="phoneNumber" [(ngModel)]="driver.PhoneNo" formControlName="phoneNumber" placeholder="Phone Number">
                 <div *ngIf="driverForm.get('phoneNumber')?.touched && driverForm.get('phoneNumber')?.invalid" class="warning">
                   <div *ngIf="driverForm.get('phoneNumber')?.errors?.['required']">Please enter a phone number</div>
                   <div *ngIf="driverForm.get('phoneNumber')?.errors?.['pattern']">Please enter digits only</div>
@@ -96,7 +101,7 @@
 
           <div class="form-group">
             <label for="mobileNumber">Mobile Number:</label>
-            <input type="tel" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number">
+            <input type="tel" id="mobileNumber" [(ngModel)]="driver.MobileNo" formControlName="mobileNumber" placeholder="Mobile Number">
               <div *ngIf="driverForm.get('mobileNumber')?.touched && driverForm.get('mobileNumber')?.invalid" class="warning">
                 <div *ngIf="driverForm.get('mobileNumber')?.errors?.['required']">Please enter a Mobile number</div>
                 <div *ngIf="driverForm.get('mobileNumber')?.errors?.['pattern']">Please enter a valid Mobile number</div>
@@ -112,7 +117,7 @@
 
         <div class="form-group">
           <label for="bankName">Bank Name:</label>
-          <input type="text" id="bankName" formControlName="bankName" placeholder="Bank Name">
+          <input type="text" id="bankName" [(ngModel)]="driver.BankName" formControlName="bankName" placeholder="Bank Name">
           <div *ngIf="driverForm.get('bankName')?.touched && driverForm.get('bankName')?.invalid" class="warning">
             <div *ngIf="driverForm.get('bankName')?.errors?.['required']">Please enter a bank name</div>
             <div *ngIf="driverForm.get('bankName')?.errors?.['pattern']">Bank name must be between 3 and 50 characters long and can only include letters, spaces, hyphens, and apostrophes</div>
@@ -121,7 +126,7 @@
 
         <div class="form-group">
           <label for="accountNumber">Account Number:</label>
-          <input type="text" id="accountNumber" formControlName="accountNumber" placeholder="Account Number">
+          <input type="text" id="accountNumber" [(ngModel)]="driver.BankAccount" formControlName="accountNumber" placeholder="Account Number">
             <div *ngIf="driverForm.get('accountNumber')?.touched && driverForm.get('accountNumber')?.invalid" class="warning">
               <div *ngIf="driverForm.get('accountNumber')?.errors?.['required']">Please enter a bank account number</div>
               <div *ngIf="driverForm.get('accountNumber')?.errors?.['pattern']">Bank account number must be 9 to 18 digits long</div>
@@ -130,7 +135,7 @@
 
         <div class="form-group">
           <label for="Pan">PAN:</label>
-          <input type="text" id="pan" formControlName="pan" placeholder="PAN">
+          <input type="text" id="pan" [(ngModel)]="driver.PAN" formControlName="pan" placeholder="PAN">
           <div *ngIf="driverForm.get('pan')?.invalid && (driverForm.get('pan')?.touched)" class="warning">
           <div *ngIf="driverForm.get('pan')?.errors?.['required']">Please enter a PAN number</div>
           <div *ngIf="driverForm.get('pan')?.errors?.['pattern']">PAN number must be in the format AAAAA9999A</div>
@@ -150,10 +155,10 @@
           <i class="fas fa-times"></i> Clear
         </button>
 
-        <button type="button" class="button-blue">
+        <button type="button" class="button-blue"  (click)="UpDateDriver()">
           <i class="fas fa-edit"></i> Update
         </button>
 
       </div>
-    </form>
-  </div>
+    
+  

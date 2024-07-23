@@ -15,7 +15,6 @@ import { VehicleFuelService } from '../../../../Services/VehicleFuelService/Vehi
 import { VehicleCapacityService } from '../../../../Services/VehicleCapacityService/VehicleCapacity.service';
 import { IVehicles } from '../../../../Interfaces/IVehicles';
 import { VehiclesService } from '../../../../Services/VehiclesService/Vehicles.service';
-
 @Component({
   selector: 'app-Vehicle-Details',
   standalone: true,
@@ -24,7 +23,6 @@ import { VehiclesService } from '../../../../Services/VehiclesService/Vehicles.s
   styleUrls: ['./Vehicle-Details.component.css']
 })
 export class VehicleDetailsComponent implements OnInit {
-
   filteredVehiclesList:IVehicles[]=[];
   filteredModelList: IVehicleModel[]=[];
   searchQuery!: string;
@@ -32,7 +30,6 @@ export class VehicleDetailsComponent implements OnInit {
   vehicleFuelList:IVehicleFuel[]=[];
   vehicleCapacityList:IVehicleCapacity[]=[];
   stateList:IState[]=[];
-
   vehiclesList!:IVehicles[];
 
   currentPage: number = 1;
@@ -54,8 +51,9 @@ export class VehicleDetailsComponent implements OnInit {
     this.loadVehicleFuel();
     this.loadVehicleCapacity();
     this.loadStates();
+    this.loadModels();
   }
-  
+
     loadVehicles():void {
 
       this.vehiclesservice.GetVehicles().subscribe(res=> {
@@ -78,7 +76,7 @@ export class VehicleDetailsComponent implements OnInit {
 
   search(): void {
     const query = this.searchQuery?.trim().toLowerCase() || '';
-    
+
         if (query === '') {
           this.filteredVehiclesList = [...this.vehiclesList];
         } else {

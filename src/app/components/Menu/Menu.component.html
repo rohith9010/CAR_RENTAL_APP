@@ -231,30 +231,6 @@
   </mat-list>
 </mat-menu>
 
-<!-- <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #sidenav mode="side" [opened]="sideNavOpened" (openedChange)="sideNavOpened = $event">
-    <mat-nav-list>
-      <mat-expansion-panel class="sidenav-item" *ngFor="let menuItem of menuItems">
-        <mat-expansion-panel-header>
-          <mat-panel-title>
-            <mat-icon>{{ menuItem.icon }}</mat-icon>
-            {{ menuItem.name }}
-          </mat-panel-title>
-        </mat-expansion-panel-header>
-        <mat-nav-list class="sidenav-sub-list">
-          <a mat-list-item class="sidenav-sub-item" *ngFor="let subItem of menuItem.subItems" [routerLink]="subItem.routerLink">{{ subItem.name }}</a>
-        </mat-nav-list>
-      </mat-expansion-panel>
-    </mat-nav-list>
-  </mat-sidenav>
-  <mat-sidenav-content>
-    <div class="card flex justify-content-center">
-      <p-chart type="pie" [data]="data" [options]="options"  />
-    </div>
-    <router-outlet></router-outlet>
-  </mat-sidenav-content>
-</mat-sidenav-container> -->
-
 <mat-sidenav-container class="sidenav-container">
   <mat-sidenav #sidenav mode="side" [opened]="sideNavOpened" (openedChange)="sideNavOpened = $event">
     <mat-nav-list>
@@ -272,15 +248,9 @@
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
-    <div class="charts-container">
-      <div class="chart-card" *ngFor="let chart of charts">
-        <p-chart type="pie" [data]="chart.data" [options]="chart.options" width="300" height="300"></p-chart>
-      </div>
-    </div>
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
 
 <ng-template #notificationDialog>
   <h1 mat-dialog-title>Notification</h1>

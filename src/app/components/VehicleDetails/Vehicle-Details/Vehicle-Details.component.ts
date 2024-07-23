@@ -40,6 +40,7 @@ export class VehicleDetailsComponent implements OnInit {
   showClearIcon: boolean = false;
 
 
+<<<<<<< HEAD
   constructor(
     private modelservice : VehicleModelServiceService,
     private vehicleTypeservice : VehicleTypeService,
@@ -47,6 +48,14 @@ export class VehicleDetailsComponent implements OnInit {
     private vehiclefuelservice : VehicleFuelService,
     private vehiclecapacityservice : VehicleCapacityService,
     private vehiclesservice : VehiclesService) { }
+=======
+  constructor(private modelservice : VehicleModelServiceService,
+              private vehicleTypeservice : VehicleTypeService,
+              private stateservice : StateserviceService,
+              private vehiclefuelservice : VehicleFuelService,
+              private vehiclecapacityservice : VehicleCapacityService,
+              private vehiclesservice : VehiclesService) { }
+>>>>>>> 296a77a6b63e51fc86c26a22eed6e08654f49776
 
   ngOnInit() {
     this.loadVehicles();
@@ -54,7 +63,6 @@ export class VehicleDetailsComponent implements OnInit {
     this.loadVehicleFuel();
     this.loadVehicleCapacity();
     this.loadStates();
-    this.loadModels();
   }
   
     loadVehicles():void {
@@ -160,8 +168,54 @@ export class VehicleDetailsComponent implements OnInit {
     });
   }
 
+<<<<<<< HEAD
   trackByFn(index: number, item: IVehicles): number {
     return item.VehicleNo;
   }
+=======
+// Function to get vehicle fuel name based on ID
+getFuelName(fuelId: number): string {
+  const vehicleFuel = this.vehicleFuelList.find(f => f.FuelNo === fuelId);
+  return vehicleFuel ? vehicleFuel.Fuel : '';
+}
+
+// Function to get vehicle capacity name based on ID
+getCapacityName(capacityId: number): string {
+  const vehicleCapacity = this.vehicleCapacityList.find(c => c.CapacityNo === capacityId);
+  return vehicleCapacity ? vehicleCapacity.Capacity.toString() : '';
+}
+
+// Load vehicle types
+loadVehicleTypes(): void {
+  this.vehicleTypeservice.GetVehicleTypes().subscribe(res => {
+    this.vehicleTypeList = res;
+  });
+}
+
+// Load vehicle fuel types
+loadVehicleFuel(): void {
+  this.vehiclefuelservice.GetVehicleFuel().subscribe(res => {
+    this.vehicleFuelList = res;
+  });
+}
+
+// Load vehicle capacities
+loadVehicleCapacity(): void {
+  this.vehiclecapacityservice.GetVehicleCapacity().subscribe(res => {
+    this.vehicleCapacityList = res;
+  });
+}
+
+// Load states
+loadStates(): void {
+  this.stateservice.GetAllStates().subscribe(res => {
+    this.stateList = res;
+  });
+}
+
+trackByFn(index: number, item: IVehicles): number {
+  return item.VehicleNo;
+}
+>>>>>>> 296a77a6b63e51fc86c26a22eed6e08654f49776
 
 }

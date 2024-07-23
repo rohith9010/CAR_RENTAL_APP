@@ -10,7 +10,12 @@
 <div class="container">
     <form class="form-content" (ngSubmit)="Save()">
         <div class="input-group">
+<<<<<<< HEAD
             <input type="text" [(ngModel)]="vehiclemake.Name" name="vehiclemakeName" placeholder="Enter Vehicle">
+=======
+            <input type="text" [(ngModel)]="vehiclemake.Name" name="vehiclemakeName" placeholder="Enter text">
+            <button type="button" class="clear-button" (click)="clearInput()">&times;</button>
+>>>>>>> 296a77a6b63e51fc86c26a22eed6e08654f49776
         </div>
         <div class="form-buttons">
             <button type="submit" class="form-button">Save</button>

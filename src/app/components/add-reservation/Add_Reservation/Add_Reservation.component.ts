@@ -5,7 +5,15 @@ import { ButtonModule } from 'primeng/button';
 import { DropdownModule } from 'primeng/dropdown';
 import { CardModule } from 'primeng/card';
 import { CommonModule } from '@angular/common';
-
+import { IReservation } from '../../../../Interfaces/IReservation';
+import { ReservationService } from '../../../../Services/ReservationService/reservation.service';
+import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
+import { customerservice } from '../../../../Services/CustomerService/Customer.service';
+import { ICustomer } from '../../../../Interfaces/ICustomer';
+import { IEmployee } from '../../../../Interfaces/IEmployee';
+import { DriverService } from '../../../../Services/DriverService/Driver.service';
+import { EmployeeService } from '../../../../Services/EmployeeService/employee.service';
 
 @Component({
   selector: 'app-Add_Reservation',
@@ -25,11 +33,60 @@ import { CommonModule } from '@angular/common';
 export class Add_ReservationComponent implements OnInit {
 
   reservationForm!: FormGroup;
+  CustomerList:ICustomer[]=[];
+  customer:ICustomer={
+    CustomerNo: 0,
+    Name: '',
+    EmailAddress: '',
+    Address1: '',
+    Address2: '',
+    CityNo: 0,
+    StateNo: 0,
+    Pincode: '',
+    CountryNo: 0,
+    PhoneNumber: '',
+    MobileNumber: '',
+    RegistrationDate: '',
+    UserName: '',
+    Password: '',
+    DateTimeLastLogin: '',
+    DeleteStatus: ''
+  }
 
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private reservationservice : ReservationService,
+              private route: Router,
+              private router:ActivatedRoute, 
+              private Customerservice: customerservice,
+              private Driverservice:DriverService,
+              private Employeeservice:EmployeeService,
+            ) { }
 
+  reservation:IReservation={
+    RentalNo: 0,
+    CustomerNo: 0,
+    VehicleNo: 0,
+    DriverNo: 0,
+    EmployeeNo: 0,
+    ReservationDate: new Date(),
+    VehicleRate: 0,
+    NoOfDays: 0,
+    StartDate: new Date(),
+    EndDate: new Date(),
+    NoOfKMS: 0,
+    StartKMS: 0,
+    EndKMS: 0,
+    SourceLocation: 0,
+    DestinationLocation: 0,
+    TravelPurpose: '',
+    Amount: 0,
+    TransactionNumber: '',
+    Status: ''
+  }
   ngOnInit(): void {
     this.validations();
+    this.getbyId();
+  
   }
   validations(){
     this.reservationForm = this.fb.group({
@@ -53,6 +110,7 @@ export class Add_ReservationComponent implements OnInit {
   onSubmit(): void {
     if (this.reservationForm.valid) {
       console.log('Form Submitted', this.reservationForm.value);
+
     }
   }
 
@@ -60,4 +118,44 @@ export class Add_ReservationComponent implements OnInit {
     this.reservationForm.reset();
   }
 
+  getbyId() {
+    const reservationId = this.router.snapshot.params['id'];
+
+    if (reservationId) {
+      this.reservationservice.ReservationById(reservationId).subscribe(res => {
+        this.reservation = res;
+        console.log(res);
+        this.GetCustomerByID();
+      })
+    }
+  }
+  
+  
+    GetallCustomers(){
+      this.Customerservice.GetCustomer().subscribe(res =>{
+        this.CustomerList=res;
+        console.log(res);
+      })
+    }
+
+    GetCustomerByID(){
+      this.Customerservice.CustomerById(this.customer.CustomerNo).subscribe(res =>{
+        this.customer=res;
+        console.log(res);
+      })
+    }
+    // getDriver()
+    // {
+    //   this.Driverservice.getAll().subscribe(res =>{
+    //     this.CustomerList=res;
+    //     console.log(res);
+    //   })
+    // }
+    // getDriverById()
+    // {
+    //   this.Customerservice.CustomerById(this.customer.CustomerNo).subscribe(res =>{
+    //     this.customer=res;
+    //     console.log(res);
+    //   })
+    // }
 }

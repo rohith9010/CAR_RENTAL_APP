@@ -49,6 +49,8 @@ export const routes: Routes = [
     {path:'Add_owner/:Id',component:AddOwnerComponent},
     {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent},
     {path:'Add_Customer/:Id',component:AddCustomerComponent},
+    {path:'Add_Reservation/:Id',component:Add_ReservationComponent},
+
 
 
     {path:'Add_owner',component:AddOwnerComponent},

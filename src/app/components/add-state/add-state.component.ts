@@ -22,7 +22,6 @@ export class AddStateComponent {
   State:IState={StateNo:0,state:"",CountryNo:0,Citys:[]}
   StateList!:IState[];
   CountryList:ICountry[] = [];
-  inputValue: string = '';
 
   constructor(private route : ActivatedRoute,private router:Router,private StateService:StateserviceService,private CountryService:CountryService) { }
 
@@ -53,27 +52,24 @@ export class AddStateComponent {
       this.CountryList=res;
       });
   }
-update()
-{
-  this.Country.States.forEach((State: IState) => {
-    if(State.StateNo==this.State.StateNo){
-      State.state=this.State.state;
-    }
-  });
-  this.StateService.UpdateState(this.State).subscribe(data=>{
-    this.router.navigate(['/State_Detail'])}); 
-}
-Save()
-{
-  this.CountryList.forEach((val:ICountry)=>{
-    if(val.Country==this.Country.Country){
-      this.State.CountryNo=val.CountryNo;
-    }
-  })
-  this.StateService.AddState(this.State).subscribe(res=>{console.log(res)  
-    this.router.navigate(['/State_Detail'])});
+  update()
+  {
+    this.Country.States.forEach((State: IState) => {
+      if(State.StateNo==this.State.StateNo){
+        State.state=this.State.state;
+      }
+    });
+    this.StateService.UpdateState(this.State).subscribe(data=>{
+      this.router.navigate(['/State_Detail'])}); 
   }
-  clearInput() {
-    this.inputValue = '';
+  Save()
+  {
+    this.CountryList.forEach((val:ICountry)=>{
+      if(val.Country==this.Country.Country){
+        this.State.CountryNo=val.CountryNo;
+      }
+    })
+    this.StateService.AddState(this.State).subscribe(res=>{console.log(res)  
+      this.router.navigate(['/State_Detail'])});
   }
 }

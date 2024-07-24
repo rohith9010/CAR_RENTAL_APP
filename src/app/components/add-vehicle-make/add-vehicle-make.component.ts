@@ -17,13 +17,12 @@ import { FloatLabelModule } from 'primeng/floatlabel';
 })
 export class AddVehicleMakeComponent implements OnInit{
 
-  inputValue: string = '';
-
   vehiclemake:IVehicleMake_={MakeNo:0,Name:'',Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]};
-  constructor(private route : ActivatedRoute,private MakeService:VehicleMakeService,private router:Router)
-  {
+  constructor(
+    private route : ActivatedRoute,
+    private MakeService:VehicleMakeService,
+    private router:Router){}
 
-  }
   ngOnInit(): void {
     this.getbyid();
   }
@@ -37,24 +36,17 @@ export class AddVehicleMakeComponent implements OnInit{
       })
     }
   }
-update()
-{
-  this.MakeService.updateVehicleMake(this.vehiclemake).subscribe(data=>{console.log(data);
-  this.router.navigate(['/vehicle_make_details'])}); 
-}
-
-Save()
-{
-  this.MakeService.AddVehicleMake(this.vehiclemake).subscribe(res=>{console.log(res)  
-  this.router.navigate(['/vehicle_make_details'])});
-}
-
-  Clear()
+  update()
   {
-    
+    this.MakeService.updateVehicleMake(this.vehiclemake).subscribe(data=>{console.log(data);
+    this.router.navigate(['/vehicle_make_details'])}); 
   }
-  clearInput() {
-    this.inputValue = '';
+
+  Save()
+  {
+    this.MakeService.AddVehicleMake(this.vehiclemake).subscribe(res=>{console.log(res)  
+    this.router.navigate(['/vehicle_make_details'])});
   }
+
 }
 

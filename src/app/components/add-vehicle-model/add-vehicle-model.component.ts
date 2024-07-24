@@ -22,7 +22,6 @@ export class AddVehicleModelComponent implements OnInit {
   vehiclemodel:IVehicleModel={ModelNo:0,Name:"",MakeNo:0}
   vehiclesModelList!:IVehicleModel[];
   vehicleMakeList:IVehicleMake_[] = [];
-  inputValue: string = '';
 
   constructor(private route : ActivatedRoute,private router:Router,private MakeService:VehicleMakeService,private ModelService:VehicleModelServiceService) { }
 
@@ -73,8 +72,5 @@ Save()
   })
   this.ModelService.AddVehicleModel(this.vehiclemodel).subscribe(res=>{console.log(res)  
     this.router.navigate(['/vehicle_model_details'])});
-  }
-  clearInput() {
-    this.inputValue = '';
   }
 }

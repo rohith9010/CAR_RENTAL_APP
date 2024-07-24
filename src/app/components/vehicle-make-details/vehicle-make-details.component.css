@@ -1,185 +1,172 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    background-color: #f5f5f5;
-    color: #333;
-  }
-  
-  .header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #4CAF50;
-    padding: 20px 25px; /* Increased padding for slightly bigger header */
-    color: white;
-    width: 100%;
-    box-sizing: border-box;
-    border-radius: 8px; /* Added rounded corners for the header */
-  }
-  
-  .header-left {
-    display: flex;
-    align-items: center;
-  }
-  
-  .header h1 {
-    margin: 0;
-    font-size: 24px;
-    flex-grow: 1;
-    text-align: center;
-  }
-  
-  .icon-button {
-    color: white;
-    text-decoration: none;
-    margin-left: 15px;
-    font-size: 24px;
-  }
-  
-  .container {
-    width: 100%;
-    height: 100vh;
-    margin: 20px 0;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    box-sizing: border-box;
-    overflow: hidden; /* Hide overflow from container */
-    display: flex;
-    flex-direction: column; /* Stack children vertically */
-  }
-  
-  .content {
-    flex-grow: 1; /* Allow content to expand */
-    overflow-y: auto; /* Add scrollbar only to content */
-  }
-  
-  .search-container {
-    margin-bottom: 20px;
-  }
-  
-  .search-container h3 {
-    margin: 0 0 10px 0;
-  }
-  
-  .search-box {
-    display: flex;
-    align-items: center;
-  }
-  
-  .input-search {
-    padding: 10px;
-    font-size: 16px;
-    flex: 1;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .btn-search {
-    background-color: #4CAF50;
-    color: white;
-    padding: 10px;
-    border: none;
-    cursor: pointer;
-    margin-left: 10px;
-    border-radius: 4px;
-    display: flex;
-    align-items: center;
-  }
-  
-  .btn-search i {
-    font-size: 20px;
-  }
-  
-  .table-container {
-    margin-top: 20px;
-    overflow-y: auto; /* Add scrollbar to table container */
-    max-height: 400px; /* Limit the height of the table container */
-  }
-  
-  .table {
-    width: 100%;
-    height: 500px;
-    border-collapse: collapse;
-  }
-  
-  .table th, .table td {
-    padding: 10px;
-    text-align: left;
-    border-bottom: 1px solid #ddd;
-  }
-  
-  .table th {
-    background-color: #4CAF50;
-    color: white;
-  }
-  
-  .table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
-  .table a {
-    text-decoration: none;
-    color: #4CAF50;
-    font-size: 18px;
-  }
-  
-  .table a:hover {
-    text-decoration: underline;
-  }
-  
-  .icon-button i {
-    vertical-align: middle;
-  }
-  
-  .table-container::-webkit-scrollbar {
-    width: 12px; /* Set the width of the scrollbar */
-  }
-  
-  /* Handle on hover */
-  .table-container::-webkit-scrollbar-thumb:hover {
-    background: #555;
-  }
-  
-  /* Handle */
-  .table-container::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 6px; /* Set border radius */
-  }
-  
-  /* Handle on active */
-  .table-container::-webkit-scrollbar-thumb:active {
-    background-color: #666;
-  }
-  .pagination {
-    margin-top: 20px;
-    text-align: center;
-  }
-  
-  .pagination button {
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    margin: 0 5px;
-    cursor: pointer;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-  
-  .pagination button:hover {
-    background-color: #45a049;
-  }
-  
-  .pagination button.active {
-    background-color: #45a049;
-  }
-  
-  
-  
-  
-  
-  
-  
+  font-family: Arial, sans-serif;
+  background-color: #f7f7f7;
+  color: #4CAF50;
+  line-height: 1.6;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  flex: 1;
+}
+
+.header {
+  background-color: #4CAF50;
+  color: #fff;
+  padding: 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.header h1 {
+  font-size: 24px;
+  margin: 0;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+}
+
+.icon-button {
+  margin-left: 15px;
+  color: #fff;
+  font-size: 24px;
+  text-decoration: none;
+}
+
+.main {
+  padding: 20px 0;
+  flex: 1;
+}
+
+.filter {
+  background-color: #fff;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.filter h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+
+.input-search {
+  padding: 10px;
+  width: 70%;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.search-button {
+  padding: 10px 20px;
+  background-color: #4CAF50;
+  border: none;
+  color: #fff;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.vehicle-list .table-container {
+  max-height: 400px;
+  overflow-y: auto;
+  position: relative;
+}
+
+.vehicle-list table {
+  width: 100%;
+  border-collapse: collapse;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  margin-top: 20px;
+}
+
+.vehicle-list thead th {
+  position: sticky;
+  top: 0;
+  background-color: #4CAF50;
+  color: #fff;
+  z-index: 1;
+}
+
+.vehicle-list th, .vehicle-list td {
+  border: 1px solid #ddd;
+  padding: 12px;
+  text-align: left;
+}
+
+.vehicle-list th {
+  font-size: 18px;
+}
+
+.vehicle-list td a {
+  text-decoration: none;
+  color: #4CAF50;
+}
+
+.vehicle-list td a i {
+  font-size: 20px;
+}
+
+.pagination {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+}
+
+.pagination button {
+  background-color: #f0f0f0;
+  border: 1px solid #ccc;
+  color: #4CAF50;
+  padding: 5px 10px;
+  margin-right: 5px;
+  cursor: pointer;
+}
+
+.pagination button.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.pagination button:hover {
+  background-color: #ccc;
+}
+
+footer {
+  background-color: #4CAF50;
+  color: #fff;
+  text-align: center;
+  padding: 10px 0;
+  position: fixed;
+  width: 100%;
+  bottom: 0;
+}
+
+footer p {
+  margin: 0;
+  font-size: 14px;
+}

@@ -20,7 +20,7 @@ export class VehicleModelDetailsComponent implements OnInit {
   searchQuery!: string;
   vehicleList:IVehicleMake_[]=[];
   currentPage: number = 1;
-  itemsPerPage: number = 10;
+  itemsPerPage: number = 8;
 
   constructor(private MakeService:VehicleMakeService,private modelservice : VehicleModelServiceService) { }
 

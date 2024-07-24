@@ -10,20 +10,27 @@ import { MatListModule } from '@angular/material/list';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MatMenuModule } from '@angular/material/menu';
+import { ChartModule } from 'primeng/chart';
+import { Chart } from 'chart.js';
 
 
 @Component({
   selector: 'app-Menu',
   standalone: true,
-  imports: [MatMenuModule,RouterOutlet,CommonModule,RouterLink,MatToolbarModule,MatButtonModule,MatCardModule,MatIconModule,MatSidenavModule,MatListModule,MatExpansionModule,MatDialogModule],
+  imports: [MatMenuModule,ChartModule,RouterOutlet,CommonModule,RouterLink,MatToolbarModule,MatButtonModule,MatCardModule,MatIconModule,MatSidenavModule,MatListModule,MatExpansionModule,MatDialogModule],
   templateUrl: './Menu.component.html',
   styleUrls: ['./Menu.component.css']
 })
 export class MenuComponent implements OnInit {
 
-  constructor(private dialog: MatDialog){}
-  ngOnInit() {}
   sideNavOpened: boolean = false;
+  charts: { data: any, options: any }[] = [];
+
+  constructor(private dialog: MatDialog){}
+  ngOnInit() {
+    this.initializeCharts()
+  }
+ 
 
   menuItems = [
     {
@@ -137,6 +144,48 @@ export class MenuComponent implements OnInit {
   signOut() {
     console.log('Sign Out clicked');
   }
+ 
+  initializeCharts() {
+    const documentStyle = getComputedStyle(document.documentElement);
+    const textColor = documentStyle.getPropertyValue('--text-color');
+    const backgroundColors = [
+      documentStyle.getPropertyValue('--blue-500'),
+      documentStyle.getPropertyValue('--yellow-500'),
+      documentStyle.getPropertyValue('--green-500')
+    ];
+    const hoverBackgroundColors = [
+      documentStyle.getPropertyValue('--blue-400'),
+      documentStyle.getPropertyValue('--yellow-400'),
+      documentStyle.getPropertyValue('--green-400')
+    ];
 
-  
+    const chartData = [
+      { labels: ['A', 'B', 'C'], data: [540, 325, 702] },
+      { labels: ['X', 'Y', 'Z'], data: [150, 200, 100] },
+      { labels: ['P', 'Q', 'R'], data: [300, 400, 500] }
+    ];
+
+    this.charts = chartData.map(chart => ({
+      data: {
+        labels: chart.labels,
+        datasets: [
+          {
+            data: chart.data,
+            backgroundColor: backgroundColors,
+            hoverBackgroundColor: hoverBackgroundColors
+          }
+        ]
+      },
+      options: {
+        plugins: {
+          legend: {
+            labels: {
+              usePointStyle: true,
+              color: textColor
+            }
+          }
+        }
+      }
+    }));
+  }
 }

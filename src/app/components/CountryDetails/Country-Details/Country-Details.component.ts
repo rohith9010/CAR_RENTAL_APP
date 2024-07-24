@@ -21,7 +21,7 @@ export class CountryDetailsComponent implements OnInit {
   filteredcountriesList: ICountry[] = [];
   searchQuery: string = '';
   currentPage: number = 1;
-  pageSize: number = 8;
+  itemsPerPage: number = 8;
   showClearIcon: boolean = false;
 
   ngOnInit() {
@@ -32,40 +32,24 @@ export class CountryDetailsComponent implements OnInit {
     this.countryservice.getCountries().subscribe(res => {
       this.countriesList = res;
       this.filteredcountriesList = this.countriesList;
+      this.search();
     });
   }
 
-  applyPagination(): void {
-    const startIndex = (this.currentPage - 1) * this.pageSize;
-    this.filteredcountriesList = this.countriesList.slice(startIndex, startIndex + this.pageSize);
+  onPageChange(page: number): void {
+    this.currentPage = page;
   }
 
-  onPageChange(pageNumber: number): void {
-    this.currentPage = pageNumber;
-    this.applyPagination();
-  }
-
-  onPreviousPage(): void {
-    if (this.currentPage > 1) {
-      this.currentPage--;
-      this.applyPagination();
-    }
-  }
-
-  onNextPage(): void {
-    if (this.currentPage < this.getTotalPages()) {
-      this.currentPage++;
-      this.applyPagination();
-    }
-  }
-
-  getPages(): number[] {
-    const totalPages = this.getTotalPages();
+  totalPages(): number[] {
+    const totalItems = this.filteredcountriesList?.length ?? 0;
+    const totalPages = Math.ceil(totalItems / this.itemsPerPage);
     return Array(totalPages).fill(0).map((x, i) => i + 1);
   }
 
-  getTotalPages(): number {
-    return Math.ceil(this.countriesList.length / this.pageSize);
+  getDisplayedMakes(): ICountry[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    const endIndex = startIndex + this.itemsPerPage;
+    return (this.filteredcountriesList || []).slice(startIndex, endIndex);
   }
 
   delete(id: number): void {
@@ -78,15 +62,17 @@ export class CountryDetailsComponent implements OnInit {
   }
 
   search(): void {
-    const query = this.searchQuery.trim().toLowerCase();
-    this.filteredcountriesList = this.countriesList.filter(country =>
-      country.Country.toLowerCase().includes(query)
-    );
-    this.currentPage = 1;
-    this.showClearIcon = this.searchQuery.length > 0;
-  }
-  clearSearch(): void {
-    this.searchQuery = '';
-    this.search();
+
+    const query = this.searchQuery?.trim().toLowerCase() || '';
+  
+      if (query === '') {
+        this.filteredcountriesList = [...this.countriesList];
+      } 
+      else {
+        this.filteredcountriesList = this.countriesList.filter(country =>
+          country.Country.toLowerCase().includes(query)
+        );
+      }
+      this.currentPage = 1;
   }
 }

@@ -1,7 +1,7 @@
 <div class="header">
   <h1>Reservation Management</h1>
   <div class="header-left">
-      <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
+      <a href="/Menu" class="icon-button"><i class="pi pi-home"></i></a>
       <a href="/Add_Reservation" class="icon-button"><i class="pi pi-plus-circle"></i></a>
   </div>
 </div>
@@ -9,7 +9,7 @@
   <section class="filter">
       <h2>Filter</h2>
       <div class="search-box">
-          <input type="text" class="input-search" name="filterInput" placeholder="Search Vehicle Models...">
+          <input type="text" class="input-search" name="filterInput" placeholder="Search Rental Details...">
           <button type="button" class="search-button"><i class="fas fa-search"></i></button>
       </div>
   </section>
@@ -26,15 +26,28 @@
                   <th>Source</th>
                   <th>Destination</th>
                   <th>Status</th>
+                  <th>Edit</th>
+                  <th>Delete</th>
               </tr>
           </thead>
           <tbody>
-              <!-- <tr *ngFor="let vehicle of getDisplayedModels(); let i = index">
-                  <td>{{ vehicle.Name }}</td>
-                  <td>{{ getMakeName(vehicle.MakeNo) }}</td>
-                  <td><a href="/Add_Reservation/{{ vehicle.MakeNo }}/{{ vehicle.ModelNo }}"><i class="fas fa-edit"></i></a></td>
-                  <td><a href="javascript:void(0)" (click)="delete(vehicle.ModelNo)"><i class="fas fa-trash"></i></a></td>
-                </tr> -->
+            <tr *ngFor="let rental of ReservationList;">
+                <td>{{ getVehicleReg(rental.VehicleNo)}}</td>
+                <td>{{ getCustomerName(rental.CustomerNo)}}</td>
+                <td>{{ rental.ReservationDate | date }}</td>
+                <td>{{ rental.StartDate | date }}</td>
+                <td>{{ rental.EndDate | date }}</td>
+                <td>{{ getSourceName(rental.SourceLocation) }}</td>
+                <td>{{ getDestinationName(rental.DestinationLocation) }}</td>
+                <td>{{ rental.Status }}</td>
+                <td><a type="button"  routerLink="/Add_Reservation/{{rental.RentalNo}}"><i class="pi pi-pencil"></i></a></td>
+                <!-- <td><a type="button" [routerLink]="['/Add_Reservation', rental.RentalNo]"><i class="pi pi-pencil"></i></a></td> -->
+                <td><a href="javascript:void(0)" (click) = "delete(rental.RentalNo)"><i class="pi pi-trash"></i></a></td>
+                
+            </tr> 
+                
+                        
+            
           </tbody>
       </table>
   </div>

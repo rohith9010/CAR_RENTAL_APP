@@ -1,7 +1,9 @@
 <header class="header">
-  <h1>Add Vehicle</h1>
+  <div class="header-title">
+    <h1>Add Vehicle</h1>
+  </div>
   <nav class="nav-buttons">
-    <a href="#"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
+    <a href="/Menu"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
     <a href="/Vehicle_Details"><button class="nav-buttons" type="button"><i class="fas fa-info-circle"></i> Vehicle Details</button></a>
   </nav>
 </header>
@@ -20,17 +22,6 @@
         <div *ngIf="imagePreview" class="form-group">
           <label>Image Preview:</label>
           <img [src]="imagePreview" alt="Vehicle Image" style="width: 200px; height: auto;">
-
-    
-          
-            
-    
-
-          
-          Expand Down
-    
-    
-  
         </div>
       </fieldset>
       <fieldset class="fieldset">

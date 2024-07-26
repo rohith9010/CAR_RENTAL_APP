@@ -11,22 +11,37 @@ body {
   width: 100%;
   background-color: #007bff;
   color: #fff;
-  padding: 0.5rem 1rem;
+  padding: 15px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.header-title {
+  margin: 0;
+  font-size: 1.25rem;
+  text-align: center;
+  flex: 1;
+  font-size: 24px;
 }
 
 .header-title h1 {
   margin: 0;
-  font-size: 1.25rem;
+  font-size: 1.65rem;
+  text-align: center;
+  font-size: 24px;
+}
+.header h1 {
+  margin: 0;
+  text-align: center;
+  font-size: 24px;
 }
 
 .header-buttons {
   display: flex;
   gap: 0.5rem;
-  justify-content: flex-end;
 }
 
 .header-buttons a button {
@@ -260,7 +275,7 @@ textarea:focus {
 .nav-buttons button {
 background-color: #525155;
 border: none;
-border-radius: 8px;
+border-radius: 4px;
 color: #FFFFFF;
 cursor: pointer;
 display: inline-block;
@@ -271,7 +286,7 @@ height: 40px;
 line-height: 20px;
 margin: 0 10px;
 outline: none;
-padding: 10px 16px;
+padding: 0.5rem 1rem;
 text-align: center;
 text-decoration: none;
 transition: color 100ms;

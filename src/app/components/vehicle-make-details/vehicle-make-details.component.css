@@ -26,8 +26,9 @@ body {
   color: #fff;
   padding: 20px;
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  position: relative;
 }
 
 .header h1 {
@@ -38,6 +39,20 @@ body {
 .header-right {
   display: flex;
   align-items: center;
+}
+
+.header-left {
+  position: absolute;
+  left: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.header-title {
+  flex: 1;
+  text-align: center;
+  font-size: 24px;
+  margin: 0;
 }
 
 .icon-button {

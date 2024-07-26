@@ -14,6 +14,11 @@ import { ICustomer } from '../../../../Interfaces/ICustomer';
 import { IEmployee } from '../../../../Interfaces/IEmployee';
 import { DriverService } from '../../../../Services/DriverService/Driver.service';
 import { EmployeeService } from '../../../../Services/EmployeeService/employee.service';
+import { IDriver } from '../../../../Interfaces/IDriver';
+import { ICity } from '../../../../Interfaces/ICity';
+import { CitiesService } from '../../../../Services/CityService/Cities.service';
+import { IVehicles } from '../../../../Interfaces/IVehicles';
+import { VehiclesService } from '../../../../Services/VehiclesService/Vehicles.service';
 
 @Component({
   selector: 'app-Add_Reservation',
@@ -34,6 +39,31 @@ export class Add_ReservationComponent implements OnInit {
 
   reservationForm!: FormGroup;
   CustomerList:ICustomer[]=[];
+  DriverList!:IDriver[];
+  EmployeeList!:IEmployee[];
+  CitiesList!:ICity[];
+  VehicleList:IVehicles[]=[];
+
+vehicle:IVehicles={
+  VehicleNo: 0,
+  OwnerNo: 0,
+  ModelNo: 0,
+  TypeNo: 0,
+  Year: 0,
+  Color: '',
+  FuelNo: 0,
+  CapacityNo: 0,
+  Mileage: 0,
+  Pic: new Uint8Array(),
+  RegistrationNo: '',
+  RegistrationState: 0,
+  ChassisNo: '',
+  DailyRate: 0,
+  HourlyRate: 0,
+  AdditionalDailyRate: 0,
+  AddtionalHourlyRate: 0,
+  DeleteStatus: ''
+}
   customer:ICustomer={
     CustomerNo: 0,
     Name: '',
@@ -52,16 +82,6 @@ export class Add_ReservationComponent implements OnInit {
     DateTimeLastLogin: '',
     DeleteStatus: ''
   }
-
-  constructor(private fb: FormBuilder,
-              private reservationservice : ReservationService,
-              private route: Router,
-              private router:ActivatedRoute, 
-              private Customerservice: customerservice,
-              private Driverservice:DriverService,
-              private Employeeservice:EmployeeService,
-            ) { }
-
   reservation:IReservation={
     RentalNo: 0,
     CustomerNo: 0,
@@ -83,14 +103,103 @@ export class Add_ReservationComponent implements OnInit {
     TransactionNumber: '',
     Status: ''
   }
+
+  Driver:IDriver={
+    DriverNo: 0,
+    DriverName: '',
+    LicenceNo: '',
+    AddressLine1: '',
+    AddressLine2: '',
+    CityNo: 0,
+    StateNo: 0,
+    CountryNo: 0,
+    PinCode: '',
+    PhoneNo: '',
+    MobileNo: '',
+    BankName: '',
+    BankAccount: '',
+    PAN: '',
+    DeleteStatus: ''
+  }
+
+  Employee:IEmployee={
+    EmployeeNo: 0,
+    EmployeeName: '',
+    EmployeeTypeNo: 0,
+    AddressLine1: '',
+    AddressLine2: '',
+    CitiesNo: 0,
+    StateNo: 0,
+    Pincode: '',
+    CountryNo: 0,
+    PhoneNo: '',
+    MobileNo: '',
+    EmailAddress: '',
+    BankName: '',
+    BankAccount: '',
+    PAN: '',
+    UserName: '',
+    Password: '',
+    City: '',
+    State: '',
+    Country: '',
+    Vehicle: '',
+    VehicleMakes: '',
+    vehicleModel: '',
+    Employees: '',
+    Customers: '',
+    Owners: '',
+    Drivers: '',
+    Rentals: '',
+    LastLogin: null,
+    Status: '',
+    DeleteStatus: ''
+  }
+
+  Source:ICity={
+    CityNo: 0,
+    CityName: '',
+    StateNo: 0
+  }
+
+  Destination:ICity={
+    CityNo: 0,
+    CityName: '',
+    StateNo: 0
+  }
+
+  City:ICity={
+    CityNo: 0,
+    CityName: '',
+    StateNo: 0
+  }
+
+  constructor(private fb: FormBuilder,
+              private reservationservice : ReservationService,
+              private route: Router,
+              private router:ActivatedRoute, 
+              private Customerservice: customerservice,
+              private Driverservice:DriverService,
+              private Employeeservice:EmployeeService,
+              private Cityservice: CitiesService,
+              private vehcileService: VehiclesService
+            ) { }
+
+  
   ngOnInit(): void {
     this.validations();
     this.getbyId();
+    this.GetallCustomers();
+    this.getDriver();
+    this.getEmployee();
+    this.getCities();
+    this.getVechicle()
+
   
   }
   validations(){
     this.reservationForm = this.fb.group({
-      CustomerName:[{ value: '', disabled: true }, Validators.required],
+      CustomerName:[{ value: '',  }, Validators.required],
       Vehicle_No: [{ value: '', disabled: true }, Validators.required],
       Status: [{ value: '', disabled: true }, Validators.required],
       Driver: ['', Validators.required],
@@ -126,6 +235,10 @@ export class Add_ReservationComponent implements OnInit {
         this.reservation = res;
         console.log(res);
         this.GetCustomerByID();
+        this.getDriverById();
+        this.getEmployeeById();
+        this.getCitiesId();
+        this.getVehiclebyId()
       })
     }
   }
@@ -144,18 +257,69 @@ export class Add_ReservationComponent implements OnInit {
         console.log(res);
       })
     }
-    // getDriver()
-    // {
-    //   this.Driverservice.getAll().subscribe(res =>{
-    //     this.CustomerList=res;
-    //     console.log(res);
-    //   })
-    // }
-    // getDriverById()
-    // {
-    //   this.Customerservice.CustomerById(this.customer.CustomerNo).subscribe(res =>{
-    //     this.customer=res;
-    //     console.log(res);
-    //   })
-    // }
+    getDriver()
+    {
+      this.Driverservice.GetDriver().subscribe(res =>{
+        this.DriverList=res;
+        console.log(res);
+      })
+    }
+    getDriverById()
+    {
+      this.Driverservice.DriverById(this.Driver.DriverNo).subscribe(res =>{
+        this.Driver=res;
+        console.log(res);
+      })
+    }
+    getEmployee()
+    {
+      this.Employeeservice.GetEmployee().subscribe(res =>{
+        this.EmployeeList=res;
+        console.log(res);
+      })
+    }
+    getEmployeeById()
+    {
+      this.Employeeservice.EmployeebyId(this.Employee.EmployeeNo).subscribe(res =>{
+        this.Employee=res;
+        console.log(res);
+      })
+    }
+    getCities()
+    {
+      this.Cityservice.getCities().subscribe(res =>{
+        this.CitiesList=res;
+        console.log(res);
+      })
+    }
+    getCitiesId()
+    {
+      this.Cityservice.getCitiesById(this.City.CityNo).subscribe(res =>{
+        this.City=res;
+        console.log(res);
+      })
+    }
+
+    getVechicle()
+    {
+      this.vehcileService.GetVehicles().subscribe(res =>{
+        this.VehicleList=res;
+        console.log(res);
+      })
+    }
+    
+
+    getVehiclebyId()
+    {
+      this.vehcileService.GetVehiclesById(this.vehicle.VehicleNo).subscribe(val=>{
+        this.vehicle=val;
+        console.log(this.vehicle);
+      })
+    }
+
+    getVehicleReg(vehicleNo: number): string {
+      const vehicle = this.VehicleList.find(v => v.VehicleNo === vehicleNo);
+      return vehicle ? vehicle.RegistrationNo : 'Unknown';
+    }
+
 }

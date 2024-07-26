@@ -17,14 +17,14 @@
           <div class="form-group">
             <label for="CustomerName">CustomerName:</label>
             <select name="CustomerName" formControlName="CustomerName" [(ngModel)]="customer.CustomerNo">
-              <option value="" selected disabled>Select CustomerName</option>
-              <option *ngFor="let type of CustomerList" [value]="type.CustomerNo">{{ type.CustomerNo }}</option>
+              <!-- <option value="" selected disabled>Select CustomerName</option> -->
+              <option *ngFor="let Customer of CustomerList" [value]="Customer.CustomerNo">{{ Customer.Name }}</option>
             </select>
           </div>
 
           <div class="form-group">
           <label for="Vehicle_No">Vehicle No:</label>
-          <input type="text" id="Vehicle_No" formControlName="Vehicle_No" [(ngModel)]="reservation.VehicleNo">
+          <input type="text" id="Vehicle_No" formControlName="Vehicle_No" [(ngModel)]="vehicle.RegistrationNo">
           <div *ngIf="reservationForm.get('Vehicle_No')?.invalid && (reservationForm.get('Vehicle_No')?.dirty || reservationForm.get('Vehicle_No')?.touched)" class="warning"></div>
           </div>
           
@@ -38,29 +38,17 @@
         <div class="horizontal-fields">
           <div class="form-group">
             <label for="Driver">Driver:</label>
-            <select name="Driver" id="Driver" formControlName="Driver" placeholder="Select Driver">
+            <select name="Driver" id="Driver" formControlName="Driver" [(ngModel)]="reservation.DriverNo">
               <option value="" selected disabled>Select Driver</option>
-              <option value="Rahul">Rahul</option>
-              <option value="Manish">Manish</option>
-              <option value="Rohith">Rohith</option>
-              <option value="Pranay">Pranay</option>
-              <option value="satish">satish</option>
-              <option value="Umesh">Umesh</option>
-              <option value="Mahi">Mahi</option>
+              <option *ngFor="let driver of DriverList" [value]="driver.DriverNo">{{ driver.DriverName }}</option>
             </select>
           </div>
 
           <div class="form-group">
             <label for="Employee">Employee:</label>
-            <select name="Employee" id="Employee" formControlName="Employee" placeholder="Select Employee">
+            <select name="Employee" id="Employee" formControlName="Employee" [(ngModel)]="Employee.EmployeeNo">
               <option value="" selected disabled>Select Employee</option>
-              <option value="Rahul">Rahul</option>
-              <option value="Manish">Manish</option>
-              <option value="Rohith">Rohith</option>
-              <option value="Pranay">Pranay</option>
-              <option value="satish">satish</option>
-              <option value="Umesh">Umesh</option>
-              <option value="Mahi">Mahi</option>
+              <option *ngFor="let employee of EmployeeList" [value]="employee.EmployeeNo">{{ employee.EmployeeName }}</option>
             </select>
           </div>
         </div>

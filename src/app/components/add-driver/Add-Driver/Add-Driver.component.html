@@ -1,8 +1,7 @@
 <header class="header">
-  <h1>Add Driver</h1>
-
+  <h1 class="header-title">Add Driver</h1>
   <nav class="nav-buttons">
-    <a href="#"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
+    <a href="/Menu"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
     <a href="/Driver_Details"><button class="nav-buttons" type="button"><i class="fas fa-info-circle"></i> Driver Details</button></a>
   </nav>
 </header>
@@ -51,6 +50,7 @@
           </div>
         </div>
 
+        <div class="horizontal-fields">
         <div class="col-4">
           <div class="form-group">  
             <label for="country">Country</label>
@@ -82,6 +82,7 @@
           <label for="pincode">Pincode</label>
           <input pInputText id="pincode" [(ngModel)]="driver.PinCode" formControlName="pincode" placeholder="Enter pincode">
           <div *ngIf="driverForm.get('pincode')?.invalid && (driverForm.get('pincode')?.dirty || driverForm.get('pincode')?.touched)" class="warning">Pincode is required.</div>
+        </div>
         </div>
       
 

@@ -5,9 +5,9 @@
         <h1>Add Owner</h1>
       </div>
       <div class="header-buttons">
-        <a href="#"><button pButton class="header-button" icon="pi pi-home" label="Home"></button></a>
+        <a href="/Menu"><button pButton class="header-button" icon="pi pi-home" label="Home"></button></a>
         <a href="/Owner_details"><button pButton class="header-button" icon="pi pi-info" label="Owner Details"></button></a>
-   </div>
+      </div>
     </div>
   </header>
   <div class="add-owner-form">
@@ -32,14 +32,14 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="addressLine1">Address Line 1</label>
-                  <input pInputText id="addressLine1" [(ngModel)]="owner.Address1"formControlName="addressLine1" placeholder="Address Line 1">
+                  <input pInputText id="addressLine1" [(ngModel)]="owner.Address1" formControlName="addressLine1" placeholder="Address Line 1">
                   <div *ngIf="ownerForm.get('addressLine1')?.invalid && (ownerForm.get('addressLine1')?.dirty || ownerForm.get('addressLine1')?.touched)" class="warning">Address is required.</div>
                 </div>
               </div>
               <div class="col-1">
                 <div class="form-group">
                   <label for="addressLine2">Address Line 2</label>
-                  <input pInputText id="addressLine2" [(ngModel)]="owner.Address2"formControlName="addressLine2" placeholder="Address Line 2">
+                  <input pInputText id="addressLine2" [(ngModel)]="owner.Address2" formControlName="addressLine2" placeholder="Address Line 2">
                   <div *ngIf="ownerForm.get('addressLine2')?.invalid && (ownerForm.get('addressLine2')?.dirty || ownerForm.get('addressLine2')?.touched)" class="warning">Address is required.</div>
                 </div>
               </div>
@@ -104,7 +104,7 @@
               <div class="col-12">
                 <div class="form-group">
                   <label for="bank">Bank</label>
-                  <input pInputText id="bank"  [(ngModel)]="owner.BankName"formControlName="bank" placeholder="Please enter the bank name">
+                  <input pInputText id="bank"  [(ngModel)]="owner.BankName" formControlName="bank" placeholder="Please enter the bank name">
                   <div *ngIf="ownerForm.get('bank')?.touched && ownerForm.get('bank')?.invalid" class="warning">
                     <div *ngIf="ownerForm.get('bank')?.errors?.['required']">Please enter a bank name</div>
                     <div *ngIf="ownerForm.get('bank')?.errors?.['pattern']">Bank name must be between 3 and 50 characters long and can only include letters, spaces, hyphens, and apostrophes</div>
@@ -140,6 +140,6 @@
           </div>
         </form>
       </p-card>
-    </div>*
+    </div>
   </div>
 </div>

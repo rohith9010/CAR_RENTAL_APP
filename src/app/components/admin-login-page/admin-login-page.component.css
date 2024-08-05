@@ -1,0 +1,246 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background: url('/assets/img/image.png') no-repeat center center fixed;
+  background-size: cover;
+}
+
+.dashboard {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dashboard-nav {
+  background-color: #0b2f65;
+  color: white;
+  padding: 1rem;
+}
+
+.dashboard-nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  justify-content: space-around;
+}
+
+.dashboard-nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: color 0.3s;
+}
+
+.dashboard-nav ul li a:hover {
+  color: #e25151;
+}
+
+.dashboard-content {
+  display: flex;
+  flex: 1;
+  padding: 2rem;
+}
+
+.login-form {
+  background: white;
+  padding: 2rem;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin-right: 2rem;
+  flex: 1;
+}
+
+.login-form h2 {
+  margin-top: 0;
+  color: #333;
+}
+
+.login-form label {
+  display: block;
+  margin: 1rem 0 0.5rem;
+  color: #666;
+}
+
+.login-form input {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.login-form button {
+  width: 100%;
+  padding: 0.5rem;
+  background-color: #27e771;
+  border: none;
+  border-radius: 4px;
+  color: white;
+  font-size: 1rem;
+  cursor: pointer;
+  margin-top: 1rem;
+  transition: background-color 0.3s;
+}
+
+.login-form button:hover {
+  background-color: #27e771;
+  transform: scale(1.05);
+}
+
+.image-container {
+  flex: 2;
+  position: relative;
+}
+
+.image-overlay {
+  position: absolute;
+  top: -30px;
+  left: 0;
+  width: 90%;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  font-size: 1.5rem;
+}
+
+.image-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+  padding: 2rem;
+}
+
+.image-box {
+  position: relative;
+}
+
+.image-box img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-box img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.modal:target {
+  display: block;
+}
+
+.modal-content {
+  background-color: #fff;
+  margin: 10% auto;
+  padding: 2rem;
+  border: 1px solid #888;
+  width: 80%;
+  border-radius: 8px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+}
+
+@media (max-width: 768px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .login-form {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .image-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+}
+
+.blur-background {
+  filter: blur(5px);
+  transition: filter 0.3s;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  z-index: 1;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(5px); /* This will blur the background */
+}
+
+.modal:target {
+  display: block;
+}
+
+.login-form:hover {
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  transform: scale(1.02);
+}
+
+.image-box {
+  position: relative;
+  display: inline-block; /* Ensures the box fits the image size */
+}
+
+.image-box img {
+  width: 100%;
+  border-radius: 8px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.image-box img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+.car-name {
+  position: absolute;
+  top: 0; /* Position at the top of the image */
+  left: 0;
+  width: 100%;
+  color: rgb(16, 16, 16);
+  text-align: center;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border-radius: 8px 8px 0 0; /* Adjust the border-radius if needed */
+  box-sizing: border-box; /* Ensure padding doesn't affect width */
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6); /* Adds a shadow to make text readable */
+  /* background-color: rgba(0, 0, 0, 0.3); Optional: Add a slight background for readability */
+}
+
+.login-container button:hover {
+  background: #0056b3;
+  transform: scale(1.05);
+}

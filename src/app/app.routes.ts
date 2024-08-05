@@ -20,11 +20,13 @@ import { DriverDetailsComponent } from './components/DriverDetails/Driver-Detail
 import { AddDriverComponent } from './components/add-driver/Add-Driver/Add-Driver.component';
 import { VehicleDetailsComponent } from './components/VehicleDetails/Vehicle-Details/Vehicle-Details.component';
 import { AddVehicleComponent } from './components/add-vehicle/Add-Vehicle/Add-Vehicle.component';
-import { Add_ReservationComponent } from './components/add-reservation/Add_Reservation/Add_Reservation.component';
+// import { Add_ReservationComponent } from './components/add-reservation/Add_Reservation/Add_Reservation.component';
 import { Reservation_DetailsComponent } from './components/ReservationDetails/Reservation_Details/Reservation_Details.component';
+import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
+import { AdminloginComponent } from './components/Adminlogin/Adminlogin.component';
+
 export const routes: Routes = [
-    {path:'',component:MenuComponent,pathMatch:'full'},
-    
+    {path:'',component:AdminLoginPageComponent,pathMatch:'full'},
     {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
     {path:'vehicle_model_details',component:VehicleModelDetailsComponent},
     {path:'city_details',component:AddCityDetailsComponent},
@@ -36,12 +38,10 @@ export const routes: Routes = [
     {path:'Vehicle_Details',component:VehicleDetailsComponent},
     {path:'State_Detail',component:StateDetailsComponent},
     {path:'Reservation_Details',component:Reservation_DetailsComponent},
-
-
-
     {path:'Menu',component:MenuComponent},
-
-
+    {path: 'home', component: MenuComponent },
+    {path: 'signup', component: MenuComponent },
+    {path: 'admin', component: AdminloginComponent },
     {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
     {path:'Add_City/:Stateid/:Cityid',component:AddCityComponent},
     {path:'Add_State/:CountryId/:StateId',component:AddStateComponent},
@@ -49,12 +49,9 @@ export const routes: Routes = [
     {path:'Add_owner/:Id',component:AddOwnerComponent},
     {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent},
     {path:'Add_Customer/:Id',component:AddCustomerComponent},
-    {path:'Add_Reservation/:id',component:Add_ReservationComponent},
+    // {path:'Add_Reservation/:id',component:Add_ReservationComponent},
     {path:'Add_Driver/:Id',component:AddDriverComponent},
     {path:'Add_Vehicle/:Id',component:AddVehicleComponent},
-
-
-
     {path:'Add_owner',component:AddOwnerComponent},
     {path:'Add_City',component:AddCityComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
@@ -67,8 +64,5 @@ export const routes: Routes = [
     {path:'Add_Customer',component:AddCustomerComponent},
     {path:'Add_Driver',component:AddDriverComponent},
     {path:'Add_Vehicle',component:AddVehicleComponent},
-    {path:'Add_Reservation',component:Add_ReservationComponent}
-
-
-
+    // {path:'Add_Reservation',component:Add_ReservationComponent}
 ];

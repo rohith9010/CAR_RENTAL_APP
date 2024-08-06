@@ -24,6 +24,7 @@ import { AddVehicleComponent } from './components/add-vehicle/Add-Vehicle/Add-Ve
 import { Reservation_DetailsComponent } from './components/ReservationDetails/Reservation_Details/Reservation_Details.component';
 import { AdminLoginPageComponent } from './components/admin-login-page/admin-login-page.component';
 import { AdminloginComponent } from './components/Adminlogin/Adminlogin.component';
+import { SignupPageComponent } from './components/Signup-Page/Signup-Page.component';
 
 export const routes: Routes = [
     {path:'',component:AdminLoginPageComponent,pathMatch:'full'},
@@ -40,7 +41,7 @@ export const routes: Routes = [
     {path:'Reservation_Details',component:Reservation_DetailsComponent},
     {path:'Menu',component:MenuComponent},
     {path: 'home', component: MenuComponent },
-    {path: 'signup', component: MenuComponent },
+    {path: 'signup', component:SignupPageComponent },
     {path: 'admin', component: AdminloginComponent },
     {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
     {path:'Add_City/:Stateid/:Cityid',component:AddCityComponent},

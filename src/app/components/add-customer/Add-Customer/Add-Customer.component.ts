@@ -26,6 +26,7 @@ import { customerservice } from '../../../../Services/CustomerService/Customer.s
     ButtonModule,
     DropdownModule,
     CardModule,
+    CustomerDetailsComponent,
     CommonModule
   ],
   templateUrl: './Add-Customer.component.html',
@@ -45,14 +46,14 @@ export class AddCustomerComponent implements OnInit {
     CustomerNo: 0,
     Name: '',
     EmailAddress: '',
-    Address1: '',
-    Address2: '',
+    AddressLine1: '',
+    AddressLine2: '',
     CityNo: 0,
     StateNo: 0,
-    Pincode: '',
+    PinCode: '',
     CountryNo: 0,
-    PhoneNumber: '',
-    MobileNumber: '',
+    PhoneNo: '',
+    MobileNo: '',
     RegistrationDate:'',
     UserName: '',
     Password: '',
@@ -84,6 +85,7 @@ export class AddCustomerComponent implements OnInit {
     this.getCountries();
     this.GetStates();
     this.GetCities();
+    this.getbyId();
   }
   onSubmit(): void {
     if (this.customerForm.valid) {
@@ -176,16 +178,17 @@ export class AddCustomerComponent implements OnInit {
 
  
 
-  Update(): void {
+ 
+  Update() : void {
     if (this.customerForm.valid) {
       console.log('Form Submitted', this.customerForm.value);
-      this.customer.CountryNo = this.country.CountryNo;
-      this.customer.StateNo = this.state.StateNo;
-      this.customer.CityNo = this.city.CityNo;
-
-      console.log(this.customer);
-      this.customerservice.UpdateCustomer(this.customer).subscribe(res => {
-        this.customer = res;
+      this.customer.CountryNo=this.country.CountryNo;
+      this.customer.StateNo=this.state.StateNo;
+      this.customer.CityNo=this.city.CityNo;
+        
+     console.log(this.customer);
+      this.customerservice.UpdateCustomer(this.customer).subscribe(res =>{
+        this.customer=res;           
         this.router.navigate(['/Customer_Details']);
       });
 

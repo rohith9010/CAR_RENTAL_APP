@@ -5,7 +5,6 @@ body {
     background-color: #f5f5f5;
     color: #333;
   }
-  
   .header {
     display: flex;
     align-items: center;
@@ -16,26 +15,22 @@ body {
     width: 100%;
     box-sizing: border-box;
   }
-  
   .header-left {
     display: flex;
     align-items: center;
   }
-  
   .header h1 {
     margin: 0;
     font-size: 24px;
     flex-grow: 1;
     text-align: center;
   }
-  
   .icon-button {
     color: white;
     text-decoration: none;
     margin-left: 15px;
     font-size: 24px;
   }
-  
   .container {
     width: 100%;
     margin: 20px 0;
@@ -45,24 +40,19 @@ body {
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     box-sizing: border-box;
   }
-  
   .content {
     padding: 20px;
   }
-  
   .search-container {
     margin-bottom: 20px;
   }
-  
   .search-container h3 {
     margin: 0 0 10px 0;
   }
-  
   .search-box {
     display: flex;
     align-items: center;
   }
-  
   .input-search {
     padding: 10px;
     font-size: 16px;
@@ -70,7 +60,6 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
   }
-  
   .btn-search {
     background-color: #4CAF50;
     color: white;
@@ -82,45 +71,36 @@ body {
     display: flex;
     align-items: center;
   }
-  
   .btn-search i {
     font-size: 20px;
   }
-  
   .table-container {
     margin-top: 20px;
   }
-  
   .table {
     width: 100%;
     border-collapse: collapse;
   }
-  
   .table th, .table td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
   }
-  
   .table th {
     background-color: #4CAF50;
     color: white;
   }
-  
   .table tr:hover {
     background-color: #f1f1f1;
   }
-  
   .table a {
     text-decoration: none;
     color: #4CAF50;
     font-size: 18px;
   }
-  
   .table a:hover {
     text-decoration: underline;
   }
-  
   .icon-button i {
     vertical-align: middle;
   }

@@ -3,8 +3,6 @@
 @import "primeicons/primeicons.css";
 @import url("https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css");
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,600");
-
-
 body, html {
     margin: 0;
     padding: 0;
@@ -12,14 +10,12 @@ body, html {
     font-family: Arial, sans-serif;
     overflow: hidden;
 }
-
 .container {
     position: relative;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
 }
-
 .background-img {
     position: absolute;
     top: 0;
@@ -30,75 +26,62 @@ body, html {
     z-index: -1;
     filter: grayscale(10%) brightness(45%);
 }
-
 .menu-container {
     position: absolute;
-    top: 20px; /* Adjust top position as needed */
-    left: 20px; /* Adjust left position as needed */
+    top: 20px; 
+    left: 20px;
     z-index: 1;
 }
-
 .menu {
-    background-color: rgba(0, 0, 0, 0); /* Transparent background */
-    padding: 10px; /* Adjust padding as needed */
-    border-radius: 8px; /* Adjust border-radius as needed */
+    background-color: rgba(0, 0, 0, 0);
+    padding: 10px; 
+    border-radius: 8px;
     color: rgb(156, 200, 174);
 }
-
 .menu h1 {
-    font-size: 1.5em; /* Adjust font-size as needed */
-    margin-bottom: 8px; /* Adjust margin as needed */
+    font-size: 1.5em;  
+    margin-bottom: 8px;
 }
-
 .menu a {
     display: block;
     color: rgb(148, 184, 149);
     text-decoration: none;
-    margin-top: 8px; /* Adjust margin as needed */
-    font-size: 1em; /* Adjust font-size as needed */
+    margin-top: 8px;
+    font-size: 1em; 
     transition: color 0.3s ease;
 }
-
 .menu a:hover {
     color: rgb(189, 184, 184);
 }
-
 .menu a.nav-link {
     display: block;
-    color: rgb(251, 250, 250); /* Set the color to blue */
+    color: rgb(251, 250, 250);
     text-decoration: none;
     margin-top: 8px;
     font-size: 1em;
     transition: color 0.3s ease;
 }
-
 .menu a.nav-link:hover {
-    color: rgb(235, 231, 231); /* Change the color on hover */
+    color: rgb(235, 231, 231);
 }
-
 .menu .column {
     float: left;
     width: 44.90%;
     padding: 36px;
 }
-
 .menu-title {
-    margin-left: 2px; /* Adjust as needed */
+    margin-left: 2px;
 }
-
 :host {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
 }
-
-/* Additional styling for better readability */
 .background-img {
-    width: 100%; /* Adjust according to your image */
-    height: auto; /* Adjust according to your image */
+    width: 100%; 
+    height: auto;
 }
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
 html, body { height: 100%; }

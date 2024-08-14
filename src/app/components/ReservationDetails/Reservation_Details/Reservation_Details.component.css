@@ -3,52 +3,43 @@
     padding: 0;
     box-sizing: border-box;
 }
-
 body {
     font-family: Arial, sans-serif;
     background-color: #f7f7f7;
     color: #333;
     line-height: 1.6;
 }
-
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
-
 header {
     background-color: #333;
     color: #fff;
     padding: 20px 0;
     text-align: center;
 }
-
 header h1 {
     font-size: 24px;
 }
-
 nav ul.menu {
     list-style-type: none;
     margin: 0;
     padding: 0;
     text-align: center;
 }
-
 nav ul.menu li {
     display: inline-block;
     margin-right: 20px;
 }
-
 nav ul.menu li a {
     text-decoration: none;
     color: #fff;
 }
-
 main {
     padding: 20px 0;
 }
-
 .filter {
     background-color: #fff;
     padding: 20px;
@@ -56,19 +47,16 @@ main {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .filter h2 {
     font-size: 20px;
     margin-bottom: 10px;
 }
-
 .search-box {
     display: flex;
     align-items: center;
     justify-content: space-between;
     margin-top: 10px;
 }
-
 .input-search {
     padding: 10px;
     width: 70%;
@@ -76,7 +64,6 @@ main {
     border-radius: 5px;
     font-size: 16px;
 }
-
 .search-button {
     padding: 10px 20px;
     background-color: #337ab7;
@@ -86,7 +73,6 @@ main {
     cursor: pointer;
     font-size: 16px;
 }
-
 .vehicle-list table {
     width: 100%;
     border-collapse: collapse;
@@ -94,43 +80,35 @@ main {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .vehicle-list th, .vehicle-list td {
     border: 1px solid #ddd;
     padding: 12px;
     text-align: left;
 }
-
 .vehicle-list th {
     background-color: #f2f2f2;
     font-size: 18px;
 }
-
 .vehicle-list td a {
     text-decoration: none;
     color: #333;
 }
-
 .vehicle-list td a i {
     font-size: 20px;
 }
-
 footer {
     background-color: #333;
     color: #fff;
     padding: 20px 0;
     text-align: center;
 }
-
 footer p {
     margin: 0;
 }
-
 .vehicle-list .table-container {
     max-height: 400px;
     overflow-y: auto;
 }
-
 .header {
     display: flex;
     justify-content: space-between;
@@ -139,29 +117,24 @@ footer p {
     color: #fff;
     padding: 20px 0;
 }
-
 .header h1 {
     margin: 0 auto;
 }
-
 .header-left {
     display: flex;
     align-items: center;
     margin-right: 10px;
 }
-
 .header-left .icon-button {
     margin-left: 20px;
     font-size: 24px;
     color: #efe8e8;
 }
-
 .pagination {
     margin-top: 20px;
     display: flex;
     justify-content: center;
 }
-
 .pagination button {
     background-color: #f0f0f0;
     border: 1px solid #ccc;
@@ -170,12 +143,10 @@ footer p {
     margin-right: 5px;
     cursor: pointer;
 }
-
 .pagination button.active {
     background-color: #007bff;
     color: #fff;
 }
-
 .pagination button:hover {
     background-color: #ccc;
 }

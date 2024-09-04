@@ -43,6 +43,7 @@ export const routes: Routes = [
     {path: 'home', component: MenuComponent },
     {path: 'signup', component:SignupPageComponent },
     {path: 'admin', component: AdminloginComponent },
+    
     {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
     {path:'Add_City/:Stateid/:Cityid',component:AddCityComponent},
     {path:'Add_State/:CountryId/:StateId',component:AddStateComponent},
@@ -53,6 +54,9 @@ export const routes: Routes = [
     // {path:'Add_Reservation/:id',component:Add_ReservationComponent},
     {path:'Add_Driver/:Id',component:AddDriverComponent},
     {path:'Add_Vehicle/:Id',component:AddVehicleComponent},
+    {path:'Add_employee/:Id',component:AddEmployeeComponent},
+
+
     {path:'Add_owner',component:AddOwnerComponent},
     {path:'Add_City',component:AddCityComponent},
     {path:'Add_vehicle_Model',component:AddVehicleModelComponent},

@@ -1,14 +1,23 @@
+import { ICity } from "./ICity";
+import { ICountry } from "./ICountry";
+import { IEmployeetype } from "./IEmployeetype";
+import { IState } from "./IState";
+
 export interface IEmployee {
 
     EmployeeNo:number;
     EmployeeName:string;
     EmployeeTypeNo:number;
+    employeetypes?:IEmployeetype;
     AddressLine1:string;
     AddressLine2:string;
     CitiesNo:number;
+    cities?:ICity;
     StateNo:number;
+    states?:IState;
     Pincode:string;
     CountryNo:number;
+    countries?:ICountry;
     PhoneNo:string;
     MobileNo:string;
     EmailAddress:string;
@@ -31,6 +40,4 @@ export interface IEmployee {
     LastLogin:Date|null;
     Status:string;
     DeleteStatus:string;
-    
-
 }

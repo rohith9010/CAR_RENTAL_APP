@@ -1,50 +1,7 @@
-<!-- <div class="container">
-  <img src="../assets/images/A.jpg" alt="Background Image" class="background-img">
-  <div class="menu-container">
-      <div class="menu">
-          <h1>City Management</h1>
-          <hr>
-          <h3>Filter</h3>
-          <input type="text" name="filterInput" [(ngModel)]="searchQuery"> 
-         <button type="button" (click)="search()"><span class="pi pi-search"></span></button>
-          <div>
-              <table class="table">
-                <tbody>
-                <tr>
-                    <th>City</th>
-                    <th>State</th>
-                </tr>
-                  @if(false)
-                  {
-                  }
-                 @else()
-                    {
-                        @for (state of stateList; track state.StateNo) {
-                                @for(city of state.Citys; track city.CityNo){
-                                    <tr>
-                                        <td>{{city.CityName}}</td>
-                                        <td>{{state.state}}</td>
-                                        <td><a type="button"  routerLink="/Add_City/{{state.StateNo}}/{{city.CityNo}}"><span class="pi pi-user-edit"></span></a></td>
-                                        <td><a href="javascript:void(0)" (click) = "delete(city.CityNo)"><span class="pi pi-trash"></span></a></td>   
-                                    </tr>
-                                }
-                            } 
-                    
-                    }
-                </tbody>
-              </table>
-          </div>
-          <a href="#" class="home-icon"><mat-icon>home</mat-icon></a> 
-          <a href="/Add_City" class="add_circle"><mat-icon>add_circle</mat-icon></a>
-      </div>
-      
-  </div>
-</div>> -->
-
 <div class="header">
     <h1>City Management</h1>
     <div class="header-left">
-        <a href="/Menu" class="icon-button"><i class="pi pi-home"></i></a>
+        <a href="/AdminMenu" class="icon-button"><i class="pi pi-home"></i></a>
         <a href="/Add_City" class="icon-button"><i class="pi pi-plus-circle"></i></a>
     </div>
 </div>

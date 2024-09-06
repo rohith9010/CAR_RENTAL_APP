@@ -110,9 +110,9 @@ export class AddCustomerComponent implements OnInit {
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      pincode: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
-      mobileNumber: [''],
+      pincode: ['', [Validators.required,Validators.pattern('^[0-9]{6}$')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      mobileNumber: ['',Validators.pattern('^[0-9]{10}$')],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
     });

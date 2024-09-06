@@ -1,10 +1,10 @@
 <header class="header">
     <div class="header-title">
-      <h1>Add Customer</h1>
+      <h1>Sign Up</h1>
     </div>
     <nav class="nav-buttons">
-      <a href="/Menu"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
-      <a href="/Customer_Details"><button class="nav-buttons" type="button"><i class="fas fa-info-circle"></i> Customer Details</button></a>
+      <a href="/userhome"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
+      <!-- <a href="/Customer_Details"><button class="nav-buttons" type="button"><i class="fas fa-info-circle"></i> Customer Details</button></a> -->
     </nav>
 </header>
 <main class="main">
@@ -23,7 +23,8 @@
                 <div class="form-group">
                   <label for="emailAddress">Email Address</label>
                   <input type="email" id="emailAddress" [(ngModel)]="customer.EmailAddress" formControlName="emailAddress" placeholder="Email Address">
-                  <div *ngIf="customerForm.get('emailAddress')?.invalid && (customerForm.get('emailAddress')?.dirty || customerForm.get('emailAddress')?.touched)" class="warning">Email Address is required.</div>
+                  <div *ngIf="customerForm.get('emailAddress')?.invalid && (customerForm.get('emailAddress')?.dirty || customerForm.get('emailAddress')?.touched)" class="warning">Email Address is required</div>
+                  <div *ngIf="customerForm.get('emailAddress')?.errors?.['pattern']" class="warning" class="warning">Invalid Email Address.</div>
                 </div>
               </div>
           </fieldset>
@@ -75,7 +76,8 @@
                 <div class="form-group">
                   <label for="pincode">Pincode</label>
                   <input type="text" id="pincode" [(ngModel)]="customer.PinCode" formControlName="pincode" placeholder="Enter pincode">
-                  <div *ngIf="customerForm.get('pincode')?.invalid && (customerForm.get('pincode')?.dirty || customerForm.get('pincode')?.touched)" class="warning">Pincode is required.</div>
+                  <div *ngIf="customerForm.get('pincode')?.invalid && (customerForm.get('pincode')?.dirty || customerForm.get('pincode')?.touched)" class="warning">Pincode is Required</div>
+                  <div *ngIf="customerForm.get('pincode')?.errors?.['pattern']" class="warning" class="warning">Invalid Pincode format.</div>
                 </div>
               </div>
           </fieldset>
@@ -86,13 +88,15 @@
                 <div class="form-group">
                   <label for="phoneNumber">Phone Number</label>
                   <input type="tel" id="phoneNumber" [(ngModel)]="customer.PhoneNo" formControlName="phoneNumber" placeholder="Please enter the Phone Number">
-                  <div *ngIf="customerForm.get('phoneNumber')?.invalid && (customerForm.get('phoneNumber')?.dirty || customerForm.get('phoneNumber')?.touched)" class="warning">Please enter digits only.</div>
+                  <div *ngIf="customerForm.get('phoneNumber')?.invalid && (customerForm.get('phoneNumber')?.dirty || customerForm.get('phoneNumber')?.touched)" class="warning">Phone number is Required</div>
+                  <div *ngIf="customerForm.get('phoneNumber')?.errors?.['pattern']" class="warning">Invalid phone number format.</div>
                 </div>
               
                 <div class="form-group">
                   <label for="mobileNumber">Mobile Number</label>
                   <input type="tel" id="mobileNumber" [(ngModel)]="customer.MobileNo" formControlName="mobileNumber" placeholder="Please enter the Mobile Number">
-                  <div *ngIf="customerForm.get('mobileNumber')?.invalid && (customerForm.get('mobileNumber')?.dirty || customerForm.get('mobileNumber')?.touched)" class="warning">Please enter digits only.</div>
+                  <div *ngIf="customerForm.get('mobileNumber')?.invalid && (customerForm.get('mobileNumber')?.dirty || customerForm.get('mobileNumber')?.touched)" class="warning"></div>
+                  <div *ngIf="customerForm.get('mobileNumber')?.errors?.['pattern']" class="warning">Invalid Mobile number format.</div>
                 </div>
               </div>
           </fieldset>

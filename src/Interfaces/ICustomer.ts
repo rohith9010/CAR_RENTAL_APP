@@ -11,9 +11,9 @@ export interface ICustomer {
     CountryNo:number;
     PhoneNo:string;
     MobileNo:string;
-    RegistrationDate:string;
+    RegistrationDate:Date|null;
     UserName:string;
     Password:string;
-    DateTimeLastLogin:string;
+    LastLogin:Date|null;
     DeleteStatus:string;
 }

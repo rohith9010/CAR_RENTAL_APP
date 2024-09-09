@@ -54,10 +54,10 @@ export class AddCustomerComponent implements OnInit {
     CountryNo: 0,
     PhoneNo: '',
     MobileNo: '',
-    RegistrationDate:'',
+    RegistrationDate: null,
     UserName: '',
     Password: '',
-    DateTimeLastLogin: '',
+    LastLogin: null,
     DeleteStatus: ''
   };
 
@@ -106,15 +106,14 @@ export class AddCustomerComponent implements OnInit {
       customerName: ['', Validators.required],
       emailAddress: ['', [Validators.required, Validators.email]],
       addressLine1: ['', Validators.required],
-      addressLine2: ['', Validators.required],
+      addressLine2: ['',],
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      pincode: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10)]],
-      mobileNumber: ['', [Validators.required, Validators.pattern('^(\\+?\\d{1,4}[\\s-]?)?(\\(?\\d{2,5}\\)?[\\s-]?)?\\d{6,8}$')]],
+      pincode: ['', [Validators.required,Validators.pattern('^[0-9]{6}$')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      mobileNumber: ['',Validators.pattern('^[0-9]{10}$')],
       username: ['', Validators.required],
-      RegistrationDate:['',Validators.required],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
     });
   }

@@ -1,56 +1,52 @@
-<div class="add-customer-container">
-  <header class="header">
-    <div class="header-content">
-      <div class="header-title">
-        <h1>Add Customer</h1>
-      </div>
-      <div class="header-buttons">
-        <a href="#"><button pButton class="header-button" icon="pi pi-home" label="Home"></button></a>
-        <a href="/Customer_Details"><button pButton class="header-button" icon="pi pi-info" label="Customer Details"></button></a>
-      </div>
+<header class="header">
+    <div class="header-title">
+      <h1>Sign Up</h1>
     </div>
-  </header>
-  <div class="add-customer-form">
-    <div class="scroll-wrapper">
-      <p-card>
+    <nav class="nav-buttons">
+      <a href="/userhome"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
+      <!-- <a href="/Customer_Details"><button class="nav-buttons" type="button"><i class="fas fa-info-circle"></i> Customer Details</button></a> -->
+    </nav>
+</header>
+<main class="main">
+  <div class="form-container">
         <form [formGroup]="customerForm" (ngSubmit)="onSubmit()">
+
           <fieldset>
             <legend>Customer Details</legend>
-            <div class="grid">
-              <div class="col-12">
+              <div class="horizontal-fields">
                 <div class="form-group">
                   <label for="customerName">Customer Name</label>
-                  <input pInputText id="customerName" [(ngModel)]="customer.Name" formControlName="customerName" placeholder="Please enter the name of the customer">
+                  <input type="text" id="customerName" [(ngModel)]="customer.Name" formControlName="customerName" placeholder="Please enter the name of the customer">
                   <div *ngIf="customerForm.get('customerName')?.invalid && (customerForm.get('customerName')?.dirty || customerForm.get('customerName')?.touched)" class="warning">Customer name is required.</div>
                 </div>
-              </div>
-              <div class="col-12">
+
                 <div class="form-group">
                   <label for="emailAddress">Email Address</label>
-                  <input pInputText id="emailAddress" [(ngModel)]="customer.EmailAddress" formControlName="emailAddress" placeholder="Email Address">
-                  <div *ngIf="customerForm.get('emailAddress')?.invalid && (customerForm.get('emailAddress')?.dirty || customerForm.get('emailAddress')?.touched)" class="warning">Email Address is required.</div>
+                  <input type="email" id="emailAddress" [(ngModel)]="customer.EmailAddress" formControlName="emailAddress" placeholder="Email Address">
+                  <div *ngIf="customerForm.get('emailAddress')?.invalid && (customerForm.get('emailAddress')?.dirty || customerForm.get('emailAddress')?.touched)" class="warning">Email Address is required</div>
+                  <div *ngIf="customerForm.get('emailAddress')?.errors?.['pattern']" class="warning" class="warning">Invalid Email Address.</div>
                 </div>
               </div>
-            </div>
           </fieldset>
+
           <fieldset>
             <legend>Address Details</legend>
-            <div class="grid">
-              <div class="col-12">
+              <div class="horizontal-fields">
                 <div class="form-group">
                   <label for="addressLine1">Address Line 1</label>
-                  <input pInputText id="addressLine1" [(ngModel)]="customer.AddressLine1" formControlName="addressLine1" placeholder="Address Line 1">
+                  <input type="text" id="addressLine1" [(ngModel)]="customer.AddressLine1" formControlName="addressLine1" placeholder="Address Line 1" aria-multiline="true">
                   <div *ngIf="customerForm.get('addressLine1')?.invalid && (customerForm.get('addressLine1')?.dirty || customerForm.get('addressLine1')?.touched)" class="warning">Address is required.</div>
                 </div>
               </div>
-              <div class="col-12">
+              <div class="horizontal-fields">
                 <div class="form-group">
                   <label for="addressLine2">Address Line 2</label>
-                  <input pInputText id="addressLine2" [(ngModel)]="customer.AddressLine2" formControlName="addressLine2" placeholder="Address Line 2">
+                  <input type="text" id="addressLine2" [(ngModel)]="customer.AddressLine2" formControlName="addressLine2" placeholder="Address Line 2">
                   <div *ngIf="customerForm.get('addressLine2')?.invalid && (customerForm.get('addressLine2')?.dirty || customerForm.get('addressLine2')?.touched)" class="warning">Address is required.</div>
                 </div>
               </div>
-              <div class="col-4">
+
+              <div class="horizontal-fields">
                 <div class="form-group">
                   <label for="country">Country</label>
                   <select formControlName="country" [(ngModel)]="country.CountryNo">
@@ -58,8 +54,7 @@
                     <option *ngFor="let country of CountryList" [value]="country.CountryNo">{{ country.Country }}</option>
                   </select>
                 </div>
-              </div>
-              <div class="col-4">
+
                 <div class="form-group">
                   <label for="state">State</label>
                   <select formControlName="state" [(ngModel)]="state.StateNo">
@@ -68,7 +63,8 @@
                   </select>
                 </div>
               </div>
-              <div class="col-4">
+
+              <div class="horizontal-fields">
                 <div class="form-group">
                   <label for="city">City</label>
                   <select formControlName="city" [(ngModel)]="city.CityNo">
@@ -76,59 +72,53 @@
                     <option *ngFor="let city of CitiesList" [value]="city.CityNo">{{ city.CityName }}</option>
                   </select>
                 </div>
-              </div>
-              <div class="col-6">
+
                 <div class="form-group">
                   <label for="pincode">Pincode</label>
-                  <input pInputText id="pincode" [(ngModel)]="customer.PinCode" formControlName="pincode" placeholder="Enter pincode">
-                  <div *ngIf="customerForm.get('pincode')?.invalid && (customerForm.get('pincode')?.dirty || customerForm.get('pincode')?.touched)" class="warning">Pincode is required.</div>
+                  <input type="text" id="pincode" [(ngModel)]="customer.PinCode" formControlName="pincode" placeholder="Enter pincode">
+                  <div *ngIf="customerForm.get('pincode')?.invalid && (customerForm.get('pincode')?.dirty || customerForm.get('pincode')?.touched)" class="warning">Pincode is Required</div>
+                  <div *ngIf="customerForm.get('pincode')?.errors?.['pattern']" class="warning" class="warning">Invalid Pincode format.</div>
                 </div>
               </div>
-            </div>
           </fieldset>
+          
           <fieldset>
             <legend>Contact Details</legend>
-            <div class="grid">
-              <div class="col-6">
+            <div class="horizontal-fields">
                 <div class="form-group">
                   <label for="phoneNumber">Phone Number</label>
-                  <input pInputText id="phoneNumber" [(ngModel)]="customer.PhoneNo" formControlName="phoneNumber" placeholder="Please enter the Phone Number">
-                  <div *ngIf="customerForm.get('phoneNumber')?.invalid && (customerForm.get('phoneNumber')?.dirty || customerForm.get('phoneNumber')?.touched)" class="warning">Please enter digits only.</div>
+                  <input type="tel" id="phoneNumber" [(ngModel)]="customer.PhoneNo" formControlName="phoneNumber" placeholder="Please enter the Phone Number">
+                  <div *ngIf="customerForm.get('phoneNumber')?.invalid && (customerForm.get('phoneNumber')?.dirty || customerForm.get('phoneNumber')?.touched)" class="warning">Phone number is Required</div>
+                  <div *ngIf="customerForm.get('phoneNumber')?.errors?.['pattern']" class="warning">Invalid phone number format.</div>
                 </div>
-              </div>
-              <div class="col-6">
+              
                 <div class="form-group">
                   <label for="mobileNumber">Mobile Number</label>
-                  <input pInputText id="mobileNumber" [(ngModel)]="customer.MobileNo" formControlName="mobileNumber" placeholder="Please enter the Mobile Number">
-                  <div *ngIf="customerForm.get('mobileNumber')?.invalid && (customerForm.get('mobileNumber')?.dirty || customerForm.get('mobileNumber')?.touched)" class="warning">Please enter digits only.</div>
+                  <input type="tel" id="mobileNumber" [(ngModel)]="customer.MobileNo" formControlName="mobileNumber" placeholder="Please enter the Mobile Number">
+                  <div *ngIf="customerForm.get('mobileNumber')?.invalid && (customerForm.get('mobileNumber')?.dirty || customerForm.get('mobileNumber')?.touched)" class="warning"></div>
+                  <div *ngIf="customerForm.get('mobileNumber')?.errors?.['pattern']" class="warning">Invalid Mobile number format.</div>
                 </div>
               </div>
-            </div>
           </fieldset>
+          
           <fieldset>
-            <div class="form-group">
-              <label for="username">Username</label>
-              <input pInputText id="username" [(ngModel)]="customer.UserName" formControlName="username" placeholder="Please enter the Username">
-              <div *ngIf="customerForm.get('username')?.invalid && (customerForm.get('username')?.dirty || customerForm.get('username')?.touched)" class="warning">Username is required</div>
-            </div>
-            <div class="col-6">
-              <div class="form-group">
-                  <label for="RegistrationDate">Registration Date</label>
-                  <input type="date" pInputText id="RegistrationDate" [(ngModel)]="customer.RegistrationDate" formControlName="RegistrationDate" placeholder="Registration Date">
-                  <div *ngIf="customerForm.get('RegistrationDate')?.invalid && (customerForm.get('RegistrationDate')?.touched)" class="warning">
-                      <div *ngIf="customerForm.get('RegistrationDate')?.errors?.['required']">Please enter a registration date</div>
-                      <div *ngIf="customerForm.get('RegistrationDate')?.errors?.['pattern']">Please enter a valid date</div>
+            <legend>Login Details</legend>
+                <div class="horizontal-fields">
+                  <div class="form-group">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" [(ngModel)]="customer.UserName" formControlName="username" placeholder="Please enter the Username">
+                    <div *ngIf="customerForm.get('username')?.invalid && (customerForm.get('username')?.dirty || customerForm.get('username')?.touched)" class="warning">Username is required</div>
                   </div>
-              </div>
-          </div>
-            <div class="form-group">
-              <label for="password">Password</label>
-              <input pInputText id="password" [(ngModel)]="customer.Password" formControlName="password" placeholder="Please enter the password">
-              <div *ngIf="customerForm.get('password')?.touched && customerForm.get('password')?.invalid" class="warning">
-                <div *ngIf="customerForm.get('password')?.errors?.['required']">Please enter a password</div>
-                <div *ngIf="customerForm.get('password')?.errors?.['pattern']">Password must be at least 8 characters long and include uppercase and lowercase letters, a digit, and a special character</div>
-              </div>
-            </div>
+
+                  <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" [(ngModel)]="customer.Password" formControlName="password" placeholder="Please enter the password">
+                    <div *ngIf="customerForm.get('password')?.touched && customerForm.get('password')?.invalid" class="warning">
+                      <div *ngIf="customerForm.get('password')?.errors?.['required']">Please enter a password</div>
+                      <div *ngIf="customerForm.get('password')?.errors?.['pattern']">Password must be at least 8 characters long and include uppercase and lowercase letters, a digit, and a special character</div>
+                    </div>
+                  </div>
+                </div>
           </fieldset>
           <div class="form-actions">
             <button pButton type="submit" label="Save" icon="pi pi-check" class="p-mr-2"></button>
@@ -136,7 +126,4 @@
             <button pButton type="button" label="Update" icon="pi pi-refresh" (click)="Update()"></button>
           </div>
         </form>
-      </p-card>
-    </div>
-  </div>
 </div>

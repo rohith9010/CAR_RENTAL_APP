@@ -22,8 +22,8 @@ GetEmployee():Observable<IEmployee[]>
   EmployeebyId(id: number):Observable<IEmployee> {
     return this.http.get<IEmployee>(`${this.apiUrl}/${id}`);
   }
-  UpdateEmployee(driver: IEmployee ):Observable<IEmployee>{
-    return this.http.put<IEmployee>(`${this.apiUrl}/${driver.EmployeeNo}`,driver);
+  UpdateEmployee(emp: IEmployee ):Observable<IEmployee>{
+    return this.http.put<IEmployee>(`${this.apiUrl}/${emp.EmployeeNo}`,emp);
   }
   DeleteEmployee(id: number): Observable<IEmployee> {
     return this.http.delete<IEmployee>(`${this.apiUrl}/${id}`);

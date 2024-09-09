@@ -175,9 +175,6 @@ export class AddCustomerComponent implements OnInit {
     }
   }
 
- 
-
- 
   Update() : void {
     if (this.customerForm.valid) {
       console.log('Form Submitted', this.customerForm.value);
@@ -193,5 +190,4 @@ export class AddCustomerComponent implements OnInit {
 
     }
   }
-
 }

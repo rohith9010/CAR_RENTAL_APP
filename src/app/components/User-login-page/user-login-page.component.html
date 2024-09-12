@@ -1,389 +1,145 @@
-<div class="dashboard">
-  <nav class="dashboard-nav">
-    <ul>
-      <li><a href="/AdminMenu">Home</a></li>
-      <li><a href="/Add_Customer">Sign-up</a></li>
-      <li><a href="/admin">Admin</a></li>
-    </ul>
-  </nav>
-  <div class="dashboard-content">
-    <div class="login-form">
-      <h2>Login</h2>
-      <form>
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" placeholder="Enter your username" required>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" placeholder="Enter your password" required>
-        <button type="submit">Login</button>
-        <div class="forgot-password-container">
-          <a href="#forgot-password-modal" class="forgot-password-link">Forgot Password?</a>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Overview</title>
+  
+</head>
+<body>
+
+<header class="navbar">
+    <div class="company-info">
+        <img src="assets/img/logo1.jpg" alt="Company Logo" class="company-logo">
+    </div>
+    <nav class="navbar-menu">
+        <ul class="menu">
+            <li><a href="/AdminMenu">Home</a></li>
+            <li><a href="/Add_Customer">Sign-up</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li><a href="/login">Login</a></li>
+            <li><a href="/cars">Cars</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+        </ul>
+    </nav>
+</header>
+
+<section class="car-overview">
+    <!-- Top Premium Cars Section -->
+    <h2>Top Premium Cars</h2>
+    <div class="car-gallery">
+        <div class="car">
+            <img src="assets/img/mahindra-scorpio.jpg" alt="Mahindra Scorpio">
+            <h3>Mahindra Scorpio</h3>
+            <p>A robust SUV designed for both city and off-road adventures, equipped with a powerful engine.</p>
         </div>
-      </form>
+        <div class="car">
+            <img src="assets/img/tata-harrier.jpg" alt="Tata Harrier">
+            <h3>Tata Harrier</h3>
+            <p>A spacious and premium SUV designed for luxury and performance on highways and rough terrains.</p>
+        </div>
+        <div class="car">
+            <img src="assets/img/mahindra-thar.jpg" alt="Mahindra Thar">
+            <h3>Mahindra Thar</h3>
+            <p>A rugged vehicle that offers superior off-road capabilities, ideal for adventure enthusiasts.</p>
+        </div>
     </div>
 
-    <div class="image-container">
-      <div class="image-overlay">Top Premium</div>
-      <div class="image-grid">
-        <div class="image-box">
-          <a href="#modal1">
-            <img src="assets/img/Hyundai%20Creta.webp" alt="Hyundai Creta">
-          </a>
-          <div id="modal1" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Hyundai Creta</h2>
-              <p>Hyundai Creta Overview<br>
-                ✦Type: Compact SUV<br>
-                ✦Engine Options: 1.5L Petrol, 1.5L Diesel, 1.4L Turbo Petrol<br>
-                ✦Transmission: Manual, IVT, DCT, Automatic<br>
-                ✦Power: Up to 140 PS<br>
-                ✦Fuel Efficiency: 16-21 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦LED Headlamps<br>
-                ✦10.25-inch Touchscreen<br>
-                ✦Bose Sound System<br>
-                ✦Electric Sunroof<br>
-                ✦Safety: 6 Airbags, ABS with EBD, ESC
-              </p>
-            </div>
-          </div>
+    <!-- Medium Range Cars Section -->
+    <h2>Medium Range Cars</h2>
+    <div class="car-gallery">
+        <div class="car">
+            <img src="assets/img/tata-punch.jpg" alt="Tata Punch">
+            <h3>Tata Punch</h3>
+            <p>Compact, stylish, and fuel-efficient. Ideal for urban driving with a sleek design.</p>
         </div>
-        <div class="image-box">
-          <a href="#modal2">
-            <img src="assets/img/Mahindra%20Scorpio%20N.webp" alt="Mahindra Scorpio N">
-          </a>
-          <div id="modal2" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Mahindra Scorpio N</h2>
-              <p>Mahindra Scorpio N Overview<br>
-                ✦Type: SUV<br>
-                ✦Engine Options: 2.0L Petrol, 2.2L Diesel<br>
-                ✦Transmission: Manual, Automatic<br>
-                ✦Power: Up to 200 PS<br>
-                ✦Fuel Efficiency: 14-18 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦LED Headlamps<br>
-                ✦8-inch Touchscreen<br>
-                ✦Premium Sound System<br>
-                ✦Sunroof<br>
-                ✦Safety: 6 Airbags, ABS with EBD, ESP
-              </p>
-            </div>
-          </div>
+        <div class="car">
+            <img src="assets/img/toyota-urban-cruiser.jpg" alt="Toyota Urban Cruiser">
+            <h3>Toyota Urban Cruiser</h3>
+            <p>Renowned for reliability and performance, this compact SUV is perfect for long-distance travel.</p>
         </div>
-        <div class="image-box">
-          <a href="#modal3">
-            <img src="assets/img/Mahindra%20Scorpio.webp" alt="Mahindra Scorpio">
-          </a>
-          <div id="modal3" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Mahindra Scorpio</h2>
-              <p>Mahindra Scorpio Overview<br>
-                ✦Type: SUV<br>
-                ✦Engine Options: 2.2L mHawk Diesel<br>
-                ✦Transmission: Manual, Automatic<br>
-                ✦Power: Up to 140 PS<br>
-                ✦Fuel Efficiency: 15-17 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦Projector Headlamps<br>
-                ✦7-inch Touchscreen<br>
-                ✦Cruise Control<br>
-                ✦Sunroof<br>
-                ✦Safety: Dual Airbags, ABS with EBD, Anti-theft Alarm
-              </p>
-            </div>
-          </div>
+        <div class="car">
+            <img src="assets/img/maruti-suzuki-fronx.jpg" alt="Maruti Suzuki Fronx">
+            <h3>Maruti Suzuki Fronx</h3>
+            <p>A crossover that blends urban convenience with reliable performance for short trips.</p>
         </div>
-        <div class="image-box">
-          <a href="#modal4">
-            <img src="assets/img/Mahindra%20Thar.webp" alt="Mahindra Thar">
-          </a>
-          <div id="modal4" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Mahindra Thar</h2>
-              <p>Mahindra Thar Overview<br>
-                ✦Type: Off-road SUV<br>
-                ✦Engine Options: 2.0L Petrol, 2.2L Diesel<br>
-                ✦Transmission: Manual, Automatic<br>
-                ✦Power: Up to 150 PS<br>
-                ✦Fuel Efficiency: 14-16 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦LED DRLs<br>
-                ✦7-inch Touchscreen<br>
-                ✦Convertible Roof<br>
-                ✦4x4 Capability<br>
-                ✦Safety: Dual Airbags, ABS with EBD, Roll Cage
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="image-box">
-          <a href="#modal5">
-            <img src="assets/img/Mahindra%20XUV%203XO.webp" alt="Mahindra XUV 3XO">
-          </a>
-          <div id="modal5" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Mahindra XUV 3XO</h2>
-              <p>Mahindra XUV 3XO Overview<br>
-                ✦Type: Compact SUV<br>
-                ✦Engine Options: 1.2L Petrol, 1.5L Diesel<br>
-                ✦Transmission: Manual, AMT<br>
-                ✦Power: Up to 130 PS<br>
-                ✦Fuel Efficiency: 16-20 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦LED Headlamps<br>
-                ✦7-inch Touchscreen<br>
-                ✦Electric Sunroof<br>
-                ✦Dual-zone Climate Control<br>
-                ✦Safety: 7 Airbags, ABS with EBD, ESP
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="image-box">
-          <a href="#modal6">
-            <img src="assets/img/Mahindra%20XUV700.webp" alt="Mahindra XUV700">
-          </a>
-          <div id="modal6" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Mahindra XUV700</h2>
-              <p>Mahindra XUV700 Overview<br>
-                ✦Type: SUV<br>
-                ✦Engine Options: 2.0L Turbo Petrol, 2.2L Diesel<br>
-                ✦Transmission: Manual, Automatic<br>
-                ✦Power: Up to 200 PS<br>
-                ✦Fuel Efficiency: 14-18 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦LED Headlamps<br>
-                ✦10.25-inch Dual Displays<br>
-                ✦Sony Sound System<br>
-                ✦Panoramic Sunroof<br>
-                ✦Safety: 7 Airbags, ADAS, ABS with EBD
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
 
-    <div class="image-container">
-      <div class="image-overlay">Medium</div>
-      <div class="image-grid">
-        <div class="image-box">
-          <a href="#modal7">
-            <img src="assets/img/Maruti%20Suzuki%20Fronx.webp" alt="Maruti Suzuki Fronx">
-          </a>
-          <div id="modal7" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Maruti Suzuki Fronx</h2>
-              <p>Maruti Suzuki Fronx Overview<br>
-                ✦Type: Crossover<br>
-                ✦Engine Options: 1.2L Petrol, 1.0L Turbo Petrol<br>
-                ✦Transmission: Manual, AMT<br>
-                ✦Power: Up to 100 PS<br>
-                ✦Fuel Efficiency: 18-21 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦LED Headlamps<br>
-                ✦9-inch Touchscreen<br>
-                ✦Head-up Display<br>
-                ✦360-degree Camera<br>
-                ✦Safety: 6 Airbags, ABS with EBD, ESP
-              </p>
-            </div>
-          </div>
+    <!-- Base Models Section -->
+    <h2>Base Models</h2>
+    <div class="car-gallery">
+        <div class="car">
+            <img src="assets/img/maruti-suzuki-swift.jpg" alt="Maruti Suzuki Swift">
+            <h3>Maruti Suzuki Swift</h3>
+            <p>One of India’s most popular hatchbacks, known for its agility and fuel efficiency.</p>
         </div>
-        <div class="image-box">
-          <a href="#modal8">
-            <img src="assets/img/Maruti%20Suzuki%20Swift.webp" alt="Maruti Suzuki Swift">
-          </a>
-          <div id="modal8" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Maruti Suzuki Swift</h2>
-              <p>Maruti Suzuki Swift Overview<br>
-                ✦Type: Hatchback<br>
-                ✦Engine Options: 1.2L Petrol<br>
-                ✦Transmission: Manual, AMT<br>
-                ✦Power: Up to 90 PS<br>
-                ✦Fuel Efficiency: 21-23 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦LED Headlamps<br>
-                ✦7-inch Touchscreen<br>
-                ✦Auto Climate Control<br>
-                ✦Sporty Styling<br>
-                ✦Safety: Dual Airbags, ABS with EBD, ESP
-              </p>
-            </div>
-          </div>
+        <div class="car">
+            <img src="assets/img/tata-tiago.jpg" alt="Tata Tiago">
+            <h3>Tata Tiago</h3>
+            <p>A budget-friendly, compact car that provides excellent mileage and city driving experience.</p>
         </div>
-        <div class="image-box">
-          <a href="#modal9">
-            <img src="assets/img/Tata%20Curvv.webp" alt="Tata Curvv">
-          </a>
-          <div id="modal9" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Tata Curvv</h2>
-              <p>Tata Curvv Overview<br>
-                ✦Type: Electric SUV<br>
-                ✦Engine Options: Electric<br>
-                ✦Transmission: Automatic<br>
-                ✦Power: Up to 150 kW<br>
-                ✦Range: Up to 400 km<br>
-                ✦Key Features:<br>
-                ✦LED Headlamps<br>
-                ✦Digital Instrument Cluster<br>
-                ✦Panoramic Sunroof<br>
-                ✦Fast Charging<br>
-                ✦Safety: 6 Airbags, ABS with EBD, ESP
-              </p>
-            </div>
-          </div>
+        <div class="car">
+            <img src="assets/img/renault-kwid.jpg" alt="Renault Kwid">
+            <h3>Renault Kwid</h3>
+            <p>A small and affordable vehicle, perfect for those seeking an economical option for daily commutes.</p>
         </div>
-        <div class="image-box">
-          <a href="#modal10">
-            <img src="assets/img/Tata%20Harrier.webp" alt="Tata Harrier">
-          </a>
-          <div id="modal10" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Tata Harrier</h2>
-              <p>Tata Harrier Overview<br>
-                ✦Type: SUV<br>
-                ✦Engine Options: 2.0L Diesel<br>
-                ✦Transmission: Manual, Automatic<br>
-                ✦Power: Up to 170 PS<br>
-                ✦Fuel Efficiency: 14-16 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦Xenon HID Projector Headlamps<br>
-                ✦8.8-inch Touchscreen<br>
-                ✦9-speaker JBL System<br>
-                ✦Panoramic Sunroof<br>
-                ✦Safety: 6 Airbags, ABS with EBD, ESP
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="image-box">
-          <a href="#modal11">
-            <img src="assets/img/Tata%20Punch.webp" alt="Tata Punch">
-          </a>
-          <div id="modal11" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Tata Punch</h2>
-              <p>                
-                Tata Punch Overview<br>
-                ✦Type: Micro SUV<br>
-                ✦Engine Options: 1.2L Petrol<br>
-                ✦Transmission: Manual, AMT<br>
-                ✦Power: Up to 86 PS<br>
-                ✦Fuel Efficiency: 18-20 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦Projector Headlamps<br>
-                ✦7-inch Touchscreen<br>
-                ✦iRA Connected Car Technology<br>
-                ✦Rain Sensing Wipers<br>
-                ✦Safety: 2 Airbags, ABS with EBD, ESP <br>
-              </p>
-            </div>
-          </div>
-        </div>
-        <div class="image-box">
-          <a href="#modal12">
-            <img src="assets/img/Toyota%20Urban%20Cruiser%20Taisor.webp" alt="Toyota Urban Cruiser Taisor">
-          </a>
-          <div id="modal12" class="modal">
-            <div class="modal-content">
-              <a href="#" class="close">&times;</a>
-              <h2>Toyota Urban Cruiser Taisor</h2>
-              <p>Toyota Urban Cruiser Taisor Overview<br>
-                ✦Type: Compact SUV<br>
-                ✦Engine Options: 1.5L Petrol<br>
-                ✦Transmission: Manual, Automatic<br>
-                ✦Power: Up to 105 PS<br>
-                ✦Fuel Efficiency: 17-19 km/l (ARAI)<br>
-                ✦Key Features:<br>
-                ✦LED Projector Headlamps<br>
-                ✦7-inch Touchscreen<br>
-                ✦Smart Entry with Push Start<br>
-                ✦Automatic Climate Control<br>
-                ✦Safety: 6 Airbags, ABS with EBD, Hill Start Assist
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
-  </div>
+</section>
+
+<section class="blogs-overview">
+    <h2>Car Rental Blogs & Insights</h2>
+    <div class="blog-list">
+        <article class="blog">
+            <h3><a href="/blogs/tips-for-renting">Top Tips for Renting a Car</a></h3>
+            <p>Discover essential tips for renting the right car and how to avoid common pitfalls when booking your rental.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/long-road-trips">Best Vehicles for Long Road Trips</a></h3>
+            <p>Planning a long road trip? Find out which cars provide the most comfort, space, and fuel efficiency for your journey.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/car-insurance">Rental Car Insurance: What You Need to Know</a></h3>
+            <p>Learn whether rental car insurance is a must-have and what it typically covers to help you make informed decisions.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/eco-friendly-cars">Eco-friendly Rental Cars</a></h3>
+            <p>Explore the benefits of choosing eco-friendly rental options to reduce your carbon footprint on the road.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/business-rentals">Renting a Car for Business Travel</a></h3>
+            <p>Learn how to select the best vehicle for corporate travel that balances cost-efficiency and professionalism.</p>
+        </article>
+        <!-- Extended Blogs -->
+        <article class="blog">
+            <h3><a href="/blogs/seasonal-rentals">Seasonal Rentals: What You Need to Know</a></h3>
+            <p>Find out how to choose the best car rental options for different seasons and weather conditions.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/saving-on-car-rentals">How to Save on Car Rentals</a></h3>
+            <p>Discover strategies for getting the best deals on car rentals and making the most of discounts and offers.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/trending-cars">Trending Cars to Rent in 2024</a></h3>
+            <p>Stay updated on the latest trends and popular car models available for rent this year.</p>
+        </article>
+    </div>
+</section>
+<footer class="footer">
+    <div class="footer-social-icons">
+      <a href="#" target="_blank">
+        <img src="assets/img/gmail-icon.png" alt="Gmail">
+      </a>
+      <a href="#" target="_blank">
+        <img src="assets/img/whatsapp-icon.png" alt="WhatsApp">
+      </a>
+      <a href="https://www.instagram.com/thepranay._?igsh=a3VlejJndmNubmlu" target="_blank"><img src="assets/img/instagram-icon.png" alt="Instagram"></a>
+      <a href="#"><img src="assets/img/facebook-icon.png" alt="Facebook"></a>
+      <a href="#"><img src="assets/img/linkedin-icon.png" alt="LinkedIn"></a>
+      <a href="#"><img src="assets/img/x-icon.png" alt="X"></a>
+    </div>
+    <div class="footer-copyright">
+      <p class="mb-0">&copy; 2024 Car Rental Service. All rights reserved.</p>
 </div>
-
-
-
-
-<style>
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    overflow: auto;
-    background-color: rgba(0, 0, 0, 0.4);
-  }
-
-  .modal-content {
-    background-color: #fefefe;
-    margin: 15% auto;
-    padding: 20px;
-    border: 1px solid #888;
-    width: 80%;
-  }
-
-  .close {
-    color: #aaa;
-    float: right;
-    font-size: 28px;
-    font-weight: bold;
-  }
-
-  .close:hover,
-  .close:focus {
-    color: black;
-    text-decoration: none;
-    cursor: pointer;
-  }
-</style>
-
-<script>
-  const modals = document.querySelectorAll('.modal');
-  const openModalButtons = document.querySelectorAll('.image-box a');
-  const closeModalButtons = document.querySelectorAll('.close');
-
-  openModalButtons.forEach((button, index) => {
-    button.addEventListener('click', (event) => {
-      event.preventDefault();
-      modals[index].style.display = 'block';
-    });
-  });
-
-  closeModalButtons.forEach((button, index) => {
-    button.addEventListener('click', () => {
-      modals[index].style.display = 'none';
-    });
-  });
-
-  window.addEventListener('click', (event) => {
-    if (event.target.classList.contains('modal')) {
-      event.target.style.display = 'none';
-    }
-  });
-</script>
+</footer>
+</body>
+</html>

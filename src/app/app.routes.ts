@@ -24,10 +24,12 @@ import { AddVehicleComponent } from './components/add-vehicle/Add-Vehicle/Add-Ve
 import { Reservation_DetailsComponent } from './components/ReservationDetails/Reservation_Details/Reservation_Details.component';
 import { UserLoginPageComponent } from './components/User-login-page/user-login-page.component';
 import { AdminloginComponent } from './components/Adminlogin/Adminlogin.component';
+import { CustomerloginComponent } from './components/CustomerLogin/customerlogin/customerlogin.component';
+import { authGuard } from '../Guards/auth.guard';
 
 export const routes: Routes = [
     {path:'',component:UserLoginPageComponent,pathMatch:'full'},
-    {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
+    {path:'vehicle_make_details',component:VehicleMakeDetailsComponent,canActivate:[authGuard]},
     {path:'vehicle_model_details',component:VehicleModelDetailsComponent},
     {path:'city_details',component:AddCityDetailsComponent},
     {path:'country_details',component:CountryDetailsComponent},
@@ -41,6 +43,8 @@ export const routes: Routes = [
     {path:'AdminMenu',component:MenuComponent},
     {path: 'userhome', component: UserLoginPageComponent },
     {path: 'admin', component: AdminloginComponent },
+    {path: 'userlogin', component: CustomerloginComponent },
+
     
     {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
     {path:'Add_City/:Stateid/:Cityid',component:AddCityComponent},

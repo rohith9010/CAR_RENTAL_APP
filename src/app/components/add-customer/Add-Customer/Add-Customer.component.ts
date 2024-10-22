@@ -26,6 +26,7 @@ import { customerservice } from '../../../../Services/CustomerService/Customer.s
     ButtonModule,
     DropdownModule,
     CardModule,
+    CustomerDetailsComponent,
     CommonModule
   ],
   templateUrl: './Add-Customer.component.html',
@@ -45,18 +46,18 @@ export class AddCustomerComponent implements OnInit {
     CustomerNo: 0,
     Name: '',
     EmailAddress: '',
-    Address1: '',
-    Address2: '',
+    AddressLine1: '',
+    AddressLine2: '',
     CityNo: 0,
     StateNo: 0,
-    Pincode: '',
+    PinCode: '',
     CountryNo: 0,
-    PhoneNumber: '',
-    MobileNumber: '',
-    RegistrationDate:'',
+    PhoneNo: '',
+    MobileNo: '',
+    RegistrationDate: null,
     UserName: '',
     Password: '',
-    DateTimeLastLogin: '',
+    LastLogin: null,
     DeleteStatus: ''
   };
 
@@ -84,6 +85,7 @@ export class AddCustomerComponent implements OnInit {
     this.getCountries();
     this.GetStates();
     this.GetCities();
+    this.getbyId();
   }
   onSubmit(): void {
     if (this.customerForm.valid) {
@@ -104,15 +106,14 @@ export class AddCustomerComponent implements OnInit {
       customerName: ['', Validators.required],
       emailAddress: ['', [Validators.required, Validators.email]],
       addressLine1: ['', Validators.required],
-      addressLine2: ['', Validators.required],
+      addressLine2: ['',],
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      pincode: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$'), Validators.maxLength(10)]],
-      mobileNumber: ['', [Validators.required, Validators.pattern('^(\\+?\\d{1,4}[\\s-]?)?(\\(?\\d{2,5}\\)?[\\s-]?)?\\d{6,8}$')]],
+      pincode: ['', [Validators.required,Validators.pattern('^[0-9]{6}$')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      mobileNumber: ['',Validators.pattern('^[0-9]{10}$')],
       username: ['', Validators.required],
-      RegistrationDate:['',Validators.required],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
     });
   }
@@ -174,22 +175,19 @@ export class AddCustomerComponent implements OnInit {
     }
   }
 
- 
-
-  Update(): void {
+  Update() : void {
     if (this.customerForm.valid) {
       console.log('Form Submitted', this.customerForm.value);
-      this.customer.CountryNo = this.country.CountryNo;
-      this.customer.StateNo = this.state.StateNo;
-      this.customer.CityNo = this.city.CityNo;
-
-      console.log(this.customer);
-      this.customerservice.UpdateCustomer(this.customer).subscribe(res => {
-        this.customer = res;
+      this.customer.CountryNo=this.country.CountryNo;
+      this.customer.StateNo=this.state.StateNo;
+      this.customer.CityNo=this.city.CityNo;
+        
+     console.log(this.customer);
+      this.customerservice.UpdateCustomer(this.customer).subscribe(res =>{
+        this.customer=res;           
         this.router.navigate(['/Customer_Details']);
       });
 
     }
   }
-
 }

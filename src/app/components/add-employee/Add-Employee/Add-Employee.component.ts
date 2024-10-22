@@ -13,18 +13,10 @@ import { ICity } from '../../../../Interfaces/ICity';
 import { ICountry } from '../../../../Interfaces/ICountry';
 import { IState } from '../../../../Interfaces/IState';
 import { ActivatedRoute,Router } from '@angular/router';
-import { OwnerServiceService } from '../../../../Services/OwnerService/owner-service.service';
-import { IVehicles } from '../../../../Interfaces/IVehicles';
-import { IVehicleTypes } from '../../../../Interfaces/IVehicleTypes';
-import { IVehicleMake_ } from '../../../../Interfaces/IVehicleMake_';
-import { IVehicleModel } from '../../../../Interfaces/IVehicleModel';
-import { IOwner } from '../../../../Interfaces/IOwner';
-import { IVehicleFuel } from '../../../../Interfaces/IVehicleFuel';
-import { IVehicleCapacity } from '../../../../Interfaces/IVehicleCapacity';
 import { EmployeeTypeService } from '../../../../Services/EmployeeTypeService/employee-type.service';
-import { VehiclesService } from '../../../../Services/VehiclesService/Vehicles.service';
-import { VehicleMakeService } from '../../../../Services/VehicleMakeservice/vehicle-make.service';
-import { VehicleModelServiceService } from '../../../../Services/VehicleModelservice/vehicle-model-service.service';
+import { IEmployee } from '../../../../Interfaces/IEmployee';
+import { IEmployeetype } from '../../../../Interfaces/IEmployeetype';
+import { EmployeeService } from '../../../../Services/EmployeeService/employee.service';
 
 @Component({
   selector: 'app-Add-Employee',
@@ -45,107 +37,78 @@ import { VehicleModelServiceService } from '../../../../Services/VehicleModelser
 export class AddEmployeeComponent implements OnInit {
 
   employeeForm!: FormGroup;
-  filteredvehiclelist: IVehicles[]=[];
-  Vehicletypelist:IVehicleTypes[]=[];
-  vehiclemakelist:IVehicleMake_[]=[];
-  vehiclemodellist:IVehicleModel[]=[];
-  ownerslist:IOwner[]=[];
-  statelist:IState[]=[];
-  vehicleFuellist:IVehicleFuel[]=[];
-  capacitylist:IVehicleCapacity[]=[];
+  CountryList!:ICountry[];
+  statelist!:IState[];
+  citylist!:ICity[];
+  employeeTypelist!:IEmployeetype[];
 
-  vehicle:IVehicles={
-    VehicleNo:0,
-    OwnerNo:0,
-    ModelNo:0,
-    TypeNo:0,
-    Year:0,
-    Color:'',
-    FuelNo:0,
-    CapacityNo:0,
-    Mileage:0,
-    Pic: new Uint8Array,
-    RegistrationNo:'',
-    RegistrationState:0,
-    ChassisNo:'',
-    DailyRate:0,
-    HourlyRate:0,
-    AdditionalDailyRate:0,
-    AddtionalHourlyRate:0,
-    DeleteStatus:'',
-    
-  };
-
-  vehiclemake:IVehicleMake_={
-    MakeNo:0,
-    Name:'',
-    Vehiclemodels:[{ModelNo:0,Name:"",MakeNo:0}]
-  };
-
-  country:ICountry={CountryNo:0,
-    Country:'',
-    States:[{StateNo: 0, state: "", CountryNo: 0,Citys: []}]
-  };
-
-  state:IState={StateNo:0,
-    state:"",Citys:[],
-    CountryNo:0
-  };
-  owner:IOwner={
-    OwnerNo: 0,
-    Name: '',
-    Address1: '',
-    Address2: '',
-    CityNo: 0,
+  employee:IEmployee={
+    EmployeeNo: 0,
+    EmployeeName: '',
+    EmployeeTypeNo: 0,
+    AddressLine1: '',
+    AddressLine2: '',
+    CitiesNo: 0,
     StateNo: 0,
     Pincode: '',
     CountryNo: 0,
-    PhoneNumber: '',
-    MobileNumber: '',
+    PhoneNo: '',
+    MobileNo: '',
+    EmailAddress: '',
     BankName: '',
     BankAccount: '',
     PAN: '',
+    UserName: '',
+    Password: '',
+    City: '',
+    State: '',
+    Country: '',
+    Vehicle: '',
+    VehicleMakes: '',
+    vehicleModel: '',
+    Employees: '',
+    Customers: '',
+    Owners: '',
+    Drivers: '',
+    Rentals: '',
+    LastLogin: null,
+    Status: '',
     DeleteStatus: ''
-  };
+  }
 
 
-
-
- 
-
-
-
-
-  constructor(private fb: FormBuilder,
+  constructor(
+    private fb: FormBuilder,
      private Route:ActivatedRoute,
      private Router:Router,
      private Employeetypeservice:EmployeeTypeService,
+     private employeeservice:EmployeeService,
      private Cititesservice:CitiesService,
      private stateservice:StateserviceService,
      private countryservice:CountryService,
-     private vehicleservice:VehiclesService,
-     private vehiclemakesservice:VehicleMakeService,
-     private vehiclemodelservice:VehicleModelServiceService,
-     
-
-     
-     
-  ) { }
+     ) { }
 
   ngOnInit(): void {
     this.validations();
+    this.getCountries();
+    this.GetCities();
+    this.GetStates();
+    this.getemployeetypes();
+    this.getbyid();
   }
   validations(){
     this.employeeForm = this.fb.group({
       employeeName:['', Validators.required],
       employeeType: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      address: ['', Validators.required],
+      address1: ['', Validators.required],
+      address2:[''],
       country: ['', Validators.required],
       state: ['', Validators.required],
       city: ['', Validators.required],
-      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')],Validators.maxLength(10)],
-      mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      pincode:['',[Validators.required,Validators.pattern('^[0-9]{6}$')]],
+      phoneNumber: ['', [Validators.required, Validators.pattern('^[0-9]*$')]],
+      mobileNumber: [''],
       username: ['', Validators.required],
       password: ['', [Validators.required, Validators.pattern('^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$')]],
       bankName: ['', [Validators.required,Validators.pattern('^[a-zA-Z\\s\\-\\\']{3,50}$')]],
@@ -162,15 +125,134 @@ export class AddEmployeeComponent implements OnInit {
         customers: [false],
         owners: [false],
         drivers: [false],
-        reservations: [false],
-        selectall:[false]
+        reservations: [false]
     });
   }
 
+  getCountries() {
+    this.countryservice.getCountries().subscribe(res => {
+      this.CountryList = res;
+    });
+  }
+
+  GetStates() {
+    this.stateservice.GetAllStates().subscribe(res => {
+      this.statelist = res;
+    });
+  }
+
+  GetCities() {
+    this.Cititesservice.getCities().subscribe(res => {
+      this.citylist = res;
+    });
+  }
+
+  getemployeetypes()
+  {
+    this.Employeetypeservice.GetEmployeeType().subscribe(res=>{
+      this.employeeTypelist=res;
+    });
+  }
+
+  getbyid()
+  {
+    const empid=this.Route.snapshot.params['Id'];
+    if(empid){
+      this.employeeservice.EmployeebyId(empid).subscribe(res=>{
+        this.employee=res;
+        this.employeeForm.patchValue({
+
+          "employeeName":this.employee.EmployeeName,
+          "employeeType":this.employee.EmployeeTypeNo,
+          "email":this.employee.EmailAddress,
+          "address1":this.employee.AddressLine1,
+          "address2":this.employee.AddressLine2,
+          "country":this.employee.CountryNo,
+          "state":this.employee.StateNo,
+          "city":this.employee.CitiesNo,
+          "pincode":this.employee.Pincode,
+          "phoneNumber":this.employee.PhoneNo,
+          "mobileNumber":this.employee.MobileNo,
+          "username":this.employee.UserName,
+          "password":this.employee.Password,
+          "bankName":this.employee.BankName,
+          "accountNumber":this.employee.BankAccount,
+          "pan":this.employee.PAN 
+
+        });
+      });
+    }
+  }
+
+
+
   onSubmit(): void {
     if (this.employeeForm.valid) {
-      console.log('Form Submitted', this.employeeForm.value);
+        console.log('Form Submitted', this.employeeForm.value);
+        const formValue = this.employeeForm.value;
+        this.employee = {
+          ...this.employee,
+          
+          EmployeeName: formValue.employeeName,
+          EmployeeTypeNo: formValue.employeeType,
+          EmailAddress: formValue.email,
+          AddressLine1: formValue.address1,
+          AddressLine2: formValue.address2,
+          CountryNo: formValue.country,
+          StateNo: formValue.state,
+          CitiesNo: formValue.city,
+          Pincode:formValue.pincode,
+          PhoneNo: formValue.phoneNumber,
+          MobileNo: formValue.mobileNumber,
+          UserName: formValue.username,
+          Password: formValue.password,
+          BankName: formValue.bankName,
+          BankAccount: formValue.accountNumber,
+          PAN: formValue.pan,
+        };
+  
+        console.log(this.employee);
+        this.employeeservice.AddEmployee(this.employee).subscribe(res => {
+          this.employee = res;
+          this.Router.navigate(['/Employee_Details'])
+        });
     }
+  }
+  
+  Update(): void{
+    if (this.employeeForm.valid) {
+      const formValue = this.employeeForm.value;
+      this.employee = {
+        ...this.employee,
+  
+        EmployeeName: formValue.employeeName,
+        EmployeeTypeNo: formValue.employeeType,
+        EmailAddress: formValue.email,
+        AddressLine1: formValue.address1,
+        AddressLine2: formValue.address2,
+        CountryNo: formValue.country,
+        StateNo: formValue.state,
+        CitiesNo: formValue.city,
+        Pincode: formValue.pincode,
+        PhoneNo: formValue.phoneNumber,
+        MobileNo: formValue.mobileNumber,
+        UserName: formValue.username,
+        Password: formValue.password,
+        BankName: formValue.bankName,
+        BankAccount: formValue.accountNumber,
+        PAN: formValue.pan,
+      };
+
+      console.log(this.employee);
+      this.employeeservice.UpdateEmployee(this.employee).subscribe(res => {
+        this.employee = res;
+        this.Router.navigate(['/Employee_Details'])
+      });
+    }
+  }
+  onPanInput(event: Event): void {
+    const input = event.target as HTMLInputElement;
+    input.value = input.value.toUpperCase();
   }
 
   onClear(): void {

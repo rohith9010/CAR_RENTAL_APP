@@ -4,12 +4,13 @@ import { ActivatedRoute, RouterLink, RouterLinkActive, RouterOutlet } from '@ang
 import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { customerservice } from '../../../../Services/CustomerService/Customer.service';
 import { ICustomer } from '../../../../Interfaces/ICustomer';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-Customer-Details',
   standalone: true,
   imports: [
-    CustomerDetailsComponent,RouterOutlet,RouterLink,RouterLinkActive, MatIconModule,FormsModule,ReactiveFormsModule
+    CustomerDetailsComponent,RouterOutlet,RouterLink,RouterLinkActive, MatIconModule,FormsModule,ReactiveFormsModule,CommonModule
   ],
   templateUrl: './Customer-Details.component.html',
   styleUrls: ['./Customer-Details.component.css']
@@ -21,35 +22,68 @@ export class CustomerDetailsComponent implements OnInit {
   filteredcustomerList!: ICustomer[];
   searchQuery!: string ;
   customerList!:ICustomer[];
-  ngOnInit() {
-    
+  currentPage: number = 1;
+  itemsPerPage: number = 8;
+  showClearIcon: boolean = false;
 
+  ngOnInit() {
+    this.getcustomer();
+  }
+  getcustomer()
+  {
     this.customerservice.GetCustomer().subscribe((res: ICustomer[])=> {
       this.customerList=res;
+      this.search();
     });
-      
   }
+  delete(id:number):void 
+  {
+    if (confirm('Are you sure you want to delete this item?'))
+    {
+      this.customerservice.DeleteCustomer(id).subscribe(()=>{
+        console.log('Item deleted successfully');
+        this.ngOnInit();
+      });
+    }
+  }
+  search(): void 
+  {
+    const query = this.searchQuery?.trim().toLowerCase() || '';
   
-  delete(id:number):void {
-        if (confirm('Are you sure you want to delete this item?')){
-          this.customerservice.DeleteCustomer(id).subscribe(()=>{
-              console.log('Item deleted successfully');
-              this.ngOnInit();
-            },
-          );
-        }
+    if (query === '') {
+      this.filteredcustomerList = [...this.customerList];
+    } 
+    else {
+      this.filteredcustomerList = this.customerList.filter(customer =>
+        customer.Name.toLowerCase().includes(query)
+      );
     }
-  search(): void {
-      if (this.searchQuery.trim() ==='') {
-        this.filteredcustomerList = [...this.customerList];
-      } else 
-      {
-        this.filteredcustomerList = this.customerList.filter(customer =>
-          customer.Name.toLowerCase().includes(this.searchQuery.trim().toLowerCase())
-        );
-      }
-    }
+    this.currentPage = 1;
+  }
    
+    getDisplayedVehicles(): ICustomer[] {
+      const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+      const endIndex = startIndex + this.itemsPerPage;
+      return (this.filteredcustomerList || []).slice(startIndex, endIndex);
+    }
   
+    totalPages(): number[] {
+      const totalItems = this.filteredcustomerList?.length ?? 0;
+      const totalPages = Math.ceil(totalItems / this.itemsPerPage);
+      return Array(totalPages).fill(0).map((x, i) => i + 1);
+    }
+  
+    onPageChange(page: number): void {
+      this.currentPage = page;
+    }
+  
+    trackByFn(index: number, item: ICustomer): number {
+      return item.CustomerNo;
+    }
 
 }
+
+ 
+  
+
+

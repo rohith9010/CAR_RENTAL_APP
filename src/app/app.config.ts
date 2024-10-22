@@ -1,13 +1,20 @@
 import { ApplicationConfig, importProvidersFrom } from '@angular/core';
 import { provideRouter } from '@angular/router';
-
 import { routes } from './app.routes';
 import { provideClientHydration } from '@angular/platform-browser';
-import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule, provideHttpClient, withInterceptorsFromDi } from '@angular/common/http';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
-
+import { ApiInterceptor } from '../Interceptors/api.interceptor';
 export const appConfig: ApplicationConfig = {
   providers: [provideRouter(routes), provideClientHydration(),
-  importProvidersFrom(HttpClientModule), provideAnimationsAsync(), provideAnimationsAsync()
+  importProvidersFrom(HttpClientModule), provideAnimationsAsync(), provideAnimationsAsync(),
+  provideHttpClient(
+    withInterceptorsFromDi()
+  ),
+  {
+    provide:HTTP_INTERCEPTORS,
+    useClass: ApiInterceptor,
+    multi: true 
+  }
   ]
 };

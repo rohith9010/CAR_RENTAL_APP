@@ -3,7 +3,6 @@
   padding: 0;
   box-sizing: border-box;
 }
-
 body {
   font-family: Arial, sans-serif;
   background-color: #f7f7f7;
@@ -13,14 +12,12 @@ body {
   flex-direction: column;
   min-height: 100vh;
 }
-
 .container {
   max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
   flex: 1;
 }
-
 .header {
   background-color: #4CAF50;
   color: #fff;
@@ -30,43 +27,36 @@ body {
   align-items: center;
   position: relative;
 }
-
 .header h1 {
   font-size: 24px;
   margin: 0;
 }
-
 .header-right {
   display: flex;
   align-items: center;
 }
-
 .header-left {
   position: absolute;
   left: 20px;
   display: flex;
   align-items: center;
 }
-
 .header-title {
   flex: 1;
   text-align: center;
   font-size: 24px;
   margin: 0;
 }
-
 .icon-button {
   margin-left: 15px;
   color: #fff;
   font-size: 24px;
   text-decoration: none;
 }
-
 .main {
   padding: 20px 0;
   flex: 1;
 }
-
 .filter {
   background-color: #fff;
   padding: 20px;
@@ -74,19 +64,16 @@ body {
   border-radius: 5px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-
 .filter h2 {
   font-size: 20px;
   margin-bottom: 10px;
 }
-
 .search-box {
   display: flex;
   align-items: center;
   justify-content: space-between;
   margin-top: 10px;
 }
-
 .input-search {
   padding: 10px;
   width: 70%;
@@ -94,7 +81,6 @@ body {
   border-radius: 5px;
   font-size: 16px;
 }
-
 .search-button {
   padding: 10px 20px;
   background-color: #4CAF50;
@@ -104,13 +90,11 @@ body {
   cursor: pointer;
   font-size: 16px;
 }
-
 .vehicle-list .table-container {
   max-height: 400px;
   overflow-y: auto;
   position: relative;
 }
-
 .vehicle-list table {
   width: 100%;
   border-collapse: collapse;
@@ -119,7 +103,6 @@ body {
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
   margin-top: 20px;
 }
-
 .vehicle-list thead th {
   position: sticky;
   top: 0;
@@ -127,32 +110,26 @@ body {
   color: #fff;
   z-index: 1;
 }
-
 .vehicle-list th, .vehicle-list td {
   border: 1px solid #ddd;
   padding: 12px;
   text-align: left;
 }
-
 .vehicle-list th {
   font-size: 18px;
 }
-
 .vehicle-list td a {
   text-decoration: none;
   color: #4CAF50;
 }
-
 .vehicle-list td a i {
   font-size: 20px;
 }
-
 .pagination {
   margin-top: 20px;
   display: flex;
   justify-content: center;
 }
-
 .pagination button {
   background-color: #f0f0f0;
   border: 1px solid #ccc;
@@ -161,16 +138,13 @@ body {
   margin-right: 5px;
   cursor: pointer;
 }
-
 .pagination button.active {
   background-color: #007bff;
   color: #fff;
 }
-
 .pagination button:hover {
   background-color: #ccc;
 }
-
 footer {
   background-color: #4CAF50;
   color: #fff;
@@ -180,7 +154,6 @@ footer {
   width: 100%;
   bottom: 0;
 }
-
 footer p {
   margin: 0;
   font-size: 14px;

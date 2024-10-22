@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Overview</title>
+  
+</head>
+<body>
+
+<header class="navbar">
+    <div class="company-info">
+        <img src="assets/img/logo1.jpg" alt="Company Logo" class="company-logo">
+    </div>
+    <nav class="navbar-menu">
+        <ul class="menu">
+            <li><a href="/AdminMenu">Home</a></li>
+            <li><a href="/Add_Customer">Sign-up</a></li>
+            <li><a href="/admin">Admin</a></li>
+            <li *ngIf="!isLoggedIn"><a href="/userlogin">Login</a></li>
+            <li><a href="/cars">Cars</a></li>
+            <li><a href="/blogs">Blogs</a></li>
+                        
+            <!-- Show Logout option only when the user is logged in -->
+            <li *ngIf="isLoggedIn">
+              <button (click)="Logout()">Logout</button>
+            </li>
+        </ul>
+    </nav>
+</header>
+<section class="car-overview">
+    <!-- Top Premium Cars Section -->
+    <h2>Top Premium Cars</h2>
+    <div class="car-gallery">
+        <div class="car">
+            <img src="assets/img/mahindra-scorpio.jpg" alt="Mahindra Scorpio">
+            <h3>Mahindra Scorpio</h3>
+            <p>A robust SUV designed for both city and off-road adventures, equipped with a powerful engine.</p>
+        </div>
+        <div class="car">
+            <img src="assets/img/tata-harrier.jpg" alt="Tata Harrier">
+            <h3>Tata Harrier</h3>
+            <p>A spacious and premium SUV designed for luxury and performance on highways and rough terrains.</p>
+        </div>
+        <div class="car">
+            <img src="assets/img/mahindra-thar.jpg" alt="Mahindra Thar">
+            <h3>Mahindra Thar</h3>
+            <p>A rugged vehicle that offers superior off-road capabilities, ideal for adventure enthusiasts.</p>
+        </div>
+    </div>
+
+    <!-- Medium Range Cars Section -->
+    <h2>Medium Range Cars</h2>
+    <div class="car-gallery">
+        <div class="car">
+            <img src="assets/img/tata-punch.jpg" alt="Tata Punch">
+            <h3>Tata Punch</h3>
+            <p>Compact, stylish, and fuel-efficient. Ideal for urban driving with a sleek design.</p>
+        </div>
+        <div class="car">
+            <img src="assets/img/toyota-urban-cruiser.jpg" alt="Toyota Urban Cruiser">
+            <h3>Toyota Urban Cruiser</h3>
+            <p>Renowned for reliability and performance, this compact SUV is perfect for long-distance travel.</p>
+        </div>
+        <div class="car">
+            <img src="assets/img/maruti-suzuki-fronx.jpg" alt="Maruti Suzuki Fronx">
+            <h3>Maruti Suzuki Fronx</h3>
+            <p>A crossover that blends urban convenience with reliable performance for short trips.</p>
+        </div>
+    </div>
+
+    <!-- Base Models Section -->
+    <h2>Base Models</h2>
+    <div class="car-gallery">
+        <div class="car">
+            <img src="assets/img/maruti-suzuki-swift.jpg" alt="Maruti Suzuki Swift">
+            <h3>Maruti Suzuki Swift</h3>
+            <p>One of India’s most popular hatchbacks, known for its agility and fuel efficiency.</p>
+        </div>
+        <div class="car">
+            <img src="assets/img/tata-tiago.jpg" alt="Tata Tiago">
+            <h3>Tata Tiago</h3>
+            <p>A budget-friendly, compact car that provides excellent mileage and city driving experience.</p>
+        </div>
+        <div class="car">
+            <img src="assets/img/renault-kwid.jpg" alt="Renault Kwid">
+            <h3>Renault Kwid</h3>
+            <p>A small and affordable vehicle, perfect for those seeking an economical option for daily commutes.</p>
+        </div>
+    </div>
+</section>
+<section class="blogs-overview">
+    <h2>Car Rental Blogs & Insights</h2>
+    <div class="blog-list">
+        <article class="blog">
+            <h3><a href="/blogs/tips-for-renting">Top Tips for Renting a Car</a></h3>
+            <p>Discover essential tips for renting the right car and how to avoid common pitfalls when booking your rental.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/long-road-trips">Best Vehicles for Long Road Trips</a></h3>
+            <p>Planning a long road trip? Find out which cars provide the most comfort, space, and fuel efficiency for your journey.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/car-insurance">Rental Car Insurance: What You Need to Know</a></h3>
+            <p>Learn whether rental car insurance is a must-have and what it typically covers to help you make informed decisions.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/eco-friendly-cars">Eco-friendly Rental Cars</a></h3>
+            <p>Explore the benefits of choosing eco-friendly rental options to reduce your carbon footprint on the road.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/business-rentals">Renting a Car for Business Travel</a></h3>
+            <p>Learn how to select the best vehicle for corporate travel that balances cost-efficiency and professionalism.</p>
+        </article>
+        <!-- Extended Blogs -->
+        <article class="blog">
+            <h3><a href="/blogs/seasonal-rentals">Seasonal Rentals: What You Need to Know</a></h3>
+            <p>Find out how to choose the best car rental options for different seasons and weather conditions.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/saving-on-car-rentals">How to Save on Car Rentals</a></h3>
+            <p>Discover strategies for getting the best deals on car rentals and making the most of discounts and offers.</p>
+        </article>
+        <article class="blog">
+            <h3><a href="/blogs/trending-cars">Trending Cars to Rent in 2024</a></h3>
+            <p>Stay updated on the latest trends and popular car models available for rent this year.</p>
+        </article>
+    </div>
+</section><footer class="footer">
+    <div class="footer-content">
+        <!-- Our Company Section -->
+        <div class="footer-section">
+            <h3 class="footer-title">Our Company</h3>
+            <ul class="footer-list">
+                <li><a href="#about-us" class="footer-link">About Us</a></li>
+                <li><a href="#careers" class="footer-link">Careers</a></li>
+                <li><a href="#press" class="footer-link">Press</a></li>
+                <li><a href="#blog" class="footer-link">Blog</a></li>
+            </ul>
+        </div>
+        <hr class="divider">
+        
+        <!-- Customer Support Section -->
+        <div class="footer-section">
+            <h3 class="footer-title">Customer Support</h3>
+            <ul class="footer-list">
+                <li><a href="#help-center" class="footer-link">Help Center</a></li>
+                <li><a href="#privacy-policy" class="footer-link">Privacy Policy</a></li>
+                <li><a href="#terms-of-service" class="footer-link">Terms of Service</a></li>
+                <li><a href="#sitemap" class="footer-link">Sitemap</a></li>
+            </ul>
+        </div>
+        <hr class="divider">
+        
+        <!-- Reach Us Section -->
+        <div class="footer-section">
+            <h3 class="footer-title">Reach Us</h3>
+            <p class="footer-text">5678 Another Street, City, State, 12345</p>
+            <p class="footer-text">Phone: (987) 654-3210</p>
+        </div>
+        <hr class="divider">
+        
+        <!-- Social Media Icons -->
+        <div class="footer-section footer-social">
+            <h3 class="footer-title">Follow Us</h3>
+            <div class="footer-icons">
+                <a href="#" target="_blank" class="social-link"><img src="assets/img/gmail-icon.png" alt="Gmail"></a>
+                <a href="#" target="_blank" class="social-link"><img src="assets/img/whatsapp-icon.png" alt="WhatsApp"></a>
+                <a href="https://www.instagram.com/thepranay._?igsh=a3VlejJndmNubmlu" target="_blank" class="social-link"><img src="assets/img/instagram-icon.png" alt="Instagram"></a>
+                <a href="#" target="_blank" class="social-link"><img src="assets/img/facebook-icon.png" alt="Facebook"></a>
+                <a href="#" target="_blank" class="social-link"><img src="assets/img/linkedin-icon.png" alt="LinkedIn"></a>
+                <a href="#" target="_blank" class="social-link"><img src="assets/img/x-icon.png" alt="X"></a>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Footer Copyright -->
+    <div class="footer-copyright">
+        <p>&copy; 2024 Car Rental Service. All rights reserved.</p>
+    </div>
+</footer>
+
+</body>
+</html>

@@ -24,22 +24,22 @@ import { ThisReceiver } from '@angular/compiler';
 import { of } from 'rxjs';
 import { timingSafeEqual } from 'node:crypto';
 
-@Component({
-  selector: 'app-Add_Reservation',
-  standalone: true,
-  imports: [
-    ReactiveFormsModule,
-    FormsModule,
-    InputTextModule,
-    ButtonModule,
-    DropdownModule,
-    CardModule,
-    CommonModule
-  ],
-  templateUrl: './Add_Reservation.component.html',
-  styleUrls: ['./Add_Reservation.component.css']
-})
-export class Add_ReservationComponent implements OnInit {
+// @Component({
+//   selector: 'app-Add_Reservation',
+//   standalone: true,
+//   imports: [
+//     ReactiveFormsModule,
+//     FormsModule,
+//     InputTextModule,
+//     ButtonModule,
+//     DropdownModule,
+//     CardModule,
+//     CommonModule
+//   ],
+//   templateUrl: './Add_Reservation.component.html',
+//   styleUrls: ['./Add_Reservation.component.css']
+// })
+// export class Add_ReservationComponent implements OnInit {
 
   reservationForm!: FormGroup;
   CustomerList:ICustomer[]=[];
@@ -111,75 +111,75 @@ vehicle:IVehicles={
     Status: '',
   }
 
-  Driver:IDriver={
-    DriverNo: 0,
-    DriverName: '',
-    LicenceNo: '',
-    AddressLine1: '',
-    AddressLine2: '',
-    CityNo: 0,
-    StateNo: 0,
-    CountryNo: 0,
-    PinCode: '',
-    PhoneNo: '',
-    MobileNo: '',
-    BankName: '',
-    BankAccount: '',
-    PAN: '',
-    DeleteStatus: ''
-  }
+//   Driver:IDriver={
+//     DriverNo: 0,
+//     DriverName: '',
+//     LicenceNo: '',
+//     AddressLine1: '',
+//     AddressLine2: '',
+//     CityNo: 0,
+//     StateNo: 0,
+//     CountryNo: 0,
+//     PinCode: '',
+//     PhoneNo: '',
+//     MobileNo: '',
+//     BankName: '',
+//     BankAccount: '',
+//     PAN: '',
+//     DeleteStatus: ''
+//   }
 
-  Employee:IEmployee={
-    EmployeeNo: 0,
-    EmployeeName: '',
-    EmployeeTypeNo: 0,
-    AddressLine1: '',
-    AddressLine2: '',
-    CitiesNo: 0,
-    StateNo: 0,
-    Pincode: '',
-    CountryNo: 0,
-    PhoneNo: '',
-    MobileNo: '',
-    EmailAddress: '',
-    BankName: '',
-    BankAccount: '',
-    PAN: '',
-    UserName: '',
-    Password: '',
-    City: '',
-    State: '',
-    Country: '',
-    Vehicle: '',
-    VehicleMakes: '',
-    vehicleModel: '',
-    Employees: '',
-    Customers: '',
-    Owners: '',
-    Drivers: '',
-    Rentals: '',
-    LastLogin: null,
-    Status: '',
-    DeleteStatus: ''
-  }
+//   Employee:IEmployee={
+//     EmployeeNo: 0,
+//     EmployeeName: '',
+//     EmployeeTypeNo: 0,
+//     AddressLine1: '',
+//     AddressLine2: '',
+//     CitiesNo: 0,
+//     StateNo: 0,
+//     Pincode: '',
+//     CountryNo: 0,
+//     PhoneNo: '',
+//     MobileNo: '',
+//     EmailAddress: '',
+//     BankName: '',
+//     BankAccount: '',
+//     PAN: '',
+//     UserName: '',
+//     Password: '',
+//     City: '',
+//     State: '',
+//     Country: '',
+//     Vehicle: '',
+//     VehicleMakes: '',
+//     vehicleModel: '',
+//     Employees: '',
+//     Customers: '',
+//     Owners: '',
+//     Drivers: '',
+//     Rentals: '',
+//     LastLogin: null,
+//     Status: '',
+//     DeleteStatus: ''
+//   }
 
-  Source:ICity={
-    CityNo: 0,
-    CityName: '',
-    StateNo: 0
-  }
+//   Source:ICity={
+//     CityNo: 0,
+//     CityName: '',
+//     StateNo: 0
+//   }
 
-  Destination:ICity={
-    CityNo: 0,
-    CityName: '',
-    StateNo: 0
-  }
+//   Destination:ICity={
+//     CityNo: 0,
+//     CityName: '',
+//     StateNo: 0
+//   }
 
-  City:ICity={
-    CityNo: 0,
-    CityName: '',
-    StateNo: 0
-  }
+//   City:ICity={
+//     CityNo: 0,
+//     CityName: '',
+//     StateNo: 0
+//   }
 
   constructor(private fb: FormBuilder,
               private reservationservice : ReservationService,
@@ -256,12 +256,12 @@ vehicle:IVehicles={
     }
   }
 
-  onClear(): void {
-    this.reservationForm.reset();
-  }
+//   onClear(): void {
+//     this.reservationForm.reset();
+//   }
 
-  getbyId() {
-    const reservationId = this.router.snapshot.params['id'];
+//   getbyId() {
+//     const reservationId = this.router.snapshot.params['id'];
 
     if (reservationId) {
       this.reservationservice.ReservationById(reservationId).subscribe(res => {

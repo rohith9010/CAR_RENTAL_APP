@@ -3,17 +3,17 @@ export interface ICustomer {
     CustomerNo:number;
     Name:string;
     EmailAddress:string;
-    Address1:string;
-    Address2:string;
+    AddressLine1:string;
+    AddressLine2:string;
     CityNo:number;
     StateNo:number;
-    Pincode:string;
+    PinCode:string;
     CountryNo:number;
-    PhoneNumber:string;
-    MobileNumber:string;
-    RegistrationDate:string;
+    PhoneNo:string;
+    MobileNo:string;
+    RegistrationDate:Date|null;
     UserName:string;
     Password:string;
-    DateTimeLastLogin:string;
+    LastLogin:Date|null;
     DeleteStatus:string;
 }

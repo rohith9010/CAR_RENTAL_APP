@@ -1,240 +1,252 @@
 <header class="header">
-  <h1>Add Employee</h1>
-
+  <div class="header-title">
+    <h1>Add Employee</h1>
+  </div>
   <nav class="nav-buttons">
-    <a href="#"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
+    <a href="AdminMenu"><button class="button-1" role="button"><i class="fas fa-home"></i> Home</button></a>
     <a href="/Employee_Details"><button class="nav-buttons" type="button"><i class="fas fa-info-circle"></i> Employee Details</button></a>
   </nav>
 </header>
-
-<main class="main">
-  <div class="form-container">
-    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
-      <fieldset class="fieldset">
-        <legend>Employee Information</legend>
-        <div class="horizontal-fields">
-
-          <div class="form-group">
-
-            <label for="employeeName">Employee Name:</label>
-            <input type="text" id="employeeName" formControlName="employeeName" placeholder="Please enter the name of the Employee" [ngClass]="{ 'is-invalid': employeeForm.get('employeeName')?.invalid && (employeeForm.get('employeeName')?.dirty || employeeForm.get('employeeName')?.touched) }">
-            <div *ngIf="employeeForm.get('employeeName')?.invalid && (employeeForm.get('employeeName')?.dirty || employeeForm.get('employeeName')?.touched)" class="warning">Employee name is required.</div>
-          </div>
-
-          <div class="form-group">
-
-            <label for="employeeType">Employee Type:</label>
-            <select name="employeeType" id="employeeType" formControlName="employeeType" [ngClass]="{ 'is-invalid': employeeForm.get('employeeType')?.invalid && (employeeForm.get('employeeType')?.dirty || employeeForm.get('employeeType')?.touched) }">
-              <option value="" selected disabled>Select Type</option>
-              <option value="Admin">Admin</option>
-              <option value="User">User</option>
-            </select>
-            <div *ngIf="employeeForm.get('employeeType')?.invalid && (employeeForm.get('employeeType')?.dirty || employeeForm.get('employeeType')?.touched)" class="warning">Employee type is required.</div>
-          </div>
-      </div>
-
-      <div class="form-group">
-        <label for="email">Email:</label>
-
-        <input type="email" id="email" formControlName="email" placeholder="Email">
-        <div *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid" class="warning">
-          <div *ngIf="employeeForm.get('email')?.errors?.['required']">Please enter an email address</div>
-          <div *ngIf="employeeForm.get('email')?.errors?.['email']">Please enter a valid email address</div>
-        </div>
-      </div> 
-
-      </fieldset>
-
-      <fieldset class="fieldset">
-        <legend>Address Details</legend>
-        <div class="form-group">
-
-          <label for="address">Address:</label>
-          <textarea id="address" formControlName="address" placeholder="Enter Address"></textarea>
-          <div *ngIf="employeeForm.get('address')?.invalid && (employeeForm.get('address')?.dirty || employeeForm.get('address')?.touched)" class="warning">Address is required.</div>
-
-        </div>
-      <div class="horizontal-fields">
-
-        <div class="form-group">
-          <label for="country">Country:</label>
-          <select name="country" id="country" formControlName="country" placeholder="Select Country">
-            <option value="" selected disabled>Select Country</option>
-            <option value="USA">USA</option>
-            <option value="Canada">Canada</option>
-            <option value="India">India</option>
-          </select>
-        </div>
-
-        <div class="form-group">
-          <label for="state">State:</label>
-          <select name="state" id="state" formControlName="state" placeholder="Select State">
-            <option value="" selected disabled>Select State</option>
-            <option value="">Telangana</option>
-            <option value="">Texas</option>
-            </select>
-        </div>
-
-        <div class="form-group">
-          <label for="city">City:</label>
-          <select name="city" id="city" formControlName="city" placeholder="Select City">
-            <option value="" selected disabled>Select City</option>
-            <option value="">Hyd</option>
-            <option value="">Sec</option>
-            </select>
-        </div>
-      </div>
-      </fieldset>
-
-      <fieldset class="fieldset">
-        <legend>Contact Information</legend>
-      <div class="horizontal-fields">
-
-        <div class="form-group">
-          <label for="phoneNumber">Phone Number:</label>
-          <input type="tel" id="phoneNumber" formControlName="phoneNumber" placeholder="Phone Number">
-           <div *ngIf="employeeForm.get('phoneNumber')?.touched && employeeForm.get('phoneNumber')?.invalid" class="warning">
-            <div *ngIf="employeeForm.get('phoneNumber')?.errors?.['required']">Please enter a phone number</div>
-            <div *ngIf="employeeForm.get('phoneNumber')?.errors?.['pattern']">Please enter digits only</div>
-            <div *ngIf="employeeForm.get('phoneNumber')?.errors?.['maxLength']">Entered phone number is not 10 digits</div>
-          </div>
-        </div>
-
-      <div class="form-group">
-      <label for="mobileNumber">Mobile Number:</label>
-      <input type="tel" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number">
-      <div *ngIf="employeeForm.get('mobileNumber')?.invalid && (employeeForm.get('mobileNumber')?.dirty || employeeForm.get('mobileNumber')?.touched)" class="warning">Please enter Digits Only</div>
-      </div>
-      </div>
-
-      </fieldset>
-
-      <fieldset class="fieldset">
-        <legend>Login Credentials</legend>
-      <div class="horizontal-fields">
-
-        <div class="form-group">
-          <label for="username">User name:</label>
-          <input type="text" id="username" formControlName="username" placeholder="User Name">
-          <div *ngIf="employeeForm.get('username')?.invalid && (employeeForm.get('username')?.dirty || employeeForm.get('username')?.touched)" class="warning">UserName is Required</div> 
-        </div>
-
-        <div class="form-group">
-          <label for="password">Password:</label>
-          <input type="password" id="password" formControlName="password" placeholder="Password" required minlength="6">
-          <div *ngIf="employeeForm.get('password')?.touched && employeeForm.get('password')?.invalid" class="warning">
-            <div *ngIf="employeeForm.get('password')?.errors?.['required']">Please enter a password</div>
-            <div *ngIf="employeeForm.get('password')?.errors?.['pattern']">Password must be at least 8 characters long and include uppercase and lowercase letters, a digit, and a special character</div>
-          </div>
-        </div>
-      </div>
-      </fieldset>
-
-      <fieldset class="fieldset">
-        <legend>Bank Details</legend>
-      <div class="horizontal-fields">
-
-        <div class="form-group">
-          <label for="bankName">Bank Name:</label>
-          <input type="text" id="bankName" formControlName="bankName" placeholder="Bank Name">
-          <div *ngIf="employeeForm.get('bankName')?.touched && employeeForm.get('bankName')?.invalid" class="warning">
-            <div *ngIf="employeeForm.get('bankName')?.errors?.['required']">Please enter a bank name</div>
-            <div *ngIf="employeeForm.get('bankName')?.errors?.['pattern']">Bank name must be between 3 and 50 characters long and can only include letters, spaces, hyphens, and apostrophes</div>
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="accountNumber">Account Number:</label>
-          <input type="text" id="accountNumber" formControlName="accountNumber" placeholder="Account Number">
-            <div *ngIf="employeeForm.get('accountNumber')?.touched && employeeForm.get('accountNumber')?.invalid" class="warning">
-              <div *ngIf="employeeForm.get('accountNumber')?.errors?.['required']">Please enter a bank account number</div>
-              <div *ngIf="employeeForm.get('accountNumber')?.errors?.['pattern']">Bank account number must be 9 to 18 digits long</div>
+  <main class="main">
+    <div class="form-container">
+      <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+  
+        <fieldset class="fieldset">
+          <legend>Employee Information</legend>
+          <div class="horizontal-fields">
+  
+            <div class="form-group">
+  
+              <label for="employeeName">Employee Name:</label>
+              <input type="text" id="employeeName" formControlName="employeeName" placeholder="Please enter the name of the Employee" >
+              <div *ngIf="employeeForm.get('employeeName')?.invalid && (employeeForm.get('employeeName')?.dirty || employeeForm.get('employeeName')?.touched)" class="warning">Employee name is required.</div>
+            </div>
+  
+            <div class="form-group">
+  
+              <label for="employeeType">Employee Type:</label>
+              <select name="employeeType" id="employeeType" formControlName="employeeType">
+                <option value="" selected disabled>Select Type</option>
+                <option *ngFor="let type of employeeTypelist" [value]="type.EmployeeTypeNo">{{ type.Type }}</option>
+              </select>
+              <div *ngIf="employeeForm.get('employeeType')?.invalid && (employeeForm.get('employeeType')?.dirty || employeeForm.get('employeeType')?.touched)" class="warning">Employee type is required.</div>
             </div>
         </div>
-
+  
         <div class="form-group">
-          <label for="Pan">PAN:</label>
-          <input type="text" id="pan" formControlName="pan" placeholder="PAN">
-          <div *ngIf="employeeForm.get('pan')?.invalid && (employeeForm.get('pan')?.touched)" class="warning">
-          <div *ngIf="employeeForm.get('pan')?.errors?.['required']">Please enter a PAN number</div>
-          <div *ngIf="employeeForm.get('pan')?.errors?.['pattern']">PAN number must be in the format AAAAA9999A</div>
-        </div>
-        </div>
-
-      </div>
-      </fieldset>
-
-      <fieldset class="fieldset">
-        <legend>Privileges</legend>
+          <label for="email">Email:</label>
+  
+          <input type="email" id="email" formControlName="email" placeholder="Email">
+          <div *ngIf="employeeForm.get('email')?.touched && employeeForm.get('email')?.invalid" class="warning">
+            <div *ngIf="employeeForm.get('email')?.errors?.['required']">Please enter an email address</div>
+            <div *ngIf="employeeForm.get('email')?.errors?.['email']">Please enter a valid email address</div>
+          </div>
+        </div> 
+  
+        </fieldset>
+  
+        <fieldset class="fieldset">
+          <legend>Address Details</legend>
+          <div class="form-group">
+  
+            <label for="address">Address Line 1:</label>
+            <textarea id="address1" formControlName="address1" placeholder="Enter Address Line 1"></textarea>
+            <div *ngIf="employeeForm.get('address1')?.invalid && (employeeForm.get('address1')?.dirty || employeeForm.get('address1')?.touched)" class="warning">Address Line 1 is required.</div>
+  
+          </div>
+  
+          <div class="form-group">
+  
+            <label for="address2">Address Line 2:</label>
+            <textarea id="address2" formControlName="address2" placeholder="Enter Address Line 2"></textarea>
+            <div *ngIf="employeeForm.get('address2')?.invalid && (employeeForm.get('address2')?.dirty || employeeForm.get('address2')?.touched)"></div>
+  
+          </div>
         <div class="horizontal-fields">
-
+  
           <div class="form-group">
-            <input type="checkbox" id="cities" formControlName="cities" binary="true">
-            <label for="cities" >Cities</label>
-
-            <input type="checkbox" id="states" formControlName="states" binary="true">
-            <label for="states">States</label>
+            <label for="country">Country:</label>
+            <select formControlName="country">
+              <option value="" selected disabled>Select Country</option>
+              <option *ngFor="let country of CountryList" [value]="country.CountryNo">{{ country.Country }}</option>
+            </select>
+            <div *ngIf="employeeForm.get('country')?.invalid && (employeeForm.get('country')?.dirty || employeeForm.get('country')?.touched)" class="warning">Country is required.</div>
+  
+          </div>
+  
+          <div class="form-group">
+            <label for="state">State:</label>
+            <select formControlName="state">
+              <option value="" selected disabled>Select State</option>
+              <option *ngFor="let state of statelist" [value]="state.StateNo">{{ state.state }}</option>
+            </select>
+            <div *ngIf="employeeForm.get('state')?.invalid && (employeeForm.get('state')?.dirty || employeeForm.get('state')?.touched)" class="warning">State is required.</div>
+            
+          </div>
+  
+          <div class="form-group">
+            <label for="city">City:</label>
+            <select formControlName="city">
+              <option value="" selected disabled>Select City</option>
+              <option *ngFor="let city of citylist" [value]="city.CityNo">{{ city.CityName }}</option>
+            </select>
+            <div *ngIf="employeeForm.get('city')?.invalid && (employeeForm.get('city')?.dirty || employeeForm.get('city')?.touched)" class="warning">City is required.</div>
+            
           </div>
 
           <div class="form-group">
-
-            <input type="checkbox" id="vehicles" formControlName="vehicles" binary="true">
-            <label for="vehicles">Vehicles</label>
-
-            <input type="checkbox" id="make" formControlName="make" binary="true">
-            <label for="make">Make</label>
+  
+            <label for="pincode">Pincode:</label>
+            <input type="text" id="pincode" formControlName="pincode" placeholder="Please enter the Pincode" >
+            <div *ngIf="employeeForm.get('pincode')?.invalid && (employeeForm.get('pincode')?.dirty || employeeForm.get('pincode')?.touched)" class="warning">Pincode is required.</div>
           </div>
-
-          <div class="form-group">
-
-            <input type="checkbox" id="models" formControlName="models" binary="true">
-            <label for="models">Models</label>
-
-            <input type="checkbox" id="employees" formControlName="employees" binary="true">
-            <label for="employees">Employees</label>
-          </div>
-
-          <div class="form-group">
-
-            <input type="checkbox" id="customers" formControlName="customers" binary="true">
-            <label for="customers">Customers</label>
-
-            <input type="checkbox" id="owners" formControlName="owners" binary="true">
-            <label for="owners">Owners</label>
-          </div>
-
-          <div class="form-group">
-
-            <input type="checkbox" id="drivers" formControlName="drivers" binary="true">
-            <label for="drivers">Drivers</label>
-
-            <input type="checkbox" id="reservations" formControlName="reservations" binary="true">
-            <label for="reservations">Reservations</label>
-          </div>
-
         </div>
-
+        </fieldset>
+  
+        <fieldset class="fieldset">
+          <legend>Contact Information</legend>
+        <div class="horizontal-fields">
+  
+          <div class="form-group">
+            <label for="phoneNumber">Phone Number:</label>
+            <input type="tel" id="phoneNumber" formControlName="phoneNumber" placeholder="Phone Number">
+             <div *ngIf="employeeForm.get('phoneNumber')?.touched && employeeForm.get('phoneNumber')?.invalid" class="warning">
+              <div *ngIf="employeeForm.get('phoneNumber')?.errors?.['required']">Please enter a phone number</div>
+              <div *ngIf="employeeForm.get('phoneNumber')?.errors?.['pattern']">Please enter digits only</div>
+              <div *ngIf="employeeForm.get('phoneNumber')?.errors?.['maxLength']">Entered phone number is not 10 digits</div>
+            </div>
+          </div>
+  
         <div class="form-group">
-
-          <input type="checkbox" id="selectall"  formControlName="selectall" binary="true">
-          <label for="selectall">Select All</label>
+        <label for="mobileNumber">Mobile Number:</label>
+        <input type="tel" id="mobileNumber" formControlName="mobileNumber" placeholder="Mobile Number">
+        <div *ngIf="employeeForm.get('mobileNumber')?.invalid && (employeeForm.get('mobileNumber')?.dirty || employeeForm.get('mobileNumber')?.touched)" class="warning">Please enter Digits Only</div>
         </div>
-      </fieldset>
-
-      <div class="form-actions">
-
-        <button type="submit" class="button-1">
-          <i class="fas fa-check"></i> Submit
-        </button>
-
-        <button type="button" class="button-red" (click)="onClear()">
-          <i class="fas fa-times"></i> Clear
-        </button>
-
-        <button type="button" class="button-blue">
-          <i class="fas fa-edit"></i> Update
-        </button>
-
-      </div>
-    </form>
-  </div>
+        </div>
+  
+        </fieldset>
+  
+        <fieldset class="fieldset">
+          <legend>Login Credentials</legend>
+        <div class="horizontal-fields">
+  
+          <div class="form-group">
+            <label for="username">User name:</label>
+            <input type="text" id="username" formControlName="username" placeholder="User Name">
+            <div *ngIf="employeeForm.get('username')?.invalid && (employeeForm.get('username')?.dirty || employeeForm.get('username')?.touched)" class="warning">UserName is Required</div> 
+          </div>
+  
+          <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" formControlName="password" placeholder="Password" required minlength="6">
+            <div *ngIf="employeeForm.get('password')?.touched && employeeForm.get('password')?.invalid" class="warning">
+              <div *ngIf="employeeForm.get('password')?.errors?.['required']">Please enter a password</div>
+              <div *ngIf="employeeForm.get('password')?.errors?.['pattern']">Password must be at least 8 characters long and include uppercase and lowercase letters, a digit, and a special character</div>
+            </div>
+          </div>
+        </div>
+        </fieldset>
+  
+        <fieldset class="fieldset">
+          <legend>Bank Details</legend>
+        <div class="horizontal-fields">
+  
+          <div class="form-group">
+            <label for="bankName">Bank Name:</label>
+            <input type="text" id="bankName" formControlName="bankName" placeholder="Bank Name">
+            <div *ngIf="employeeForm.get('bankName')?.touched && employeeForm.get('bankName')?.invalid" class="warning">
+              <div *ngIf="employeeForm.get('bankName')?.errors?.['required']">Please enter a bank name</div>
+              <div *ngIf="employeeForm.get('bankName')?.errors?.['pattern']">Bank name must be between 3 and 50 characters long and can only include letters, spaces, hyphens, and apostrophes</div>
+            </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="accountNumber">Account Number:</label>
+            <input type="text" id="accountNumber" formControlName="accountNumber" placeholder="Account Number">
+              <div *ngIf="employeeForm.get('accountNumber')?.touched && employeeForm.get('accountNumber')?.invalid" class="warning">
+                <div *ngIf="employeeForm.get('accountNumber')?.errors?.['required']">Please enter a bank account number</div>
+                <div *ngIf="employeeForm.get('accountNumber')?.errors?.['pattern']">Bank account number must be 9 to 18 digits long</div>
+              </div>
+          </div>
+  
+          <div class="form-group">
+            <label for="Pan">PAN:</label>
+            <input type="text" id="pan" formControlName="pan" placeholder="PAN" (input)="onPanInput($event)">
+            <div *ngIf="employeeForm.get('pan')?.invalid && (employeeForm.get('pan')?.touched)" class="warning">
+            <div *ngIf="employeeForm.get('pan')?.errors?.['required']">Please enter a PAN number</div>
+            <div *ngIf="employeeForm.get('pan')?.errors?.['pattern']">PAN number must be in the format AAAAA9999A</div>
+          </div>
+          </div>
+  
+        </div>
+        </fieldset>
+  
+        <fieldset class="fieldset">
+          <legend>Privileges</legend>
+          <div class="horizontal-fields">
+  
+            <div class="form-group">
+              <input type="checkbox" id="cities" formControlName="cities" binary="true">
+              <label for="cities" >Cities</label>
+  
+              <input type="checkbox" id="states" formControlName="states" binary="true">
+              <label for="states">States</label>
+            </div>
+  
+            <div class="form-group">
+  
+              <input type="checkbox" id="vehicles" formControlName="vehicles" binary="true">
+              <label for="vehicles">Vehicles</label>
+  
+              <input type="checkbox" id="make" formControlName="make" binary="true">
+              <label for="make">Make</label>
+            </div>
+  
+            <div class="form-group">
+  
+              <input type="checkbox" id="models" formControlName="models" binary="true">
+              <label for="models">Models</label>
+  
+              <input type="checkbox" id="employees" formControlName="employees" binary="true">
+              <label for="employees">Employees</label>
+            </div>
+  
+            <div class="form-group">
+  
+              <input type="checkbox" id="customers" formControlName="customers" binary="true">
+              <label for="customers">Customers</label>
+  
+              <input type="checkbox" id="owners" formControlName="owners" binary="true">
+              <label for="owners">Owners</label>
+            </div>
+  
+            <div class="form-group">
+  
+              <input type="checkbox" id="drivers" formControlName="drivers" binary="true">
+              <label for="drivers">Drivers</label>
+  
+              <input type="checkbox" id="reservations" formControlName="reservations" binary="true">
+              <label for="reservations">Reservations</label>
+            </div>
+  
+          </div>
+        </fieldset>
+  
+        <div class="form-actions">
+  
+          <button type="submit" class="button-1">
+            <i class="fas fa-check"></i> Submit
+          </button>
+  
+          <button type="button" class="button-red" (click)="onClear()">
+            <i class="fas fa-times"></i> Clear
+          </button>
+  
+          <button type="button" class="button-blue" (click)="Update()">
+            <i class="fas fa-edit"></i> Update
+          </button>
+  
+        </div>
+      </form>
+    </div>
+  

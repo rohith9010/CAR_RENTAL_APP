@@ -1,67 +1,52 @@
 <div class="header">
-  <h1>Customer Management</h1>
-  <div class="header-left">
-      <a href="#" class="icon-button"><i class="pi pi-home"></i></a>
+    <h1>Customer Management</h1>
+    <div class="header-right">
+      <a href="/AdminMenu" class="icon-button"><i class="pi pi-home"></i></a>
       <a href="/Add_Customer" class="icon-button"><i class="pi pi-plus-circle"></i></a>
-  </div>
+    </div>
 </div>
-<div class="container">
-  <div class="content">
-      <div class="search-container">
-          <h3>Filter</h3>
-          <div class="search-box">
-              <input type="text" class="input-search" name="filterInput" [(ngModel)]="searchQuery" placeholder="Type to Search...">
-            <button class="btn-search" (click)="search()"><i class="pi pi-search"></i></button>
-          </div>
+<main>
+    <section class="filter">
+      <h3>Filter</h3>
+      <div class="search-box">
+        <input type="text" class="input-search" name="filterInput" placeholder="Search Vehicles..." [(ngModel)]="searchQuery" (keyup)="search()">
+        <button type="button" class="search-button"><i class="fas fa-search"></i></button>
       </div>
+    </section>
+    <section class="vehicle-list">
       <div class="table-container">
-          <table class="table">
-            <tbody>
-                <tr>
-                    <th>Customer</th>
-                    <th>Phone Number</th>
-                    <th>Email</th>
-                    <th>Username</th>
-                    <th>RegDate</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
-                </tr>
-               @if(filteredcustomerList)
-              {
-                  @for (customer of filteredcustomerList; track customer.CustomerNo) {
-                      <tr>
-                          <td>{{customer.Name}}</td>
-                          <td>{{customer.PhoneNumber}}</td>
-                          <td>{{customer.EmailAddress}}</td>
-                          <td>{{customer.UserName}}</td>
-                          <td>{{customer.RegistrationDate}}</td>
-                     
-                        
-                         <td><a type="button"  routerLink="/Add_customer/{{customer.CustomerNo}}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(customer.CustomerNo)"><i class="pi pi-trash"></i></a></td>   
-                      </tr>
-                  } 
-              }
-              @else
-              {     
-                    
+        <table>
+          <thead>
+            <tr> 
+                <th>Customer</th>
+                <th>Phone Number</th>
+                <th>Email</th>
+                <th>Username</th>
+                <th>RegDate</th>
+                <th>Edit</th>
+                <th>Delete</th>
 
-                  @for (customer of customerList; track customer.CustomerNo) {
-                      <tr>
-                          <td>{{customer.Name}}</td>
-                          <td>{{customer.PhoneNumber}}</td>
-                          <td>{{customer.EmailAddress}}</td>
-                          <td>{{customer.UserName}}</td>
-                          <td>{{customer.RegistrationDate}}</td>
-                        
-                         
-                          <td><a type="button"  routerLink="/Add_customer/{{customer.CustomerNo}}"><i class="pi pi-pencil"></i></a></td>
-                          <td><a href="javascript:void(0)" (click) = "delete(customer.CustomerNo)"><i class="pi pi-trash"></i></a></td>
-                      </tr>
-                  }
-              } 
-            </tbody>
-          </table>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let customer of getDisplayedVehicles(); let i = index; trackBy: trackByFn">
+                <td>{{customer.Name}}</td>
+                <td>{{customer.PhoneNo}}</td>
+                <td>{{customer.EmailAddress}}</td>
+                <td>{{customer.UserName}}</td>
+                <td>{{customer.RegistrationDate}}</td>
+
+                <td><a type="button"  routerLink="/Add_Customer/{{customer.CustomerNo}}"><i class="fas fa-edit"></i></a></td>
+                <td><a href="javascript:void(0)" (click) = "delete(customer.CustomerNo)"><i class="fas fa-trash"></i></a></td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-  </div>
-</div>
+      <div class="pagination">
+        <button *ngFor="let page of totalPages()" (click)="onPageChange(page)" [class.active]="page === currentPage">{{ page }}</button>
+      </div>
+    </section>
+</main>
+<footer>
+  <p>&copy; 2024 Customer Management System</p>
+</footer>

@@ -24,22 +24,22 @@ import { ThisReceiver } from '@angular/compiler';
 import { of } from 'rxjs';
 import { timingSafeEqual } from 'node:crypto';
 
-// @Component({
-//   selector: 'app-Add_Reservation',
-//   standalone: true,
-//   imports: [
-//     ReactiveFormsModule,
-//     FormsModule,
-//     InputTextModule,
-//     ButtonModule,
-//     DropdownModule,
-//     CardModule,
-//     CommonModule
-//   ],
-//   templateUrl: './Add_Reservation.component.html',
-//   styleUrls: ['./Add_Reservation.component.css']
-// })
-// export class Add_ReservationComponent implements OnInit {
+@Component({
+  selector: 'app-Add_Reservation',
+  standalone: true,
+  imports: [
+    ReactiveFormsModule,
+    FormsModule,
+    InputTextModule,
+    ButtonModule,
+    DropdownModule,
+    CardModule,
+    CommonModule
+  ],
+  templateUrl: './Add_Reservation.component.html',
+  styleUrls: ['./Add_Reservation.component.css']
+})
+export class Add_ReservationComponent implements OnInit {
 
   reservationForm!: FormGroup;
   CustomerList:ICustomer[]=[];
@@ -70,25 +70,6 @@ vehicle:IVehicles={
   AddtionalHourlyRate: 0,
   DeleteStatus: ''
 }
-  customer:ICustomer={
-    CustomerNo: 0,
-    Name: '',
-    EmailAddress: '',
-    Address1: '',
-    Address2: '',
-    CityNo: 0,
-    StateNo: 0,
-    Pincode: '',
-    CountryNo: 0,
-    PhoneNumber: '',
-    MobileNumber: '',
-    RegistrationDate: '',
-    UserName: '',
-    Password: '',
-    DateTimeLastLogin: '',
-    DeleteStatus: ''
-   
-  }
   reservation:IReservation={
     RentalNo: 0,
     CustomerNo: 0,
@@ -111,75 +92,75 @@ vehicle:IVehicles={
     Status: '',
   }
 
-//   Driver:IDriver={
-//     DriverNo: 0,
-//     DriverName: '',
-//     LicenceNo: '',
-//     AddressLine1: '',
-//     AddressLine2: '',
-//     CityNo: 0,
-//     StateNo: 0,
-//     CountryNo: 0,
-//     PinCode: '',
-//     PhoneNo: '',
-//     MobileNo: '',
-//     BankName: '',
-//     BankAccount: '',
-//     PAN: '',
-//     DeleteStatus: ''
-//   }
+  Driver:IDriver={
+    DriverNo: 0,
+    DriverName: '',
+    LicenceNo: '',
+    AddressLine1: '',
+    AddressLine2: '',
+    CityNo: 0,
+    StateNo: 0,
+    CountryNo: 0,
+    PinCode: '',
+    PhoneNo: '',
+    MobileNo: '',
+    BankName: '',
+    BankAccount: '',
+    PAN: '',
+    DeleteStatus: ''
+  }
 
-//   Employee:IEmployee={
-//     EmployeeNo: 0,
-//     EmployeeName: '',
-//     EmployeeTypeNo: 0,
-//     AddressLine1: '',
-//     AddressLine2: '',
-//     CitiesNo: 0,
-//     StateNo: 0,
-//     Pincode: '',
-//     CountryNo: 0,
-//     PhoneNo: '',
-//     MobileNo: '',
-//     EmailAddress: '',
-//     BankName: '',
-//     BankAccount: '',
-//     PAN: '',
-//     UserName: '',
-//     Password: '',
-//     City: '',
-//     State: '',
-//     Country: '',
-//     Vehicle: '',
-//     VehicleMakes: '',
-//     vehicleModel: '',
-//     Employees: '',
-//     Customers: '',
-//     Owners: '',
-//     Drivers: '',
-//     Rentals: '',
-//     LastLogin: null,
-//     Status: '',
-//     DeleteStatus: ''
-//   }
+  Employee:IEmployee={
+    EmployeeNo: 0,
+    EmployeeName: '',
+    EmployeeTypeNo: 0,
+    AddressLine1: '',
+    AddressLine2: '',
+    CitiesNo: 0,
+    StateNo: 0,
+    Pincode: '',
+    CountryNo: 0,
+    PhoneNo: '',
+    MobileNo: '',
+    EmailAddress: '',
+    BankName: '',
+    BankAccount: '',
+    PAN: '',
+    UserName: '',
+    Password: '',
+    City: '',
+    State: '',
+    Country: '',
+    Vehicle: '',
+    VehicleMakes: '',
+    vehicleModel: '',
+    Employees: '',
+    Customers: '',
+    Owners: '',
+    Drivers: '',
+    Rentals: '',
+    LastLogin: null,
+    Status: '',
+    DeleteStatus: ''
+  }
 
-//   Source:ICity={
-//     CityNo: 0,
-//     CityName: '',
-//     StateNo: 0
-//   }
+  Source:ICity={
+    CityNo: 0,
+    CityName: '',
+    StateNo: 0
+  }
 
-//   Destination:ICity={
-//     CityNo: 0,
-//     CityName: '',
-//     StateNo: 0
-//   }
+  Destination:ICity={
+    CityNo: 0,
+    CityName: '',
+    StateNo: 0
+  }
 
-//   City:ICity={
-//     CityNo: 0,
-//     CityName: '',
-//     StateNo: 0
-//   }
+  City:ICity={
+    CityNo: 0,
+    CityName: '',
+    StateNo: 0
+  }
 
   constructor(private fb: FormBuilder,
               private reservationservice : ReservationService,
@@ -205,8 +186,8 @@ vehicle:IVehicles={
     this.initializeForm(); 
     // Call initializeForm here for Reservation_Rate
     
-  this.reservationForm.get('Start_date')?.valueChanges.subscribe(() => this.calculateNoOfDays());
-  this.reservationForm.get('End_date')?.valueChanges.subscribe(() => this.calculateNoOfDays());
+  // this.reservationForm.get('Start_date')?.valueChanges.subscribe(() => this.calculateNoOfDays());
+  // this.reservationForm.get('End_date')?.valueChanges.subscribe(() => this.calculateNoOfDays());
 
    
   }
@@ -256,12 +237,12 @@ vehicle:IVehicles={
     }
   }
 
-//   onClear(): void {
-//     this.reservationForm.reset();
-//   }
+  onClear(): void {
+    this.reservationForm.reset();
+  }
 
-//   getbyId() {
-//     const reservationId = this.router.snapshot.params['id'];
+  getbyId() {
+    const reservationId = this.router.snapshot.params['id'];
 
     if (reservationId) {
       this.reservationservice.ReservationById(reservationId).subscribe(res => {
@@ -285,7 +266,7 @@ vehicle:IVehicles={
           "Destination" : this.reservation.DestinationCity?.CityName,
           
         });
-        this.calculateNoOfDays();
+        //this.calculateNoOfDays();
 
       })
     }
@@ -368,28 +349,27 @@ vehicle:IVehicles={
             this.reservation=res;
             this.route.navigate(['/Reservation_Details'])
       }); 
-  }
-}
+    }
 
-  calculateNoOfDays() {
-    const startDate = new Date(this.reservationForm.get('Start_date')?.value);
-    const endDate = new Date(this.reservationForm.get('End_date')?.value);
+  // calculateNoOfDays() {
+  //   const startDate = new Date(this.reservationForm.get('Start_date')?.value);
+  //   const endDate = new Date(this.reservationForm.get('End_date')?.value);
   
-    if (startDate && endDate && endDate >= startDate) {
-      // Calculate the difference in milliseconds and convert to days
-      const timeDiff = endDate.getTime() - startDate.getTime();
-      const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
+  //   if (startDate && endDate && endDate >= startDate) {
+  //     // Calculate the difference in milliseconds and convert to days
+  //     const timeDiff = endDate.getTime() - startDate.getTime();
+  //     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
   
-      // Patch the calculated number of days to the form
-      this.reservationForm.patchValue({
-        No_of_days: daysDiff
-      });
-    } else {
-      // Reset the number of days if the dates are invalid
-      this.reservationForm.patchValue({
-        No_of_days: 0
-      });
+  //     // Patch the calculated number of days to the form
+  //     this.reservationForm.patchValue({
+  //       No_of_days: daysDiff
+  //     });
+  //   } else {
+  //     // Reset the number of days if the dates are invalid
+  //     this.reservationForm.patchValue({
+  //       No_of_days: 0
+  //     });
+  //   }
+  // }
     }
   }
-   
-}

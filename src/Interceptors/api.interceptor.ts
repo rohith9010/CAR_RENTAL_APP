@@ -5,7 +5,8 @@ import {
   HttpEvent,
   HttpInterceptor
 } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, throwError } from 'rxjs';
+import { catchError, switchMap } from 'rxjs/operators';
 import { AuthGuardService } from '../Services/AuthService/AuthGuard.service';
 
 @Injectable()
@@ -23,6 +24,27 @@ export class ApiInterceptor implements HttpInterceptor {
           })
         }
 
-    return next.handle(request);
+    return next.handle(request).pipe(
+      catchError((error) => {
+        if (error.status === 401) {
+          // Attempt to refresh the token
+          return this.authservice.refreshToken().pipe(
+            switchMap((res) => {
+              // Clone the original request with the new token
+              const newToken = res.Token; // Adjust this according to your response
+              if (newToken) {
+                this.authservice.storetoken(newToken);
+                const clonedReq = request.clone({
+                  setHeaders: { Authorization: `Bearer ${newToken}` }
+                });
+                return next.handle(clonedReq);
+              }
+              return throwError(error);
+            })
+          );
+        }
+        return throwError(error);
+      })
+    );
   }
 }

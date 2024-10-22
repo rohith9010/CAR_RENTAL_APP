@@ -64,8 +64,13 @@ customerlogin:ICustomerLogin={
         this.authloginservice.login(this.customerlogin).subscribe(res => {
         console.log(res)
         if(res.Token){
+          
           this.customerlogin = res;
           this.authloginservice.storetoken(res.Token);
+
+          if (res.RefreshToken) {
+            this.authloginservice.storetoken(res.RefreshToken); // Store the refresh token
+          }
           this.router.navigate(['/userhome'])
         }
         else {

@@ -1,6 +1,6 @@
-import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { AuthGuardService } from '../../../Services/AuthService/AuthGuard.service';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-user-login-page',
@@ -23,4 +23,5 @@ export class UserLoginPageComponent implements OnInit {
     this.authGuardService.logout();
     this.isLoggedIn = false;
   }
+
 }

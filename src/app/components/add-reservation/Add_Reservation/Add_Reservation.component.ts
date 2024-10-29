@@ -43,8 +43,8 @@ export class Add_ReservationComponent implements OnInit {
 
   reservationForm!: FormGroup;
   CustomerList:ICustomer[]=[];
-  DriverList:IDriver[]=[];
-  EmployeeList:IEmployee[]=[];
+  DriverList!:IDriver[];
+  EmployeeList!:IEmployee[];
   CitiesList!:ICity[];
   VehicleList:IVehicles[]=[];
 
@@ -70,6 +70,24 @@ vehicle:IVehicles={
   AddtionalHourlyRate: 0,
   DeleteStatus: ''
 }
+  customer:ICustomer={
+    CustomerNo: 0,
+    Name: '',
+    EmailAddress: '',
+    AddressLine1: '',
+    AddressLine2: '',
+    CityNo: 0,
+    StateNo: 0,
+    PinCode: '',
+    CountryNo: 0,
+    PhoneNo: '',
+    MobileNo: '',
+    RegistrationDate: null,
+    UserName: '',
+    Password: '',
+    LastLogin: null,
+    DeleteStatus: ''
+  }
   reservation:IReservation={
     RentalNo: 0,
     CustomerNo: 0,
@@ -186,33 +204,28 @@ vehicle:IVehicles={
     this.initializeForm(); 
     // Call initializeForm here for Reservation_Rate
     
-  // this.reservationForm.get('Start_date')?.valueChanges.subscribe(() => this.calculateNoOfDays());
-  // this.reservationForm.get('End_date')?.valueChanges.subscribe(() => this.calculateNoOfDays());
+  this.reservationForm.get('Start_date')?.valueChanges.subscribe(() => this.calculateNoOfDays());
+  this.reservationForm.get('End_date')?.valueChanges.subscribe(() => this.calculateNoOfDays());
 
    
   }
   validations(){
     this.reservationForm = this.fb.group({
-      CustomerName:[{ value: '',  },],
-      Vehicle_No: [{ value: '',  },],
-      RegistrationNo: ['',],
-      Status: [{ value: '',  },],
-      DriverNo: ['',],
+      CustomerName:[{ value: '',  }, Validators.required],
+      Vehicle_No: [{ value: '',  }, Validators.required],
+      RegistrationNo: ['', Validators.required],  // Ensure this matches
+      Status: [{ value: '',  }, Validators.required],
       Driver: ['', Validators.required],
       Employee: ['',],
-      RentalNo: ['',],
-      Reservation_Date: [{ value: '',   },],
-      Rate: [{ value: '',   },],
-      Amount: [{ value: '',   },],
-      No_of_days: [{ value: '',   },],
-      Start_date: [{ value: '',   },],
-      End_date: [{ value: '',   }, ],
+      RentalNo: ['', Validators.required],
+      Reservation_Date: [{ value: '',   }, Validators.required],
+      Rate: [{ value: '',   }, Validators.required],
+      Amount: [{ value: '',   }, Validators.required],
+      No_of_days: [{ value: '',   }, Validators.required],
+      Start_date: [{ value: '',   }, Validators.required],
+      End_date: [{ value: '',   }, Validators.required],
       Source: [{ value: '',   }, ],
       Destination: [{ value: '',   }, ],
-      // Customer_State: ['', Validators.required], // Add customer state field
-      // Destination_State: ['', Validators.required], // Add destination city state field
-      // Employee_State: ['', Validators.required], // Add employee state field
-      // Source_State: ['', Validators.required], // Add source city state field
 
     });
   
@@ -266,7 +279,7 @@ vehicle:IVehicles={
           "Destination" : this.reservation.DestinationCity?.CityName,
           
         });
-        //this.calculateNoOfDays();
+        this.calculateNoOfDays();
 
       })
     }
@@ -291,10 +304,10 @@ vehicle:IVehicles={
     
     getEmployee()
     {
-      // this.Employeeservice.GetEmployee().subscribe(res =>{
-      //   this.EmployeeList=res;
-      //   console.log(res);
-      // })
+      this.Employeeservice.GetEmployee().subscribe(res =>{
+        this.EmployeeList=res;
+        console.log(res);
+      })
     }
     
     getCities()
@@ -332,44 +345,45 @@ vehicle:IVehicles={
           RentalNo : formValue.RentalNo,
           CustomerNo : formValue.CustomerName,
           VehicleNo : formValue.Vehicle_No,
-          Status : formValue.status,
-          Driver : formValue.DriverNo,
-          Employee : formValue.Employee,
+          Status : formValue.Status,
+          DriverNo : formValue.Driver,
+          EmployeeNo : formValue.Employee,
           ReservationDate : formValue.Reservation_Date,
           VehicleRate : formValue.Rate,
           Amount : formValue.Amount,
           NoOfDays : formValue.No_of_days,
           StartDate : formValue.Start_date,
           EndDate : formValue.End_date,
-          SourceCity : formValue.Source,
-          DestinationCity : formValue.Destination
+          SourceCity : formValue.Source.CityNo,
+          DestinationCity : formValue.Destination.CityNo
         };
         console.log(this.reservation);
           this.reservationservice.UpdateReservation(this.reservation).subscribe(res=>{
             this.reservation=res;
             this.route.navigate(['/Reservation_Details'])
       }); 
-    }
+  }
+}
 
-  // calculateNoOfDays() {
-  //   const startDate = new Date(this.reservationForm.get('Start_date')?.value);
-  //   const endDate = new Date(this.reservationForm.get('End_date')?.value);
+  calculateNoOfDays() {
+    const startDate = new Date(this.reservationForm.get('Start_date')?.value);
+    const endDate = new Date(this.reservationForm.get('End_date')?.value);
   
-  //   if (startDate && endDate && endDate >= startDate) {
-  //     // Calculate the difference in milliseconds and convert to days
-  //     const timeDiff = endDate.getTime() - startDate.getTime();
-  //     const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
+    if (startDate && endDate && endDate >= startDate) {
+      // Calculate the difference in milliseconds and convert to days
+      const timeDiff = endDate.getTime() - startDate.getTime();
+      const daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24)); // Convert milliseconds to days
   
-  //     // Patch the calculated number of days to the form
-  //     this.reservationForm.patchValue({
-  //       No_of_days: daysDiff
-  //     });
-  //   } else {
-  //     // Reset the number of days if the dates are invalid
-  //     this.reservationForm.patchValue({
-  //       No_of_days: 0
-  //     });
-  //   }
-  // }
+      // Patch the calculated number of days to the form
+      this.reservationForm.patchValue({
+        No_of_days: daysDiff
+      });
+    } else {
+      // Reset the number of days if the dates are invalid
+      this.reservationForm.patchValue({
+        No_of_days: 0
+      });
     }
   }
+   
+}

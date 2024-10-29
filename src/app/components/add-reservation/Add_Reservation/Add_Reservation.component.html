@@ -8,22 +8,12 @@
 
   <main class="main">
     <div class="form-container">
-      <form [formGroup]="reservationForm" (ngSubmit)="onSubmit()">
+      <form [formGroup]="reservationForm">
         <fieldset class="fieldset">
           <legend>Rental Details</legend>
           <div hidden>
             <div class="form-group">
               <input type="hidden" id="RentalNo" formControlName="RentalNo">
-            </div>
-          </div>
-          <div hidden>
-            <div class="form-group">
-              <input type="hidden" id="DriverNo" formControlName="DriverNo">
-            </div>
-          </div>
-          <div hidden>
-            <div class="form-group">
-              <input type="hidden" id="DriverNo" formControlName="DriverNo">
             </div>
           </div>
           <div class="horizontal-fields">
@@ -102,7 +92,6 @@
           </div>
         </fieldset>
         <div class="form-actions"> 
-          <!-- <button type="submit" [disabled]="!reservationForm.valid" aria-label="Submit Reservation">Update</button> -->
 
           <button type="button" [disabled]="!reservationForm.valid" (click)="Update()"aria-label="Submit Reservation">Update</button>
           <button type="button" (click)="onClear()" aria-label="Clear Form">Clear</button>

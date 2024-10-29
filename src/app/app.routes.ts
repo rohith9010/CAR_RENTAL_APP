@@ -20,7 +20,7 @@ import { DriverDetailsComponent } from './components/DriverDetails/Driver-Detail
 import { AddDriverComponent } from './components/add-driver/Add-Driver/Add-Driver.component';
 import { VehicleDetailsComponent } from './components/VehicleDetails/Vehicle-Details/Vehicle-Details.component';
 import { AddVehicleComponent } from './components/add-vehicle/Add-Vehicle/Add-Vehicle.component';
-// import { Add_ReservationComponent } from './components/add-reservation/Add_Reservation/Add_Reservation.component';
+import { Add_ReservationComponent } from './components/add-reservation/Add_Reservation/Add_Reservation.component';
 import { Reservation_DetailsComponent } from './components/ReservationDetails/Reservation_Details/Reservation_Details.component';
 import { UserLoginPageComponent } from './components/User-login-page/user-login-page.component';
 import { AdminloginComponent } from './components/Adminlogin/Adminlogin.component';
@@ -28,7 +28,7 @@ import { CustomerloginComponent } from './components/CustomerLogin/customerlogin
 import { authGuard } from '../Guards/auth.guard';
 
 export const routes: Routes = [
-    {path:'',component:UserLoginPageComponent,pathMatch:'full'},
+    {path:'',component:UserLoginPageComponent,pathMatch:'full',canActivate:[authGuard]},
     {path:'vehicle_make_details',component:VehicleMakeDetailsComponent,canActivate:[authGuard]},
     {path:'vehicle_model_details',component:VehicleModelDetailsComponent,canActivate:[authGuard]},
     {path:'city_details',component:AddCityDetailsComponent,canActivate:[authGuard]},
@@ -41,7 +41,7 @@ export const routes: Routes = [
     {path:'State_Detail',component:StateDetailsComponent,canActivate:[authGuard]},
     {path:'Reservation_Details',component:Reservation_DetailsComponent,canActivate:[authGuard]},
     {path:'AdminMenu',component:MenuComponent,canActivate:[authGuard]},
-    {path: 'userhome', component: UserLoginPageComponent,canActivate:[authGuard] },
+    {path: 'userhome', component: UserLoginPageComponent,canActivate:[authGuard]},
     {path: 'admin', component: AdminloginComponent,canActivate:[authGuard] },
     {path: 'userlogin', component: CustomerloginComponent },
 
@@ -51,9 +51,9 @@ export const routes: Routes = [
     {path:'Add_State/:CountryId/:StateId',component:AddStateComponent,canActivate:[authGuard]},
     {path:'Add_country/:id',component:CountryAddComponent,canActivate:[authGuard]},
     {path:'Add_owner/:Id',component:AddOwnerComponent,canActivate:[authGuard]},
-    {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent},
+    {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent,canActivate:[authGuard]},
     {path:'Add_Customer/:Id',component:AddCustomerComponent,canActivate:[authGuard]},
-    // {path:'Add_Reservation/:id',component:Add_ReservationComponent},
+    {path:'Add_Reservation/:id',component:Add_ReservationComponent,canActivate:[authGuard]},
     {path:'Add_Driver/:Id',component:AddDriverComponent,canActivate:[authGuard]},
     {path:'Add_Vehicle/:Id',component:AddVehicleComponent,canActivate:[authGuard]},
     {path:'Add_employee/:Id',component:AddEmployeeComponent,canActivate:[authGuard]},
@@ -65,11 +65,9 @@ export const routes: Routes = [
     {path:'Add_vehicle_Make',component:AddVehicleMakeComponent,canActivate:[authGuard]},
     {path:'Add_employee',component:AddEmployeeComponent,canActivate:[authGuard]},
     {path:'Add_country',component:CountryAddComponent,canActivate:[authGuard]},
-    {path:'Add_vehicle_Model',component:AddVehicleModelComponent,canActivate:[authGuard]},
-    {path:'Add_vehicle_Make',component:AddVehicleMakeComponent,canActivate:[authGuard]},
     {path:'Add_State',component:AddStateComponent,canActivate:[authGuard]},
     {path:'Add_Customer',component:AddCustomerComponent,canActivate:[authGuard]},
     {path:'Add_Driver',component:AddDriverComponent,canActivate:[authGuard]},
     {path:'Add_Vehicle',component:AddVehicleComponent,canActivate:[authGuard]},
-    // {path:'Add_Reservation',component:Add_ReservationComponent}
+    {path:'Add_Reservation',component:Add_ReservationComponent,canActivate:[authGuard]}
 ];

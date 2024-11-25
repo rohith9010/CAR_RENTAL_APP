@@ -32,20 +32,18 @@
           </thead>
           <tbody>
             <tr *ngFor="let rental of ReservationList;">
-                <td>{{ getVehicleReg(rental.VehicleNo)}}</td>
-                <td>{{ getCustomerName(rental.CustomerNo)}}</td>
+                <td>{{ rental.vehicles?.RegistrationNo}}</td>
+                <td>{{ rental.Customer?.Name}}</td>
                 <td>{{ rental.ReservationDate | date }}</td>
                 <td>{{ rental.StartDate | date }}</td>
                 <td>{{ rental.EndDate | date }}</td>
-                <td>{{ getSourceName(rental.SourceLocation) }}</td>
-                <td>{{ getDestinationName(rental.DestinationLocation) }}</td>
-                <td>{{ rental.Status }}</td>
+                <td>{{ rental.SourceCity?.CityName}}</td>
+                <td>{{ rental.DestinationCity?.CityName}}</td>
+                <td>{{ rental.Status }}</td> 
                 <td><a type="button"  routerLink="/Add_Reservation/{{rental.RentalNo}}"><i class="pi pi-pencil"></i></a></td>
-                <!-- <td><a type="button" [routerLink]="['/Add_Reservation', rental.RentalNo]"><i class="pi pi-pencil"></i></a></td> -->
                 <td><a href="javascript:void(0)" (click) = "delete(rental.RentalNo)"><i class="pi pi-trash"></i></a></td>
                 
             </tr> 
-                
                         
             
           </tbody>

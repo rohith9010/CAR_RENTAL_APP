@@ -20,52 +20,54 @@ import { DriverDetailsComponent } from './components/DriverDetails/Driver-Detail
 import { AddDriverComponent } from './components/add-driver/Add-Driver/Add-Driver.component';
 import { VehicleDetailsComponent } from './components/VehicleDetails/Vehicle-Details/Vehicle-Details.component';
 import { AddVehicleComponent } from './components/add-vehicle/Add-Vehicle/Add-Vehicle.component';
-// import { Add_ReservationComponent } from './components/add-reservation/Add_Reservation/Add_Reservation.component';
+import { Add_ReservationComponent } from './components/add-reservation/Add_Reservation/Add_Reservation.component';
 import { Reservation_DetailsComponent } from './components/ReservationDetails/Reservation_Details/Reservation_Details.component';
 import { UserLoginPageComponent } from './components/User-login-page/user-login-page.component';
 import { AdminloginComponent } from './components/Adminlogin/Adminlogin.component';
+import { CustomerloginComponent } from './components/CustomerLogin/customerlogin/customerlogin.component';
+import { authGuard } from '../Guards/auth.guard';
 
 export const routes: Routes = [
-    {path:'',component:UserLoginPageComponent,pathMatch:'full'},
-    {path:'vehicle_make_details',component:VehicleMakeDetailsComponent},
-    {path:'vehicle_model_details',component:VehicleModelDetailsComponent},
-    {path:'city_details',component:AddCityDetailsComponent},
-    {path:'country_details',component:CountryDetailsComponent},
-    {path:'Owner_details',component:OwnerDetailsComponent},
-    {path:'Employee_Details',component:EmployeeDetailsComponent},
-    {path:'Customer_Details',component:CustomerDetailsComponent},
-    {path:'Driver_Details',component:DriverDetailsComponent},
-    {path:'Vehicle_Details',component:VehicleDetailsComponent},
-    {path:'State_Detail',component:StateDetailsComponent},
-    {path:'Reservation_Details',component:Reservation_DetailsComponent},
-    {path:'AdminMenu',component:MenuComponent},
-    {path: 'userhome', component: UserLoginPageComponent },
-    {path: 'admin', component: AdminloginComponent },
+    {path:'',component:UserLoginPageComponent,pathMatch:'full',canActivate:[authGuard]},
+    {path:'vehicle_make_details',component:VehicleMakeDetailsComponent,canActivate:[authGuard]},
+    {path:'vehicle_model_details',component:VehicleModelDetailsComponent,canActivate:[authGuard]},
+    {path:'city_details',component:AddCityDetailsComponent,canActivate:[authGuard]},
+    {path:'country_details',component:CountryDetailsComponent,canActivate:[authGuard]},
+    {path:'Owner_details',component:OwnerDetailsComponent,canActivate:[authGuard]},
+    {path:'Employee_Details',component:EmployeeDetailsComponent,canActivate:[authGuard]},
+    {path:'Customer_Details',component:CustomerDetailsComponent,canActivate:[authGuard]},
+    {path:'Driver_Details',component:DriverDetailsComponent,canActivate:[authGuard]},
+    {path:'Vehicle_Details',component:VehicleDetailsComponent,canActivate:[authGuard]},
+    {path:'State_Detail',component:StateDetailsComponent,canActivate:[authGuard]},
+    {path:'Reservation_Details',component:Reservation_DetailsComponent,canActivate:[authGuard]},
+    {path:'AdminMenu',component:MenuComponent,canActivate:[authGuard]},
+    {path: 'userhome', component: UserLoginPageComponent,canActivate:[authGuard]},
+    {path: 'admin', component: AdminloginComponent,canActivate:[authGuard] },
+    {path: 'userlogin', component: CustomerloginComponent },
+
     
-    {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent},
-    {path:'Add_City/:Stateid/:Cityid',component:AddCityComponent},
-    {path:'Add_State/:CountryId/:StateId',component:AddStateComponent},
-    {path:'Add_country/:id',component:CountryAddComponent},
-    {path:'Add_owner/:Id',component:AddOwnerComponent},
-    {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent},
-    {path:'Add_Customer/:Id',component:AddCustomerComponent},
-    // {path:'Add_Reservation/:id',component:Add_ReservationComponent},
-    {path:'Add_Driver/:Id',component:AddDriverComponent},
-    {path:'Add_Vehicle/:Id',component:AddVehicleComponent},
-    {path:'Add_employee/:Id',component:AddEmployeeComponent},
+    {path:'Add_vehicle_Make/:id',component:AddVehicleMakeComponent,canActivate:[authGuard]},
+    {path:'Add_City/:Stateid/:Cityid',component:AddCityComponent,canActivate:[authGuard]},
+    {path:'Add_State/:CountryId/:StateId',component:AddStateComponent,canActivate:[authGuard]},
+    {path:'Add_country/:id',component:CountryAddComponent,canActivate:[authGuard]},
+    {path:'Add_owner/:Id',component:AddOwnerComponent,canActivate:[authGuard]},
+    {path:'Add_vehicle_Model/:Makeid/:Modelid',component:AddVehicleModelComponent,canActivate:[authGuard]},
+    {path:'Add_Customer/:Id',component:AddCustomerComponent,canActivate:[authGuard]},
+    {path:'Add_Reservation/:id',component:Add_ReservationComponent,canActivate:[authGuard]},
+    {path:'Add_Driver/:Id',component:AddDriverComponent,canActivate:[authGuard]},
+    {path:'Add_Vehicle/:Id',component:AddVehicleComponent,canActivate:[authGuard]},
+    {path:'Add_employee/:Id',component:AddEmployeeComponent,canActivate:[authGuard]},
 
 
-    {path:'Add_owner',component:AddOwnerComponent},
-    {path:'Add_City',component:AddCityComponent},
-    {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
-    {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
-    {path:'Add_employee',component:AddEmployeeComponent},
-    {path:'Add_country',component:CountryAddComponent},
-    {path:'Add_vehicle_Model',component:AddVehicleModelComponent},
-    {path:'Add_vehicle_Make',component:AddVehicleMakeComponent},
-    {path:'Add_State',component:AddStateComponent},
-    {path:'Add_Customer',component:AddCustomerComponent},
-    {path:'Add_Driver',component:AddDriverComponent},
-    {path:'Add_Vehicle',component:AddVehicleComponent},
-    // {path:'Add_Reservation',component:Add_ReservationComponent}
+    {path:'Add_owner',component:AddOwnerComponent,canActivate:[authGuard]},
+    {path:'Add_City',component:AddCityComponent,canActivate:[authGuard]},
+    {path:'Add_vehicle_Model',component:AddVehicleModelComponent,canActivate:[authGuard]},
+    {path:'Add_vehicle_Make',component:AddVehicleMakeComponent,canActivate:[authGuard]},
+    {path:'Add_employee',component:AddEmployeeComponent,canActivate:[authGuard]},
+    {path:'Add_country',component:CountryAddComponent,canActivate:[authGuard]},
+    {path:'Add_State',component:AddStateComponent,canActivate:[authGuard]},
+    {path:'Add_Customer',component:AddCustomerComponent,canActivate:[authGuard]},
+    {path:'Add_Driver',component:AddDriverComponent,canActivate:[authGuard]},
+    {path:'Add_Vehicle',component:AddVehicleComponent,canActivate:[authGuard]},
+    {path:'Add_Reservation',component:Add_ReservationComponent,canActivate:[authGuard]}
 ];

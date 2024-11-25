@@ -1,0 +1,127 @@
+/* Basic reset and layout */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body, html {
+  height: 100%;
+  background-color: #f0f0f0;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  position: relative;
+}
+
+.login-box {
+  background-color: #fff;
+  padding: 80px; /* Increased padding */
+  border-radius: 12px; /* Slightly larger border-radius */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Slightly larger shadow */
+  width: 800px; /* Increased width */
+  text-align: center;
+  position: relative;
+}
+
+.login-box h2 {
+  margin-bottom: 40px; /* Increased margin-bottom */
+  color: #333;
+  font-size: 32px; /* Larger font size */
+}
+
+.input-container {
+  margin-bottom: 25px; /* Increased margin-bottom */
+  text-align: left;
+}
+
+.input-container label {
+  display: block;
+  margin-bottom: 10px; /* Increased margin-bottom */
+  font-weight: bold;
+  color: #555;
+  font-size: 18px; /* Larger font size */
+}
+
+.input-container input {
+  width: 100%;
+  padding: 16px; /* Increased padding */
+  border: 1px solid #ccc;
+  border-radius: 8px; /* Larger border-radius */
+  font-size: 18px; /* Larger font size */
+}
+
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+}
+
+.terms-checkbox input {
+  margin-right: 5px; /* Increased margin-right */
+}
+
+.terms-checkbox a {
+  color: #007bff;
+  text-decoration: none;
+}
+
+.terms-checkbox a:hover {
+  text-decoration: underline;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: space-between;
+}
+
+button {
+  padding: 16px 24px; /* Increased padding */
+  font-size: 20px; /* Larger font size */
+  border: none;
+  border-radius: 8px; /* Larger border-radius */
+  cursor: pointer;
+  width: 48%;
+}
+
+button.submit-btn {
+  background-color: #28a745;
+  color: white;
+}
+
+button.submit-btn:hover {
+  background-color: #218838;
+}
+
+button.clear-btn {
+  background-color: #dc3545;
+  color: white;
+}
+
+button.clear-btn:hover {
+  background-color: #c82333;
+}
+
+.warning {
+  color: #dc3545;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+.home-icon {
+  position: absolute;
+  top: 20px; /* Adjust top position */
+  right: 20px; /* Adjust right position */
+  font-size: 24px; /* Adjust icon size */
+  color: #333; /* Adjust color */
+  text-decoration: none;
+}
+
+.home-icon:hover {
+  color: #007bff; /* Color on hover */
+}
+

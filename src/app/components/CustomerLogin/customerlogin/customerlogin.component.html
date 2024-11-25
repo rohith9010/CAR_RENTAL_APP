@@ -1,3 +1,38 @@
-<p>
-  customerlogin works!
-</p>
+<div class="login-container">
+  <div class="login-box">
+
+    <a class="home-icon" href = "/userhome">
+      <i class="material-icons">home</i>
+    </a>
+
+    <h2>Login</h2>
+
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+
+
+      <div class="input-container">
+        <label for="username">Username</label>
+        <input type="text" id="username" formControlName="username" placeholder="Please enter the Username" />
+        <div *ngIf="loginForm.get('username')?.invalid && (loginForm.get('username')?.dirty || loginForm.get('username')?.touched)" class="warning">Username is required</div>
+      </div>
+
+      <div class="input-container">
+        <label for="password">Password</label>
+        <input type="password" id="password" formControlName="password" placeholder="Please enter the Password" />
+        <div *ngIf="loginForm.get('password')?.errors?.['pattern']">Password must be at least 8 characters long and include uppercase, lowercase letters, a digit, and a special character</div>
+      </div>
+
+      <div class="input-container terms-checkbox">
+        <input type="checkbox" id="termsandconditions" formControlName="termsandconditions" />
+        <label for="termsandconditions">I agree to the <a href="#">Terms and Conditions</a></label>
+        <div *ngIf="loginForm.get('termsandconditions')?.invalid && (loginForm.get('termsandconditions')?.dirty || loginForm.get('termsandconditions')?.touched)" class="warning">You must agree to the terms and conditions</div>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="submit-btn">Login</button>
+        <button type="button" class="clear-btn" (click)="onClear()">Clear</button>
+      </div>
+
+    </form>
+  </div>
+</div>

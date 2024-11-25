@@ -12,9 +12,9 @@ export class ReservationService {
 
 constructor(private http : HttpClient) { }
 
-  ReservationDetails():Observable<IReservation[]>
-  {
-    return this.http.get<IReservation[]>(this.apiUrl);
+
+  ReservationDetails(): Observable<IReservation[]> {
+    return this.http.get<IReservation[]>(`${this.apiUrl}`);
   }
   AddReservation(reservation: IReservation): Observable<IReservation> {
     return this.http.post<IReservation>(this.apiUrl, reservation);
@@ -23,8 +23,12 @@ constructor(private http : HttpClient) { }
     return this.http.get<IReservation>(`${this.apiUrl}/${id}`);
   }
   UpdateReservation(reservation: IReservation ):Observable<IReservation>{
+    console.log('Fetched reservation:', reservation);
+
+    console.log(reservation.RentalNo);
     return this.http.put<IReservation>(`${this.apiUrl}/${reservation.RentalNo}`,reservation);
   }
+
   DeleteReservation(id: number): Observable<IReservation> {
     return this.http.delete<IReservation>(`${this.apiUrl}/${id}`);
   }

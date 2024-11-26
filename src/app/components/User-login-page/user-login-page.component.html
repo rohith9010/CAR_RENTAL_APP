@@ -17,9 +17,14 @@
             <li><a href="/AdminMenu">Home</a></li>
             <li><a href="/Add_Customer">Sign-up</a></li>
             <li><a href="/admin">Admin</a></li>
-            <li><a href="/login">Login</a></li>
+            <li *ngIf="!isLoggedIn"><a href="/userlogin">Login</a></li>
             <li><a href="/cars">Cars</a></li>
             <li><a href="/blogs">Blogs</a></li>
+
+            <!-- Show Logout option only when the user is logged in -->
+            <li *ngIf="isLoggedIn">
+                <button (click)="Logout()">Logout</button>
+              </li>
         </ul>
     </nav>
 </header>

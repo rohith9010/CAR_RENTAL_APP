@@ -15,8 +15,8 @@
     <nav class="navbar-menu">
         <ul class="menu">
             <li><a href="/AdminMenu">Home</a></li>
-            <li><a href="/Add_Customer">Sign-up</a></li>
-            <li><a href="/admin">Admin</a></li>
+            <li *ngIf="!isLoggedIn"><a href="/Add_Customer">Sign-up</a></li>
+            <li *ngIf="!isLoggedIn"><a href="/admin">Admin</a></li>
             <li *ngIf="!isLoggedIn"><a href="/userlogin">Login</a></li>
             <li><a href="/cars">Cars</a></li>
             <li><a href="/blogs">Blogs</a></li>
